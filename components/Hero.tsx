@@ -38,6 +38,14 @@ export default function Hero() {
           </a>
 
           <a
+            href="https://frontend-atletismo.vercel.app"
+            target="_blank"
+            className="inline-flex items-center justify-center px-8 py-3 border border-zinc-600 rounded-xl text-zinc-200 hover:border-teal-400 hover:text-teal-400 transition"
+          >
+            View Project Page
+          </a>
+
+          <a
             href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
             target="_blank"
             className="inline-flex items-center justify-center px-8 py-3 border border-zinc-600 rounded-xl text-zinc-200 hover:border-teal-400 hover:text-teal-400 transition"

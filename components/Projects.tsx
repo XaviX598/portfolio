@@ -25,6 +25,7 @@ const projects = {
         backend: "https://github.com/itsmikenakanodev/backend_atletismo",
         android: "https://github.com/itsmikenakanodev/android_atletismo",
         thesis: "/docs/thesis.pdf",
+        projectPage: "https://frontend-atletismo.vercel.app",
       },
     },
     {
@@ -59,6 +60,7 @@ const projects = {
         backend: "https://github.com/itsmikenakanodev/backend_atletismo",
         android: "https://github.com/itsmikenakanodev/android_atletismo",
         thesis: "/docs/thesis.pdf",
+        projectPage: "https://frontend-atletismo.vercel.app",
       },
     },
     {
@@ -182,6 +184,15 @@ export default function Projects() {
                     className="text-teal-400 hover:underline"
                   >
                     GitHub
+                  </a>
+                )}
+                {project.links.projectPage && (
+                  <a
+                    href={project.links.projectPage}
+                    target="_blank"
+                    className="text-teal-400 hover:underline"
+                  >
+                    {lang === "en" ? "Go to Project Page" : "Dirígete a la Página Web del Proyecto"}
                   </a>
                 )}
               </div>
