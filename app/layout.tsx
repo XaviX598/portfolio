@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Xavier Aguilar | Portfolio",
   description: "Portfolio of Xavier Aguilar",
+  other: {
+    "google-adsense-account": "ca-pub-6114688431846739",
+  },
 };
 
 export default function RootLayout({
