@@ -39,11 +39,12 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Ads network script */}
+        {/* Ads network script 
         <Script
           src="https://pl28610658.effectivegatecpm.com/04/e0/be/04e0be2b9e50b49d5410a2fe2a75c0aa.js"
           strategy="afterInteractive"
         />
+        */}
 
         {children}
       </body>
