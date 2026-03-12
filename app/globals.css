@@ -1,14 +1,220 @@
 @import "tailwindcss";
 
+:root {
+  --color-primary: #1a1a1a;
+  --color-secondary: #c9a962;
+  --color-accent: #14b8a6;
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-hover: #27272a;
+  --color-text: #e4e4e7;
+  --color-text-light: #a1a1aa;
+  --gradient-gold: linear-gradient(135deg, #c9a962 0%, #b8944f 100%);
+  --gradient-teal: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  --shadow-gold: 0 4px 25px rgba(201, 169, 98, 0.35);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.3);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
-  color: rgb(244 244 245); /* zinc-100 */
-  background:
-    radial-gradient(1200px circle at 10% 10%, rgba(20, 184, 166, 0.15), transparent 40%),
-    radial-gradient(1000px circle at 90% 20%, rgba(45, 212, 191, 0.08), transparent 40%),
+  color: var(--color-text);
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 184, 166, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(45, 212, 191, 0.06) 0%, transparent 40%),
     linear-gradient(180deg, #09090b 0%, #020617 100%);
+  overflow-x: hidden;
+}
+
+/* Progress Bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 9999;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-teal);
+  width: 0%;
+  animation: progress-scroll linear;
+  animation-timeline: scroll();
+}
+
+@keyframes progress-scroll {
+  to { width: 100%; }
+}
+
+/* Scroll-driven animations */
+@keyframes slideInFromBottom {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes particle-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 0.4; }
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  animation-timeline: view();
+  animation-range: entry 10% cover 50%;
+  animation-fill-mode: both;
+}
+
+.animate-slide-up {
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
+  animation-name: slideInFromBottom;
+  animation-fill-mode: both;
+}
+
+.animate-slide-left {
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
+  animation-name: slideInFromLeft;
+  animation-fill-mode: both;
+}
+
+.animate-slide-right {
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
+  animation-name: slideInFromRight;
+  animation-fill-mode: both;
+}
+
+.animate-scale-in {
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
+  animation-name: scaleIn;
+  animation-fill-mode: both;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: var(--transition);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card);
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.card-hover:hover::before {
+  transform: scaleX(1);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--gradient-teal);
+  color: #09090b;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(20, 184, 166, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(20, 184, 166, 0.1);
+}
+
+/* Section styles */
+.section-padding {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: 48px;
 }

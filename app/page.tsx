@@ -9,6 +9,9 @@ import BackendPing from "../components/BackendPing";
 export default function Home() {
   return (
     <>
+      <div className="progress-container">
+        <div className="progress-bar"></div>
+      </div>
       <BackendPing />
       <Navbar />
       <main className="pt-20">
