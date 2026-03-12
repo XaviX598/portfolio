@@ -1,4 +1,5 @@
 import React from "react";
+import FadeIn from "./FadeIn";
 
 export default function Contact() {
   return (
@@ -7,16 +8,21 @@ export default function Contact() {
       className="py-24 border-t border-zinc-800/60"
     >
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Contact
-        </h2>
+        <FadeIn>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Contact
+          </h2>
+        </FadeIn>
 
-        <p className="text-zinc-400 mb-10">
-          Feel free to reach out if you would like to collaborate, discuss an
-          opportunity, or simply connect.
-        </p>
+        <FadeIn delay={0.1}>
+          <p className="text-zinc-400 mb-10">
+            Feel free to reach out if you would like to collaborate, discuss an
+            opportunity, or simply connect.
+          </p>
+        </FadeIn>
 
-        <div className="flex flex-col items-center gap-6 text-zinc-300">
+        <FadeIn delay={0.2}>
+          <div className="flex flex-col items-center gap-6 text-zinc-300">
           {/* PHONE */}
           {/* PHONE */}
 <div className="flex items-center gap-3">
@@ -50,7 +56,8 @@ export default function Contact() {
               LinkedIn Profile
             </a>
           </div>
-        </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
