@@ -6,6 +6,23 @@ import FadeIn from "./FadeIn";
 const projects = {
   en: [
     {
+      title: "XpressConvert - File Conversion Tools",
+      description:
+        "A comprehensive file conversion web application with 10 tools: image conversion, compression, resizing, editing, image to PDF, PDF merging, document conversion, audio conversion, video conversion, and audio extraction. Built with React and Vite.",
+      tech: [
+        "React",
+        "Vite",
+        "TypeScript",
+        "pdf-lib",
+        "docx",
+        "Web Audio API",
+      ],
+      links: {
+        web: "https://xpressconvert.vercel.app",
+        github: "https://github.com/XaviX598/Xpressconvert",
+      },
+    },
+    {
       title: "Full Stack Degree Project – Athletics Management System",
       description:
   "End-to-end full stack system developed as a degree project, consisting of a web application, backend REST API and Android mobile app for athletics information management. The system was deployed using Docker containers; during the academic phase, Microsoft Azure was used to deploy both the frontend and backend. The current production deployment runs with the frontend on Vercel, the backend on Render, and the database hosted in the cloud.",
@@ -50,6 +67,23 @@ const projects = {
     },
   ],
   es: [
+    {
+      title: "XpressConvert - Herramientas de Conversión de Archivos",
+      description:
+        "Aplicación web completa de conversión de archivos con 10 herramientas: conversión de imágenes, compresión, redimensionamiento, edición, imagen a PDF, fusión de PDFs, conversión de documentos, conversión de audio, conversión de video y extracción de audio. Desarrollado con React y Vite.",
+      tech: [
+        "React",
+        "Vite",
+        "TypeScript",
+        "pdf-lib",
+        "docx",
+        "Web Audio API",
+      ],
+      links: {
+        web: "https://xpressconvert.vercel.app",
+        github: "https://github.com/XaviX598/Xpressconvert",
+      },
+    },
     {
       title: "Sistema de Gestión de Atletismo",
       description:
