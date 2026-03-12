@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import FadeIn from "./FadeIn";
 
 const projects = {
   en: [
@@ -37,12 +38,22 @@ const projects = {
         github: "https://github.com/XaviX598",
       },
     },
+    {
+      title: "Restaurant Landing Page",
+      description:
+        "Elaborate landing page for a restaurant showcasing various component and scroll animations. Built with React.",
+      tech: ["React", "Framer Motion", "Animations", "CSS"],
+      links: {
+        web: "https://project-restaurante-delta.vercel.app",
+        github: "https://github.com/XaviX598/project-restaurant",
+      },
+    },
   ],
   es: [
     {
-      title: "Proyecto de Titulación – Sistema de Gestión de Atletismo",
+      title: "Sistema de Gestión de Atletismo",
       description:
-  "Sistema full stack desarrollado como proyecto de titulación, compuesto por una aplicación web, una API backend y una aplicación móvil Android para la gestión de información deportiva. El sistema fue desplegado mediante contenedores Docker; durante el desarrollo académico se utilizó Microsoft Azure para el despliegue del frontend y backend. Actualmente, el despliegue en producción se realiza con el frontend en Vercel, el backend en Render y la base de datos en la nube.",
+  "Sistema full stack, compuesto por una aplicación web, una API backend y una aplicación móvil Android para la gestión de información deportiva. El sistema fue desplegado mediante contenedores Docker; durante el desarrollo se utilizó Microsoft Azure para el despliegue del frontend y backend. Actualmente, el despliegue en producción se realiza con el frontend en Vercel, el backend en Render y la base de datos en la nube.",
 
       tech: [
         "Full Stack",
@@ -72,6 +83,16 @@ const projects = {
         github: "https://github.com/XaviX598",
       },
     },
+    {
+      title: "Landing Page de Restaurante",
+      description:
+        "Landing page elaborada para un restaurante donde se pueden ver distintos estilos de animaciones tanto de componentes como de scroll. Desarrollado con React.",
+      tech: ["React", "Framer Motion", "Animaciones", "CSS"],
+      links: {
+        web: "https://project-restaurante-delta.vercel.app",
+        github: "https://github.com/XaviX598/project-restaurant",
+      },
+    },
   ],
 };
 
@@ -83,9 +104,11 @@ export default function Projects() {
     <section id="projects" className="py-24 border-t border-zinc-800/60">
       <div className="max-w-6xl mx-auto px-4">
       <div className="flex justify-between items-center mb-12">
-  <h2 className="text-3xl md:text-4xl font-bold">
-    {lang === "en" ? "Projects" : "Proyectos"}
-  </h2>
+  <FadeIn>
+    <h2 className="text-3xl md:text-4xl font-bold">
+      {lang === "en" ? "Projects" : "Proyectos"}
+    </h2>
+  </FadeIn>
 
   <div className="flex border border-zinc-700 rounded-lg overflow-hidden">
     <button
@@ -114,10 +137,11 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 gap-8">
         {projects[lang].map((project, index) => (
-
+          
+            <FadeIn key={index} delay={index * 0.1} className="group">
             <div
-              key={index}
-              className="group rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-6 hover:border-teal-400/60 transition"
+              
+              className="rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-6 hover:border-teal-400/60 transition"
             >
               <h3 className="text-xl font-semibold">
                 {project.title}
@@ -196,7 +220,8 @@ export default function Projects() {
                   </a>
                 )}
               </div>
-            </div>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>
