@@ -6,6 +6,23 @@ import FadeIn from "./FadeIn";
 const projects = {
   en: [
     {
+      title: "Xpress Ecommerce - E-commerce Store Prototype",
+      description:
+        "Modern e-commerce prototype with shopping cart, checkout with payment simulation, and purchase history. Features product catalog, cart management, credit card payment form, and order history with localStorage persistence.",
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "localStorage",
+      ],
+      links: {
+        web: "https://xpress-ecommerce.vercel.app",
+        github: "https://github.com/XaviX598/xpress-ecommerce",
+      },
+    },
+    {
       title: "XpressConvert - File Conversion Tools",
       description:
         "A comprehensive file conversion web application with 10 tools: image conversion, compression, resizing, editing, image to PDF, PDF merging, document conversion, audio conversion, video conversion, and audio extraction. Built with React and Vite.",
@@ -67,6 +84,23 @@ const projects = {
     },
   ],
   es: [
+    {
+      title: "Xpress Ecommerce - Prototipo de Tienda Online",
+      description:
+        "Prototipo moderno de comercio electrónico con carrito de compras, checkout con simulación de pago e historial de compras. Incluye catálogo de productos, gestión del carrito, formulario de pago con tarjeta de crédito y historial de pedidos con persistencia en localStorage.",
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "localStorage",
+      ],
+      links: {
+        web: "https://xpress-ecommerce.vercel.app",
+        github: "https://github.com/XaviX598/xpress-ecommerce",
+      },
+    },
     {
       title: "XpressConvert - Herramientas de Conversión de Archivos",
       description:
