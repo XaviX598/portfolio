@@ -2,6 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
+import MotionButton from "./MotionButton";
 
 type HeroProps = {
   lang: PortfolioLang;
@@ -107,20 +108,15 @@ export default function Hero({ lang }: HeroProps) {
 
             <FadeIn delay={0.32}>
               <div className="mt-9 flex flex-wrap gap-3">
-                <a href="#projects" className="btn-primary-solid">
-                  <span className="btn-anim-label">{copy.ctaPrimary}</span>
-                </a>
-                <a href="#contact" className="btn-secondary-outline">
-                  <span className="btn-anim-label">{copy.ctaSecondary}</span>
-                </a>
-                <a
+                <MotionButton href="#projects" label={copy.ctaPrimary} variant="primary" />
+                <MotionButton href="#contact" label={copy.ctaSecondary} variant="secondary" />
+                <MotionButton
                   href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-secondary-outline"
-                >
-                  <span className="btn-anim-label">LinkedIn</span>
-                </a>
+                  label="LinkedIn"
+                  variant="secondary"
+                />
               </div>
             </FadeIn>
           </div>
@@ -145,22 +141,24 @@ export default function Hero({ lang }: HeroProps) {
               </div>
 
               <div className="mt-6 pt-6 border-t border-white/10 grid sm:grid-cols-2 gap-3">
-                <a
+                <MotionButton
                   href="/CV Xavier Aguilar.pdf"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-secondary-outline text-center"
-                >
-                  <span className="btn-anim-label">CV (ES)</span>
-                </a>
-                <a
+                  label="CV (ES)"
+                  variant="secondary"
+                  className="text-center"
+                  block
+                />
+                <MotionButton
                   href="/Xavier Aguilar ECV.pdf"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-secondary-outline text-center"
-                >
-                  <span className="btn-anim-label">CV (EN)</span>
-                </a>
+                  label="CV (EN)"
+                  variant="secondary"
+                  className="text-center"
+                  block
+                />
               </div>
             </aside>
           </FadeIn>

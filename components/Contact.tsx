@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
+import MotionButton from "./MotionButton";
 
 type ContactProps = {
   lang: PortfolioLang;
@@ -70,25 +71,25 @@ export default function Contact({ lang }: ContactProps) {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="mailto:kevinjkevps4@gmail.com" className="btn-primary-solid">
-                <span className="btn-anim-label">{t.ctaEmail}</span>
-              </a>
-              <a
+              <MotionButton
+                href="mailto:kevinjkevps4@gmail.com"
+                label={t.ctaEmail}
+                variant="secondary"
+              />
+              <MotionButton
                 href="https://wa.me/593985295277"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary-outline"
-              >
-                <span className="btn-anim-label">{t.ctaWhatsApp}</span>
-              </a>
-              <a
+                label={t.ctaWhatsApp}
+                variant="secondary"
+              />
+              <MotionButton
                 href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary-outline"
-              >
-                <span className="btn-anim-label">{t.ctaLinkedIn}</span>
-              </a>
+                label={t.ctaLinkedIn}
+                variant="secondary"
+              />
             </div>
           </div>
         </FadeIn>
@@ -117,3 +118,4 @@ export default function Contact({ lang }: ContactProps) {
     </section>
   );
 }
+

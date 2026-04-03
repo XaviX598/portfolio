@@ -2,6 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
+import MotionButton from "./MotionButton";
 
 type Project = {
   title: string;
@@ -252,44 +253,40 @@ export default function Projects({ lang }: ProjectsProps) {
 
                 <div className="mt-6 flex flex-wrap gap-3 text-sm">
                   {project.links.live && (
-                    <a
+                    <MotionButton
                       href={project.links.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-outline"
-                    >
-                      <span className="btn-anim-label">{t.live}</span>
-                    </a>
+                      label={t.live}
+                      variant="secondary"
+                    />
                   )}
                   {project.links.github && (
-                    <a
+                    <MotionButton
                       href={project.links.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-outline"
-                    >
-                      <span className="btn-anim-label">GitHub</span>
-                    </a>
+                      label="GitHub"
+                      variant="secondary"
+                    />
                   )}
                   {project.links.backend && (
-                    <a
+                    <MotionButton
                       href={project.links.backend}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-outline"
-                    >
-                      <span className="btn-anim-label">Backend</span>
-                    </a>
+                      label="Backend"
+                      variant="secondary"
+                    />
                   )}
                   {project.links.android && (
-                    <a
+                    <MotionButton
                       href={project.links.android}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-outline"
-                    >
-                      <span className="btn-anim-label">Android</span>
-                    </a>
+                      label="Android"
+                      variant="secondary"
+                    />
                   )}
                 </div>
               </article>

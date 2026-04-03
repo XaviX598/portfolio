@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
+import MotionButton from "./MotionButton";
 
 type CertificatesProps = {
   lang: PortfolioLang;
@@ -47,14 +48,13 @@ export default function Certificates({ lang }: CertificatesProps) {
             </h3>
 
             <div className="mt-6">
-              <a
+              <MotionButton
                 href="/Certificado-Kevin-Xavier-Aguilar-Velasco-2f7xw999.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary-outline"
-              >
-                <span className="btn-anim-label">{t.action}</span>
-              </a>
+                label={t.action}
+                variant="secondary"
+              />
             </div>
           </article>
         </FadeIn>
@@ -62,3 +62,4 @@ export default function Certificates({ lang }: CertificatesProps) {
     </section>
   );
 }
+

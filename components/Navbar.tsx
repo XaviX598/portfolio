@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import type { PortfolioLang } from "./HomeClient";
+import MotionButton from "./MotionButton";
 
 type NavbarProps = {
   lang: PortfolioLang;
@@ -99,12 +100,13 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             </button>
           </div>
 
-          <a
+          <MotionButton
             href="#contact"
-            className="btn-primary-solid text-sm"
-          >
-            <span className="btn-anim-label">{labels.letsTalk}</span>
-          </a>
+            label={labels.letsTalk}
+            size="md"
+            variant="primary"
+            className="text-sm"
+          />
         </div>
 
         <button
@@ -156,16 +158,18 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                 {item.label}
               </a>
             ))}
-            <a
+            <MotionButton
               href="#contact"
+              label={labels.letsTalk}
+              size="md"
+              variant="primary"
+              className="mt-2 text-sm justify-center"
               onClick={() => setMenuOpen(false)}
-              className="btn-primary-solid mt-2 text-sm justify-center"
-            >
-              <span className="btn-anim-label">{labels.letsTalk}</span>
-            </a>
+            />
           </div>
         </div>
       )}
     </nav>
   );
 }
+
