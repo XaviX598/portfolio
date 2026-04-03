@@ -107,6 +107,44 @@ function NavIcon({ name, className = "" }: { name: NavIconName; className?: stri
   }
 }
 
+function PinIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M9 3h6l-1.6 5 3.1 3.1v1.2H7.5v-1.2L10.6 8 9 3z" />
+      <path d="M12 12.3V21" />
+    </svg>
+  );
+}
+
+function LangIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a14 14 0 0 1 0 18" />
+      <path d="M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  );
+}
+
 export default function Navbar({ lang, onLangChange }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isLeftMode, setIsLeftMode] = useState(false);
@@ -278,7 +316,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
       </nav>
 
       <aside
-        className={`hidden md:block fixed left-4 top-4 bottom-4 z-50 transition-all duration-500 ${
+        className={`hidden md:block fixed left-5 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ${
           isLeftMode
             ? "translate-x-0 opacity-100 pointer-events-auto"
             : "-translate-x-24 opacity-0 pointer-events-none"
@@ -287,148 +325,156 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         onMouseLeave={() => setIsHoverExpanded(false)}
       >
         <div
-          className={`h-full rounded-2xl border overflow-hidden transition-all duration-350 ease-out ${
-            isExpanded ? "w-[328px]" : "w-[86px]"
+          className={`rounded-[28px] border p-3 transition-all duration-350 ease-out ${
+            isExpanded ? "w-[292px]" : "w-[92px]"
           } ${
             scrolled
-              ? "border-teal-300/40 bg-zinc-950/86 backdrop-blur-xl shadow-[0_16px_42px_rgba(0,0,0,0.45)]"
-              : "border-white/15 bg-zinc-950/60 backdrop-blur-lg"
+              ? "border-teal-300/45 bg-zinc-950/90 backdrop-blur-xl shadow-[0_22px_50px_rgba(0,0,0,0.48)]"
+              : "border-white/20 bg-zinc-950/72 backdrop-blur-lg"
           }`}
         >
-          <div className="h-full flex flex-col px-2 py-3">
-            <div className="flex items-center gap-3 px-2 mb-3">
-              <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-sm font-bold shadow-lg shadow-teal-500/25">
-                  KA
-                </span>
-                <span
-                  className={`min-w-0 overflow-hidden transition-all duration-250 ${
-                    isExpanded
-                      ? "max-w-[220px] opacity-100 translate-x-0"
-                      : "max-w-0 opacity-0 -translate-x-2"
-                  }`}
-                >
-                  <span className="block text-zinc-100 font-semibold tracking-wide text-sm truncate">
-                    Kevin Xavier
-                  </span>
-                  <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
-                    {labels.role}
-                  </span>
-                </span>
-              </a>
-
-              <button
-                type="button"
-                onClick={() => setIsPinned((prev) => !prev)}
-                className={`hidden lg:inline-flex shrink-0 h-8 w-8 items-center justify-center rounded-lg border transition-colors ${
-                  isPinned
-                    ? "border-teal-300/45 bg-teal-500/20 text-teal-100"
-                    : "border-white/15 text-zinc-400 hover:text-teal-200 hover:border-teal-300/35"
+          <div className="flex items-center gap-3">
+            <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-[15px] font-bold shadow-[0_8px_24px_rgba(34,211,238,0.32)]">
+                KA
+              </span>
+              <span
+                className={`min-w-0 overflow-hidden transition-all duration-250 ${
+                  isExpanded
+                    ? "max-w-[170px] opacity-100 translate-x-0"
+                    : "max-w-0 opacity-0 -translate-x-2"
                 }`}
-                aria-label={isPinned ? labels.unpin : labels.pin}
-                title={isPinned ? labels.unpin : labels.pin}
               >
-                {isPinned ? "●" : "○"}
-              </button>
-            </div>
+                <span className="block text-zinc-100 font-semibold tracking-wide text-sm truncate">
+                  Kevin Xavier
+                </span>
+                <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
+                  {labels.role}
+                </span>
+              </span>
+            </a>
 
-            <div className="mx-2 mb-2 h-px bg-gradient-to-r from-transparent via-teal-300/40 to-transparent" />
+            <button
+              type="button"
+              onClick={() => setIsPinned((prev) => !prev)}
+              className={`hidden lg:inline-flex shrink-0 h-9 w-9 items-center justify-center rounded-xl border transition-colors ${
+                isPinned
+                  ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
+                  : "border-white/15 text-zinc-400 hover:text-teal-200 hover:border-teal-300/35"
+              }`}
+              aria-label={isPinned ? labels.unpin : labels.pin}
+              title={isPinned ? labels.unpin : labels.pin}
+            >
+              <PinIcon className="h-[16px] w-[16px]" />
+            </button>
+          </div>
 
-            <nav className="mt-1 flex-1 overflow-y-auto pr-1">
-              <div className="space-y-1">
-                {navItems.map((item) => {
-                  const isActive = activeSection === item.href;
+          <div className="my-3 h-px bg-gradient-to-r from-transparent via-teal-300/35 to-transparent" />
 
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setActiveSection(item.href)}
-                      className={`group relative flex items-center gap-3 rounded-xl border px-2 py-2 transition-all duration-250 ${
+          <nav>
+            <div className="space-y-2">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href;
+
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setActiveSection(item.href)}
+                    className={`group relative flex items-center gap-3 rounded-2xl border px-2.5 py-2 transition-all duration-250 ${
+                      isActive
+                        ? "border-teal-300/45 bg-gradient-to-r from-teal-500/20 to-transparent text-teal-100"
+                        : "border-transparent text-zinc-300 hover:border-teal-300/25 hover:bg-teal-500/10 hover:text-teal-200"
+                    }`}
+                  >
+                    <span
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-250 ${
                         isActive
-                          ? "border-teal-300/45 bg-gradient-to-r from-teal-500/18 to-transparent text-teal-100"
-                          : "border-transparent text-zinc-300 hover:border-teal-300/25 hover:bg-teal-500/8 hover:text-teal-200"
+                          ? "border-teal-300/45 bg-teal-500/22 text-teal-100 shadow-[0_0_22px_rgba(45,212,191,0.25)]"
+                          : "border-white/12 bg-zinc-900/70 text-zinc-300 group-hover:border-teal-300/35 group-hover:text-teal-200"
                       }`}
                     >
-                      <span
-                        className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-250 ${
-                          isActive
-                            ? "border-teal-300/45 bg-teal-500/20 text-teal-100 shadow-[0_0_20px_rgba(45,212,191,0.2)]"
-                            : "border-white/12 bg-zinc-900/70 text-zinc-300 group-hover:border-teal-300/35 group-hover:text-teal-200"
-                        }`}
-                      >
-                        <NavIcon name={item.icon} className="h-[18px] w-[18px]" />
-                      </span>
+                      <NavIcon name={item.icon} className="h-[18px] w-[18px]" />
+                    </span>
 
-                      <span
-                        className={`overflow-hidden whitespace-nowrap transition-all duration-250 ${
-                          isExpanded
-                            ? "max-w-[190px] opacity-100 translate-x-0"
-                            : "max-w-0 opacity-0 -translate-x-2"
-                        }`}
-                      >
+                    <span
+                      className={`overflow-hidden whitespace-nowrap transition-all duration-250 ${
+                        isExpanded
+                          ? "max-w-[165px] opacity-100 translate-x-0"
+                          : "max-w-0 opacity-0 -translate-x-2"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+
+                    {!isExpanded && (
+                      <span className="pointer-events-none absolute left-[4.5rem] top-1/2 -translate-y-1/2 rounded-md border border-teal-300/35 bg-zinc-950/95 px-2 py-1 text-xs text-teal-100 opacity-0 translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
                         {item.label}
                       </span>
-
-                      {!isExpanded && (
-                        <span className="pointer-events-none absolute left-[4.3rem] top-1/2 -translate-y-1/2 rounded-md border border-teal-300/35 bg-zinc-950/95 px-2 py-1 text-xs text-teal-100 opacity-0 translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
-                          {item.label}
-                        </span>
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
-            </nav>
-
-            <div className="mt-3 border-t border-white/10 pt-3">
-              <div className={`flex items-center ${isExpanded ? "gap-2 px-1" : "justify-center"}`}>
-                {isExpanded ? (
-                  <>
-                    <div className="flex border border-white/10 rounded-lg overflow-hidden bg-zinc-900/70">
-                      <button
-                        type="button"
-                        onClick={() => onLangChange("es")}
-                        className={`px-2.5 py-1.5 text-xs transition-colors ${
-                          lang === "es"
-                            ? "bg-teal-500 text-zinc-950 font-semibold"
-                            : "text-zinc-400 hover:text-teal-200"
-                        }`}
-                      >
-                        ES
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onLangChange("en")}
-                        className={`px-2.5 py-1.5 text-xs transition-colors ${
-                          lang === "en"
-                            ? "bg-teal-500 text-zinc-950 font-semibold"
-                            : "text-zinc-400 hover:text-teal-200"
-                        }`}
-                      >
-                        EN
-                      </button>
-                    </div>
-
-                    <MotionButton
-                      href="#contact"
-                      label={labels.letsTalk}
-                      size="md"
-                      variant="primary"
-                      className="text-sm"
-                    />
-                  </>
-                ) : (
-                  <a
-                    href="#contact"
-                    aria-label={labels.letsTalk}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-teal-200 hover:border-teal-300/40 hover:bg-teal-500/15 transition-colors"
-                  >
-                    <NavIcon name="contact" className="h-[18px] w-[18px]" />
+                    )}
                   </a>
-                )}
-              </div>
+                );
+              })}
             </div>
+          </nav>
+
+          <div className="mt-4 border-t border-white/10 pt-3">
+            {isExpanded ? (
+              <div className="space-y-2">
+                <div className="flex border border-white/10 rounded-xl overflow-hidden bg-zinc-900/70 w-fit">
+                  <button
+                    type="button"
+                    onClick={() => onLangChange("es")}
+                    className={`px-3 py-1.5 text-xs transition-colors ${
+                      lang === "es"
+                        ? "bg-teal-500 text-zinc-950 font-semibold"
+                        : "text-zinc-400 hover:text-teal-200"
+                    }`}
+                  >
+                    ES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onLangChange("en")}
+                    className={`px-3 py-1.5 text-xs transition-colors ${
+                      lang === "en"
+                        ? "bg-teal-500 text-zinc-950 font-semibold"
+                        : "text-zinc-400 hover:text-teal-200"
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
+
+                <MotionButton
+                  href="#contact"
+                  label={labels.letsTalk}
+                  size="md"
+                  variant="primary"
+                  className="w-full justify-center text-sm"
+                />
+              </div>
+            ) : (
+              <div className="flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => onLangChange(lang === "en" ? "es" : "en")}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-zinc-200 hover:text-teal-200 hover:border-teal-300/35 transition-colors"
+                  aria-label="Switch language"
+                  title="Switch language"
+                >
+                  <LangIcon className="h-[16px] w-[16px]" />
+                </button>
+
+                <a
+                  href="#contact"
+                  aria-label={labels.letsTalk}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-teal-200 hover:border-teal-300/40 hover:bg-teal-500/15 transition-colors"
+                >
+                  <NavIcon name="contact" className="h-[18px] w-[18px]" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </aside>
