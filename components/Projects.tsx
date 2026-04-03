@@ -6,6 +6,27 @@ import FadeIn from "./FadeIn";
 const projects = {
   en: [
     {
+      title: "AMZ Express - Guided Imports Platform",
+      description:
+        "Full-stack logistics and quoting platform to import products from Amazon to Ecuador. Includes advanced calculator (4x4 and category C validation), checkout flow, order tracking, admin/superadmin modules, role-based permissions, and deployment with frontend on Vercel plus Spring Boot backend on Oracle Cloud.",
+      featured: true,
+      tech: [
+        "Vue 3",
+        "TypeScript",
+        "Pinia",
+        "Spring Boot",
+        "Java",
+        "PostgreSQL",
+        "JWT",
+        "Vercel",
+        "Oracle Cloud",
+      ],
+      links: {
+        web: "https://amz-express.vercel.app",
+        github: "https://github.com/XaviX598/amz_express",
+      },
+    },
+    {
       title: "Xpress Ecommerce - E-commerce Store Prototype",
       description:
         "Modern e-commerce prototype with shopping cart, checkout with payment simulation, and purchase history. Features product catalog, cart management, credit card payment form, and order history with localStorage persistence.",
@@ -84,6 +105,27 @@ const projects = {
     },
   ],
   es: [
+    {
+      title: "AMZ Express - Plataforma de Importacion Guiada",
+      description:
+        "Plataforma full stack de logistica y cotizacion para importar productos desde Amazon a Ecuador. Incluye calculadora avanzada (validacion 4x4 y categoria C), flujo de checkout, tracking de pedidos, modulos admin/superadmin, permisos por rol y despliegue con frontend en Vercel mas backend Spring Boot en Oracle Cloud.",
+      featured: true,
+      tech: [
+        "Vue 3",
+        "TypeScript",
+        "Pinia",
+        "Spring Boot",
+        "Java",
+        "PostgreSQL",
+        "JWT",
+        "Vercel",
+        "Oracle Cloud",
+      ],
+      links: {
+        web: "https://amz-express.vercel.app",
+        github: "https://github.com/XaviX598/amz_express",
+      },
+    },
     {
       title: "Xpress Ecommerce - Prototipo de Tienda Online",
       description:
@@ -207,7 +249,13 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 gap-6">
           {projects[lang].map((project, index) => (
             <FadeIn key={index} delay={index * 0.1} direction="up">
-              <div className="group relative bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-6 hover:border-teal-500/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-500/10">
+              <div
+                className={`group relative rounded-2xl p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
+                  project.featured
+                    ? "bg-gradient-to-br from-teal-500/10 via-zinc-900/80 to-zinc-900/70 border border-teal-400/50 hover:border-teal-300/70 hover:shadow-teal-500/20"
+                    : "bg-zinc-900/60 border border-zinc-800/60 hover:border-teal-500/40 hover:shadow-teal-500/10"
+                }`}
+              >
                 {/* Hover gradient effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
@@ -215,6 +263,11 @@ export default function Projects() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-teal-500 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
                 <div className="relative z-10">
+                  {project.featured && (
+                    <span className="inline-flex items-center px-3 py-1 mb-3 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] bg-teal-500/20 border border-teal-400/40 text-teal-200">
+                      {lang === "en" ? "Featured project" : "Proyecto destacado"}
+                    </span>
+                  )}
                   <h3 className="text-xl font-bold text-zinc-100 mb-3 group-hover:text-teal-400 transition-colors">
                     {project.title}
                   </h3>
