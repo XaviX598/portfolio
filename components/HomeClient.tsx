@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import Projects from "./Projects";
 import Services from "./Services";
 import Experience from "./Experience";
+import Certificates from "./Certificates";
 import About from "./About";
 import Contact from "./Contact";
 
@@ -27,6 +28,7 @@ export default function HomeClient() {
         <Projects lang={lang} />
         <Services lang={lang} />
         <Experience lang={lang} />
+        <Certificates lang={lang} />
         <About lang={lang} />
         <Contact lang={lang} />
       </main>

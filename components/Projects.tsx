@@ -258,7 +258,7 @@ export default function Projects({ lang }: ProjectsProps) {
                       rel="noreferrer"
                       className="btn-secondary-outline"
                     >
-                      {t.live}
+                      <span className="btn-anim-label">{t.live}</span>
                     </a>
                   )}
                   {project.links.github && (
@@ -268,7 +268,7 @@ export default function Projects({ lang }: ProjectsProps) {
                       rel="noreferrer"
                       className="btn-secondary-outline"
                     >
-                      GitHub
+                      <span className="btn-anim-label">GitHub</span>
                     </a>
                   )}
                   {project.links.backend && (
@@ -278,7 +278,7 @@ export default function Projects({ lang }: ProjectsProps) {
                       rel="noreferrer"
                       className="btn-secondary-outline"
                     >
-                      Backend
+                      <span className="btn-anim-label">Backend</span>
                     </a>
                   )}
                   {project.links.android && (
@@ -288,7 +288,7 @@ export default function Projects({ lang }: ProjectsProps) {
                       rel="noreferrer"
                       className="btn-secondary-outline"
                     >
-                      Android
+                      <span className="btn-anim-label">Android</span>
                     </a>
                   )}
                 </div>

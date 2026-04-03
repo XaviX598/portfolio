@@ -71,7 +71,7 @@ export default function Contact({ lang }: ContactProps) {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="mailto:kevinjkevps4@gmail.com" className="btn-primary-solid">
-                {t.ctaEmail}
+                <span className="btn-anim-label">{t.ctaEmail}</span>
               </a>
               <a
                 href="https://wa.me/593985295277"
@@ -79,7 +79,7 @@ export default function Contact({ lang }: ContactProps) {
                 rel="noreferrer"
                 className="btn-secondary-outline"
               >
-                {t.ctaWhatsApp}
+                <span className="btn-anim-label">{t.ctaWhatsApp}</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
@@ -87,7 +87,7 @@ export default function Contact({ lang }: ContactProps) {
                 rel="noreferrer"
                 className="btn-secondary-outline"
               >
-                {t.ctaLinkedIn}
+                <span className="btn-anim-label">{t.ctaLinkedIn}</span>
               </a>
             </div>
           </div>

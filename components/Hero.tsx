@@ -108,10 +108,10 @@ export default function Hero({ lang }: HeroProps) {
             <FadeIn delay={0.32}>
               <div className="mt-9 flex flex-wrap gap-3">
                 <a href="#projects" className="btn-primary-solid">
-                  {copy.ctaPrimary}
+                  <span className="btn-anim-label">{copy.ctaPrimary}</span>
                 </a>
                 <a href="#contact" className="btn-secondary-outline">
-                  {copy.ctaSecondary}
+                  <span className="btn-anim-label">{copy.ctaSecondary}</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
@@ -119,7 +119,7 @@ export default function Hero({ lang }: HeroProps) {
                   rel="noreferrer"
                   className="btn-secondary-outline"
                 >
-                  LinkedIn
+                  <span className="btn-anim-label">LinkedIn</span>
                 </a>
               </div>
             </FadeIn>
@@ -151,15 +151,15 @@ export default function Hero({ lang }: HeroProps) {
                   rel="noreferrer"
                   className="btn-secondary-outline text-center"
                 >
-                  CV (ES)
+                  <span className="btn-anim-label">CV (ES)</span>
                 </a>
                 <a
-                  href="/CV Xavier Aguilar English.pdf"
+                  href="/Xavier Aguilar ECV.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="btn-secondary-outline text-center"
                 >
-                  CV (EN)
+                  <span className="btn-anim-label">CV (EN)</span>
                 </a>
               </div>
             </aside>

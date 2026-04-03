@@ -26,6 +26,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         projects: lang === "en" ? "Projects" : "Proyectos",
         services: lang === "en" ? "Services" : "Servicios",
         experience: lang === "en" ? "Experience" : "Experiencia",
+        certificates: lang === "en" ? "Certificates" : "Certificados",
         about: lang === "en" ? "About" : "Sobre mi",
         contact: lang === "en" ? "Contact" : "Contacto",
       },
@@ -37,6 +38,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     { href: "#projects", label: labels.nav.projects },
     { href: "#services", label: labels.nav.services },
     { href: "#experience", label: labels.nav.experience },
+    { href: "#certificates", label: labels.nav.certificates },
     { href: "#about", label: labels.nav.about },
     { href: "#contact", label: labels.nav.contact },
   ];
@@ -99,9 +101,9 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
 
           <a
             href="#contact"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-teal-500 text-zinc-950 text-sm font-semibold hover:bg-teal-400 transition-colors"
+            className="btn-primary-solid text-sm"
           >
-            {labels.letsTalk}
+            <span className="btn-anim-label">{labels.letsTalk}</span>
           </a>
         </div>
 
@@ -112,7 +114,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <span className="text-lg">{menuOpen ? "X" : "="}</span>
+          <span className="text-lg">{menuOpen ? "X" : "≡"}</span>
         </button>
       </div>
 
@@ -157,9 +159,9 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 px-3 py-2 rounded-lg bg-teal-500 text-zinc-950 text-sm font-semibold text-center"
+              className="btn-primary-solid mt-2 text-sm justify-center"
             >
-              {labels.letsTalk}
+              <span className="btn-anim-label">{labels.letsTalk}</span>
             </a>
           </div>
         </div>
