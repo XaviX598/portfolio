@@ -9,6 +9,7 @@ import Experience from "./Experience";
 import Certificates from "./Certificates";
 import About from "./About";
 import Contact from "./Contact";
+import AmbientBackground from "./AmbientBackground";
 
 export type PortfolioLang = "en" | "es";
 
@@ -17,13 +18,15 @@ export default function HomeClient() {
 
   return (
     <>
+      <AmbientBackground />
+
       <div className="progress-container">
         <div className="progress-bar"></div>
       </div>
 
       <Navbar lang={lang} onLangChange={setLang} />
 
-      <main className="pt-24">
+      <main className="pt-28 relative z-10">
         <Hero lang={lang} />
         <Projects lang={lang} />
         <Services lang={lang} />
