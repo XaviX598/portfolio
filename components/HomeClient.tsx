@@ -26,7 +26,7 @@ export default function HomeClient() {
 
       <Navbar lang={lang} onLangChange={setLang} />
 
-      <main className="pt-28 relative z-10">
+      <main className="pt-28 md:pt-10 md:pl-28 lg:pl-32 relative z-10">
         <Hero lang={lang} />
         <Projects lang={lang} />
         <Services lang={lang} />
