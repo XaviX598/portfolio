@@ -1,12 +1,27 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type SVGProps } from "react";
 import type { PortfolioLang } from "./HomeClient";
 import MotionButton from "./MotionButton";
 
 type NavbarProps = {
   lang: PortfolioLang;
   onLangChange: (lang: PortfolioLang) => void;
+};
+
+type NavIconName =
+  | "home"
+  | "projects"
+  | "services"
+  | "experience"
+  | "certificates"
+  | "about"
+  | "contact";
+
+type NavItem = {
+  href: string;
+  label: string;
+  icon: NavIconName;
 };
 
 const sectionIds = [
@@ -20,6 +35,77 @@ const sectionIds = [
 ] as const;
 
 const LEFT_MODE_SCROLL_Y = 120;
+
+function NavIcon({ name, className = "" }: { name: NavIconName; className?: string }) {
+  const props: SVGProps<SVGSVGElement> = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className,
+    "aria-hidden": true,
+  };
+
+  switch (name) {
+    case "home":
+      return (
+        <svg {...props}>
+          <path d="M3 10.7L12 3l9 7.7" />
+          <path d="M5 9.9V21h14V9.9" />
+          <path d="M10 21v-6h4v6" />
+        </svg>
+      );
+    case "projects":
+      return (
+        <svg {...props}>
+          <rect x="3" y="4" width="8" height="7" rx="1.5" />
+          <rect x="13" y="4" width="8" height="7" rx="1.5" />
+          <rect x="3" y="13" width="8" height="7" rx="1.5" />
+          <rect x="13" y="13" width="8" height="7" rx="1.5" />
+        </svg>
+      );
+    case "services":
+      return (
+        <svg {...props}>
+          <path d="M4 15l6-6 4 4 6-6" />
+          <path d="M17 7h3v3" />
+          <path d="M3 21h18" />
+        </svg>
+      );
+    case "experience":
+      return (
+        <svg {...props}>
+          <path d="M12 3l2.2 4.4 4.8.7-3.5 3.4.8 4.8L12 14l-4.3 2.3.8-4.8L5 8.1l4.8-.7L12 3z" />
+        </svg>
+      );
+    case "certificates":
+      return (
+        <svg {...props}>
+          <rect x="4" y="3.5" width="16" height="13" rx="2" />
+          <path d="M8 8h8M8 11h5" />
+          <path d="M9 16.5l-1 4 4-2 4 2-1-4" />
+        </svg>
+      );
+    case "about":
+      return (
+        <svg {...props}>
+          <circle cx="12" cy="8" r="3.2" />
+          <path d="M5.5 20a6.5 6.5 0 0113 0" />
+        </svg>
+      );
+    case "contact":
+      return (
+        <svg {...props}>
+          <path d="M4 5h16v11H8l-4 4V5z" />
+          <path d="M8 9h8M8 12h5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function Navbar({ lang, onLangChange }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
@@ -43,9 +129,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("nav-left-active", isLeftMode);
-    return () => {
-      root.classList.remove("nav-left-active");
-    };
+    return () => root.classList.remove("nav-left-active");
   }, [isLeftMode]);
 
   useEffect(() => {
@@ -80,8 +164,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     () => ({
       role: lang === "en" ? "Full Stack Engineer" : "Ingeniero Full Stack",
       letsTalk: lang === "en" ? "Let's Talk" : "Hablemos",
-      pin: lang === "en" ? "Pin" : "Fijar",
-      unpin: lang === "en" ? "Unpin" : "Soltar",
+      pin: lang === "en" ? "Pin sidebar" : "Fijar menu",
+      unpin: lang === "en" ? "Unpin sidebar" : "Soltar menu",
       nav: {
         home: lang === "en" ? "Home" : "Inicio",
         projects: lang === "en" ? "Projects" : "Proyectos",
@@ -95,14 +179,14 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     [lang]
   );
 
-  const navItems = [
-    { href: "#home", label: labels.nav.home, icon: "H" },
-    { href: "#projects", label: labels.nav.projects, icon: "P" },
-    { href: "#services", label: labels.nav.services, icon: "S" },
-    { href: "#experience", label: labels.nav.experience, icon: "E" },
-    { href: "#certificates", label: labels.nav.certificates, icon: "C" },
-    { href: "#about", label: labels.nav.about, icon: "A" },
-    { href: "#contact", label: labels.nav.contact, icon: "@" },
+  const navItems: NavItem[] = [
+    { href: "#home", label: labels.nav.home, icon: "home" },
+    { href: "#projects", label: labels.nav.projects, icon: "projects" },
+    { href: "#services", label: labels.nav.services, icon: "services" },
+    { href: "#experience", label: labels.nav.experience, icon: "experience" },
+    { href: "#certificates", label: labels.nav.certificates, icon: "certificates" },
+    { href: "#about", label: labels.nav.about, icon: "about" },
+    { href: "#contact", label: labels.nav.contact, icon: "contact" },
   ];
 
   const isExpanded = isPinned || isHoverExpanded;
@@ -204,7 +288,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
       >
         <div
           className={`h-full rounded-2xl border overflow-hidden transition-all duration-350 ease-out ${
-            isExpanded ? "w-[312px]" : "w-[82px]"
+            isExpanded ? "w-[328px]" : "w-[86px]"
           } ${
             scrolled
               ? "border-teal-300/40 bg-zinc-950/86 backdrop-blur-xl shadow-[0_16px_42px_rgba(0,0,0,0.45)]"
@@ -220,7 +304,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                 <span
                   className={`min-w-0 overflow-hidden transition-all duration-250 ${
                     isExpanded
-                      ? "max-w-[210px] opacity-100 translate-x-0"
+                      ? "max-w-[220px] opacity-100 translate-x-0"
                       : "max-w-0 opacity-0 -translate-x-2"
                   }`}
                 >
@@ -248,33 +332,52 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
               </button>
             </div>
 
+            <div className="mx-2 mb-2 h-px bg-gradient-to-r from-transparent via-teal-300/40 to-transparent" />
+
             <nav className="mt-1 flex-1 overflow-y-auto pr-1">
               <div className="space-y-1">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setActiveSection(item.href)}
-                    className={`group flex items-center gap-3 rounded-xl border px-2 py-2 transition-all duration-250 ${
-                      activeSection === item.href
-                        ? "border-teal-300/45 bg-teal-500/14 text-teal-100"
-                        : "border-transparent text-zinc-300 hover:border-teal-300/25 hover:bg-teal-500/8 hover:text-teal-200"
-                    }`}
-                  >
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/12 bg-zinc-900/65 text-sm font-semibold">
-                      {item.icon}
-                    </span>
-                    <span
-                      className={`overflow-hidden whitespace-nowrap transition-all duration-250 ${
-                        isExpanded
-                          ? "max-w-[190px] opacity-100 translate-x-0"
-                          : "max-w-0 opacity-0 -translate-x-2"
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.href;
+
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setActiveSection(item.href)}
+                      className={`group relative flex items-center gap-3 rounded-xl border px-2 py-2 transition-all duration-250 ${
+                        isActive
+                          ? "border-teal-300/45 bg-gradient-to-r from-teal-500/18 to-transparent text-teal-100"
+                          : "border-transparent text-zinc-300 hover:border-teal-300/25 hover:bg-teal-500/8 hover:text-teal-200"
                       }`}
                     >
-                      {item.label}
-                    </span>
-                  </a>
-                ))}
+                      <span
+                        className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-250 ${
+                          isActive
+                            ? "border-teal-300/45 bg-teal-500/20 text-teal-100 shadow-[0_0_20px_rgba(45,212,191,0.2)]"
+                            : "border-white/12 bg-zinc-900/70 text-zinc-300 group-hover:border-teal-300/35 group-hover:text-teal-200"
+                        }`}
+                      >
+                        <NavIcon name={item.icon} className="h-[18px] w-[18px]" />
+                      </span>
+
+                      <span
+                        className={`overflow-hidden whitespace-nowrap transition-all duration-250 ${
+                          isExpanded
+                            ? "max-w-[190px] opacity-100 translate-x-0"
+                            : "max-w-0 opacity-0 -translate-x-2"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+
+                      {!isExpanded && (
+                        <span className="pointer-events-none absolute left-[4.3rem] top-1/2 -translate-y-1/2 rounded-md border border-teal-300/35 bg-zinc-950/95 px-2 py-1 text-xs text-teal-100 opacity-0 translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+                          {item.label}
+                        </span>
+                      )}
+                    </a>
+                  );
+                })}
               </div>
             </nav>
 
@@ -319,9 +422,9 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                   <a
                     href="#contact"
                     aria-label={labels.letsTalk}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-zinc-900/70 text-teal-200 hover:border-teal-300/40 hover:bg-teal-500/15 transition-colors"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-teal-200 hover:border-teal-300/40 hover:bg-teal-500/15 transition-colors"
                   >
-                    @
+                    <NavIcon name="contact" className="h-[18px] w-[18px]" />
                   </a>
                 )}
               </div>
@@ -395,12 +498,13 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                       setActiveSection(item.href);
                       setMenuOpen(false);
                     }}
-                    className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`px-3 py-2 rounded-lg text-sm transition-colors flex items-center gap-2 ${
                       activeSection === item.href
                         ? "text-teal-200 bg-teal-500/12 border border-teal-300/30"
                         : "text-zinc-300 hover:text-teal-300 hover:bg-teal-500/10"
                     }`}
                   >
+                    <NavIcon name={item.icon} className="h-4 w-4" />
                     {item.label}
                   </a>
                 ))}
