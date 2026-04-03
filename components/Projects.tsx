@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
 import MotionButton from "./MotionButton";
@@ -30,6 +31,9 @@ const copy = {
     featured: "Featured",
     impact: "Impact",
     live: "Live Demo",
+    previous: "Previous",
+    next: "Next",
+    showing: "Showing",
   },
   es: {
     title: "Proyectos Seleccionados",
@@ -38,6 +42,9 @@ const copy = {
     featured: "Destacado",
     impact: "Impacto",
     live: "Demo",
+    previous: "Anterior",
+    next: "Siguiente",
+    showing: "Mostrando",
   },
 };
 
@@ -221,6 +228,26 @@ const projects: Record<PortfolioLang, Project[]> = {
 export default function Projects({ lang }: ProjectsProps) {
   const t = copy[lang];
   const selected = projects[lang];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const totalProjects = selected.length;
+  const safeCurrentIndex =
+    totalProjects === 0 ? 0 : ((currentIndex % totalProjects) + totalProjects) % totalProjects;
+
+  const activeProject = useMemo(
+    () => selected[safeCurrentIndex] ?? selected[0],
+    [selected, safeCurrentIndex]
+  );
+
+  const goPrev = () => {
+    if (totalProjects === 0) return;
+    setCurrentIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
+  };
+
+  const goNext = () => {
+    if (totalProjects === 0) return;
+    setCurrentIndex((prev) => (prev + 1) % totalProjects);
+  };
 
   return (
     <section id="projects" className="py-24 relative">
@@ -234,88 +261,128 @@ export default function Projects({ lang }: ProjectsProps) {
           <p className="mt-3 text-zinc-400 max-w-3xl">{t.subtitle}</p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-10">
-          {selected.map((project, index) => (
-            <FadeIn key={project.title} delay={index * 0.08} direction="up">
-              <article
-                className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
-                  project.featured
-                    ? "border-teal-400/45 bg-gradient-to-br from-teal-500/10 via-zinc-900/85 to-zinc-900/70 hover:border-teal-300/70"
-                    : "border-white/10 bg-zinc-900/65 hover:border-teal-400/40"
-                }`}
+        <div className="mt-10">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <p className="text-sm text-zinc-400">
+              {t.showing}{" "}
+              <span className="text-zinc-200 font-semibold">{safeCurrentIndex + 1}</span>
+              {" / "}
+              <span className="text-zinc-200 font-semibold">{totalProjects}</span>
+            </p>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={goPrev}
+                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-teal-300/50 hover:text-teal-200 transition-colors"
               >
-                {project.featured && (
-                  <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-teal-300/40 bg-teal-500/15 text-teal-200 mb-4">
-                    {t.featured}
+                ← {t.previous}
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-teal-300/50 hover:text-teal-200 transition-colors"
+              >
+                {t.next} →
+              </button>
+            </div>
+          </div>
+
+          <FadeIn key={activeProject.title} delay={0.06} direction="up">
+            <article
+              className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
+                activeProject.featured
+                  ? "border-teal-400/45 bg-gradient-to-br from-teal-500/10 via-zinc-900/85 to-zinc-900/70 hover:border-teal-300/70"
+                  : "border-white/10 bg-zinc-900/65 hover:border-teal-400/40"
+              }`}
+            >
+              {activeProject.featured && (
+                <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-teal-300/40 bg-teal-500/15 text-teal-200 mb-4">
+                  {t.featured}
+                </span>
+              )}
+
+              <h3 className="text-xl font-semibold text-zinc-100">
+                {activeProject.title}
+              </h3>
+              <p className="mt-3 text-zinc-400 leading-relaxed">{activeProject.summary}</p>
+
+              <div className="mt-5 p-4 rounded-xl border border-white/10 bg-zinc-950/60">
+                <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
+                  {t.impact}
+                </p>
+                <p className="mt-2 text-zinc-300 text-sm leading-relaxed">
+                  {activeProject.impact}
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {activeProject.tech.map((stack) => (
+                  <span
+                    key={stack}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-white/10 bg-zinc-900 text-zinc-300"
+                  >
+                    {stack}
                   </span>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3 text-sm">
+                {activeProject.links.live && (
+                  <MotionButton
+                    href={activeProject.links.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    label={t.live}
+                    variant="secondary"
+                  />
                 )}
+                {activeProject.links.github && (
+                  <MotionButton
+                    href={activeProject.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    label="GitHub"
+                    variant="secondary"
+                  />
+                )}
+                {activeProject.links.backend && (
+                  <MotionButton
+                    href={activeProject.links.backend}
+                    target="_blank"
+                    rel="noreferrer"
+                    label="Backend"
+                    variant="secondary"
+                  />
+                )}
+                {activeProject.links.android && (
+                  <MotionButton
+                    href={activeProject.links.android}
+                    target="_blank"
+                    rel="noreferrer"
+                    label="Android"
+                    variant="secondary"
+                  />
+                )}
+              </div>
+            </article>
+          </FadeIn>
 
-                <h3 className="text-xl font-semibold text-zinc-100">
-                  {project.title}
-                </h3>
-                <p className="mt-3 text-zinc-400 leading-relaxed">{project.summary}</p>
-
-                <div className="mt-5 p-4 rounded-xl border border-white/10 bg-zinc-950/60">
-                  <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
-                    {t.impact}
-                  </p>
-                  <p className="mt-2 text-zinc-300 text-sm leading-relaxed">
-                    {project.impact}
-                  </p>
-                </div>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tech.map((stack) => (
-                    <span
-                      key={stack}
-                      className="text-xs px-3 py-1.5 rounded-lg border border-white/10 bg-zinc-900 text-zinc-300"
-                    >
-                      {stack}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                  {project.links.live && (
-                    <MotionButton
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      label={t.live}
-                      variant="secondary"
-                    />
-                  )}
-                  {project.links.github && (
-                    <MotionButton
-                      href={project.links.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      label="GitHub"
-                      variant="secondary"
-                    />
-                  )}
-                  {project.links.backend && (
-                    <MotionButton
-                      href={project.links.backend}
-                      target="_blank"
-                      rel="noreferrer"
-                      label="Backend"
-                      variant="secondary"
-                    />
-                  )}
-                  {project.links.android && (
-                    <MotionButton
-                      href={project.links.android}
-                      target="_blank"
-                      rel="noreferrer"
-                      label="Android"
-                      variant="secondary"
-                    />
-                  )}
-                </div>
-              </article>
-            </FadeIn>
-          ))}
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {selected.map((project, index) => (
+              <button
+                key={project.title}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to project ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-250 ${
+                  index === safeCurrentIndex
+                    ? "w-8 bg-teal-300"
+                    : "w-2.5 bg-zinc-600 hover:bg-zinc-400"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
