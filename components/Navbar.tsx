@@ -333,40 +333,52 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
               : "border-white/20 bg-zinc-950/72 backdrop-blur-lg"
           }`}
         >
-          <div className="flex items-center gap-3">
-            <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-[15px] font-bold shadow-[0_8px_24px_rgba(34,211,238,0.32)]">
-                KA
-              </span>
-              <span
-                className={`min-w-0 overflow-hidden transition-all duration-250 ${
-                  isExpanded
-                    ? "max-w-[170px] opacity-100 translate-x-0"
-                    : "max-w-0 opacity-0 -translate-x-2"
-                }`}
-              >
-                <span className="block text-zinc-100 font-semibold tracking-wide text-sm truncate">
-                  Kevin Xavier
-                </span>
-                <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
-                  {labels.role}
-                </span>
-              </span>
-            </a>
+          <div className={`flex items-center ${isExpanded ? "gap-3" : "justify-center"}`}>
+            {isExpanded ? (
+              <>
+                <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-[15px] font-bold shadow-[0_8px_24px_rgba(34,211,238,0.32)]">
+                    KA
+                  </span>
+                  <span className="min-w-0 overflow-hidden transition-all duration-250 max-w-[170px] opacity-100 translate-x-0">
+                    <span className="block text-zinc-100 font-semibold tracking-wide text-sm truncate">
+                      Kevin Xavier
+                    </span>
+                    <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
+                      {labels.role}
+                    </span>
+                  </span>
+                </a>
 
-            <button
-              type="button"
-              onClick={() => setIsPinned((prev) => !prev)}
-              className={`hidden lg:inline-flex shrink-0 h-9 w-9 items-center justify-center rounded-xl border transition-colors ${
-                isPinned
-                  ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
-                  : "border-white/15 text-zinc-400 hover:text-teal-200 hover:border-teal-300/35"
-              }`}
-              aria-label={isPinned ? labels.unpin : labels.pin}
-              title={isPinned ? labels.unpin : labels.pin}
-            >
-              <PinIcon className="h-[16px] w-[16px]" />
-            </button>
+                <button
+                  type="button"
+                  onClick={() => setIsPinned((prev) => !prev)}
+                  className={`inline-flex shrink-0 h-9 w-9 items-center justify-center rounded-xl border transition-colors ${
+                    isPinned
+                      ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
+                      : "border-white/15 text-zinc-400 hover:text-teal-200 hover:border-teal-300/35"
+                  }`}
+                  aria-label={isPinned ? labels.unpin : labels.pin}
+                  title={isPinned ? labels.unpin : labels.pin}
+                >
+                  <PinIcon className="h-[16px] w-[16px]" />
+                </button>
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setIsPinned((prev) => !prev)}
+                className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-colors ${
+                  isPinned
+                    ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
+                    : "border-white/15 text-zinc-300 hover:text-teal-200 hover:border-teal-300/35"
+                }`}
+                aria-label={isPinned ? labels.unpin : labels.pin}
+                title={isPinned ? labels.unpin : labels.pin}
+              >
+                <PinIcon className="h-[16px] w-[16px]" />
+              </button>
+            )}
           </div>
 
           <div className="my-3 h-px bg-gradient-to-r from-transparent via-teal-300/35 to-transparent" />
@@ -571,4 +583,3 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     </>
   );
 }
-
