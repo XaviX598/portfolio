@@ -1,122 +1,155 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 
+type Language = "en" | "es";
+
+const content = {
+  en: {
+    heading: "About",
+    subtitle:
+      "Engineer with strong execution and architecture fundamentals. I focus on building maintainable software that can evolve with business needs.",
+    intro:
+      "I am Kevin Xavier Aguilar Velasco, Computer Science Engineer from Universidad Central del Ecuador. My core strength is connecting product thinking with technical implementation, from backend design to frontend delivery.",
+    details:
+      "I work with Java, Spring Boot, Vue, React, TypeScript and PostgreSQL. I care deeply about clean code, consistent UX and production reliability.",
+    cards: [
+      {
+        title: "What I deliver",
+        points: [
+          "Full stack delivery from API to UI",
+          "Role-based systems with secure auth flows",
+          "Clear architecture and maintainable modules",
+        ],
+      },
+      {
+        title: "How I work",
+        points: [
+          "Strong communication with stakeholders",
+          "Business-oriented prioritization",
+          "Quality mindset with iterative improvements",
+        ],
+      },
+      {
+        title: "Current focus",
+        points: [
+          "Scalable backend services",
+          "High-converting frontend experiences",
+          "Professional deployment workflows",
+        ],
+      },
+    ],
+  },
+  es: {
+    heading: "Sobre mi",
+    subtitle:
+      "Ingeniero con foco en ejecucion y fundamentos de arquitectura. Construyo software mantenible que crece junto al negocio.",
+    intro:
+      "Soy Kevin Xavier Aguilar Velasco, Ingeniero en Ciencias de la Computacion de la Universidad Central del Ecuador. Mi fortaleza principal es unir estrategia de producto con implementacion tecnica, desde backend hasta frontend.",
+    details:
+      "Trabajo con Java, Spring Boot, Vue, React, TypeScript y PostgreSQL. Priorizo codigo limpio, UX consistente y confiabilidad en produccion.",
+    cards: [
+      {
+        title: "Lo que entrego",
+        points: [
+          "Entrega full stack de API a interfaz",
+          "Sistemas por roles con flujos seguros de auth",
+          "Arquitectura clara y modulos mantenibles",
+        ],
+      },
+      {
+        title: "Como trabajo",
+        points: [
+          "Comunicacion fuerte con stakeholders",
+          "Priorizacion orientada al negocio",
+          "Mentalidad de calidad con mejora iterativa",
+        ],
+      },
+      {
+        title: "Enfoque actual",
+        points: [
+          "Servicios backend escalables",
+          "Experiencias frontend que convierten",
+          "Flujos de despliegue profesionales",
+        ],
+      },
+    ],
+  },
+};
+
 export default function About() {
-  const [language, setLanguage] = useState<"en" | "es">("en");
+  const [language, setLanguage] = useState<Language>("en");
+  const selected = content[language];
 
   return (
     <section id="about" className="py-24 relative">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-0 top-1/3 w-72 h-72 bg-teal-500/10 blur-3xl" />
+        <div className="absolute right-0 bottom-0 w-72 h-72 bg-indigo-500/10 blur-3xl" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
-            About
-          </h2>
-        </FadeIn>
-
-        {/* LANGUAGE TOGGLE */}
-        <FadeIn delay={0.1}>
-          <div className="flex justify-center gap-2 mb-10">
-            <button
-              onClick={() => setLanguage("en")}
-              className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
-                language === "en"
-                  ? "bg-teal-500 text-black"
-                  : "border border-zinc-700 text-zinc-400 hover:border-teal-500 hover:text-teal-400"
-              }`}
-            >
-              About Me (EN)
-            </button>
-
-            <button
-              onClick={() => setLanguage("es")}
-              className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
-                language === "es"
-                  ? "bg-teal-500 text-black"
-                  : "border border-zinc-700 text-zinc-400 hover:border-teal-500 hover:text-teal-400"
-              }`}
-            >
-              Sobre mí (ES)
-            </button>
-          </div>
-        </FadeIn>
-
-        {/* CONTENT */}
-        <FadeIn delay={0.2}>
-          <div className="bg-zinc-900/60 border border-zinc-800/60 rounded-2xl p-8 md:p-10">
-            {language === "en" ? (
-              <div className="space-y-5">
-                <p className="text-lg text-zinc-200 leading-relaxed">
-                  I am <span className="text-teal-400 font-semibold">Kevin Xavier Aguilar Velasco</span>, a Computer Science Engineer
-                  graduated from the Central University of Ecuador, motivated to
-                  start my professional career in software development and grow in a
-                  collaborative environment.
-                </p>
-
-                <p className="text-zinc-400 leading-relaxed">
-                  I have hands-on experience in full stack development through real
-                  academic projects, including a degree project consisting of a web
-                  application, backend REST API, and an Android mobile application.
-                  I have worked with <span className="text-teal-400">Java, Spring Boot, PostgreSQL, Vue, Azure, and
-                  Firebase</span>.
-                </p>
-
-                <p className="text-zinc-400 leading-relaxed">
-                  I am proactive, responsible, and strongly motivated by continuous
-                  learning. I am currently seeking my first professional role as a
-                  software developer.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-5">
-                <p className="text-lg text-zinc-200 leading-relaxed">
-                  Soy <span className="text-teal-400 font-semibold">Kevin Xavier Aguilar Velasco</span>, Ingeniero en Ciencias de la
-                  Computación graduado de la Universidad Central del Ecuador, con
-                  interés en iniciar mi carrera profesional en el desarrollo de
-                  software y crecer en entornos colaborativos.
-                </p>
-
-                <p className="text-zinc-400 leading-relaxed">
-                  Cuento con experiencia práctica en desarrollo full stack a través
-                  de proyectos académicos reales, incluyendo un proyecto de
-                  titulación compuesto por una aplicación web, una API REST y una
-                  aplicación móvil Android. He trabajado con <span className="text-teal-400">Java, Spring Boot,
-                  PostgreSQL, Vue, Azure y Firebase</span>.
-                </p>
-
-                <p className="text-zinc-400 leading-relaxed">
-                  Me considero una persona proactiva, responsable y con una fuerte
-                  motivación por el aprendizaje continuo. Actualmente busco mi
-                  primera oportunidad profesional como desarrollador de software.
-                </p>
-              </div>
-            )}
-
-            {/* Skills highlight */}
-            <div className="mt-8 pt-8 border-t border-zinc-800">
-              <h4 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">
-                {language === "en" ? "Technical Skills" : "Habilidades Técnicas"}
-              </h4>
-              <div className="flex flex-wrap gap-3">
-                {["Java", "Spring Boot", "React", "Vue.js", "PostgreSQL", "Azure", "Firebase", "Android", "TypeScript", "REST API"].map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-zinc-800 to-zinc-800/50 text-zinc-300 text-sm border border-zinc-700/50"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-10">
+          <FadeIn>
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
+                {selected.heading}
+              </h2>
+              <p className="mt-3 text-zinc-400 max-w-3xl">{selected.subtitle}</p>
             </div>
-          </div>
+          </FadeIn>
+
+          <FadeIn delay={0.06}>
+            <div className="flex border border-white/10 rounded-xl overflow-hidden">
+              <button
+                onClick={() => setLanguage("es")}
+                className={`px-4 py-2 text-sm transition-colors ${
+                  language === "es"
+                    ? "bg-teal-500 text-zinc-950 font-semibold"
+                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
+                }`}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-4 py-2 text-sm transition-colors ${
+                  language === "en"
+                    ? "bg-teal-500 text-zinc-950 font-semibold"
+                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+          </FadeIn>
+        </div>
+
+        <FadeIn delay={0.1}>
+          <article className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 md:p-8">
+            <p className="text-zinc-200 leading-relaxed text-lg">{selected.intro}</p>
+            <p className="mt-4 text-zinc-400 leading-relaxed">{selected.details}</p>
+          </article>
         </FadeIn>
+
+        <div className="mt-8 grid md:grid-cols-3 gap-5">
+          {selected.cards.map((card, index) => (
+            <FadeIn key={card.title} delay={0.14 + index * 0.06}>
+              <article className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6">
+                <h3 className="text-zinc-100 font-semibold text-lg">{card.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {card.points.map((point) => (
+                    <li key={point} className="text-zinc-400 text-sm leading-relaxed">
+                      <span className="text-teal-300 mr-2">•</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

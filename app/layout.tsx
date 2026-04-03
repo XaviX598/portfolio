@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Xavier Aguilar | Portfolio",
-  description: "Portfolio of Xavier Aguilar",
+  title: "Kevin Xavier Aguilar Velasco | Full Stack Engineer",
+  description:
+    "Professional portfolio of Kevin Xavier Aguilar Velasco, Full Stack Engineer specialized in scalable web platforms with Java, Spring Boot, Vue and React.",
 };
 
 export default function RootLayout({
