@@ -1,42 +1,44 @@
 "use client";
 
-import { useState } from "react";
 import FadeIn from "./FadeIn";
+import type { PortfolioLang } from "./HomeClient";
 
-type Language = "en" | "es";
+type AboutProps = {
+  lang: PortfolioLang;
+};
 
-const content = {
+const copy = {
   en: {
     heading: "About",
     subtitle:
-      "Engineer with strong execution and architecture fundamentals. I focus on building maintainable software that can evolve with business needs.",
+      "Engineer with strong execution and architecture fundamentals, focused on maintainable software and business impact.",
     intro:
-      "I am Kevin Xavier Aguilar Velasco, Computer Science Engineer from Universidad Central del Ecuador. My core strength is connecting product thinking with technical implementation, from backend design to frontend delivery.",
+      "I am Kevin Xavier Aguilar Velasco, Computer Science Engineer from Universidad Central del Ecuador. I enjoy translating product goals into solid technical implementations.",
     details:
-      "I work with Java, Spring Boot, Vue, React, TypeScript and PostgreSQL. I care deeply about clean code, consistent UX and production reliability.",
+      "My stack includes Java, Spring Boot, Vue, React, TypeScript and PostgreSQL. I work with clean architecture principles, clear communication and iterative delivery.",
     cards: [
       {
         title: "What I deliver",
         points: [
-          "Full stack delivery from API to UI",
-          "Role-based systems with secure auth flows",
-          "Clear architecture and maintainable modules",
+          "End-to-end delivery from API to user interface",
+          "Secure role-based systems",
+          "Maintainable architecture with clear modules",
         ],
       },
       {
         title: "How I work",
         points: [
-          "Strong communication with stakeholders",
           "Business-oriented prioritization",
-          "Quality mindset with iterative improvements",
+          "Collaboration with stakeholders and teams",
+          "Quality-first mindset in every release",
         ],
       },
       {
-        title: "Current focus",
+        title: "What I value",
         points: [
-          "Scalable backend services",
-          "High-converting frontend experiences",
-          "Professional deployment workflows",
+          "Clarity over complexity",
+          "Performance and reliability",
+          "Continuous learning and improvement",
         ],
       },
     ],
@@ -44,43 +46,42 @@ const content = {
   es: {
     heading: "Sobre mi",
     subtitle:
-      "Ingeniero con foco en ejecucion y fundamentos de arquitectura. Construyo software mantenible que crece junto al negocio.",
+      "Ingeniero con foco en ejecucion y fundamentos de arquitectura, orientado a software mantenible e impacto de negocio.",
     intro:
-      "Soy Kevin Xavier Aguilar Velasco, Ingeniero en Ciencias de la Computacion de la Universidad Central del Ecuador. Mi fortaleza principal es unir estrategia de producto con implementacion tecnica, desde backend hasta frontend.",
+      "Soy Kevin Xavier Aguilar Velasco, Ingeniero en Ciencias de la Computacion de la Universidad Central del Ecuador. Disfruto convertir objetivos de producto en implementaciones tecnicas solidas.",
     details:
-      "Trabajo con Java, Spring Boot, Vue, React, TypeScript y PostgreSQL. Priorizo codigo limpio, UX consistente y confiabilidad en produccion.",
+      "Trabajo con Java, Spring Boot, Vue, React, TypeScript y PostgreSQL. Me guio por arquitectura limpia, comunicacion clara y entrega iterativa.",
     cards: [
       {
         title: "Lo que entrego",
         points: [
-          "Entrega full stack de API a interfaz",
-          "Sistemas por roles con flujos seguros de auth",
-          "Arquitectura clara y modulos mantenibles",
+          "Entrega end-to-end desde API hasta interfaz",
+          "Sistemas seguros basados en roles",
+          "Arquitectura mantenible con modulos claros",
         ],
       },
       {
         title: "Como trabajo",
         points: [
-          "Comunicacion fuerte con stakeholders",
           "Priorizacion orientada al negocio",
-          "Mentalidad de calidad con mejora iterativa",
+          "Colaboracion con stakeholders y equipos",
+          "Mentalidad de calidad en cada release",
         ],
       },
       {
-        title: "Enfoque actual",
+        title: "Lo que valoro",
         points: [
-          "Servicios backend escalables",
-          "Experiencias frontend que convierten",
-          "Flujos de despliegue profesionales",
+          "Claridad por encima de complejidad",
+          "Performance y confiabilidad",
+          "Aprendizaje y mejora continua",
         ],
       },
     ],
   },
 };
 
-export default function About() {
-  const [language, setLanguage] = useState<Language>("en");
-  const selected = content[language];
+export default function About({ lang }: AboutProps) {
+  const t = copy[lang];
 
   return (
     <section id="about" className="py-24 relative">
@@ -90,58 +91,29 @@ export default function About() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-10">
-          <FadeIn>
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
-                {selected.heading}
-              </h2>
-              <p className="mt-3 text-zinc-400 max-w-3xl">{selected.subtitle}</p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.06}>
-            <div className="flex border border-white/10 rounded-xl overflow-hidden">
-              <button
-                onClick={() => setLanguage("es")}
-                className={`px-4 py-2 text-sm transition-colors ${
-                  language === "es"
-                    ? "bg-teal-500 text-zinc-950 font-semibold"
-                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
-                }`}
-              >
-                ES
-              </button>
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-4 py-2 text-sm transition-colors ${
-                  language === "en"
-                    ? "bg-teal-500 text-zinc-950 font-semibold"
-                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
-                }`}
-              >
-                EN
-              </button>
-            </div>
-          </FadeIn>
-        </div>
+        <FadeIn>
+          <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
+            {t.heading}
+          </h2>
+          <p className="mt-3 text-zinc-400 max-w-3xl">{t.subtitle}</p>
+        </FadeIn>
 
         <FadeIn delay={0.1}>
-          <article className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 md:p-8">
-            <p className="text-zinc-200 leading-relaxed text-lg">{selected.intro}</p>
-            <p className="mt-4 text-zinc-400 leading-relaxed">{selected.details}</p>
+          <article className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 md:p-8 mt-8">
+            <p className="text-zinc-200 leading-relaxed text-lg">{t.intro}</p>
+            <p className="mt-4 text-zinc-400 leading-relaxed">{t.details}</p>
           </article>
         </FadeIn>
 
         <div className="mt-8 grid md:grid-cols-3 gap-5">
-          {selected.cards.map((card, index) => (
+          {t.cards.map((card, index) => (
             <FadeIn key={card.title} delay={0.14 + index * 0.06}>
               <article className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6">
                 <h3 className="text-zinc-100 font-semibold text-lg">{card.title}</h3>
                 <ul className="mt-4 space-y-2">
                   {card.points.map((point) => (
                     <li key={point} className="text-zinc-400 text-sm leading-relaxed">
-                      <span className="text-teal-300 mr-2">•</span>
+                      <span className="text-teal-300 mr-2">-</span>
                       {point}
                     </li>
                   ))}

@@ -1,30 +1,70 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import type { PortfolioLang } from "./HomeClient";
 
-const highlights = [
-  "Java + Spring Boot",
-  "Vue / React + TypeScript",
-  "PostgreSQL + API Design",
-  "Cloud Deployments (Vercel / Oracle)",
-];
+type HeroProps = {
+  lang: PortfolioLang;
+};
 
-const metrics = [
-  { label: "Production Projects", value: "5+" },
-  { label: "Core Stack Focus", value: "Full Stack" },
-  { label: "Architecture Mindset", value: "Clean" },
-];
+const heroCopy = {
+  en: {
+    badge: "Open to opportunities",
+    titleA: "I design and ship",
+    titleB: "professional digital products",
+    subtitle:
+      "Full Stack Engineer focused on business-ready platforms, clean architecture and reliable delivery from backend to frontend.",
+    ctaPrimary: "View Projects",
+    ctaSecondary: "Contact Me",
+    highlights: [
+      "Java + Spring Boot",
+      "React / Vue + TypeScript",
+      "PostgreSQL + API Design",
+      "Cloud Deployments (Vercel / Oracle)",
+    ],
+    metricsTitle: "Professional Snapshot",
+    metrics: [
+      { label: "Delivered Projects", value: "8+" },
+      { label: "Core Profile", value: "Full Stack" },
+      { label: "Priority", value: "Quality + Business" },
+    ],
+  },
+  es: {
+    badge: "Disponible para oportunidades",
+    titleA: "Diseno y entrego",
+    titleB: "productos digitales profesionales",
+    subtitle:
+      "Ingeniero Full Stack enfocado en plataformas listas para negocio, arquitectura limpia y entrega confiable de backend a frontend.",
+    ctaPrimary: "Ver Proyectos",
+    ctaSecondary: "Contactarme",
+    highlights: [
+      "Java + Spring Boot",
+      "React / Vue + TypeScript",
+      "PostgreSQL + Diseno de APIs",
+      "Despliegues Cloud (Vercel / Oracle)",
+    ],
+    metricsTitle: "Resumen Profesional",
+    metrics: [
+      { label: "Proyectos Entregados", value: "8+" },
+      { label: "Perfil Base", value: "Full Stack" },
+      { label: "Prioridad", value: "Calidad + Negocio" },
+    ],
+  },
+};
 
-export default function Hero() {
+export default function Hero({ lang }: HeroProps) {
+  const copy = heroCopy[lang];
+
   return (
     <section
       id="home"
       className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-teal-500/10 blur-3xl" />
-        <div className="absolute bottom-0 -left-20 w-[340px] h-[340px] bg-indigo-500/10 blur-3xl" />
-        <div className="absolute top-24 -right-20 w-[300px] h-[300px] bg-cyan-500/10 blur-3xl" />
+        <div className="floating-orb floating-orb-a" />
+        <div className="floating-orb floating-orb-b" />
+        <div className="floating-orb floating-orb-c" />
+        <div className="subtle-grid" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 w-full">
@@ -33,31 +73,28 @@ export default function Hero() {
             <FadeIn>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-400/30 bg-teal-500/10 text-teal-300 text-xs sm:text-sm uppercase tracking-[0.12em]">
                 <span className="w-2 h-2 rounded-full bg-teal-300 animate-pulse" />
-                Open to opportunities
+                {copy.badge}
               </span>
             </FadeIn>
 
             <FadeIn delay={0.08}>
               <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-tight font-bold text-zinc-100">
-                I build{" "}
+                {copy.titleA}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-300">
-                  reliable products
-                </span>{" "}
-                that move from idea to production.
+                  {copy.titleB}
+                </span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.16}>
               <p className="mt-5 text-zinc-300 text-lg max-w-2xl leading-relaxed">
-                I am Kevin Xavier Aguilar Velasco, Full Stack Engineer focused on
-                scalable web platforms, clean architecture, and professional user
-                experiences for real business operations.
+                {copy.subtitle}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.24}>
               <div className="mt-7 flex flex-wrap gap-2.5">
-                {highlights.map((item) => (
+                {copy.highlights.map((item) => (
                   <span
                     key={item}
                     className="px-3 py-1.5 rounded-lg border border-white/10 bg-zinc-900/70 text-zinc-300 text-sm"
@@ -71,10 +108,10 @@ export default function Hero() {
             <FadeIn delay={0.32}>
               <div className="mt-9 flex flex-wrap gap-3">
                 <a href="#projects" className="btn-primary-solid">
-                  View Projects
+                  {copy.ctaPrimary}
                 </a>
                 <a href="#contact" className="btn-secondary-outline">
-                  Contact Me
+                  {copy.ctaSecondary}
                 </a>
                 <a
                   href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
@@ -89,12 +126,12 @@ export default function Hero() {
           </div>
 
           <FadeIn delay={0.2} direction="left">
-            <aside className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-xl p-6 sm:p-7">
+            <aside className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-xl p-6 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
               <p className="text-zinc-400 text-xs uppercase tracking-[0.16em]">
-                Professional Snapshot
+                {copy.metricsTitle}
               </p>
               <div className="mt-5 space-y-4">
-                {metrics.map((metric) => (
+                {copy.metrics.map((metric) => (
                   <div
                     key={metric.label}
                     className="rounded-xl border border-white/10 bg-zinc-950/70 p-4"

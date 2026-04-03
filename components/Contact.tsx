@@ -1,27 +1,60 @@
+"use client";
+
 import FadeIn from "./FadeIn";
+import type { PortfolioLang } from "./HomeClient";
 
-const channels = [
-  {
-    title: "WhatsApp",
-    subtitle: "Fast response",
-    value: "+593 985295277",
-    href: "https://wa.me/593985295277",
-  },
-  {
-    title: "Email",
-    subtitle: "For opportunities",
-    value: "kevinjkevps4@gmail.com",
-    href: "mailto:kevinjkevps4@gmail.com",
-  },
-  {
-    title: "LinkedIn",
-    subtitle: "Professional profile",
-    value: "xavier-aguilar-93759b2bb",
-    href: "https://www.linkedin.com/in/xavier-aguilar-93759b2bb",
-  },
-];
+type ContactProps = {
+  lang: PortfolioLang;
+};
 
-export default function Contact() {
+const copy = {
+  en: {
+    title: "Let's build something valuable",
+    subtitle:
+      "Looking for a Full Stack Engineer for your team or project? I am open to opportunities and collaborations.",
+    ctaEmail: "Send Email",
+    ctaWhatsApp: "WhatsApp",
+    ctaLinkedIn: "LinkedIn",
+    channels: [
+      { title: "WhatsApp", subtitle: "Fast response", value: "+593 985295277" },
+      {
+        title: "Email",
+        subtitle: "Professional contact",
+        value: "kevinjkevps4@gmail.com",
+      },
+      {
+        title: "LinkedIn",
+        subtitle: "Professional profile",
+        value: "xavier-aguilar-93759b2bb",
+      },
+    ],
+  },
+  es: {
+    title: "Construyamos algo de valor",
+    subtitle:
+      "Buscas un Ingeniero Full Stack para tu equipo o proyecto? Estoy abierto a oportunidades y colaboraciones.",
+    ctaEmail: "Enviar Email",
+    ctaWhatsApp: "WhatsApp",
+    ctaLinkedIn: "LinkedIn",
+    channels: [
+      { title: "WhatsApp", subtitle: "Respuesta rapida", value: "+593 985295277" },
+      {
+        title: "Email",
+        subtitle: "Contacto profesional",
+        value: "kevinjkevps4@gmail.com",
+      },
+      {
+        title: "LinkedIn",
+        subtitle: "Perfil profesional",
+        value: "xavier-aguilar-93759b2bb",
+      },
+    ],
+  },
+};
+
+export default function Contact({ lang }: ContactProps) {
+  const t = copy[lang];
+
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
@@ -30,17 +63,15 @@ export default function Contact() {
         <FadeIn>
           <div className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 sm:p-10">
             <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
-              Let&apos;s build something valuable
+              {t.title}
             </h2>
             <p className="mt-4 text-zinc-400 max-w-3xl leading-relaxed">
-              If you are looking for a Full Stack Engineer for a product team,
-              project collaboration or freelance delivery, I would love to hear
-              about your goals.
+              {t.subtitle}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="mailto:kevinjkevps4@gmail.com" className="btn-primary-solid">
-                Send Email
+                {t.ctaEmail}
               </a>
               <a
                 href="https://wa.me/593985295277"
@@ -48,7 +79,7 @@ export default function Contact() {
                 rel="noreferrer"
                 className="btn-secondary-outline"
               >
-                WhatsApp
+                {t.ctaWhatsApp}
               </a>
               <a
                 href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
@@ -56,27 +87,22 @@ export default function Contact() {
                 rel="noreferrer"
                 className="btn-secondary-outline"
               >
-                LinkedIn
+                {t.ctaLinkedIn}
               </a>
             </div>
           </div>
         </FadeIn>
 
         <div className="mt-8 grid md:grid-cols-3 gap-4">
-          {channels.map((channel, index) => (
+          {t.channels.map((channel, index) => (
             <FadeIn key={channel.title} delay={0.1 + index * 0.06}>
-              <a
-                href={channel.href}
-                target={channel.href.startsWith("http") ? "_blank" : undefined}
-                rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
-                className="block rounded-xl border border-white/10 bg-zinc-900/60 p-5 hover:border-teal-400/40 transition-colors"
-              >
+              <div className="rounded-xl border border-white/10 bg-zinc-900/60 p-5 hover:border-teal-400/40 transition-colors">
                 <p className="text-zinc-200 font-semibold">{channel.title}</p>
                 <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mt-1">
                   {channel.subtitle}
                 </p>
                 <p className="text-teal-300 text-sm mt-4 break-all">{channel.value}</p>
-              </a>
+              </div>
             </FadeIn>
           ))}
         </div>

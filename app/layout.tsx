@@ -16,6 +16,21 @@ export const metadata: Metadata = {
   title: "Kevin Xavier Aguilar Velasco | Full Stack Engineer",
   description:
     "Professional portfolio of Kevin Xavier Aguilar Velasco, Full Stack Engineer specialized in scalable web platforms with Java, Spring Boot, Vue and React.",
+  keywords: [
+    "Full Stack Engineer",
+    "Java",
+    "Spring Boot",
+    "React",
+    "Vue",
+    "TypeScript",
+    "Portfolio",
+  ],
+  openGraph: {
+    title: "Kevin Xavier Aguilar Velasco | Full Stack Engineer",
+    description:
+      "Professional portfolio with selected projects, services, and delivery approach.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

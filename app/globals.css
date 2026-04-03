@@ -255,3 +255,62 @@ body {
   color: #67e8f9;
   background: rgba(20, 184, 166, 0.12);
 }
+
+.floating-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.4;
+}
+
+.floating-orb-a {
+  width: 360px;
+  height: 360px;
+  background: rgba(45, 212, 191, 0.22);
+  top: -80px;
+  left: 50%;
+  animation: floatOrbA 8s ease-in-out infinite;
+}
+
+.floating-orb-b {
+  width: 260px;
+  height: 260px;
+  background: rgba(99, 102, 241, 0.18);
+  bottom: 8%;
+  left: -80px;
+  animation: floatOrbB 9s ease-in-out infinite;
+}
+
+.floating-orb-c {
+  width: 220px;
+  height: 220px;
+  background: rgba(6, 182, 212, 0.18);
+  top: 18%;
+  right: -70px;
+  animation: floatOrbC 7.8s ease-in-out infinite;
+}
+
+.subtle-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.7), transparent 75%);
+}
+
+@keyframes floatOrbA {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 18px); }
+}
+
+@keyframes floatOrbB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -16px); }
+}
+
+@keyframes floatOrbC {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, 14px); }
+}

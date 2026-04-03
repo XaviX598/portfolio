@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import FadeIn from "./FadeIn";
-
-type Language = "en" | "es";
+import type { PortfolioLang } from "./HomeClient";
 
 type Project = {
   title: string;
@@ -19,14 +17,37 @@ type Project = {
   };
 };
 
-const projects: Record<Language, Project[]> = {
+type ProjectsProps = {
+  lang: PortfolioLang;
+};
+
+const copy = {
+  en: {
+    title: "Selected Projects",
+    subtitle:
+      "High-value projects focused on business outcomes, technical quality and production delivery.",
+    featured: "Featured",
+    impact: "Impact",
+    live: "Live Demo",
+  },
+  es: {
+    title: "Proyectos Seleccionados",
+    subtitle:
+      "Proyectos de alto valor enfocados en resultados de negocio, calidad tecnica y entrega en produccion.",
+    featured: "Destacado",
+    impact: "Impacto",
+    live: "Demo",
+  },
+};
+
+const projects: Record<PortfolioLang, Project[]> = {
   en: [
     {
       title: "AMZ Express - Guided Imports Platform",
       summary:
         "Full stack platform to quote and manage imports from Amazon to Ecuador with role-based dashboards and secure checkout.",
       impact:
-        "Implemented business-critical flows: calculator + checkout + order tracking + admin/superadmin controls.",
+        "Implemented core business flows: calculator, checkout, order tracking and admin/superadmin controls.",
       featured: true,
       tech: [
         "Vue 3",
@@ -46,9 +67,9 @@ const projects: Record<Language, Project[]> = {
     {
       title: "Xpress Ecommerce - E-commerce Prototype",
       summary:
-        "Modern store prototype with product catalog, cart, checkout simulation and order history persistence.",
+        "Store prototype with product catalog, cart, checkout simulation and order history persistence.",
       impact:
-        "Delivered a complete commerce flow with reusable UI patterns and local persistence strategy.",
+        "Delivered a complete commerce flow with reusable front-end patterns and maintainable structure.",
       tech: [
         "Next.js",
         "React",
@@ -64,9 +85,9 @@ const projects: Record<Language, Project[]> = {
     {
       title: "XpressConvert - File Conversion Suite",
       summary:
-        "Web application with multiple conversion tools across images, PDF, docs, audio and video.",
+        "Web application with multiple conversion tools for images, PDF, docs, audio and video.",
       impact:
-        "Built an all-in-one productivity utility with a modular front-end architecture and client-side processing.",
+        "Built an all-in-one utility with modular UI and efficient client-side processing flows.",
       tech: ["React", "Vite", "TypeScript", "pdf-lib", "docx"],
       links: {
         live: "https://xpressconvert.vercel.app",
@@ -78,7 +99,7 @@ const projects: Record<Language, Project[]> = {
       summary:
         "End-to-end ecosystem composed of web app, backend API and Android app for athletics operations.",
       impact:
-        "Coordinated multi-platform delivery with cloud deployment and consistent domain model across clients.",
+        "Coordinated multi-platform delivery with cloud deployment and consistent domain model.",
       tech: [
         "Java",
         "Spring Boot",
@@ -101,7 +122,7 @@ const projects: Record<Language, Project[]> = {
       summary:
         "Plataforma full stack para cotizar y gestionar importaciones desde Amazon a Ecuador con paneles por rol y checkout seguro.",
       impact:
-        "Implemente flujos criticos de negocio: calculadora + checkout + tracking + controles admin/superadmin.",
+        "Implemente flujos de negocio clave: calculadora, checkout, tracking y controles admin/superadmin.",
       featured: true,
       tech: [
         "Vue 3",
@@ -121,9 +142,9 @@ const projects: Record<Language, Project[]> = {
     {
       title: "Xpress Ecommerce - Prototipo de Tienda Online",
       summary:
-        "Prototipo moderno con catalogo de productos, carrito, simulacion de checkout e historial de pedidos.",
+        "Prototipo de tienda con catalogo, carrito, simulacion de checkout e historial de pedidos.",
       impact:
-        "Entregue un flujo completo de comercio con patrones de UI reutilizables y persistencia local.",
+        "Entregue un flujo de comercio completo con patrones reutilizables y estructura mantenible.",
       tech: [
         "Next.js",
         "React",
@@ -139,9 +160,9 @@ const projects: Record<Language, Project[]> = {
     {
       title: "XpressConvert - Suite de Conversion de Archivos",
       summary:
-        "Aplicacion web con multiples herramientas de conversion para imagenes, PDF, documentos, audio y video.",
+        "Aplicacion web con multiples herramientas para conversion de imagenes, PDF, documentos, audio y video.",
       impact:
-        "Construccion de utilitario integral con arquitectura modular de frontend y procesamiento en cliente.",
+        "Construccion de utilitario integral con UI modular y procesamiento eficiente en cliente.",
       tech: ["React", "Vite", "TypeScript", "pdf-lib", "docx"],
       links: {
         live: "https://xpressconvert.vercel.app",
@@ -151,9 +172,9 @@ const projects: Record<Language, Project[]> = {
     {
       title: "Sistema de Gestion de Atletismo (Titulacion)",
       summary:
-        "Ecosistema completo con app web, API backend y app Android para gestion operativa deportiva.",
+        "Ecosistema completo con app web, API backend y app Android para gestion deportiva.",
       impact:
-        "Coordine entrega multi-plataforma con despliegue cloud y modelo de dominio consistente entre clientes.",
+        "Coordine entrega multi-plataforma con despliegue cloud y modelo de dominio consistente.",
       tech: [
         "Java",
         "Spring Boot",
@@ -172,8 +193,8 @@ const projects: Record<Language, Project[]> = {
   ],
 };
 
-export default function Projects() {
-  const [lang, setLang] = useState<Language>("en");
+export default function Projects({ lang }: ProjectsProps) {
+  const t = copy[lang];
   const selected = projects[lang];
 
   return (
@@ -181,47 +202,14 @@ export default function Projects() {
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-zinc-900/40 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-          <FadeIn>
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
-                {lang === "en" ? "Selected Projects" : "Proyectos Seleccionados"}
-              </h2>
-              <p className="mt-3 text-zinc-400 max-w-3xl">
-                {lang === "en"
-                  ? "A curated set of projects focused on real-world delivery, architecture and product impact."
-                  : "Una seleccion de proyectos enfocados en entrega real, arquitectura e impacto de producto."}
-              </p>
-            </div>
-          </FadeIn>
+        <FadeIn>
+          <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
+            {t.title}
+          </h2>
+          <p className="mt-3 text-zinc-400 max-w-3xl">{t.subtitle}</p>
+        </FadeIn>
 
-          <FadeIn delay={0.05}>
-            <div className="flex border border-white/10 rounded-xl overflow-hidden">
-              <button
-                onClick={() => setLang("es")}
-                className={`px-4 py-2 text-sm transition-colors ${
-                  lang === "es"
-                    ? "bg-teal-500 text-zinc-950 font-semibold"
-                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
-                }`}
-              >
-                ES
-              </button>
-              <button
-                onClick={() => setLang("en")}
-                className={`px-4 py-2 text-sm transition-colors ${
-                  lang === "en"
-                    ? "bg-teal-500 text-zinc-950 font-semibold"
-                    : "text-zinc-400 hover:text-teal-300 hover:bg-teal-500/10"
-                }`}
-              >
-                EN
-              </button>
-            </div>
-          </FadeIn>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
           {selected.map((project, index) => (
             <FadeIn key={project.title} delay={index * 0.08} direction="up">
               <article
@@ -233,7 +221,7 @@ export default function Projects() {
               >
                 {project.featured && (
                   <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-teal-300/40 bg-teal-500/15 text-teal-200 mb-4">
-                    {lang === "en" ? "Featured" : "Destacado"}
+                    {t.featured}
                   </span>
                 )}
 
@@ -244,7 +232,7 @@ export default function Projects() {
 
                 <div className="mt-5 p-4 rounded-xl border border-white/10 bg-zinc-950/60">
                   <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
-                    {lang === "en" ? "Impact" : "Impacto"}
+                    {t.impact}
                   </p>
                   <p className="mt-2 text-zinc-300 text-sm leading-relaxed">
                     {project.impact}
@@ -270,7 +258,7 @@ export default function Projects() {
                       rel="noreferrer"
                       className="btn-secondary-outline"
                     >
-                      {lang === "en" ? "Live Demo" : "Demo"}
+                      {t.live}
                     </a>
                   )}
                   {project.links.github && (
