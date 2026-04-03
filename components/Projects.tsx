@@ -96,6 +96,18 @@ const projects: Record<PortfolioLang, Project[]> = {
       },
     },
     {
+      title: "Restaurant Landing Page",
+      summary:
+        "High-impact restaurant landing page with section-based storytelling and interaction-focused motion design.",
+      impact:
+        "Built a conversion-oriented single-page experience using structured sections, animation timing and clear CTA hierarchy.",
+      tech: ["React", "Framer Motion", "CSS", "UI Animation"],
+      links: {
+        live: "https://project-restaurante-delta.vercel.app",
+        github: "https://github.com/XaviX598/project-restaurant",
+      },
+    },
+    {
       title: "Athletics Management System (Degree Project)",
       summary:
         "End-to-end ecosystem composed of web app, backend API and Android app for athletics operations.",
@@ -168,6 +180,18 @@ const projects: Record<PortfolioLang, Project[]> = {
       links: {
         live: "https://xpressconvert.vercel.app",
         github: "https://github.com/XaviX598/Xpressconvert",
+      },
+    },
+    {
+      title: "Landing Page de Restaurante",
+      summary:
+        "Landing page de alto impacto para restaurante, con narrativa por secciones y animaciones orientadas a interaccion.",
+      impact:
+        "Construi una experiencia single-page enfocada en conversion con jerarquia visual clara, timing de animaciones y CTAs bien definidos.",
+      tech: ["React", "Framer Motion", "CSS", "Animaciones UI"],
+      links: {
+        live: "https://project-restaurante-delta.vercel.app",
+        github: "https://github.com/XaviX598/project-restaurant",
       },
     },
     {
