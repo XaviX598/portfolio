@@ -74,7 +74,10 @@ export default function Services({ lang }: ServicesProps) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
           {t.cards.map((service, index) => (
             <FadeIn key={service.title} delay={index * 0.07}>
-              <article className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6 hover:border-teal-400/40 transition-colors">
+              <article
+                data-inview
+                className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6 hover:border-teal-400/40 transition-colors"
+              >
                 <h3 className="text-zinc-100 font-semibold text-lg leading-snug">
                   {service.title}
                 </h3>

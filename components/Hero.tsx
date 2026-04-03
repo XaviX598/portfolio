@@ -24,6 +24,9 @@ const heroCopy = {
       "Cloud Deployments (Vercel / Oracle)",
     ],
     metricsTitle: "Professional Snapshot",
+    motionTitle: "Motion System",
+    motionDesc:
+      "Scroll-driven sections, premium hover states and polished CTA transitions.",
     metrics: [
       { label: "Delivered Projects", value: "8+" },
       { label: "Core Profile", value: "Full Stack" },
@@ -45,6 +48,9 @@ const heroCopy = {
       "Despliegues Cloud (Vercel / Oracle)",
     ],
     metricsTitle: "Resumen Profesional",
+    motionTitle: "Sistema de Motion",
+    motionDesc:
+      "Secciones guiadas por scroll, hovers premium y transiciones de CTA mas pulidas.",
     metrics: [
       { label: "Proyectos Entregados", value: "8+" },
       { label: "Perfil Base", value: "Full Stack" },
@@ -122,10 +128,23 @@ export default function Hero({ lang }: HeroProps) {
           </div>
 
           <FadeIn delay={0.2} direction="left">
-            <aside className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-xl p-6 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+            <aside
+              data-inview
+              className="rounded-2xl border border-cyan-300/20 bg-[linear-gradient(160deg,rgba(5,15,31,0.95),rgba(6,19,35,0.88))] backdrop-blur-xl p-6 sm:p-7 shadow-[0_14px_46px_rgba(0,0,0,0.4)]"
+            >
               <p className="text-zinc-400 text-xs uppercase tracking-[0.16em]">
                 {copy.metricsTitle}
               </p>
+
+              <div className="mt-4 rounded-xl border border-cyan-300/25 bg-gradient-to-r from-cyan-400/10 to-indigo-300/10 p-3">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-cyan-200/85">
+                  {copy.motionTitle}
+                </p>
+                <p className="mt-1 text-sm text-zinc-300">
+                  {copy.motionDesc}
+                </p>
+              </div>
+
               <div className="mt-5 space-y-4">
                 {copy.metrics.map((metric) => (
                   <div

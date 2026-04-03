@@ -72,7 +72,10 @@ export default function Experience({ lang }: ExperienceProps) {
         <div className="mt-10 grid md:grid-cols-2 gap-5">
           {t.steps.map((step, index) => (
             <FadeIn key={step.phase} delay={index * 0.08}>
-              <article className="rounded-2xl border border-white/10 bg-zinc-900/60 p-6">
+              <article
+                data-inview
+                className="rounded-2xl border border-white/10 bg-zinc-900/60 p-6"
+              >
                 <p className="text-teal-300 text-xs uppercase tracking-[0.14em]">
                   {step.phase}
                 </p>

@@ -290,6 +290,7 @@ export default function Projects({ lang }: ProjectsProps) {
 
           <FadeIn key={activeProject.title} delay={0.06} direction="up">
             <article
+              data-inview
               className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
                 activeProject.featured
                   ? "border-teal-400/45 bg-gradient-to-br from-teal-500/10 via-zinc-900/85 to-zinc-900/70 hover:border-teal-300/70"

@@ -41,7 +41,10 @@ export default function Certificates({ lang }: CertificatesProps) {
         </FadeIn>
 
         <FadeIn delay={0.08}>
-          <article className="mt-10 rounded-2xl border border-white/10 bg-zinc-900/65 p-7 md:p-8">
+          <article
+            data-inview
+            className="mt-10 rounded-2xl border border-white/10 bg-zinc-900/65 p-7 md:p-8"
+          >
             <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">{t.source}</p>
             <h3 className="mt-3 text-xl md:text-2xl text-zinc-100 font-semibold">
               {t.certTitle}

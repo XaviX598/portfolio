@@ -99,7 +99,10 @@ export default function About({ lang }: AboutProps) {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <article className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 md:p-8 mt-8">
+          <article
+            data-inview
+            className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 md:p-8 mt-8"
+          >
             <p className="text-zinc-200 leading-relaxed text-lg">{t.intro}</p>
             <p className="mt-4 text-zinc-400 leading-relaxed">{t.details}</p>
           </article>
@@ -108,7 +111,10 @@ export default function About({ lang }: AboutProps) {
         <div className="mt-8 grid md:grid-cols-3 gap-5">
           {t.cards.map((card, index) => (
             <FadeIn key={card.title} delay={0.14 + index * 0.06}>
-              <article className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6">
+              <article
+                data-inview
+                className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6"
+              >
                 <h3 className="text-zinc-100 font-semibold text-lg">{card.title}</h3>
                 <ul className="mt-4 space-y-2">
                   {card.points.map((point) => (

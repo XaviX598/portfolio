@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState, type SVGProps } from "react";
 import type { PortfolioLang } from "./HomeClient";
@@ -160,7 +160,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -189,8 +189,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
       },
       {
         root: null,
-        threshold: [0.2, 0.45, 0.7],
-        rootMargin: "-42% 0px -45% 0px",
+        threshold: [0.2, 0.45, 0.72],
+        rootMargin: "-45% 0px -42% 0px",
       }
     );
 
@@ -239,15 +239,15 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         }`}
       >
         <div
-          className={`mx-auto max-w-6xl rounded-2xl border transition-all duration-300 ${
+          className={`mx-auto max-w-6xl rounded-[1.35rem] border transition-all duration-300 ${
             scrolled
-              ? "border-teal-300/35 bg-zinc-950/86 backdrop-blur-xl shadow-[0_16px_42px_rgba(0,0,0,0.42)]"
-              : "border-white/15 bg-zinc-950/55 backdrop-blur-lg"
+              ? "border-sky-200/25 bg-[#071228]/88 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
+              : "border-white/15 bg-[#050c18]/65 backdrop-blur-lg"
           }`}
         >
           <div className="flex items-center justify-between gap-3 px-3 sm:px-4 py-2.5">
             <a href="#home" className="flex items-center gap-3 min-w-0">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-sm font-bold shadow-lg shadow-teal-500/25">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-teal-400 text-[#052034] text-sm font-bold shadow-lg shadow-cyan-400/30">
                 KA
               </span>
               <span className="min-w-0">
@@ -266,10 +266,10 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => setActiveSection(item.href)}
-                  className={`px-3 py-1.5 rounded-lg text-sm border transition-all duration-250 ${
+                  className={`relative px-3 py-1.5 rounded-lg text-sm border transition-all duration-250 ${
                     activeSection === item.href
-                      ? "text-teal-200 border-teal-300/45 bg-teal-500/15"
-                      : "text-zinc-300 border-transparent hover:text-teal-200 hover:border-teal-300/25 hover:bg-teal-500/10"
+                      ? "text-cyan-100 border-cyan-300/35 bg-cyan-500/12"
+                      : "text-zinc-300 border-transparent hover:text-cyan-100 hover:border-cyan-300/20 hover:bg-cyan-500/8"
                   }`}
                 >
                   {item.label}
@@ -284,8 +284,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                   onClick={() => onLangChange("es")}
                   className={`px-2.5 py-1.5 text-xs transition-colors ${
                     lang === "es"
-                      ? "bg-teal-500 text-zinc-950 font-semibold"
-                      : "text-zinc-400 hover:text-teal-200"
+                      ? "bg-cyan-400 text-[#051a2c] font-semibold"
+                      : "text-zinc-400 hover:text-cyan-200"
                   }`}
                 >
                   ES
@@ -295,8 +295,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                   onClick={() => onLangChange("en")}
                   className={`px-2.5 py-1.5 text-xs transition-colors ${
                     lang === "en"
-                      ? "bg-teal-500 text-zinc-950 font-semibold"
-                      : "text-zinc-400 hover:text-teal-200"
+                      ? "bg-cyan-400 text-[#051a2c] font-semibold"
+                      : "text-zinc-400 hover:text-cyan-200"
                   }`}
                 >
                   EN
@@ -325,19 +325,31 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         onMouseLeave={() => setIsHoverExpanded(false)}
       >
         <div
-          className={`rounded-[28px] border p-3 transition-all duration-350 ease-out ${
-            isExpanded ? "w-[292px]" : "w-[92px]"
+          className={`relative overflow-hidden rounded-[34px] border transition-all duration-350 ease-out ${
+            isExpanded ? "w-[292px]" : "w-[94px]"
           } ${
             scrolled
-              ? "border-teal-300/45 bg-zinc-950/90 backdrop-blur-xl shadow-[0_22px_50px_rgba(0,0,0,0.48)]"
-              : "border-white/20 bg-zinc-950/72 backdrop-blur-lg"
+              ? "border-cyan-300/42 bg-[#030912]/94 backdrop-blur-xl shadow-[0_26px_60px_rgba(0,0,0,0.55)]"
+              : "border-cyan-200/24 bg-[#030912]/80 backdrop-blur-lg"
           }`}
         >
-          <div className={`flex items-center ${isExpanded ? "gap-3" : "justify-center"}`}>
-            {isExpanded ? (
-              <>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(34,211,238,0.16),transparent_36%),radial-gradient(circle_at_80%_85%,rgba(129,140,248,0.12),transparent_40%)]" />
+
+          <div
+            className={`relative flex h-[calc(100vh-7rem)] max-h-[760px] min-h-[520px] flex-col ${
+              isExpanded ? "px-3 py-3" : "px-2.5 py-3"
+            }`}
+          >
+            <div
+              className={`flex items-center ${
+                isExpanded
+                  ? "justify-between gap-3 rounded-2xl border border-white/10 bg-[#071424]/72 px-3 py-2.5"
+                  : "justify-center"
+              }`}
+            >
+              {isExpanded && (
                 <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-[15px] font-bold shadow-[0_8px_24px_rgba(34,211,238,0.32)]">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-300 to-teal-400 text-[#062036] text-[15px] font-bold shadow-[0_10px_26px_rgba(34,211,238,0.35)]">
                     KA
                   </span>
                   <span className="min-w-0 overflow-hidden transition-all duration-250 max-w-[170px] opacity-100 translate-x-0">
@@ -349,42 +361,35 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     </span>
                   </span>
                 </a>
+              )}
 
-                <button
-                  type="button"
-                  onClick={() => setIsPinned((prev) => !prev)}
-                  className={`inline-flex shrink-0 h-9 w-9 items-center justify-center rounded-xl border transition-colors ${
-                    isPinned
-                      ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
-                      : "border-white/15 text-zinc-400 hover:text-teal-200 hover:border-teal-300/35"
-                  }`}
-                  aria-label={isPinned ? labels.unpin : labels.pin}
-                  title={isPinned ? labels.unpin : labels.pin}
-                >
-                  <PinIcon className="h-[16px] w-[16px]" />
-                </button>
-              </>
-            ) : (
               <button
                 type="button"
                 onClick={() => setIsPinned((prev) => !prev)}
-                className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-colors ${
+                className={`inline-flex shrink-0 h-10 w-10 items-center justify-center rounded-xl border transition-colors ${
                   isPinned
-                    ? "border-teal-300/45 bg-teal-500/18 text-teal-100"
-                    : "border-white/15 text-zinc-300 hover:text-teal-200 hover:border-teal-300/35"
+                    ? isExpanded
+                      ? "border-cyan-300/45 bg-cyan-400/18 text-cyan-100"
+                      : "border-cyan-300/45 bg-transparent text-cyan-100"
+                    : "border-white/15 bg-transparent text-zinc-300 hover:text-cyan-200 hover:border-cyan-300/35"
                 }`}
                 aria-label={isPinned ? labels.unpin : labels.pin}
                 title={isPinned ? labels.unpin : labels.pin}
               >
                 <PinIcon className="h-[16px] w-[16px]" />
               </button>
-            )}
-          </div>
+            </div>
 
-          <div className="my-3 h-px bg-gradient-to-r from-transparent via-teal-300/35 to-transparent" />
+            <div className="my-3 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
 
-          <nav>
-            <div className="space-y-2">
+            <nav className="relative flex-1 min-h-0 flex items-center justify-center">
+              <div
+                className={`w-full max-h-full space-y-2 ${
+                  isExpanded
+                    ? "overflow-y-auto pr-1"
+                    : "overflow-hidden pr-0 flex flex-col items-center"
+                }`}
+              >
               {navItems.map((item) => {
                 const isActive = activeSection === item.href;
 
@@ -393,24 +398,28 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setActiveSection(item.href)}
-                    className={`group relative flex items-center gap-3 rounded-2xl border px-2.5 py-2 transition-all duration-250 ${
+                    className={`group relative flex items-center rounded-2xl border transition-all duration-250 ${
+                      isExpanded
+                        ? "w-full gap-3 px-2.5 py-2.5"
+                        : "h-12 w-12 justify-center"
+                    } ${
                       isActive
-                        ? "border-teal-300/45 bg-gradient-to-r from-teal-500/20 to-transparent text-teal-100"
-                        : "border-transparent text-zinc-300 hover:border-teal-300/25 hover:bg-teal-500/10 hover:text-teal-200"
+                        ? "border-cyan-300/45 bg-gradient-to-r from-cyan-400/22 to-transparent text-cyan-100 shadow-[0_0_0_1px_rgba(56,189,248,0.18)]"
+                        : "border-transparent text-zinc-300 hover:border-cyan-300/22 hover:bg-cyan-400/8 hover:text-cyan-200"
                     }`}
                   >
                     <span
                       className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-250 ${
                         isActive
-                          ? "border-teal-300/45 bg-teal-500/22 text-teal-100 shadow-[0_0_22px_rgba(45,212,191,0.25)]"
-                          : "border-white/12 bg-zinc-900/70 text-zinc-300 group-hover:border-teal-300/35 group-hover:text-teal-200"
+                          ? "border-cyan-300/45 bg-cyan-400/20 text-cyan-100 shadow-[0_0_24px_rgba(45,212,191,0.22)]"
+                          : "border-white/12 bg-zinc-900/70 text-zinc-300 group-hover:border-cyan-300/30 group-hover:text-cyan-200"
                       }`}
                     >
                       <NavIcon name={item.icon} className="h-[18px] w-[18px]" />
                     </span>
 
                     <span
-                      className={`overflow-hidden whitespace-nowrap transition-all duration-250 ${
+                      className={`overflow-hidden whitespace-nowrap text-sm font-medium transition-all duration-250 ${
                         isExpanded
                           ? "max-w-[165px] opacity-100 translate-x-0"
                           : "max-w-0 opacity-0 -translate-x-2"
@@ -419,75 +428,88 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                       {item.label}
                     </span>
 
+                    {isExpanded && isActive && (
+                      <span className="absolute right-3 h-1.5 w-1.5 rounded-full bg-cyan-200 shadow-[0_0_10px_rgba(125,211,252,0.9)]" />
+                    )}
+
                     {!isExpanded && (
-                      <span className="pointer-events-none absolute left-[4.5rem] top-1/2 -translate-y-1/2 rounded-md border border-teal-300/35 bg-zinc-950/95 px-2 py-1 text-xs text-teal-100 opacity-0 translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+                      <span className="pointer-events-none absolute left-[4.6rem] top-1/2 -translate-y-1/2 rounded-md border border-cyan-300/35 bg-[#030912]/95 px-2 py-1 text-xs text-cyan-100 opacity-0 translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
                         {item.label}
                       </span>
                     )}
                   </a>
                 );
               })}
-            </div>
-          </nav>
+              </div>
+            </nav>
 
-          <div className="mt-4 border-t border-white/10 pt-3">
-            {isExpanded ? (
-              <div className="space-y-2">
-                <div className="flex border border-white/10 rounded-xl overflow-hidden bg-zinc-900/70 w-fit">
-                  <button
-                    type="button"
-                    onClick={() => onLangChange("es")}
-                    className={`px-3 py-1.5 text-xs transition-colors ${
-                      lang === "es"
-                        ? "bg-teal-500 text-zinc-950 font-semibold"
-                        : "text-zinc-400 hover:text-teal-200"
-                    }`}
-                  >
-                    ES
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onLangChange("en")}
-                    className={`px-3 py-1.5 text-xs transition-colors ${
-                      lang === "en"
-                        ? "bg-teal-500 text-zinc-950 font-semibold"
-                        : "text-zinc-400 hover:text-teal-200"
-                    }`}
-                  >
-                    EN
-                  </button>
+            <div className="mt-3 border-t border-white/10 pt-3">
+              {isExpanded ? (
+                <div className="space-y-2">
+                  <div className="flex w-full justify-center">
+                    <div className="flex border border-white/10 rounded-xl overflow-hidden bg-zinc-900/70">
+                      <button
+                        type="button"
+                        onClick={() => onLangChange("es")}
+                        className={`px-3 py-1.5 text-xs transition-colors ${
+                          lang === "es"
+                            ? "bg-cyan-400 text-[#051a2c] font-semibold"
+                            : "text-zinc-400 hover:text-cyan-200"
+                        }`}
+                      >
+                        ES
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onLangChange("en")}
+                        className={`px-3 py-1.5 text-xs transition-colors ${
+                          lang === "en"
+                            ? "bg-cyan-400 text-[#051a2c] font-semibold"
+                            : "text-zinc-400 hover:text-cyan-200"
+                        }`}
+                      >
+                        EN
+                      </button>
+                    </div>
+                  </div>
+
+                  <MotionButton
+                    href="#contact"
+                    label={labels.letsTalk}
+                    size="md"
+                    variant="primary"
+                    className="w-full justify-center text-sm"
+                  />
                 </div>
+              ) : (
+                <div className="flex flex-col items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onLangChange(lang === "en" ? "es" : "en")}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-zinc-200 hover:text-cyan-200 hover:border-cyan-300/35 transition-colors"
+                    aria-label="Switch language"
+                    title="Switch language"
+                  >
+                    <LangIcon className="h-[16px] w-[16px]" />
+                  </button>
 
-                <MotionButton
-                  href="#contact"
-                  label={labels.letsTalk}
-                  size="md"
-                  variant="primary"
-                  className="w-full justify-center text-sm"
-                />
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => onLangChange(lang === "en" ? "es" : "en")}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-zinc-200 hover:text-teal-200 hover:border-teal-300/35 transition-colors"
-                  aria-label="Switch language"
-                  title="Switch language"
-                >
-                  <LangIcon className="h-[16px] w-[16px]" />
-                </button>
-
-                <a
-                  href="#contact"
-                  aria-label={labels.letsTalk}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-teal-200 hover:border-teal-300/40 hover:bg-teal-500/15 transition-colors"
-                >
-                  <NavIcon name="contact" className="h-[18px] w-[18px]" />
-                </a>
-              </div>
-            )}
+                  <a
+                    href="#contact"
+                    aria-label={labels.letsTalk}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 text-cyan-200 hover:border-cyan-300/40 hover:bg-cyan-500/15 transition-colors"
+                  >
+                    <NavIcon name="contact" className="h-[18px] w-[18px]" />
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
+          {!isExpanded && (
+            <div className="pointer-events-none absolute left-1/2 top-4 h-9 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-cyan-200/40 to-transparent" />
+          )}
+          {isExpanded && (
+            <div className="pointer-events-none absolute left-0 top-1/2 h-24 w-[3px] -translate-y-1/2 rounded-r-full bg-gradient-to-b from-transparent via-cyan-200/70 to-transparent shadow-[0_0_14px_rgba(34,211,238,0.65)]" />
+          )}
         </div>
       </aside>
 
@@ -495,13 +517,13 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         <div
           className={`mx-auto max-w-6xl rounded-2xl border transition-all duration-300 ${
             scrolled
-              ? "border-teal-300/35 bg-zinc-950/86 backdrop-blur-xl shadow-[0_16px_42px_rgba(0,0,0,0.42)]"
-              : "border-white/15 bg-zinc-950/55 backdrop-blur-lg"
+              ? "border-cyan-300/30 bg-[#071228]/88 backdrop-blur-xl shadow-[0_16px_42px_rgba(0,0,0,0.42)]"
+              : "border-white/15 bg-[#050c18]/62 backdrop-blur-lg"
           }`}
         >
           <div className="flex items-center justify-between gap-3 px-3 py-2.5">
             <a href="#home" className="flex items-center gap-2 min-w-0">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300 to-cyan-400 text-zinc-950 text-sm font-bold">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-teal-400 text-[#052034] text-sm font-bold">
                 KA
               </span>
               <span className="text-zinc-100 font-semibold tracking-wide text-sm truncate">
@@ -512,11 +534,11 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-zinc-700 text-zinc-300 hover:text-teal-300 hover:border-teal-400 transition-colors"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-zinc-700 text-zinc-300 hover:text-cyan-300 hover:border-cyan-400 transition-colors"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
             >
-              <span className="text-lg">{menuOpen ? "X" : "≡"}</span>
+              <span className="text-lg">{menuOpen ? "✕" : "≡"}</span>
             </button>
           </div>
 
@@ -529,7 +551,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     onClick={() => onLangChange("es")}
                     className={`px-2.5 py-1.5 text-xs flex-1 ${
                       lang === "es"
-                        ? "bg-teal-500 text-zinc-950 font-semibold"
+                        ? "bg-cyan-400 text-[#051a2c] font-semibold"
                         : "text-zinc-400"
                     }`}
                   >
@@ -540,7 +562,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     onClick={() => onLangChange("en")}
                     className={`px-2.5 py-1.5 text-xs flex-1 ${
                       lang === "en"
-                        ? "bg-teal-500 text-zinc-950 font-semibold"
+                        ? "bg-cyan-400 text-[#051a2c] font-semibold"
                         : "text-zinc-400"
                     }`}
                   >
@@ -558,8 +580,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     }}
                     className={`px-3 py-2 rounded-lg text-sm transition-colors flex items-center gap-2 ${
                       activeSection === item.href
-                        ? "text-teal-200 bg-teal-500/12 border border-teal-300/30"
-                        : "text-zinc-300 hover:text-teal-300 hover:bg-teal-500/10"
+                        ? "text-cyan-200 bg-cyan-500/12 border border-cyan-300/30"
+                        : "text-zinc-300 hover:text-cyan-300 hover:bg-cyan-500/10"
                     }`}
                   >
                     <NavIcon name={item.icon} className="h-4 w-4" />

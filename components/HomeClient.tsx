@@ -10,6 +10,7 @@ import Certificates from "./Certificates";
 import About from "./About";
 import Contact from "./Contact";
 import AmbientBackground from "./AmbientBackground";
+import MotionRuntime from "./MotionRuntime";
 
 export type PortfolioLang = "en" | "es";
 
@@ -19,6 +20,7 @@ export default function HomeClient() {
   return (
     <>
       <AmbientBackground />
+      <MotionRuntime />
 
       <div className="progress-container">
         <div className="progress-bar"></div>

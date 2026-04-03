@@ -62,7 +62,10 @@ export default function Contact({ lang }: ContactProps) {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         <FadeIn>
-          <div className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 sm:p-10">
+          <div
+            data-inview
+            className="rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur p-7 sm:p-10"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
               {t.title}
             </h2>
@@ -97,7 +100,10 @@ export default function Contact({ lang }: ContactProps) {
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           {t.channels.map((channel, index) => (
             <FadeIn key={channel.title} delay={0.1 + index * 0.06}>
-              <div className="rounded-xl border border-white/10 bg-zinc-900/60 p-5 hover:border-teal-400/40 transition-colors">
+              <div
+                data-inview
+                className="rounded-xl border border-white/10 bg-zinc-900/60 p-5 hover:border-teal-400/40 transition-colors"
+              >
                 <p className="text-zinc-200 font-semibold">{channel.title}</p>
                 <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mt-1">
                   {channel.subtitle}

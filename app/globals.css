@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #1a1a1a;
-  --color-secondary: #c9a962;
-  --color-accent: #14b8a6;
-  --color-background: #09090b;
-  --color-surface: #18181b;
-  --color-surface-hover: #27272a;
-  --color-text: #e4e4e7;
-  --color-text-light: #a1a1aa;
-  --gradient-gold: linear-gradient(135deg, #c9a962 0%, #b8944f 100%);
-  --gradient-teal: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-  --shadow-gold: 0 4px 25px rgba(201, 169, 98, 0.35);
+  --color-primary: #35627a;
+  --color-secondary: #e5aea9;
+  --color-accent: #a6a9d0;
+  --color-background: #040915;
+  --color-surface: #0c1628;
+  --color-surface-hover: #18263c;
+  --color-text: #f5f5f5;
+  --color-text-light: #8e9a98;
+  --gradient-gold: linear-gradient(135deg, #e5aea9 0%, #b46258 100%);
+  --gradient-teal: linear-gradient(135deg, #35627a 0%, #8e9a98 100%);
+  --shadow-gold: 0 4px 25px rgba(180, 98, 88, 0.3);
   --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.3);
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -27,9 +27,9 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 184, 166, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(45, 212, 191, 0.06) 0%, transparent 40%),
-    linear-gradient(180deg, #09090b 0%, #020617 100%);
+    radial-gradient(ellipse 85% 56% at 50% -20%, rgba(53, 98, 122, 0.26) 0%, transparent 52%),
+    radial-gradient(ellipse 62% 42% at 82% 62%, rgba(166, 169, 208, 0.18) 0%, transparent 42%),
+    linear-gradient(180deg, #030711 0%, #020617 65%, #050912 100%);
   overflow-x: hidden;
 }
 
@@ -129,9 +129,10 @@ body {
 .progress-bar {
   height: 100%;
   background: var(--gradient-teal);
-  width: 0%;
-  animation: progress-scroll linear;
-  animation-timeline: scroll();
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 120ms linear;
 }
 
 @keyframes progress-scroll {
@@ -377,18 +378,18 @@ body {
 }
 
 .motion-btn--primary {
-  --motion-border: rgba(26, 74, 97, 0.48);
-  --motion-bg: linear-gradient(135deg, #1a4a61, #35627a);
+  --motion-border: rgba(83, 126, 148, 0.58);
+  --motion-bg: linear-gradient(135deg, #35627a, #2f5872);
   --motion-bg-hover: linear-gradient(135deg, #e5aea9, #f5f5f5);
   --motion-text: #ffffff;
   --motion-text-hover: #102f43;
 }
 
 .motion-btn--secondary {
-  --motion-border: rgba(53, 98, 122, 0.34);
-  --motion-bg: linear-gradient(135deg, rgba(9, 14, 23, 0.96), rgba(17, 27, 40, 0.9));
+  --motion-border: rgba(142, 154, 152, 0.38);
+  --motion-bg: linear-gradient(135deg, rgba(7, 12, 24, 0.96), rgba(15, 24, 37, 0.92));
   --motion-bg-hover: linear-gradient(135deg, #e5aea9, #f5f5f5);
-  --motion-text: #d9e2ef;
+  --motion-text: #e8eef8;
   --motion-text-hover: #102f43;
 }
 
@@ -574,6 +575,12 @@ body {
   .motion-btn__row--bottom {
     display: none;
   }
+
+  [data-inview] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .floating-orb {
@@ -618,6 +625,24 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.7), transparent 75%);
+}
+
+[data-inview] {
+  opacity: 1;
+  transform: none;
+}
+
+html.motion-runtime-ready [data-inview] {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition: opacity 660ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 660ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+html.motion-runtime-ready [data-inview].is-inview {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 @keyframes floatOrbA {
