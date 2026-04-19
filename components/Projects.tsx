@@ -51,19 +51,19 @@ const copy = {
 const projects: Record<PortfolioLang, Project[]> = {
   en: [
     {
-      title: "AI Agents Guide - Skills Hub",
+      title: "Universal Skills Hub",
       summary:
-        "Universal hub with 100+ specialized AI agent skills, installation guides for OpenCode, Claude Code, and autonomous orchestration.",
+        "Universal hub with 85,000+ AI agent skills catalog from Skillful.sh, curated skills, installation guides for OpenCode, Claude Code, and autonomous orchestration.",
       impact:
-        "Comprehensive skill architecture with SDD workflow, skill registry, persistent memory and task orchestration support.",
+        "Comprehensive skill platform with SDD workflow, skill registry, persistent memory and task orchestration for any AI agent.",
       featured: true,
       tech: [
-        "AI Agents",
+        "85K+ Skills",
         "TypeScript",
         "Skill Registry",
         "Task Orchestration",
-        "Installation Guides",
-        "Engram Memory",
+        "Next.js",
+        "Prisma",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
@@ -157,19 +157,19 @@ const projects: Record<PortfolioLang, Project[]> = {
   ],
   es: [
     {
-      title: "AI Agents Guide - Skills Hub",
+      title: "Universal Skills Hub",
       summary:
-        "Hub universal con mas de 100 skills especializados para agentes IA, guías de instalación para OpenCode, Claude Code y orquestación autonoma.",
+        "Hub universal con catalogo de mas de 85,000 skills de IA desde Skillful.sh, skills curados, guías de instalación para OpenCode, Claude Code y orquestación autonoma.",
       impact:
-        "Arquitectura completa con workflow SDD, registry de skills, memoria persistente y soporte de orquestación de tareas.",
+        "Plataforma completa con workflow SDD, registry de skills, memoria persistente y orquestación para cualquier agente de IA.",
       featured: true,
       tech: [
-        "AI Agents",
+        "85K+ Skills",
         "TypeScript",
         "Skill Registry",
         "Orquestacion de Tareas",
-        "Guías de Instalación",
-        "Engram Memory",
+        "Next.js",
+        "Prisma",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
