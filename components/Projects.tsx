@@ -30,7 +30,7 @@ const copy = {
       "High-value projects focused on business outcomes, technical quality and production delivery.",
     featured: "Featured",
     impact: "Impact",
-    live: "Live Demo",
+    live: "Visit Site",
     previous: "Previous",
     next: "Next",
     showing: "Showing",
@@ -41,7 +41,7 @@ const copy = {
       "Proyectos de alto valor enfocados en resultados de negocio, calidad tecnica y entrega en produccion.",
     featured: "Destacado",
     impact: "Impacto",
-    live: "Demo",
+    live: "Visitar",
     previous: "Anterior",
     next: "Siguiente",
     showing: "Mostrando",
@@ -53,17 +53,17 @@ const projects: Record<PortfolioLang, Project[]> = {
     {
       title: "Universal Skills Hub",
       summary:
-        "Universal hub with 85,000+ AI agent skills catalog from Skillful.sh, curated skills, installation guides for OpenCode, Claude Code, and autonomous orchestration.",
+        "Universal hub with 85,000+ AI agent skills catalog from Skillful.sh, curated skills, and installation guides for OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue, GitHub Copilot.",
       impact:
-        "Comprehensive skill platform with SDD workflow, skill registry, persistent memory and task orchestration for any AI agent.",
+        "Comprehensive skill platform with SDD workflow, skill registry, and task orchestration for any AI agent.",
       featured: true,
       tech: [
         "85K+ Skills",
         "TypeScript",
         "Skill Registry",
-        "Task Orchestration",
         "Next.js",
         "Prisma",
+        "9 AI Agents",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
@@ -159,17 +159,17 @@ const projects: Record<PortfolioLang, Project[]> = {
     {
       title: "Universal Skills Hub",
       summary:
-        "Hub universal con catalogo de mas de 85,000 skills de IA desde Skillful.sh, skills curados, guías de instalación para OpenCode, Claude Code y orquestación autonoma.",
+        "Hub universal con catalogo de mas de 85,000 skills de IA desde Skillful.sh, skills curados, y guías de instalación para OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue, GitHub Copilot.",
       impact:
-        "Plataforma completa con workflow SDD, registry de skills, memoria persistente y orquestación para cualquier agente de IA.",
+        "Plataforma completa con workflow SDD, registry de skills y orquestación para cualquier agente de IA.",
       featured: true,
       tech: [
         "85K+ Skills",
         "TypeScript",
         "Skill Registry",
-        "Orquestacion de Tareas",
         "Next.js",
         "Prisma",
+        "9 Agentes IA",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
