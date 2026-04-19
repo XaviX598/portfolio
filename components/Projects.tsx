@@ -66,7 +66,8 @@ const projects: Record<PortfolioLang, Project[]> = {
         "Persistent Context",
       ],
       links: {
-        github: "https://github.com/XaviX598/ai-agents-guide",
+        live: "https://universal-skills-hub.vercel.app",
+        github: "https://github.com/XaviX598/universal-skills-hub",
       },
     },
     {
@@ -172,7 +173,8 @@ const projects: Record<PortfolioLang, Project[]> = {
         "Contexto Persistente",
       ],
       links: {
-        github: "https://github.com/XaviX598/ai-agents-guide",
+        live: "https://universal-skills-hub.vercel.app",
+        github: "https://github.com/XaviX598/universal-skills-hub",
       },
     },
     {
