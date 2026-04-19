@@ -53,17 +53,17 @@ const projects: Record<PortfolioLang, Project[]> = {
     {
       title: "AI Agents Guide - Skills Hub",
       summary:
-        "Production-grade library of 100+ specialized AI agent skills with installation guides and autonomous orchestration.",
+        "Universal hub with 100+ specialized AI agent skills, installation guides for OpenCode, Claude Code, and autonomous orchestration.",
       impact:
-        "Built scalable skill architecture with SDD workflow, skill registry, persistent memory and agent orchestration.",
+        "Comprehensive skill architecture with SDD workflow, skill registry, persistent memory and task orchestration support.",
       featured: true,
       tech: [
         "AI Agents",
         "TypeScript",
         "Skill Registry",
         "Task Orchestration",
+        "Installation Guides",
         "Engram Memory",
-        "Persistent Context",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
@@ -159,17 +159,17 @@ const projects: Record<PortfolioLang, Project[]> = {
     {
       title: "AI Agents Guide - Skills Hub",
       summary:
-        "Biblioteca de produccion con mas de 100 skills especializados con guías de instalación y orquestación autonoma.",
+        "Hub universal con mas de 100 skills especializados para agentes IA, guías de instalación para OpenCode, Claude Code y orquestación autonoma.",
       impact:
-        "Arquitectura escalable con workflow SDD, registry de skills, memoria persistente y orquestacion de agentes.",
+        "Arquitectura completa con workflow SDD, registry de skills, memoria persistente y soporte de orquestación de tareas.",
       featured: true,
       tech: [
         "AI Agents",
         "TypeScript",
         "Skill Registry",
         "Orquestacion de Tareas",
+        "Guías de Instalación",
         "Engram Memory",
-        "Contexto Persistente",
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
