@@ -11,69 +11,69 @@ const copy = {
   en: {
     heading: "About",
     subtitle:
-      "Engineer with strong execution and architecture fundamentals, focused on maintainable software and business impact.",
+      "Software development agency focused on scalable solutions, AI integration and team transformation.",
     intro:
-      "I am Kevin Xavier Aguilar Velasco, Computer Science Engineer from Universidad Central del Ecuador. I enjoy translating product goals into solid technical implementations.",
+      "Xpress Developer is a software development agency specialized in building professional platforms and integrating AI into your team's workflow. We help companies transform from 0 to production with modern tools and practices.",
     details:
-      "My stack includes Java, Spring Boot, Vue, React, TypeScript and PostgreSQL. I work with clean architecture principles, clear communication and iterative delivery.",
+      "Our stack includes TypeScript, React, Vue, AI Agents, and cloud deployments. We work with clean architecture, clear communication and iterative delivery.",
     cards: [
       {
-        title: "What I deliver",
+        title: "What We Deliver",
         points: [
-          "End-to-end delivery from API to user interface",
-          "Secure role-based systems",
-          "Maintainable architecture with clear modules",
+          "End-to-end platforms from design to production",
+          "AI integration and automation",
+          "Team training and onboarding",
         ],
       },
       {
-        title: "How I work",
+        title: "How We Work",
         points: [
           "Business-oriented prioritization",
-          "Collaboration with stakeholders and teams",
-          "Quality-first mindset in every release",
+          "Close collaboration with teams",
+          "Quality-first in every delivery",
         ],
       },
       {
-        title: "What I value",
+        title: "AI Services",
         points: [
-          "Clarity over complexity",
-          "Performance and reliability",
-          "Continuous learning and improvement",
+          "AI integration from 0 to production",
+          "Team training and workshops",
+          "Workflow automation",
         ],
       },
     ],
   },
   es: {
-    heading: "Sobre mi",
+    heading: "Sobre Nosotros",
     subtitle:
-      "Ingeniero con foco en ejecucion y fundamentos de arquitectura, orientado a software mantenible e impacto de negocio.",
+      "Agencia de desarrollo de software enfocada en soluciones escalables, integracion de IA y transformacion de equipos.",
     intro:
-      "Soy Kevin Xavier Aguilar Velasco, Ingeniero en Ciencias de la Computacion de la Universidad Central del Ecuador. Disfruto convertir objetivos de producto en implementaciones tecnicas solidas.",
+      "Xpress Developer es una agencia de desarrollo de software especializada en construir plataformas profesionales e integrar IA en el flujo de trabajo de tu equipo. Ayudamos a empresas a transformarse de 0 a produccion con herramientas y practicas modernas.",
     details:
-      "Trabajo con Java, Spring Boot, Vue, React, TypeScript y PostgreSQL. Me guio por arquitectura limpia, comunicacion clara y entrega iterativa.",
+      "Nuestro stack incluye TypeScript, React, Vue, Agentes de IA y despliegues en la nube. Trabajamos con arquitectura limpia, comunicacion clara y entrega iterativa.",
     cards: [
       {
-        title: "Lo que entrego",
+        title: "Lo que Entregamos",
         points: [
-          "Entrega end-to-end desde API hasta interfaz",
-          "Sistemas seguros basados en roles",
-          "Arquitectura mantenible con modulos claros",
+          "Plataformas end-to-end desde diseno hasta produccion",
+          "Integracion de IA y automatizacion",
+          "Capacitacion y onboarding de equipos",
         ],
       },
       {
-        title: "Como trabajo",
+        title: "Como Trabajamos",
         points: [
           "Priorizacion orientada al negocio",
-          "Colaboracion con stakeholders y equipos",
-          "Mentalidad de calidad en cada release",
+          "Colaboracion cercana con equipos",
+          "Calidad en cada entrega",
         ],
       },
       {
-        title: "Lo que valoro",
+        title: "Servicios de IA",
         points: [
-          "Claridad por encima de complejidad",
-          "Performance y confiabilidad",
-          "Aprendizaje y mejora continua",
+          "Integracion de IA de 0 a produccion",
+          "Capacitacion y talleres para equipos",
+          "Automatizacion de flujos de trabajo",
         ],
       },
     ],

@@ -11,19 +11,19 @@ const copy = {
   en: {
     title: "Services",
     subtitle:
-      "I help teams transform product ideas into production-ready solutions with speed and quality.",
+      "We help teams transform product ideas into production-ready solutions with speed and quality.",
     cards: [
       {
         title: "Full Stack Development",
         desc: "Web platforms with secure backends, clean APIs, and modern frontends.",
       },
       {
-        title: "Architecture & Refactoring",
-        desc: "Codebase organization, modular design, and maintainability upgrades.",
+        title: "AI Integration",
+        desc: "From 0 to production AI integration for your team's workflow.",
       },
       {
-        title: "UI Engineering",
-        desc: "Professional interfaces focused on clarity, conversion and usability.",
+        title: "Team Training",
+        desc: "Workshops and training to introduce AI into your workplace.",
       },
       {
         title: "Deployment & Operations",
@@ -34,19 +34,19 @@ const copy = {
   es: {
     title: "Servicios",
     subtitle:
-      "Ayudo a equipos a convertir ideas de producto en soluciones listas para produccion con velocidad y calidad.",
+      "Ayudamos a equipos a convertir ideas de producto en soluciones listas para produccion con velocidad y calidad.",
     cards: [
       {
         title: "Desarrollo Full Stack",
         desc: "Plataformas web con backend seguro, APIs limpias y frontend moderno.",
       },
       {
-        title: "Arquitectura y Refactor",
-        desc: "Organizacion de codebase, diseno modular y mejoras de mantenibilidad.",
+        title: "Integracion de IA",
+        desc: "Integracion de IA de 0 a produccion para el flujo de trabajo de tu equipo.",
       },
       {
-        title: "Ingenieria UI",
-        desc: "Interfaces profesionales enfocadas en claridad, conversion y usabilidad.",
+        title: "Capacitacion de Equipos",
+        desc: "Talleres y capacitacion para introducir IA en tu lugar de trabajo.",
       },
       {
         title: "Despliegue y Operacion",

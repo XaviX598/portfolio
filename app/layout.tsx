@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin Xavier Aguilar Velasco | Full Stack Engineer",
+  title: "Xpress Developer | Software Development Agency",
   description:
-    "Professional portfolio of Kevin Xavier Aguilar Velasco, Full Stack Engineer specialized in scalable web platforms with Java, Spring Boot, Vue and React.",
+    "Xpress Developer - Software development agency specializing in professional digital products, AI integration, and team training for enterprise.",
   keywords: [
-    "Full Stack Engineer",
-    "Java",
-    "Spring Boot",
+    "Xpress Developer",
+    "Software Development",
+    "AI Integration",
+    "TypeScript",
     "React",
     "Vue",
-    "TypeScript",
-    "Portfolio",
+    "Agency",
   ],
   openGraph: {
-    title: "Kevin Xavier Aguilar Velasco | Full Stack Engineer",
+    title: "Xpress Developer | Software Development Agency",
     description:
-      "Professional portfolio with selected projects, services, and delivery approach.",
+      "Professional software development agency with AI integration and team training.",
     type: "website",
   },
 };

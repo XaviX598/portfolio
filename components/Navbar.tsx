@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState, type SVGProps } from "react";
 import type { PortfolioLang } from "./HomeClient";
@@ -247,7 +247,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         >
           <div className="flex items-center justify-between gap-3 px-3 sm:px-4 py-2.5">
             <a href="#home" className="flex items-center gap-3 min-w-0">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-teal-400 text-[#052034] text-sm font-bold shadow-lg shadow-cyan-400/30">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black text-sm font-bold shadow-lg shadow-cyan-400/30">
                 KA
               </span>
               <span className="min-w-0">
@@ -268,8 +268,8 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                   onClick={() => setActiveSection(item.href)}
                   className={`relative px-3 py-1.5 rounded-lg text-sm border transition-all duration-250 ${
                     activeSection === item.href
-                      ? "text-cyan-100 border-cyan-300/35 bg-cyan-500/12"
-                      : "text-zinc-300 border-transparent hover:text-cyan-100 hover:border-cyan-300/20 hover:bg-cyan-500/8"
+? "text-white border-white/35 bg-white/12"
+                      : "text-zinc-300 border-transparent hover:text-white hover:border-white/20 hover:bg-white/8"
                   }`}
                 >
                   {item.label}
@@ -523,7 +523,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
         >
           <div className="flex items-center justify-between gap-3 px-3 py-2.5">
             <a href="#home" className="flex items-center gap-2 min-w-0">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-300 to-teal-400 text-[#052034] text-sm font-bold">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-black text-sm font-bold">
                 KA
               </span>
               <span className="text-zinc-100 font-semibold tracking-wide text-sm truncate">

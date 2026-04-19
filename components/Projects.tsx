@@ -312,14 +312,14 @@ export default function Projects({ lang }: ProjectsProps) {
               <button
                 type="button"
                 onClick={goPrev}
-                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-teal-300/50 hover:text-teal-200 transition-colors"
+                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-white/50 hover:text-white transition-colors"
               >
                 ← {t.previous}
               </button>
               <button
                 type="button"
                 onClick={goNext}
-                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-teal-300/50 hover:text-teal-200 transition-colors"
+                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-white/50 hover:text-white transition-colors"
               >
                 {t.next} →
               </button>
@@ -329,14 +329,14 @@ export default function Projects({ lang }: ProjectsProps) {
           <FadeIn key={activeProject.title} delay={0.06} direction="up">
             <article
               data-inview
-              className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
-                activeProject.featured
-                  ? "border-teal-400/45 bg-gradient-to-br from-teal-500/10 via-zinc-900/85 to-zinc-900/70 hover:border-teal-300/70"
-                  : "border-white/10 bg-zinc-900/65 hover:border-teal-400/40"
-              }`}
+className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
+                  activeProject.featured
+                    ? "border-white/45 bg-zinc-900/80 hover:border-white/70"
+                    : "border-white/10 bg-zinc-900/65 hover:border-white/40"
+                }`}
             >
               {activeProject.featured && (
-                <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-teal-300/40 bg-teal-500/15 text-teal-200 mb-4">
+                <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-white/40 bg-white/15 text-white mb-4">
                   {t.featured}
                 </span>
               )}
@@ -416,7 +416,7 @@ export default function Projects({ lang }: ProjectsProps) {
                 aria-label={`Go to project ${index + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-250 ${
                   index === safeCurrentIndex
-                    ? "w-8 bg-teal-300"
+                    ? "w-8 bg-white"
                     : "w-2.5 bg-zinc-600 hover:bg-zinc-400"
                 }`}
               />

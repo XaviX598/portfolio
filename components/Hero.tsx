@@ -10,50 +10,50 @@ type HeroProps = {
 
 const heroCopy = {
   en: {
-    badge: "Open to opportunities",
-    titleA: "I design and ship",
+    badge: "Software Development Agency",
+    titleA: "We build",
     titleB: "professional digital products",
     subtitle:
-      "Full Stack Engineer focused on business-ready platforms, clean architecture and reliable delivery from backend to frontend.",
+      "Xpress Developer - Your partner for scalable platforms, AI integration and team transformation from 0 to production.",
     ctaPrimary: "View Projects",
-    ctaSecondary: "Contact Me",
+    ctaSecondary: "Contact Us",
     highlights: [
-      "Java + Spring Boot",
+      "AI Integration",
       "React / Vue + TypeScript",
-      "PostgreSQL + API Design",
-      "Cloud Deployments (Vercel / Oracle)",
+      "Team Training",
+      "Cloud Deployments",
     ],
-    metricsTitle: "Professional Snapshot",
+    metricsTitle: "Company Snapshot",
     motionTitle: "Motion System",
     motionDesc:
       "Scroll-driven sections, premium hover states and polished CTA transitions.",
     metrics: [
-      { label: "Delivered Projects", value: "8+" },
-      { label: "Core Profile", value: "Full Stack" },
+      { label: "Projects Delivered", value: "15+" },
+      { label: "Core Focus", value: "AI + Development" },
       { label: "Priority", value: "Quality + Business" },
     ],
   },
   es: {
-    badge: "Disponible para oportunidades",
-    titleA: "Diseno y entrego",
+    badge: "Agencia de Desarrollo de Software",
+    titleA: "Construimos",
     titleB: "productos digitales profesionales",
     subtitle:
-      "Ingeniero Full Stack enfocado en plataformas listas para negocio, arquitectura limpia y entrega confiable de backend a frontend.",
+      "Xpress Developer - Tu socio para plataformas escalables, integracion de IA y transformacion de equipos de 0 a produccion.",
     ctaPrimary: "Ver Proyectos",
-    ctaSecondary: "Contactarme",
+    ctaSecondary: "Contactanos",
     highlights: [
-      "Java + Spring Boot",
+      "Integracion de IA",
       "React / Vue + TypeScript",
-      "PostgreSQL + Diseno de APIs",
-      "Despliegues Cloud (Vercel / Oracle)",
+      "Capacitacion de Equipos",
+      "Despliegues Cloud",
     ],
-    metricsTitle: "Resumen Profesional",
+    metricsTitle: "Resumen de la Empresa",
     motionTitle: "Sistema de Motion",
     motionDesc:
       "Secciones guiadas por scroll, hovers premium y transiciones de CTA mas pulidas.",
     metrics: [
-      { label: "Proyectos Entregados", value: "8+" },
-      { label: "Perfil Base", value: "Full Stack" },
+      { label: "Proyectos Entregados", value: "15+" },
+      { label: "Enfoque Principal", value: "IA + Desarrollo" },
       { label: "Prioridad", value: "Calidad + Negocio" },
     ],
   },
@@ -78,16 +78,16 @@ export default function Hero({ lang }: HeroProps) {
         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-10 items-center">
           <div>
             <FadeIn>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-400/30 bg-teal-500/10 text-teal-300 text-xs sm:text-sm uppercase tracking-[0.12em]">
-                <span className="w-2 h-2 rounded-full bg-teal-300 animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 bg-white/10 text-white text-xs sm:text-sm uppercase tracking-[0.12em]">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 {copy.badge}
               </span>
             </FadeIn>
 
             <FadeIn delay={0.08}>
-              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-tight font-bold text-zinc-100">
+              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-tight font-bold text-white">
                 {copy.titleA}{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-300">
+                <span className="text-white">
                   {copy.titleB}
                 </span>
               </h1>
@@ -130,14 +130,14 @@ export default function Hero({ lang }: HeroProps) {
           <FadeIn delay={0.2} direction="left">
             <aside
               data-inview
-              className="rounded-2xl border border-cyan-300/20 bg-[linear-gradient(160deg,rgba(5,15,31,0.95),rgba(6,19,35,0.88))] backdrop-blur-xl p-6 sm:p-7 shadow-[0_14px_46px_rgba(0,0,0,0.4)]"
+              className="rounded-2xl border border-white/20 bg-zinc-950 p-6 sm:p-7"
             >
               <p className="text-zinc-400 text-xs uppercase tracking-[0.16em]">
                 {copy.metricsTitle}
               </p>
 
-              <div className="mt-4 rounded-xl border border-cyan-300/25 bg-gradient-to-r from-cyan-400/10 to-indigo-300/10 p-3">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-cyan-200/85">
+              <div className="mt-4 rounded-xl border border-white/10 bg-zinc-900 p-3">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-white/70">
                   {copy.motionTitle}
                 </p>
                 <p className="mt-1 text-sm text-zinc-300">
@@ -149,9 +149,9 @@ export default function Hero({ lang }: HeroProps) {
                 {copy.metrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className="rounded-xl border border-white/10 bg-zinc-950/70 p-4"
+                    className="rounded-xl border border-white/10 bg-zinc-900 p-4"
                   >
-                    <p className="text-2xl font-semibold text-teal-300">
+                    <p className="text-2xl font-semibold text-white">
                       {metric.value}
                     </p>
                     <p className="text-sm text-zinc-400 mt-1">{metric.label}</p>
@@ -159,25 +159,20 @@ export default function Hero({ lang }: HeroProps) {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-white/10 grid sm:grid-cols-2 gap-3">
-                <MotionButton
-                  href="/CV Xavier Aguilar.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  label="CV (ES)"
-                  variant="secondary"
-                  className="text-center"
-                  block
-                />
-                <MotionButton
-                  href="/Xavier Aguilar ECV.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  label="CV (EN)"
-                  variant="secondary"
-                  className="text-center"
-                  block
-                />
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <p className="text-xs uppercase tracking-[0.16em] text-zinc-500 mb-3">
+                  AI Agents We Work With
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <img src="/claudecode.svg" alt="Claude Code" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/opencode.svg" alt="OpenCode" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/cursor.svg" alt="Cursor" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/windsurf.svg" alt="Windsurf" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/codex.svg" alt="Codex" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/geminicli.svg" alt="Gemini CLI" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/cline.svg" alt="Cline" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                  <img src="/github-copilot.svg" alt="GitHub Copilot" className="w-8 h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                </div>
               </div>
             </aside>
           </FadeIn>
