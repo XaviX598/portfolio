@@ -67,7 +67,6 @@ const projects: Record<PortfolioLang, Project[]> = {
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
-        github: "https://github.com/XaviX598/universal-skills-hub",
       },
     },
     {
@@ -174,7 +173,6 @@ const projects: Record<PortfolioLang, Project[]> = {
       ],
       links: {
         live: "https://universal-skills-hub.vercel.app",
-        github: "https://github.com/XaviX598/universal-skills-hub",
       },
     },
     {
