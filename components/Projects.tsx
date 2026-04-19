@@ -51,22 +51,22 @@ const copy = {
 const projects: Record<PortfolioLang, Project[]> = {
   en: [
     {
-      title: "OpenCode AI Skills Library",
+      title: "AI Agents Guide - Skills Hub",
       summary:
-        "Production-grade library of 100+ specialized AI agent skills for marketing, development, and design automation.",
+        "Production-grade library of 100+ specialized AI agent skills with installation guides and autonomous orchestration.",
       impact:
-        "Built scalable skill architecture with SDD workflow, skill registry, and autonomous agent orchestration.",
+        "Built scalable skill architecture with SDD workflow, skill registry, persistent memory and agent orchestration.",
       featured: true,
       tech: [
         "AI Agents",
         "TypeScript",
-        "OpenCode",
+        "Skill Registry",
         "Task Orchestration",
         "Engram Memory",
         "Persistent Context",
       ],
       links: {
-        github: "https://github.com/XaviX598/opencode-skills",
+        github: "https://github.com/XaviX598/ai-agents-guide",
       },
     },
     {
@@ -157,22 +157,22 @@ const projects: Record<PortfolioLang, Project[]> = {
   ],
   es: [
     {
-      title: "OpenCode AI Skills Library",
+      title: "AI Agents Guide - Skills Hub",
       summary:
-        "Biblioteca de produccion con mas de 100 skills especializados para automatizacion de marketing, desarrollo y diseño.",
+        "Biblioteca de produccion con mas de 100 skills especializados con guías de instalación y orquestación autonoma.",
       impact:
-        "Arquitectura escalable con workflow SDD, registry de skills y orquestacion autonoma de agentes.",
+        "Arquitectura escalable con workflow SDD, registry de skills, memoria persistente y orquestacion de agentes.",
       featured: true,
       tech: [
         "AI Agents",
         "TypeScript",
-        "OpenCode",
+        "Skill Registry",
         "Orquestacion de Tareas",
         "Engram Memory",
         "Contexto Persistente",
       ],
       links: {
-        github: "https://github.com/XaviX598/opencode-skills",
+        github: "https://github.com/XaviX598/ai-agents-guide",
       },
     },
     {
