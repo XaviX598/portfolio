@@ -51,6 +51,25 @@ const copy = {
 const projects: Record<PortfolioLang, Project[]> = {
   en: [
     {
+      title: "OpenCode AI Skills Library",
+      summary:
+        "Production-grade library of 100+ specialized AI agent skills for marketing, development, and design automation.",
+      impact:
+        "Built scalable skill architecture with SDD workflow, skill registry, and autonomous agent orchestration.",
+      featured: true,
+      tech: [
+        "AI Agents",
+        "TypeScript",
+        "OpenCode",
+        "Task Orchestration",
+        "Engram Memory",
+        "Persistent Context",
+      ],
+      links: {
+        github: "https://github.com/XaviX598/opencode-skills",
+      },
+    },
+    {
       title: "AMZ Express - Guided Imports Platform",
       summary:
         "Full stack platform to quote and manage imports from Amazon to Ecuador with role-based dashboards and secure checkout.",
@@ -137,6 +156,25 @@ const projects: Record<PortfolioLang, Project[]> = {
     },
   ],
   es: [
+    {
+      title: "OpenCode AI Skills Library",
+      summary:
+        "Biblioteca de produccion con mas de 100 skills especializados para automatizacion de marketing, desarrollo y diseño.",
+      impact:
+        "Arquitectura escalable con workflow SDD, registry de skills y orquestacion autonoma de agentes.",
+      featured: true,
+      tech: [
+        "AI Agents",
+        "TypeScript",
+        "OpenCode",
+        "Orquestacion de Tareas",
+        "Engram Memory",
+        "Contexto Persistente",
+      ],
+      links: {
+        github: "https://github.com/XaviX598/opencode-skills",
+      },
+    },
     {
       title: "AMZ Express - Plataforma de Importacion Guiada",
       summary:
