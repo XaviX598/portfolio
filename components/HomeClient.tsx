@@ -10,6 +10,7 @@ import Certificates from "./Certificates";
 import About from "./About";
 import Contact from "./Contact";
 import Stats from "./Stats";
+import FAQ from "./FAQ";
 import AmbientBackground from "./AmbientBackground";
 import MotionRuntime from "./MotionRuntime";
 
@@ -34,6 +35,7 @@ export default function HomeClient() {
         <Stats lang={lang} />
         <Services lang={lang} />
         <Projects lang={lang} />
+        <FAQ lang={lang} />
         <About lang={lang} />
         <Experience lang={lang} />
         <Certificates lang={lang} />
