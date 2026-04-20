@@ -200,7 +200,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
 
   const labels = useMemo(
     () => ({
-      role: lang === "en" ? "Full Stack Engineer" : "Ingeniero Full Stack",
+      role: lang === "en" ? "Software Agency" : "Agencia de Software",
       letsTalk: lang === "en" ? "Let's Talk" : "Hablemos",
       pin: lang === "en" ? "Pin sidebar" : "Fijar menu",
       unpin: lang === "en" ? "Unpin sidebar" : "Soltar menu",
@@ -245,19 +245,22 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
               : "border-white/15 bg-[#050c18]/65 backdrop-blur-lg"
           }`}
         >
-          <div className="flex items-center justify-between gap-3 px-3 sm:px-4 py-2.5">
-            <a href="#home" className="flex items-center gap-3 min-w-0">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black text-sm font-bold shadow-lg shadow-white/30">
-                KA
-              </span>
-              <span className="min-w-0">
-                <span className="block text-zinc-100 font-semibold tracking-wide text-sm sm:text-base truncate">
-                  Kevin Xavier Aguilar Velasco
+<div className="flex items-center justify-between gap-3 px-3 sm:px-4 py-2.5">
+            <a href="#home" className="flex items-center gap-3">
+              <img 
+                src="/logo.svg" 
+                alt="Xpress Developer" 
+                className="h-10 w-10 rounded-xl"
+              />
+              <div className="hidden sm:block">
+                <span className="text-white font-bold text-lg">Xpress</span>
+                <span className="text-zinc-400 text-sm ml-1">Developer</span>
+                <span className="block text-[9px] text-zinc-500 mt-0.5">
+                  <span className="inline-block w-16 overflow-hidden whitespace-nowrap border-r border-zinc-500 animate-typing">
+                    Software Development
+                  </span>
                 </span>
-                <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
-                  {labels.role}
-                </span>
-              </span>
+              </div>
             </a>
 
             <div className="hidden xl:flex items-center gap-1 rounded-xl border border-white/10 bg-zinc-900/55 p-1">
@@ -346,20 +349,22 @@ isExpanded ? "w-[292px]" : "w-[94px]"
                   ? "justify-between gap-3 rounded-2xl border border-white/10 bg-[#071424]/72 px-3 py-2.5"
                   : "justify-center"
               }`}
-            >
+>
               {isExpanded && (
-                <a href="#home" className="flex items-center gap-3 min-w-0 flex-1">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-white-300 to-teal-400 text-[#062036] text-[15px] font-bold shadow-[0_10px_26px_rgba(255,255,255,0.35)]">
-                    KA
-                  </span>
-                  <span className="min-w-0 overflow-hidden transition-all duration-250 max-w-[170px] opacity-100 translate-x-0">
-                    <span className="block text-zinc-100 font-semibold tracking-wide text-sm truncate">
-                      Kevin Xavier
+                <a href="#home" className="flex items-center gap-3 flex-1">
+                  <img 
+                    src="/logo.svg" 
+                    alt="Xpress Developer" 
+                    className="h-11 w-11 rounded-2xl"
+                  />
+                  <div className="overflow-hidden transition-all duration-250 max-w-[170px]">
+                    <span className="text-white font-bold text-sm block">Xpress Developer</span>
+                    <span className="text-[9px] text-zinc-500 mt-0.5 block">
+                      <span className="inline-block w-16 overflow-hidden whitespace-nowrap border-r border-zinc-500 animate-typing">
+                        Software Development
+                      </span>
                     </span>
-                    <span className="block text-[11px] text-zinc-400 uppercase tracking-[0.14em] truncate">
-                      {labels.role}
-                    </span>
-                  </span>
+                  </div>
                 </a>
               )}
 
@@ -521,14 +526,14 @@ onClick={() => onLangChange(lang === "en" ? "es" : "en")}
               : "border-white/15 bg-[#050c18]/62 backdrop-blur-lg"
           }`}
         >
-          <div className="flex items-center justify-between gap-3 px-3 py-2.5">
-            <a href="#home" className="flex items-center gap-2 min-w-0">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-black text-sm font-bold">
-                KA
-              </span>
-              <span className="text-zinc-100 font-semibold tracking-wide text-sm truncate">
-                Kevin Xavier
-              </span>
+<div className="flex items-center justify-between gap-3 px-3 py-2.5">
+            <a href="#home" className="flex items-center gap-2">
+              <img 
+                src="/logo.svg" 
+                alt="Xpress Developer" 
+                className="h-9 w-9 rounded-xl"
+              />
+              <span className="text-white font-bold text-sm">Xpress</span>
             </a>
 
             <button
