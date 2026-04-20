@@ -41,9 +41,9 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             className="flex items-center gap-2 text-white hover:text-zinc-300 transition-colors"
           >
 <img 
-              src="/nuevo-logo.svg" 
+              src="/logo-image.png" 
               alt="Xpress" 
-              className="h-10 w-10"
+              className="h-10"
             />
             <svg 
               className={`w-4 h-4 transition-transform ${menuOpen ? "rotate-180" : ""}`} 
