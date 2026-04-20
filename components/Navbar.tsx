@@ -43,7 +43,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
 <img 
               src="/logo-image.png" 
               alt="Xpress" 
-              className="h-10"
+              className="h-9"
             />
             <svg 
               className={`w-4 h-4 transition-transform ${menuOpen ? "rotate-180" : ""}`} 
