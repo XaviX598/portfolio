@@ -41,7 +41,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             className="flex items-center gap-2 text-white hover:text-zinc-300 transition-colors"
           >
             <img 
-              src="/nuevo logo.svg" 
+              src="/nuevo-logo.svg" 
               alt="Xpress" 
               className="h-10 w-10"
             />
