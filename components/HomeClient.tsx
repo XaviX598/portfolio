@@ -6,13 +6,13 @@ import Hero from "./Hero";
 import Projects from "./Projects";
 import Services from "./Services";
 import Experience from "./Experience";
-import Certificates from "./Certificates";
 import About from "./About";
 import Contact from "./Contact";
 import Stats from "./Stats";
 import FAQ from "./FAQ";
 import AmbientBackground from "./AmbientBackground";
 import MotionRuntime from "./MotionRuntime";
+import FloatingButtons from "./FloatingButtons";
 
 export type PortfolioLang = "en" | "es";
 
@@ -30,7 +30,7 @@ export default function HomeClient() {
 
       <Navbar lang={lang} onLangChange={setLang} />
 
-      <main className="site-main pt-28 md:pt-10 relative z-10">
+      <main className="pt-24 relative z-10">
         <Hero lang={lang} />
         <Stats lang={lang} />
         <Services lang={lang} />
@@ -38,9 +38,10 @@ export default function HomeClient() {
         <FAQ lang={lang} />
         <About lang={lang} />
         <Experience lang={lang} />
-        <Certificates lang={lang} />
         <Contact lang={lang} />
       </main>
+
+      <FloatingButtons />
     </>
   );
 }
