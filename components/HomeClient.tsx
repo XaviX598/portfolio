@@ -2,14 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "./Navbar";
-import Hero from "./Hero";
-import Projects from "./Projects";
-import Services from "./Services";
-import Experience from "./Experience";
-import About from "./About";
-import Contact from "./Contact";
-import Stats from "./Stats";
-import FAQ from "./FAQ";
+import EpicPage from "./EpicPage";
 import AmbientBackground from "./AmbientBackground";
 import MotionRuntime from "./MotionRuntime";
 import FloatingButtons from "./FloatingButtons";
@@ -24,24 +17,13 @@ export default function HomeClient() {
       <AmbientBackground />
       <MotionRuntime />
 
-      <div className="progress-container">
-        <div className="progress-bar"></div>
-      </div>
-
       <Navbar lang={lang} onLangChange={setLang} />
 
-      <main className="pt-24 relative z-10">
-        <Hero lang={lang} />
-        <Stats lang={lang} />
-        <Services lang={lang} />
-        <Projects lang={lang} />
-        <FAQ lang={lang} />
-        <About lang={lang} />
-        <Experience lang={lang} />
-        <Contact lang={lang} />
+      <main className="relative">
+        <EpicPage lang={lang} />
       </main>
 
-      <FloatingButtons />
+      <FloatingButtons lang={lang} />
     </>
   );
 }

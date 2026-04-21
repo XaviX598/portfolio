@@ -1,17 +1,32 @@
 "use client";
 
-export default function FloatingButtons() {
+type FloatingButtonsProps = {
+  lang?: "en" | "es";
+};
+
+export default function FloatingButtons({ lang = "en" }: FloatingButtonsProps) {
+  const getLabel = (type: "email" | "whatsapp" | "linkedin") => {
+    const labels = {
+      email: { en: "Send Email", es: "Enviar Email" },
+      whatsapp: { en: "WhatsApp", es: "WhatsApp" },
+      linkedin: { en: "LinkedIn", es: "LinkedIn" },
+    };
+    return labels[type][lang];
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       <a
         href="mailto:kevinjkevps4@gmail.com"
         target="_blank"
         rel="noreferrer"
-        className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-300 hover:bg-white hover:text-black transition-all shadow-lg"
-        aria-label="Send email"
+        className="social-btn group"
+        aria-label={getLabel("email")}
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <span className="social-btn-icon-text">{getLabel("email")}</span>
+        <svg className="w-5 h-5 email-icon" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="2" className="email-rect" />
+          <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="email-path" />
         </svg>
       </a>
 
@@ -19,11 +34,12 @@ export default function FloatingButtons() {
         href="https://wa.me/593985295277"
         target="_blank"
         rel="noreferrer"
-        className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-300 hover:bg-white hover:text-black transition-all shadow-lg"
-        aria-label="WhatsApp"
+        className="social-btn group"
+        aria-label={getLabel("whatsapp")}
       >
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-.83-.55-1.581-1.175-.748-.624-1.25-1.372-1.397-1.603-.148-.232-.017-.366.11-.485.118-.118.273-.298.41-.448.136-.15.182-.248.273-.412.09-.164.045-.307.02-.424-.025-.118-.15-.248-.297-.35-.148-.102-.32-.102-.44-.102h-.44c-.119 0-.32.02-.488.15-.149.119-.572.429-.572 1.075 0 .646.585 1.25 1.227 1.743.748.574 1.697.919 2.227 1.05.176.04.32.063.44.063.12 0 .274-.02.395-.075.12-.054.273-.22.41-.42.137-.199.046-.372.01-.46-.025-.087-.099-.198-.297-.347m-5.421 7.403h-.004a5.473 5.473 0 01-2.807-2.807c-.156-.156-.242-.342-.242-.569v-1.32c0-.312.062-.614.242-.82.18-.223.39-.446.787-.446h1.32c.226 0 .412.063.57.198.157.135.24.335.24.569v1.32c0 .227-.083.434-.24.57-.157.135-.344.24-.57.24-.227 0-.434-.062-.57-.198-.136-.135-.24-.344-.24-.57v-.804c0-.226.104-.434.24-.57.136-.135.343-.24.57-.24.226 0 .412.105.57.24.157.135.24.343.24.57v.804c0 .227-.083.413-.24.57-.157.134-.344.198-.57.198M12 2.5C6.477 2.5 2 6.977 2 12.5c0 .354.028.702.082 1.042l-.428 1.635a.5.5 0 00.636.636l1.635-.428A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2.5 12 2.5"/>
+        <span className="social-btn-icon-text">{getLabel("whatsapp")}</span>
+        <svg className="w-5 h-5 whatsapp-icon" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
       </a>
 
@@ -31,11 +47,12 @@ export default function FloatingButtons() {
         href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb"
         target="_blank"
         rel="noreferrer"
-        className="w-12 h-12 flex items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-300 hover:bg-white hover:text-black transition-all shadow-lg"
-        aria-label="LinkedIn"
+        className="social-btn group"
+        aria-label={getLabel("linkedin")}
       >
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.771v20.458C0 23.227.792 24 1.771 24h20.449C23.2 24 24 23.227 24 22.229V1.771C24 .774 23.2 0 22.222 0h.003z"/>
+        <span className="social-btn-icon-text">{getLabel("linkedin")}</span>
+        <svg className="w-5 h-5 linkedin-icon" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.771v20.458C0 23.227.792 24 1.771 24h20.449C23.2 24 24 23.227 24 22.229V1.771C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
       </a>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
 
@@ -7,84 +8,92 @@ type ServicesProps = {
   lang: PortfolioLang;
 };
 
-const copy = {
-  en: {
-    title: "Services",
-    subtitle:
-      "We help teams transform product ideas into production-ready solutions with speed and quality.",
-    cards: [
-      {
-        title: "Full Stack Development",
-        desc: "Web platforms with secure backends, clean APIs, and modern frontends.",
-      },
-      {
-        title: "AI Integration",
-        desc: "From 0 to production AI integration for your team's workflow.",
-      },
-      {
-        title: "Team Training",
-        desc: "Workshops and training to introduce AI into your workplace.",
-      },
-      {
-        title: "Deployment & Operations",
-        desc: "From local setup to cloud rollout with stable and repeatable workflows.",
-      },
-    ],
-  },
-  es: {
-    title: "Servicios",
-    subtitle:
-      "Ayudamos a equipos a convertir ideas de producto en soluciones listas para produccion con velocidad y calidad.",
-    cards: [
-      {
-        title: "Desarrollo Full Stack",
-        desc: "Plataformas web con backend seguro, APIs limpias y frontend moderno.",
-      },
-      {
-        title: "Integracion de IA",
-        desc: "Integracion de IA de 0 a produccion para el flujo de trabajo de tu equipo.",
-      },
-      {
-        title: "Capacitacion de Equipos",
-        desc: "Talleres y capacitacion para introducir IA en tu lugar de trabajo.",
-      },
-      {
-        title: "Despliegue y Operacion",
-        desc: "Desde setup local hasta cloud rollout con flujos estables y repetibles.",
-      },
-    ],
-  },
+const servicesData = {
+  en: [
+    {
+      title: "Full Stack Development",
+      desc: "Web platforms with secure backend, clean APIs and modern frontend.",
+      icon: "⚛️",
+    },
+    {
+      title: "AI Integration",
+      desc: "AI integration from 0 to production for your team's workflow.",
+      icon: "🤖",
+    },
+    {
+      title: "Team Training",
+      desc: "Workshops and training to introduce AI and modern practices.",
+      icon: "👥",
+    },
+    {
+      title: "Cloud Deployment",
+      desc: "From local setup to cloud with stable and scalable flows.",
+      icon: "☁️",
+    },
+  ],
+  es: [
+    {
+      title: "Desarrollo Full Stack",
+      desc: "Plataformas web con backend seguro, APIs limpias y frontend moderno.",
+      icon: "⚛️",
+    },
+    {
+      title: "Integración de IA",
+      desc: "Integración de IA de 0 a producción para el flujo de trabajo de tu equipo.",
+      icon: "🤖",
+    },
+    {
+      title: "Capacitación de Equipos",
+      desc: "Talleres y capacitación para introducir IA y prácticas modernas.",
+      icon: "👥",
+    },
+    {
+      title: "Despliegue Cloud",
+      desc: "Desde setup local hasta cloud con flujos estables y escalables.",
+      icon: "☁️",
+    },
+  ],
 };
 
 export default function Services({ lang }: ServicesProps) {
-  const t = copy[lang];
+  const t = servicesData[lang];
 
   return (
-    <section id="services" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/8 blur-3xl" />
-      </div>
+    <section id="services" className="w-full h-full flex items-center py-8 px-6 relative">
+      {/* Fondo minimalista */}
+      <div className="absolute inset-0 bg-zinc-950" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Header */}
         <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">{t.title}</h2>
-          <p className="mt-3 text-zinc-400 max-w-3xl">{t.subtitle}</p>
+          <div className="mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+              Servicios
+            </h2>
+          </div>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-          {t.cards.map((service, index) => (
-            <FadeIn key={service.title} delay={index * 0.07}>
-              <article
-                data-inview
-                className="h-full rounded-2xl border border-white/10 bg-zinc-900/60 p-6 hover:border-teal-400/40 transition-colors"
+        {/* Grid de servicios - 2x2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {t.map((service, idx) => (
+            <FadeIn key={service.title} delay={idx * 0.1}>
+              <motion.div
+                className="group p-6 md:p-8 rounded-2xl border border-white/10 bg-zinc-900/50 hover:border-teal-500/30 hover:bg-teal-500/5 transition-all cursor-pointer"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
               >
-                <h3 className="text-zinc-100 font-semibold text-lg leading-snug">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-zinc-400 text-sm leading-relaxed">
-                  {service.desc}
-                </p>
-              </article>
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">{service.icon}</span>
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 text-zinc-400 leading-relaxed">
+                      {service.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </FadeIn>
           ))}
         </div>

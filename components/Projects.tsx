@@ -1,427 +1,190 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import FadeIn from "./FadeIn";
+import { motion } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
 import MotionButton from "./MotionButton";
-
-type Project = {
-  title: string;
-  summary: string;
-  impact: string;
-  tech: string[];
-  featured?: boolean;
-  links: {
-    live?: string;
-    github?: string;
-    backend?: string;
-    android?: string;
-  };
-};
 
 type ProjectsProps = {
   lang: PortfolioLang;
 };
 
-const copy = {
-  en: {
-    title: "Selected Projects",
-    subtitle:
-      "High-value projects focused on business outcomes, technical quality and production delivery.",
-    featured: "Featured",
-    impact: "Impact",
-    live: "Visit Site",
-    previous: "Previous",
-    next: "Next",
-    showing: "Showing",
-  },
-  es: {
-    title: "Proyectos Seleccionados",
-    subtitle:
-      "Proyectos de alto valor enfocados en resultados de negocio, calidad tecnica y entrega en produccion.",
-    featured: "Destacado",
-    impact: "Impacto",
-    live: "Visitar",
-    previous: "Anterior",
-    next: "Siguiente",
-    showing: "Mostrando",
-  },
-};
-
-const projects: Record<PortfolioLang, Project[]> = {
+const projectsList = {
   en: [
     {
       title: "Universal Skills Hub",
-      summary:
-        "Universal hub with 85,000+ AI agent skills catalog from Skillful.sh, curated skills, and installation guides for OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue, GitHub Copilot.",
-      impact:
-        "Comprehensive skill platform with SDD workflow, skill registry, and task orchestration for any AI agent.",
-      featured: true,
-      tech: [
-        "85K+ Skills",
-        "TypeScript",
-        "Skill Registry",
-        "Next.js",
-        "Prisma",
-        "9 AI Agents",
-      ],
-      links: {
-        live: "https://universal-skills-hub.vercel.app",
-      },
+      summary: "Universal hub with 85,000+ AI skills for agents like OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue and GitHub Copilot.",
+      tech: ["Next.js", "TypeScript", "Prisma"],
+      links: { live: "https://universal-skills-hub.vercel.app" },
     },
     {
-      title: "AMZ Express - Guided Imports Platform",
-      summary:
-        "Full stack platform to quote and manage imports from Amazon to Ecuador with role-based dashboards and secure checkout.",
-      impact:
-        "Implemented core business flows: calculator, checkout, order tracking and admin/superadmin controls.",
-      featured: true,
-      tech: [
-        "Vue 3",
-        "TypeScript",
-        "Spring Boot",
-        "Java",
-        "PostgreSQL",
-        "JWT",
-        "Vercel",
-        "Oracle Cloud",
-      ],
-      links: {
-        live: "https://amz-express.vercel.app",
-        github: "https://github.com/XaviX598/amz_express",
-      },
+      title: "AMZ Express",
+      summary: "Full stack platform to quote Amazon imports to Ecuador with role-based panels and secure checkout.",
+      tech: ["Vue 3", "Spring Boot", "PostgreSQL"],
+      links: { live: "https://amz-express.vercel.app", github: "https://github.com/XaviX598/amz_express" },
     },
     {
-      title: "Xpress Ecommerce - E-commerce Prototype",
-      summary:
-        "Store prototype with product catalog, cart, checkout simulation and order history persistence.",
-      impact:
-        "Delivered a complete commerce flow with reusable front-end patterns and maintainable structure.",
-      tech: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-      ],
-      links: {
-        live: "https://xpress-ecommerce.vercel.app",
-        github: "https://github.com/XaviX598/xpress-ecommerce",
-      },
+      title: "Xpress Ecommerce",
+      summary: "Online store with catalog, cart, checkout simulation and order history.",
+      tech: ["Next.js", "React", "Tailwind"],
+      links: { live: "https://xpress-ecommerce.vercel.app", github: "https://github.com/XaviX598/xpress-ecommerce" },
     },
     {
-      title: "XpressConvert - File Conversion Suite",
-      summary:
-        "Web application with multiple conversion tools for images, PDF, docs, audio and video.",
-      impact:
-        "Built an all-in-one utility with modular UI and efficient client-side processing flows.",
-      tech: ["React", "Vite", "TypeScript", "pdf-lib", "docx"],
-      links: {
-        live: "https://xpressconvert.vercel.app",
-        github: "https://github.com/XaviX598/Xpressconvert",
-      },
+      title: "XpressConvert",
+      summary: "Conversion suite for images, PDF, documents, audio and video.",
+      tech: ["React", "Vite", "TypeScript"],
+      links: { live: "https://xpressconvert.vercel.app", github: "https://github.com/XaviX598/Xpressconvert" },
     },
     {
-      title: "Restaurant Landing Page",
-      summary:
-        "High-impact restaurant landing page with section-based storytelling and interaction-focused motion design.",
-      impact:
-        "Built a conversion-oriented single-page experience using structured sections, animation timing and clear CTA hierarchy.",
-      tech: ["React", "Framer Motion", "CSS", "UI Animation"],
-      links: {
-        live: "https://project-restaurante-delta.vercel.app",
-        github: "https://github.com/XaviX598/project-restaurant",
-      },
+      title: "Restaurant Landing",
+      summary: "High-impact landing page for restaurant with interaction animations.",
+      tech: ["React", "Framer Motion"],
+      links: { live: "https://project-restaurante-delta.vercel.app", github: "https://github.com/XaviX598/project-restaurant" },
     },
     {
-      title: "Athletics Management System (Degree Project)",
-      summary:
-        "End-to-end ecosystem composed of web app, backend API and Android app for athletics operations.",
-      impact:
-        "Coordinated multi-platform delivery with cloud deployment and consistent domain model.",
-      tech: [
-        "Java",
-        "Spring Boot",
-        "PostgreSQL",
-        "Vue",
-        "Android",
-        "Azure",
-      ],
-      links: {
-        live: "https://frontend-atletismo.vercel.app",
-        backend: "https://github.com/itsmikenakanodev/backend_atletismo",
-        android: "https://github.com/itsmikenakanodev/android_atletismo",
-        github: "https://github.com/itsmikenakanodev/frontend_atletismo",
-      },
+      title: "Athletics System",
+      summary: "Complete ecosystem: web app, backend API and Android app for sports management.",
+      tech: ["Java", "Spring Boot", "Android"],
+      links: { live: "https://frontend-atletismo.vercel.app" },
     },
   ],
   es: [
     {
       title: "Universal Skills Hub",
-      summary:
-        "Hub universal con catalogo de mas de 85,000 skills de IA desde Skillful.sh, skills curados, y guías de instalación para OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue, GitHub Copilot.",
-      impact:
-        "Plataforma completa con workflow SDD, registry de skills y orquestación para cualquier agente de IA.",
-      featured: true,
-      tech: [
-        "85K+ Skills",
-        "TypeScript",
-        "Skill Registry",
-        "Next.js",
-        "Prisma",
-        "9 Agentes IA",
-      ],
-      links: {
-        live: "https://universal-skills-hub.vercel.app",
-      },
+      summary: "Hub universal con 85,000+ skills de IA para agentes como OpenCode, Claude Code, Cursor, Windsurf, Codex, Gemini CLI, Cline, Continue y GitHub Copilot.",
+      tech: ["Next.js", "TypeScript", "Prisma"],
+      links: { live: "https://universal-skills-hub.vercel.app" },
     },
     {
-      title: "AMZ Express - Plataforma de Importacion Guiada",
-      summary:
-        "Plataforma full stack para cotizar y gestionar importaciones desde Amazon a Ecuador con paneles por rol y checkout seguro.",
-      impact:
-        "Implemente flujos de negocio clave: calculadora, checkout, tracking y controles admin/superadmin.",
-      featured: true,
-      tech: [
-        "Vue 3",
-        "TypeScript",
-        "Spring Boot",
-        "Java",
-        "PostgreSQL",
-        "JWT",
-        "Vercel",
-        "Oracle Cloud",
-      ],
-      links: {
-        live: "https://amz-express.vercel.app",
-        github: "https://github.com/XaviX598/amz_express",
-      },
+      title: "AMZ Express",
+      summary: "Plataforma full stack para cotizar importaciones desde Amazon a Ecuador con paneles por rol y checkout seguro.",
+      tech: ["Vue 3", "Spring Boot", "PostgreSQL"],
+      links: { live: "https://amz-express.vercel.app", github: "https://github.com/XaviX598/amz_express" },
     },
     {
-      title: "Xpress Ecommerce - Prototipo de Tienda Online",
-      summary:
-        "Prototipo de tienda con catalogo, carrito, simulacion de checkout e historial de pedidos.",
-      impact:
-        "Entregue un flujo de comercio completo con patrones reutilizables y estructura mantenible.",
-      tech: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-      ],
-      links: {
-        live: "https://xpress-ecommerce.vercel.app",
-        github: "https://github.com/XaviX598/xpress-ecommerce",
-      },
+      title: "Xpress Ecommerce",
+      summary: "Tienda online con catálogo, carrito, simulación de checkout e historial de pedidos.",
+      tech: ["Next.js", "React", "Tailwind"],
+      links: { live: "https://xpress-ecommerce.vercel.app", github: "https://github.com/XaviX598/xpress-ecommerce" },
     },
     {
-      title: "XpressConvert - Suite de Conversion de Archivos",
-      summary:
-        "Aplicacion web con multiples herramientas para conversion de imagenes, PDF, documentos, audio y video.",
-      impact:
-        "Construccion de utilitario integral con UI modular y procesamiento eficiente en cliente.",
-      tech: ["React", "Vite", "TypeScript", "pdf-lib", "docx"],
-      links: {
-        live: "https://xpressconvert.vercel.app",
-        github: "https://github.com/XaviX598/Xpressconvert",
-      },
+      title: "XpressConvert",
+      summary: "Suite de conversión para imágenes, PDF, documentos, audio y video.",
+      tech: ["React", "Vite", "TypeScript"],
+      links: { live: "https://xpressconvert.vercel.app", github: "https://github.com/XaviX598/Xpressconvert" },
     },
     {
-      title: "Landing Page de Restaurante",
-      summary:
-        "Landing page de alto impacto para restaurante, con narrativa por secciones y animaciones orientadas a interaccion.",
-      impact:
-        "Construi una experiencia single-page enfocada en conversion con jerarquia visual clara, timing de animaciones y CTAs bien definidos.",
-      tech: ["React", "Framer Motion", "CSS", "Animaciones UI"],
-      links: {
-        live: "https://project-restaurante-delta.vercel.app",
-        github: "https://github.com/XaviX598/project-restaurant",
-      },
+      title: "Restaurant Landing",
+      summary: "Landing page de alto impacto para restaurante con animaciones interacción.",
+      tech: ["React", "Framer Motion"],
+      links: { live: "https://project-restaurante-delta.vercel.app", github: "https://github.com/XaviX598/project-restaurant" },
     },
     {
-      title: "Sistema de Gestion de Atletismo (Titulacion)",
-      summary:
-        "Ecosistema completo con app web, API backend y app Android para gestion deportiva.",
-      impact:
-        "Coordine entrega multi-plataforma con despliegue cloud y modelo de dominio consistente.",
-      tech: [
-        "Java",
-        "Spring Boot",
-        "PostgreSQL",
-        "Vue",
-        "Android",
-        "Azure",
-      ],
-      links: {
-        live: "https://frontend-atletismo.vercel.app",
-        backend: "https://github.com/itsmikenakanodev/backend_atletismo",
-        android: "https://github.com/itsmikenakanodev/android_atletismo",
-        github: "https://github.com/itsmikenakanodev/frontend_atletismo",
-      },
+      title: "Athletics System",
+      summary: "Ecosistema completo: app web, API backend y app Android para gestión deportiva.",
+      tech: ["Java", "Spring Boot", "Android"],
+      links: { live: "https://frontend-atletismo.vercel.app" },
     },
   ],
 };
 
 export default function Projects({ lang }: ProjectsProps) {
-  const t = copy[lang];
-  const selected = projects[lang];
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const totalProjects = selected.length;
-  const safeCurrentIndex =
-    totalProjects === 0 ? 0 : ((currentIndex % totalProjects) + totalProjects) % totalProjects;
-
-  const activeProject = useMemo(
-    () => selected[safeCurrentIndex] ?? selected[0],
-    [selected, safeCurrentIndex]
-  );
-
-  const goPrev = () => {
-    if (totalProjects === 0) return;
-    setCurrentIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
-  };
-
-  const goNext = () => {
-    if (totalProjects === 0) return;
-    setCurrentIndex((prev) => (prev + 1) % totalProjects);
-  };
+  const projects = projectsList[lang];
+  const t = {
+    en: { title: "Projects", visit: "Visit", code: "Code", hoverTip: "Hover over each project for details" },
+    es: { title: "Proyectos", visit: "Visitar", code: "Código", hoverTip: "Pasa el mouse sobre cada proyecto para ver detalles" },
+  }[lang];
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-zinc-900/40 to-transparent" />
+    <section id="projects" className="w-full py-12 px-4 md:px-6 relative overflow-hidden">
+      {/* Fondo minimalista */}
+      <div className="absolute inset-0 bg-zinc-950" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-bold text-zinc-100">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Header */}
+        <div className="mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             {t.title}
           </h2>
-          <p className="mt-3 text-zinc-400 max-w-3xl">{t.subtitle}</p>
-        </FadeIn>
+          <p className="mt-1 text-zinc-500 text-sm">
+            {t.hoverTip}
+          </p>
+        </div>
 
-        <div className="mt-10">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <p className="text-sm text-zinc-400">
-              {t.showing}{" "}
-              <span className="text-zinc-200 font-semibold">{safeCurrentIndex + 1}</span>
-              {" / "}
-              <span className="text-zinc-200 font-semibold">{totalProjects}</span>
-            </p>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={goPrev}
-                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-white/50 hover:text-white transition-colors"
-              >
-                ← {t.previous}
-              </button>
-              <button
-                type="button"
-                onClick={goNext}
-                className="rounded-lg border border-white/15 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 hover:border-white/50 hover:text-white transition-colors"
-              >
-                {t.next} →
-              </button>
-            </div>
-          </div>
-
-          <FadeIn key={activeProject.title} delay={0.06} direction="up">
-            <article
-              data-inview
-className={`group h-full rounded-2xl border p-6 transition-all duration-300 ${
-                  activeProject.featured
-                    ? "border-white/45 bg-zinc-900/80 hover:border-white/70"
-                    : "border-white/10 bg-zinc-900/65 hover:border-white/40"
-                }`}
+        {/* Grid de proyectos - más compactos */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((project, idx) => (
+            <motion.div
+              key={project.title}
+              className="group relative h-56 rounded-xl overflow-hidden cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ scale: 1.02 }}
             >
-              {activeProject.featured && (
-                <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.14em] border border-white/40 bg-white/15 text-white mb-4">
-                  {t.featured}
-                </span>
-              )}
+              {/* Placeholder de imagen */}
+              <div className="absolute inset-0 bg-zinc-900 border border-white/10 group-hover:border-teal-400/30 transition-colors duration-300">
+                {/* Grid decorativo interno */}
+                <div className="w-full h-full grid grid-cols-2 grid-rows-2 opacity-20">
+                  <div className="border border-white/5" />
+                  <div className="border border-white/5" />
+                  <div className="border border-white/5" />
+                  <div className="border border-white/5" />
+                </div>
+                
+                {/* Icono placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
+                    <svg className="w-7 h-7 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
 
-              <h3 className="text-xl font-semibold text-zinc-100">
-                {activeProject.title}
-              </h3>
-              <p className="mt-3 text-zinc-400 leading-relaxed">{activeProject.summary}</p>
+                {/* Texto siempre visible */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-base font-semibold text-white group-hover:text-teal-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {project.tech.slice(0, 3).map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="text-xs px-1.5 py-0.5 rounded bg-white/10 text-zinc-400"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-              <div className="mt-5 p-4 rounded-xl border border-white/10 bg-zinc-950/60">
-                <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
-                  {t.impact}
-                </p>
-                <p className="mt-2 text-zinc-300 text-sm leading-relaxed">
-                  {activeProject.impact}
-                </p>
+                {/* Overlay con descripción - aparece en hover */}
+                <div className="absolute inset-0 bg-zinc-950/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-4">
+                  <p className="text-zinc-300 text-xs leading-relaxed">
+                    {project.summary}
+                  </p>
+                  
+                  <div className="mt-4 flex gap-2">
+                    {project.links.live && (
+                      <MotionButton 
+                        href={project.links.live} 
+                        target="_blank" 
+                        label={t.visit} 
+                        variant="primary" 
+                      />
+                    )}
+                    {project.links.github && (
+                      <MotionButton 
+                        href={project.links.github} 
+                        target="_blank" 
+                        label={t.code} 
+                        variant="secondary" 
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {activeProject.tech.map((stack) => (
-                  <span
-                    key={stack}
-                    className="text-xs px-3 py-1.5 rounded-lg border border-white/10 bg-zinc-900 text-zinc-300"
-                  >
-                    {stack}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                {activeProject.links.live && (
-                  <MotionButton
-                    href={activeProject.links.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    label={t.live}
-                    variant="secondary"
-                  />
-                )}
-                {activeProject.links.github && (
-                  <MotionButton
-                    href={activeProject.links.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    label="GitHub"
-                    variant="secondary"
-                  />
-                )}
-                {activeProject.links.backend && (
-                  <MotionButton
-                    href={activeProject.links.backend}
-                    target="_blank"
-                    rel="noreferrer"
-                    label="Backend"
-                    variant="secondary"
-                  />
-                )}
-                {activeProject.links.android && (
-                  <MotionButton
-                    href={activeProject.links.android}
-                    target="_blank"
-                    rel="noreferrer"
-                    label="Android"
-                    variant="secondary"
-                  />
-                )}
-              </div>
-            </article>
-          </FadeIn>
-
-          <div className="mt-5 flex items-center justify-center gap-2">
-            {selected.map((project, index) => (
-              <button
-                key={project.title}
-                type="button"
-                onClick={() => setCurrentIndex(index)}
-                aria-label={`Go to project ${index + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-250 ${
-                  index === safeCurrentIndex
-                    ? "w-8 bg-white"
-                    : "w-2.5 bg-zinc-600 hover:bg-zinc-400"
-                }`}
-              />
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
