@@ -43,16 +43,6 @@ const heroCopy = {
   },
 };
 
-// Animación flotante para los logos
-const floatAnimation = {
-  y: [-8, 8, -8],
-  transition: {
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut",
-  },
-};
-
 export default function Hero({ lang }: HeroProps) {
   const copy = heroCopy[lang];
 
@@ -115,9 +105,11 @@ export default function Hero({ lang }: HeroProps) {
                 <motion.div
                   key={logo.name}
                   className="relative group"
-                  animate={floatAnimation}
+                  animate={{ y: [-6, 6, -6] }}
                   transition={{
-                    ...floatAnimation.transition,
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                     delay: idx * 0.15,
                   }}
                   whileHover={{ scale: 1.15, y: 0 }}
