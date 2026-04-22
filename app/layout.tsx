@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Xpress Developer | Software Development Agency",
   description:
     "Xpress Developer - Software development agency specializing in professional digital products, AI integration, and team training for enterprise.",
+  icons: {
+    icon: "/logo pestaña.png",
+  },
   keywords: [
     "Xpress Developer",
     "Software Development",

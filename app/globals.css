@@ -784,24 +784,24 @@ html.motion-runtime-ready [data-inview].is-inview {
   overflow: hidden;
 }
 
-/* Navegación lateral mejorada */
+/* Navegación lateral mejorada - Minimal y elegante */
 .epic-nav {
   position: fixed;
-  right: 20px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .epic-nav-dot {
-  width: 6px;
-  height: 24px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.15);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -809,76 +809,65 @@ html.motion-runtime-ready [data-inview].is-inview {
   position: relative;
 }
 
-.epic-nav-dot::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background: white;
-  border-radius: 50%;
-  transition: all 0.4s ease;
-  opacity: 0;
-}
-
 .epic-nav-dot:hover {
-  background: rgba(255, 255, 255, 0.35);
-  height: 32px;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.3);
 }
 
 .epic-nav-dot.active {
-  background: rgba(255, 255, 255, 0.9);
-  height: 36px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  background: #fff;
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
-/* Tooltip para cada dot */
+/* Tooltip elegante */
 .epic-nav-dot::after {
   content: attr(data-label);
   position: absolute;
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
-  margin-right: 12px;
-  padding: 6px 12px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
+  margin-right: 16px;
+  padding: 8px 14px;
+  background: rgba(10, 10, 10, 0.95);
+  border-radius: 8px;
   color: white;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.02em;
 }
 
 .epic-nav-dot:hover::after {
   opacity: 1;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
-.epic-nav-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+/* Liquid glass utility */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
   border: none;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  padding: 0;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
-.epic-nav-dot:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(1.2);
-}
-
-.epic-nav-dot.active {
-  background: #fff;
-  transform: scale(1.4);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

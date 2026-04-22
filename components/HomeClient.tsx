@@ -6,6 +6,7 @@ import EpicPage from "./EpicPage";
 import AmbientBackground from "./AmbientBackground";
 import MotionRuntime from "./MotionRuntime";
 import FloatingButtons from "./FloatingButtons";
+import Spotlight from "./Spotlight";
 
 export type PortfolioLang = "en" | "es";
 
@@ -14,6 +15,7 @@ export default function HomeClient() {
 
   return (
     <>
+      <Spotlight />
       <AmbientBackground />
       <MotionRuntime />
 

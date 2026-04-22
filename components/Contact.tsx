@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
@@ -57,7 +57,7 @@ export default function Contact({ lang }: ContactProps) {
   const t = copy[lang];
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="w-full h-full min-h-screen relative flex items-center">
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">

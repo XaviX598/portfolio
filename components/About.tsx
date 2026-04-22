@@ -84,7 +84,7 @@ export default function About({ lang }: AboutProps) {
   const t = copy[lang];
 
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="w-full h-full min-h-screen relative flex items-center">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-0 top-1/3 w-72 h-72 bg-teal-500/10 blur-3xl" />
         <div className="absolute right-0 bottom-0 w-72 h-72 bg-indigo-500/10 blur-3xl" />
