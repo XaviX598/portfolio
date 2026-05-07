@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import FadeIn from "./FadeIn";
@@ -46,18 +46,18 @@ const copy = {
     title: "Construyamos algo de valor",
     subtitle:
       "Buscas un Ingeniero Full Stack para tu equipo o proyecto? Estoy abierto a oportunidades y colaboraciones.",
-    formTitle: "Contáctanos",
-    formSubtitle: "Escríbenos y te respondemos pronto",
-    contactMethod: "¿Cómo quieres que te contactemos?",
-    phone: "Teléfono",
+    formTitle: "ContÃ¡ctanos",
+    formSubtitle: "EscrÃ­benos y te respondemos pronto",
+    contactMethod: "Â¿CÃ³mo quieres que te contactemos?",
+    phone: "TelÃ©fono",
     email: "Correo",
-    phoneLabel: "Tu número de WhatsApp",
-    emailLabel: "Tu correo electrónico",
+    phoneLabel: "Tu nÃºmero de WhatsApp",
+    emailLabel: "Tu correo electrÃ³nico",
     nameLabel: "Tu nombre",
-    messageLabel: "¿En qué podemos ayudarte?",
+    messageLabel: "Â¿En quÃ© podemos ayudarte?",
     submit: "Enviar Mensaje",
     sending: "Enviando...",
-    success: "¡Mensaje enviado! Te contactaremos pronto.",
+    success: "Â¡Mensaje enviado! Te contactaremos pronto.",
     ctaEmail: "Enviar Email",
     ctaWhatsApp: "WhatsApp",
     ctaLinkedIn: "LinkedIn",
@@ -212,7 +212,7 @@ export default function Contact({ lang }: ContactProps) {
                     name="message"
                     required
                     rows={3}
-                    placeholder="Cuéntanos sobre tu proyecto..."
+                    placeholder="CuÃ©ntanos sobre tu proyecto..."
                     className="w-full px-4 py-3 rounded-xl bg-zinc-800/50 border border-white/10 text-white placeholder-zinc-500 focus:border-teal-500 focus:outline-none transition-colors resize-none"
                   />
                 </div>
@@ -231,7 +231,7 @@ export default function Contact({ lang }: ContactProps) {
 
         <FadeIn delay={0.26}>
           <footer className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-zinc-500">
-            © {new Date().getFullYear()} Kevin Xavier Aguilar Velasco. All rights
+            Â© {new Date().getFullYear()} Kevin Xavier Aguilar Velasco. All rights
             reserved.
           </footer>
         </FadeIn>
@@ -239,4 +239,5 @@ export default function Contact({ lang }: ContactProps) {
     </section>
   );
 }
+
 

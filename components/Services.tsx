@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,56 +14,56 @@ const servicesData = {
       title: "APIs & Backend",
       shortDesc: "Robust and scalable backend",
       desc: "Secure REST and GraphQL APIs with Node.js, Express, Spring Boot. JWT auth, rate limiting, Swagger documentation.",
-      icon: "🔌",
+      icon: "ðŸ”Œ",
       borderColor: "border-white/10",
     },
     {
       title: "Mobile Apps",
       shortDesc: "Android and iOS apps",
       desc: "Native apps for Android and iOS with React Native and Kotlin. Google Play and App Store ready.",
-      icon: "📱",
+      icon: "ðŸ“±",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
       shortDesc: "High-conversion pages",
       desc: "High-impact landing pages with GSAP animations. Optimized for SEO and conversion rates.",
-      icon: "🎯",
+      icon: "ðŸŽ¯",
       borderColor: "border-white/10",
     },
     {
       title: "Websites",
       shortDesc: "Professional websites",
       desc: "Custom websites and web pages. Modern design, SEO optimized, fast loading.",
-      icon: "🌐",
+      icon: "ðŸŒ",
       borderColor: "border-white/10",
     },
     {
       title: "Enterprise Systems",
       shortDesc: "Internal management software",
       desc: "Custom software: inventory, users, reports, dashboards, access control and permissions.",
-      icon: "🏢",
+      icon: "ðŸ¢",
       borderColor: "border-white/10",
     },
     {
       title: "AI & Chatbots",
       shortDesc: "Intelligence artificial",
       desc: "Chat IA, chatbots with Chat GPT, WhatsApp integration, 24/7 customer support automation.",
-      icon: "🤖",
+      icon: "ðŸ¤–",
       borderColor: "border-white/10",
     },
     {
       title: "Full Systems",
       shortDesc: "End-to-end solutions",
       desc: "Everything: frontend, backend, database, auth, payments, emails and deployment. One complete solution.",
-      icon: "🔧",
+      icon: "ðŸ”§",
       borderColor: "border-white/10",
     },
     {
       title: "Maintenance",
       shortDesc: "Ongoing support",
       desc: "Bug fixes, security updates, monitoring, backups and continuous improvements.",
-      icon: "🛠️",
+      icon: "ðŸ› ï¸",
       borderColor: "border-white/10",
     },
   ],
@@ -71,63 +71,63 @@ const servicesData = {
     {
       title: "APIs & Backend",
       shortDesc: "Backend robusto y escalable",
-      desc: "APIs REST y GraphQL seguras con Node.js, Express, Spring Boot. Autenticación JWT, rate limiting, documentación Swagger.",
-      icon: "🔌",
+      desc: "APIs REST y GraphQL seguras con Node.js, Express, Spring Boot. AutenticaciÃ³n JWT, rate limiting, documentaciÃ³n Swagger.",
+      icon: "ðŸ”Œ",
       borderColor: "border-white/10",
     },
     {
-      title: "Apps Móviles",
+      title: "Apps MÃ³viles",
       shortDesc: "Apps para Android y iOS",
       desc: "Apps nativas para Android y iOS con React Native y Kotlin. Listas para Google Play y App Store.",
-      icon: "📱",
+      icon: "ðŸ“±",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
-      shortDesc: "Páginas de conversión",
-      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversión.",
-      icon: "🎯",
+      shortDesc: "PÃ¡ginas de conversiÃ³n",
+      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversiÃ³n.",
+      icon: "ðŸŽ¯",
       borderColor: "border-white/10",
     },
     {
-      title: "Páginas Web",
+      title: "PÃ¡ginas Web",
       shortDesc: "Sitios web profesionales",
-      desc: "Páginas web y sitios web personalizados. Diseño moderno, optimizados SEO, carga rápida.",
-      icon: "🌐",
+      desc: "PÃ¡ginas web y sitios web personalizados. DiseÃ±o moderno, optimizados SEO, carga rÃ¡pida.",
+      icon: "ðŸŒ",
       borderColor: "border-white/10",
     },
     {
       title: "Sistemas Empresariales",
-      shortDesc: "Software de gestión interna",
+      shortDesc: "Software de gestiÃ³n interna",
       desc: "Software a medida: inventarios, usuarios, reportes, dashboards, control de accesos y permisos.",
-      icon: "🏢",
+      icon: "ðŸ¢",
       borderColor: "border-white/10",
     },
     {
       title: "IA & Chatbots",
       shortDesc: "Inteligencia artificial",
-      desc: "Chat IA, chatbots con Chat GPT, integración WhatsApp, automatización de soporte 24/7.",
-      icon: "🤖",
+      desc: "Chat IA, chatbots con Chat GPT, integraciÃ³n WhatsApp, automatizaciÃ³n de soporte 24/7.",
+      icon: "ðŸ¤–",
       borderColor: "border-white/10",
     },
     {
       title: "Sistemas Completos",
       shortDesc: "Soluciones integrales",
-      desc: "Todo: frontend, backend, base de datos, autenticación, pagos, emails y deployment. Una solución completa.",
-      icon: "🔧",
+      desc: "Todo: frontend, backend, base de datos, autenticaciÃ³n, pagos, emails y deployment. Una soluciÃ³n completa.",
+      icon: "ðŸ”§",
       borderColor: "border-white/10",
     },
     {
       title: "Mantenimiento",
       shortDesc: "Soporte continuo",
-      desc: "Corrección de bugs, actualizaciones de seguridad, monitoreo, backups y mejoras continuas.",
-      icon: "🛠️",
+      desc: "CorrecciÃ³n de bugs, actualizaciones de seguridad, monitoreo, backups y mejoras continuas.",
+      icon: "ðŸ› ï¸",
       borderColor: "border-white/10",
     },
   ],
 };
 
-// Servicio individual con efecto de expansión
+// Servicio individual con efecto de expansiÃ³n
 function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -155,7 +155,7 @@ function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx
           transition={{ duration: 0.3 }}
         />
         
-        {/* Línea decorativa superior */}
+        {/* LÃ­nea decorativa superior */}
         <motion.div
           className="absolute top-0 left-0 right-0 h-px bg-white/20"
           initial={{ scaleX: 0, originX: 0 }}
@@ -195,7 +195,7 @@ function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx
             </div>
           </div>
           
-          {/* Descripción expandida */}
+          {/* DescripciÃ³n expandida */}
           <AnimatePresence>
             {isExpanded && (
               <motion.div
@@ -227,7 +227,7 @@ export default function Services({ lang }: ServicesProps) {
       
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Líneas diagonales */}
+        {/* LÃ­neas diagonales */}
         <div className="absolute top-0 left-0 w-full h-full" style={{
           backgroundImage: `
             linear-gradient(30deg, rgba(255,255,255,0.02) 1px, transparent 1px),
@@ -236,7 +236,7 @@ export default function Services({ lang }: ServicesProps) {
           backgroundSize: '60px 100px'
         }} />
         
-        {/* Círculo decorativo */}
+        {/* CÃ­rculo decorativo */}
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-teal-500/5 blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
       </div>
@@ -256,7 +256,7 @@ export default function Services({ lang }: ServicesProps) {
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-white">
-            {lang === "en" ? "What we build" : "Qu� construimos"}
+            {lang === "en" ? "What we build" : "Qué construimos"}
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-xl">
             {lang === "en"
@@ -302,11 +302,12 @@ export default function Services({ lang }: ServicesProps) {
         >
           <p className="text-zinc-500 text-sm">
             {lang === "en"
-              ? "Need something else? Let's talk →"
-              : "¿Necesitas algo más? Hablemos →"}
+              ? "Need something else? Let's talk â†’"
+              : "Â¿Necesitas algo mÃ¡s? Hablemos â†’"}
           </p>
         </motion.div>
       </div>
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,10 +21,10 @@ const processData = {
   ],
   es: [
     { step: "01", title: "Contacto", details: "Me escribes con tu idea" },
-    { step: "02", title: "Reunión", details: "Discutimos requisitos y alcance" },
-    { step: "03", title: "Spec", details: "Creo especificación detallada" },
+    { step: "02", title: "ReuniÃ³n", details: "Discutimos requisitos y alcance" },
+    { step: "03", title: "Spec", details: "Creo especificaciÃ³n detallada" },
     { step: "04", title: "Desarrollo", details: "Construyo tu proyecto con actualizaciones" },
-    { step: "05", title: "Revisiones", details: "Revisión y ajustes" },
+    { step: "05", title: "Revisiones", details: "RevisiÃ³n y ajustes" },
     { step: "06", title: "Entrega", details: "Sistema vivo con hosting y SEO" },
     { step: "07", title: "Soporte", details: "Mantenimiento opcional continuo", optional: true },
   ],
@@ -44,7 +44,7 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
         if (activeIndex < t.length - 1) {
           setActiveIndex(prev => prev + 1);
         } else {
-          // Estamos en el último paso - pasar a la siguiente sección
+          // Estamos en el Ãºltimo paso - pasar a la siguiente secciÃ³n
           window.dispatchEvent(new CustomEvent('epicNavigate', { detail: { direction: 'next' } }));
         }
         setTimeout(() => { isScrolling = false; }, 400);
@@ -79,7 +79,7 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
             {lang === "en" ? "Process" : "Proceso"}
           </span>
           <h2 className="text-2xl md:text-4xl font-bold text-white mt-1">
-            {lang === "en" ? "How we work" : "Cómo trabajamos"}
+            {lang === "en" ? "How we work" : "CÃ³mo trabajamos"}
           </h2>
         </motion.div>
 
@@ -93,7 +93,7 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
               className="relative flex items-start gap-4 pb-6 last:pb-0 cursor-pointer"
               onClick={() => setActiveIndex(idx)}
             >
-              {/* Punto en la línea */}
+              {/* Punto en la lÃ­nea */}
               <div className="relative z-10 flex flex-col items-center">
                 <motion.div
                   animate={{
@@ -160,3 +160,4 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
     </section>
   );
 }
+
