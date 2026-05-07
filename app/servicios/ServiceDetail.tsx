@@ -1,4 +1,6 @@
-﻿import { motion } from "framer-motion";
+﻿"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { ServiceEntry } from "./data";
 
@@ -153,4 +155,5 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
     </div>
   );
 }
+
 
