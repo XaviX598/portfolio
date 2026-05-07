@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
+import { navigateToSection } from "@/lib/navigation";
 
 type NavbarProps = {
   lang: PortfolioLang;
@@ -92,13 +93,17 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                 className="absolute top-full left-0 mt-2 w-48 rounded-xl bg-zinc-900/95 backdrop-blur-lg border border-white/[0.08] shadow-xl overflow-hidden"
               >
                 {navItems.map((item, index) => (
-                  <motion.a
+                  <motion.button
                     key={item.id}
-                    href={`#${item.id}`}
+                    type="button"
+                    onClick={() => {
+                      navigateToSection(item.id);
+                      setMenuOpen(false);
+                    }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.03 }}
-                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-white/[0.05] transition-colors duration-150 group"
+                    className="relative flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-zinc-400 transition-colors duration-150 group hover:bg-white/[0.05] hover:text-white"
                   >
                     <span className="text-zinc-600 group-hover:text-white/80 transition-colors">
                       {icons[item.id]}
@@ -107,7 +112,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
                     {index < navItems.length - 1 && (
                       <div className="absolute left-4 right-4 bottom-0 h-px bg-white/[0.05]" />
                     )}
-                  </motion.a>
+                  </motion.button>
                 ))}
               </motion.div>
             )}

@@ -6,7 +6,9 @@ import Hero from "./Hero";
 import Services from "./Services";
 import Projects from "./Projects";
 import Process from "./Process";
+import Contact from "./Contact";
 import type { PortfolioLang } from "./HomeClient";
+import { EPIC_NAVIGATE_TO_EVENT } from "@/lib/navigation";
 
 interface EpicPageProps {
   lang: PortfolioLang;
@@ -17,10 +19,12 @@ const sectionConfigs = [
   { id: "services", component: Services, label: "Services" },
   { id: "projects", component: Projects, label: "Projects" },
   { id: "process", component: Process, label: "Process" },
+  { id: "contact", component: Contact, label: "Contact" },
 ];
 
 export default function EpicPage({ lang }: EpicPageProps) {
   const [activeSection, setActiveSection] = useState(0);
+  const [processLastIndex, setProcessLastIndex] = useState(0); // Guardar el último índice de Process
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollTime = useRef(0);
 
@@ -51,6 +55,10 @@ export default function EpicPage({ lang }: EpicPageProps) {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
           if (e.deltaY > 30 && activeSection < sectionConfigs.length - 1) {
+            // Guardar índice de Process antes de salir
+            if (activeSection === 3) {
+              setProcessLastIndex(6); // Siempre guardar el último paso
+            }
             setActiveSection((prev) => Math.min(prev + 1, sectionConfigs.length - 1));
           } else if (e.deltaY < -30 && activeSection > 0) {
             setActiveSection((prev) => Math.max(prev - 1, 0));
@@ -59,21 +67,39 @@ export default function EpicPage({ lang }: EpicPageProps) {
       }
     };
 
-    // Listener para navegación desde Projects
+    // Listener para navegación desde Projects/Process
     const handleEpicNavigate = (e: CustomEvent) => {
       e.preventDefault();
       if (e.detail.direction === 'prev' && activeSection > 0) {
         setActiveSection(prev => prev - 1);
       } else if (e.detail.direction === 'next' && activeSection < sectionConfigs.length - 1) {
+        // Guardar índice de Process antes de ir a Contact
+        if (activeSection === 3) {
+          setProcessLastIndex(6);
+        }
         setActiveSection(prev => prev + 1);
+      }
+    };
+
+    const handleEpicNavigateTo = (event: Event) => {
+      const customEvent = event as CustomEvent<{ sectionId?: string }>;
+      const targetSectionId = customEvent.detail?.sectionId;
+      const targetIndex = sectionConfigs.findIndex(
+        (section) => section.id === targetSectionId,
+      );
+
+      if (targetIndex >= 0) {
+        setActiveSection(targetIndex);
       }
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("epicNavigate", handleEpicNavigate as EventListener);
+    window.addEventListener(EPIC_NAVIGATE_TO_EVENT, handleEpicNavigateTo);
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("epicNavigate", handleEpicNavigate as EventListener);
+      window.removeEventListener(EPIC_NAVIGATE_TO_EVENT, handleEpicNavigateTo);
       clearTimeout(timeout);
     };
   }, [activeSection]);
@@ -96,7 +122,7 @@ export default function EpicPage({ lang }: EpicPageProps) {
 {/* UNA SOLA sección visible a la vez - FULLSCREEN con animaciones */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={sectionConfigs[activeSection].id}
+          key={`section-${activeSection}`}
           className="absolute inset-0 w-full h-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,6 +135,11 @@ export default function EpicPage({ lang }: EpicPageProps) {
           <div className="w-full h-full">
             {(() => {
               const Component = sectionConfigs[activeSection].component;
+              // Si es Process, pasar el último índice
+              if (sectionConfigs[activeSection].id === 'process') {
+                const ProcessComponent = Component as React.ComponentType<{ lang: PortfolioLang; initialIndex?: number }>;
+                return <ProcessComponent key="process-section" lang={lang} initialIndex={processLastIndex} />;
+              }
               return <Component lang={lang} />;
             })()}
           </div>

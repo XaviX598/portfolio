@@ -6,6 +6,7 @@ import type { PortfolioLang } from "./HomeClient";
 
 type ProcessProps = {
   lang: PortfolioLang;
+  initialIndex?: number;
 };
 
 const processData = {
@@ -29,9 +30,9 @@ const processData = {
   ],
 };
 
-export default function Process({ lang }: ProcessProps) {
+export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
   const t = processData[lang];
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
 
   useEffect(() => {
     let isScrolling = false;
@@ -42,6 +43,9 @@ export default function Process({ lang }: ProcessProps) {
         isScrolling = true;
         if (activeIndex < t.length - 1) {
           setActiveIndex(prev => prev + 1);
+        } else {
+          // Estamos en el último paso - pasar a la siguiente sección
+          window.dispatchEvent(new CustomEvent('epicNavigate', { detail: { direction: 'next' } }));
         }
         setTimeout(() => { isScrolling = false; }, 400);
       } else if (e.deltaY < -20 && !isScrolling) {

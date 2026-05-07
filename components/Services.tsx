@@ -20,15 +20,22 @@ const servicesData = {
     {
       title: "Mobile Apps",
       shortDesc: "Android and iOS apps",
-      desc: "Native and cross-platform apps with React Native and Kotlin. Native UI, push notifications, camera and GPS access.",
+      desc: "Native apps for Android and iOS with React Native and Kotlin. Google Play and App Store ready.",
       icon: "📱",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
-      shortDesc: "High-impact visual design",
-      desc: "High-impact pages with GSAP and Framer Motion animations. Optimized for SEO and conversion.",
+      shortDesc: "High-conversion pages",
+      desc: "High-impact landing pages with GSAP animations. Optimized for SEO and conversion rates.",
       icon: "🎯",
+      borderColor: "border-white/10",
+    },
+    {
+      title: "Websites",
+      shortDesc: "Professional websites",
+      desc: "Custom websites and web pages. Modern design, SEO optimized, fast loading.",
+      icon: "🌐",
       borderColor: "border-white/10",
     },
     {
@@ -39,17 +46,10 @@ const servicesData = {
       borderColor: "border-white/10",
     },
     {
-      title: "Databases",
-      shortDesc: "Design and optimization",
-      desc: "PostgreSQL, MySQL, MongoDB. Schema design, migrations, query optimization, backups and replication.",
-      icon: "🗄️",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "Hosting & Cloud",
-      shortDesc: "Scalable deployment",
-      desc: "Vercel, Railway, AWS, Cloudflare. Domains, SSL, CDNs, CI/CD pipelines setup.",
-      icon: "☁️",
+      title: "AI & Chatbots",
+      shortDesc: "Intelligence artificial",
+      desc: "Chat IA, chatbots with Chat GPT, WhatsApp integration, 24/7 customer support automation.",
+      icon: "🤖",
       borderColor: "border-white/10",
     },
     {
@@ -78,15 +78,22 @@ const servicesData = {
     {
       title: "Apps Móviles",
       shortDesc: "Apps para Android y iOS",
-      desc: "Apps nativas y cross-platform con React Native y Kotlin. UI nativa, notificaciones push, acceso a cámara y GPS.",
+      desc: "Apps nativas para Android y iOS con React Native y Kotlin. Listas para Google Play y App Store.",
       icon: "📱",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
-      shortDesc: "Diseño de alto impacto",
-      desc: "Páginas de alto impacto con animaciones GSAP y Framer Motion. Optimizadas para SEO y conversión.",
+      shortDesc: "Páginas de conversión",
+      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversión.",
       icon: "🎯",
+      borderColor: "border-white/10",
+    },
+    {
+      title: "Páginas Web",
+      shortDesc: "Sitios web profesionales",
+      desc: "Páginas web y sitios web personalizados. Diseño moderno, optimizados SEO, carga rápida.",
+      icon: "🌐",
       borderColor: "border-white/10",
     },
     {
@@ -97,17 +104,10 @@ const servicesData = {
       borderColor: "border-white/10",
     },
     {
-      title: "Bases de Datos",
-      shortDesc: "Diseño y optimización",
-      desc: "PostgreSQL, MySQL, MongoDB. Diseño de esquemas, migraciones, optimización de queries, backups y replicación.",
-      icon: "🗄️",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "Hosting & Cloud",
-      shortDesc: "Despliegue escalable",
-      desc: "Vercel, Railway, AWS, Cloudflare. Dominios, SSL, CDNs, configuración de pipelines CI/CD.",
-      icon: "☁️",
+      title: "IA & Chatbots",
+      shortDesc: "Inteligencia artificial",
+      desc: "Chat IA, chatbots con Chat GPT, integración WhatsApp, automatización de soporte 24/7.",
+      icon: "🤖",
       borderColor: "border-white/10",
     },
     {
@@ -256,12 +256,12 @@ export default function Services({ lang }: ServicesProps) {
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-white">
-            {lang === "en" ? "What I do" : "Qué hago"}
+            {lang === "en" ? "What we build" : "Qu� construimos"}
           </h2>
           <p className="mt-4 text-zinc-400 text-lg max-w-xl">
             {lang === "en"
-              ? "From idea to deployment, I build digital products that scale."
-              : "Desde la idea hasta el despliegue, construyo productos digitales que escalan."}
+              ? "From idea to deployment, we build digital products that scale."
+              : "Desde la idea hasta el despliegue, construimos productos digitales que escalan."}
           </p>
         </motion.div>
 

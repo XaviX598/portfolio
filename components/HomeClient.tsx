@@ -11,7 +11,7 @@ import Spotlight from "./Spotlight";
 export type PortfolioLang = "en" | "es";
 
 export default function HomeClient() {
-  const [lang, setLang] = useState<PortfolioLang>("en");
+  const [lang, setLang] = useState<PortfolioLang>("es");
 
   return (
     <>
