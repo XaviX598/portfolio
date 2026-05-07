@@ -14,56 +14,56 @@ const servicesData = {
       title: "APIs & Backend",
       shortDesc: "Robust and scalable backend",
       desc: "Secure REST and GraphQL APIs with Node.js, Express, Spring Boot. JWT auth, rate limiting, Swagger documentation.",
-      icon: "ðŸ”Œ",
+      icon: "🔌",
       borderColor: "border-white/10",
     },
     {
       title: "Mobile Apps",
       shortDesc: "Android and iOS apps",
       desc: "Native apps for Android and iOS with React Native and Kotlin. Google Play and App Store ready.",
-      icon: "ðŸ“±",
+      icon: "📱",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
       shortDesc: "High-conversion pages",
       desc: "High-impact landing pages with GSAP animations. Optimized for SEO and conversion rates.",
-      icon: "ðŸŽ¯",
+      icon: "🎯",
       borderColor: "border-white/10",
     },
     {
       title: "Websites",
       shortDesc: "Professional websites",
       desc: "Custom websites and web pages. Modern design, SEO optimized, fast loading.",
-      icon: "ðŸŒ",
+      icon: "🌐",
       borderColor: "border-white/10",
     },
     {
       title: "Enterprise Systems",
       shortDesc: "Internal management software",
       desc: "Custom software: inventory, users, reports, dashboards, access control and permissions.",
-      icon: "ðŸ¢",
+      icon: "🏢",
       borderColor: "border-white/10",
     },
     {
       title: "AI & Chatbots",
-      shortDesc: "Intelligence artificial",
-      desc: "Chat IA, chatbots with Chat GPT, WhatsApp integration, 24/7 customer support automation.",
-      icon: "ðŸ¤–",
+      shortDesc: "Artificial intelligence",
+      desc: "AI chat, chatbots with ChatGPT, WhatsApp integration, and 24/7 customer support automation.",
+      icon: "🤖",
       borderColor: "border-white/10",
     },
     {
       title: "Full Systems",
       shortDesc: "End-to-end solutions",
-      desc: "Everything: frontend, backend, database, auth, payments, emails and deployment. One complete solution.",
-      icon: "ðŸ”§",
+      desc: "Everything: frontend, backend, database, authentication, payments, emails and deployment. One complete solution.",
+      icon: "🔧",
       borderColor: "border-white/10",
     },
     {
       title: "Maintenance",
       shortDesc: "Ongoing support",
       desc: "Bug fixes, security updates, monitoring, backups and continuous improvements.",
-      icon: "ðŸ› ï¸",
+      icon: "🛠️",
       borderColor: "border-white/10",
     },
   ],
@@ -71,66 +71,65 @@ const servicesData = {
     {
       title: "APIs & Backend",
       shortDesc: "Backend robusto y escalable",
-      desc: "APIs REST y GraphQL seguras con Node.js, Express, Spring Boot. AutenticaciÃ³n JWT, rate limiting, documentaciÃ³n Swagger.",
-      icon: "ðŸ”Œ",
+      desc: "APIs REST y GraphQL seguras con Node.js, Express y Spring Boot. Autenticación JWT, rate limiting y documentación Swagger.",
+      icon: "🔌",
       borderColor: "border-white/10",
     },
     {
-      title: "Apps MÃ³viles",
+      title: "Apps Móviles",
       shortDesc: "Apps para Android y iOS",
       desc: "Apps nativas para Android y iOS con React Native y Kotlin. Listas para Google Play y App Store.",
-      icon: "ðŸ“±",
+      icon: "📱",
       borderColor: "border-white/10",
     },
     {
       title: "Landing Pages",
-      shortDesc: "PÃ¡ginas de conversiÃ³n",
-      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversiÃ³n.",
-      icon: "ðŸŽ¯",
+      shortDesc: "Páginas de conversión",
+      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversión.",
+      icon: "🎯",
       borderColor: "border-white/10",
     },
     {
-      title: "PÃ¡ginas Web",
+      title: "Páginas Web",
       shortDesc: "Sitios web profesionales",
-      desc: "PÃ¡ginas web y sitios web personalizados. DiseÃ±o moderno, optimizados SEO, carga rÃ¡pida.",
-      icon: "ðŸŒ",
+      desc: "Páginas web y sitios web personalizados. Diseño moderno, optimización SEO y carga rápida.",
+      icon: "🌐",
       borderColor: "border-white/10",
     },
     {
       title: "Sistemas Empresariales",
-      shortDesc: "Software de gestiÃ³n interna",
+      shortDesc: "Software de gestión interna",
       desc: "Software a medida: inventarios, usuarios, reportes, dashboards, control de accesos y permisos.",
-      icon: "ðŸ¢",
+      icon: "🏢",
       borderColor: "border-white/10",
     },
     {
       title: "IA & Chatbots",
       shortDesc: "Inteligencia artificial",
-      desc: "Chat IA, chatbots con Chat GPT, integraciÃ³n WhatsApp, automatizaciÃ³n de soporte 24/7.",
-      icon: "ðŸ¤–",
+      desc: "Chat IA, chatbots con ChatGPT, integración con WhatsApp y automatización de soporte 24/7.",
+      icon: "🤖",
       borderColor: "border-white/10",
     },
     {
       title: "Sistemas Completos",
       shortDesc: "Soluciones integrales",
-      desc: "Todo: frontend, backend, base de datos, autenticaciÃ³n, pagos, emails y deployment. Una soluciÃ³n completa.",
-      icon: "ðŸ”§",
+      desc: "Todo: frontend, backend, base de datos, autenticación, pagos, emails y deployment. Una solución completa.",
+      icon: "🔧",
       borderColor: "border-white/10",
     },
     {
       title: "Mantenimiento",
       shortDesc: "Soporte continuo",
-      desc: "CorrecciÃ³n de bugs, actualizaciones de seguridad, monitoreo, backups y mejoras continuas.",
-      icon: "ðŸ› ï¸",
+      desc: "Corrección de bugs, actualizaciones de seguridad, monitoreo, backups y mejoras continuas.",
+      icon: "🛠️",
       borderColor: "border-white/10",
     },
   ],
 };
 
-// Servicio individual con efecto de expansiÃ³n
-function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx: number }) {
+function ServiceCard({ service, idx }: { service: (typeof servicesData.en)[0]; idx: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -143,50 +142,40 @@ function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx
       <motion.div
         layout
         className={`relative overflow-hidden rounded-2xl ${service.borderColor} bg-zinc-900/60 backdrop-blur-sm cursor-pointer transition-all duration-500`}
-        animate={{ 
+        animate={{
           height: isExpanded ? 270 : 180,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        {/* Fondo en hover */}
         <motion.div
           className="absolute inset-0 bg-white/[0.03]"
           animate={{ opacity: isExpanded ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         />
-        
-        {/* LÃ­nea decorativa superior */}
+
         <motion.div
           className="absolute top-0 left-0 right-0 h-px bg-white/20"
           initial={{ scaleX: 0, originX: 0 }}
           animate={{ scaleX: isExpanded ? 1 : 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         />
-        
-        {/* Contenido */}
-        <div className="relative z-10 p-5 md:p-6 h-full flex flex-col">
-          {/* Header siempre visible */}
+
+        <div className="relative z-10 flex h-full flex-col p-5 md:p-6">
           <div className="flex items-start gap-4">
             <motion.div
-              className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center border border-white/10"
+              className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5"
               animate={{ scale: isExpanded ? 1.05 : 1 }}
               transition={{ duration: 0.3 }}
             >
               <span className="text-2xl filter grayscale">{service.icon}</span>
             </motion.div>
-            
+
             <div className="flex-1">
-              <motion.h3
-                className="text-lg font-bold text-white"
-                animate={{ 
-                  color: isExpanded ? "#fafafa" : "#fafafa"
-                }}
-                transition={{ duration: 0.3 }}
-              >
+              <motion.h3 className="text-lg font-bold text-white">
                 {service.title}
               </motion.h3>
               <motion.p
-                className="text-xs font-medium text-zinc-500 uppercase tracking-wider mt-1"
+                className="mt-1 text-xs font-medium uppercase tracking-wider text-zinc-500"
                 animate={{ opacity: isExpanded ? 0 : 1 }}
                 transition={{ duration: 0.2 }}
               >
@@ -194,8 +183,7 @@ function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx
               </motion.p>
             </div>
           </div>
-          
-          {/* DescripciÃ³n expandida */}
+
           <AnimatePresence>
             {isExpanded && (
               <motion.div
@@ -205,9 +193,7 @@ function ServiceCard({ service, idx }: { service: typeof servicesData.en[0]; idx
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="mt-4"
               >
-                <p className="text-zinc-300 text-sm leading-relaxed">
-                  {service.desc}
-                </p>
+                <p className="text-sm leading-relaxed text-zinc-300">{service.desc}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -221,78 +207,70 @@ export default function Services({ lang }: ServicesProps) {
   const t = servicesData[lang];
 
   return (
-    <section id="services" className="w-full h-full min-h-screen px-4 md:px-6 relative flex items-center">
-      {/* Fondo */}
+    <section id="services" className="relative flex min-h-screen w-full h-full items-center px-4 md:px-6">
       <div className="absolute inset-0 bg-zinc-950" />
-      
-      {/* Elementos decorativos de fondo */}
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* LÃ­neas diagonales */}
-        <div className="absolute top-0 left-0 w-full h-full" style={{
-          backgroundImage: `
+        <div
+          className="absolute top-0 left-0 h-full w-full"
+          style={{
+            backgroundImage: `
             linear-gradient(30deg, rgba(255,255,255,0.02) 1px, transparent 1px),
             linear-gradient(-30deg, rgba(255,255,255,0.02) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 100px'
-        }} />
-        
-        {/* CÃ­rculo decorativo */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-teal-500/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
+            backgroundSize: "60px 100px",
+          }}
+        />
+
+        <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-teal-500/5 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/5 blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col justify-center">
-        {/* Header */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-10 md:mb-14"
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-[2px] bg-gradient-to-r from-teal-400 to-transparent" />
-            <span className="text-xs text-teal-400 uppercase tracking-[0.3em]">
+          <div className="mb-3 flex items-center gap-3">
+            <div className="h-[2px] w-12 bg-gradient-to-r from-teal-400 to-transparent" />
+            <span className="text-xs uppercase tracking-[0.3em] text-teal-400">
               {lang === "en" ? "Services" : "Servicios"}
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white">
+          <h2 className="text-4xl font-bold text-white md:text-6xl">
             {lang === "en" ? "What we build" : "Qué construimos"}
           </h2>
-          <p className="mt-4 text-zinc-400 text-lg max-w-xl">
+          <p className="mt-4 max-w-xl text-lg text-zinc-400">
             {lang === "en"
               ? "From idea to deployment, we build digital products that scale."
               : "Desde la idea hasta el despliegue, construimos productos digitales que escalan."}
           </p>
         </motion.div>
 
-        {/* Grid de servicios en columnas diagonales - estilo masonry */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {/*Primer columna - 2 servicios*/}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
           <div className="flex flex-col gap-4 md:gap-6">
             <ServiceCard service={t[0]} idx={0} />
             <ServiceCard service={t[4]} idx={4} />
           </div>
-          
-          {/*Segunda columna - 2 servicios*/}
-          <div className="flex flex-col gap-4 md:gap-6 md:mt-12">
+
+          <div className="flex flex-col gap-4 md:mt-12 md:gap-6">
             <ServiceCard service={t[1]} idx={1} />
             <ServiceCard service={t[5]} idx={5} />
           </div>
-          
-          {/*Tercera columna - 2 servicios*/}
+
           <div className="flex flex-col gap-4 md:gap-6">
             <ServiceCard service={t[2]} idx={2} />
             <ServiceCard service={t[6]} idx={6} />
           </div>
-          
-          {/*Cuarta columna - 2 servicios*/}
-          <div className="flex flex-col gap-4 md:gap-6 md:mt-12">
+
+          <div className="flex flex-col gap-4 md:mt-12 md:gap-6">
             <ServiceCard service={t[3]} idx={3} />
             <ServiceCard service={t[7]} idx={7} />
           </div>
         </div>
-        
-        {/*cta final*/}
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -300,14 +278,11 @@ export default function Services({ lang }: ServicesProps) {
           transition={{ delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <p className="text-zinc-500 text-sm">
-            {lang === "en"
-              ? "Need something else? Let's talk â†’"
-              : "Â¿Necesitas algo mÃ¡s? Hablemos â†’"}
+          <p className="text-sm text-zinc-500">
+            {lang === "en" ? "Need something else? Let's talk →" : "¿Necesitás algo más? Hablemos →"}
           </p>
         </motion.div>
       </div>
     </section>
   );
 }
-
