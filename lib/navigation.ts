@@ -1,4 +1,4 @@
-export const EPIC_NAVIGATE_TO_EVENT = "epicNavigateTo";
+﻿export const EPIC_NAVIGATE_TO_EVENT = "epicNavigateTo";
 
 export function navigateToSection(sectionId: string) {
   if (typeof window === "undefined") return;
@@ -9,3 +9,4 @@ export function navigateToSection(sectionId: string) {
     }),
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+Ôªø"use client";
 
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -29,13 +29,13 @@ const heroCopy = {
     badge: "Agencia de Desarrollo de Software",
     badgeCert: "Primera agencia en Ecuador certificada en IA",
     headline: "Resuelve tus problemas con",
-    headlineKeywords: ["Landing Pages", "P·ginas Web", "Apps", "AutomatizaciÛn"],
+    headlineKeywords: ["Landing Pages", "P√°ginas Web", "Apps", "Automatizaci√≥n"],
     subtitle:
-      "Tu socio para landing pages, p·ginas web, apps Android e iOS e inteligencia artificial. De la idea a producciÛn.",
+      "Tu socio para landing pages, p√°ginas web, apps Android e iOS e inteligencia artificial. De la idea a producci√≥n.",
     ctaPrimary: "Cotiza tu Proyecto",
     ctaSecondary: "Ver Servicios",
     supportingCopy:
-      "Desarrollamos software, ecommerce, p·ginas web y automatizaciones con IA para empresas que necesitan una base tÈcnica seria.",
+      "Desarrollamos software, ecommerce, p√°ginas web y automatizaciones con IA para empresas que necesitan una base t√©cnica seria.",
   },
 };
 
@@ -52,7 +52,7 @@ const logos = [
 
 const heroCopyMarquee = {
   en: "Relied on by brands across the globe",
-  es: "Empresas de todo el mundo confÌan en nosotros",
+  es: "Empresas de todo el mundo conf√≠an en nosotros",
 };
 
 function AnimatedStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
@@ -211,3 +211,4 @@ export default function Hero({ lang }: HeroProps) {
     </section>
   );
 }
+

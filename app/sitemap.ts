@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 import { services } from "./servicios/data";
 import { getSiteUrl } from "@/lib/seo";
 
@@ -30,3 +30,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...serviceRoutes];
 }
+

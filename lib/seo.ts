@@ -71,3 +71,4 @@ export const seoDefaults = {
   defaultDescription,
   defaultOgImage,
 };
+

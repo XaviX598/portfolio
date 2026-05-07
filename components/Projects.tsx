@@ -1,4 +1,4 @@
-"use client";
+Ôªø"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -76,14 +76,14 @@ const projectsData = {
     },
     {
       title: "Xpress Ecommerce",
-      summary: "Tienda online con cat·logo, carrito y checkout.",
+      summary: "Tienda online con cat√°logo, carrito y checkout.",
       tech: ["Next.js", "React", "Tailwind"],
       links: { live: "https://xpress-ecommerce.vercel.app" },
       images: ["/proyectos/xpress ecommerce.png", "/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png"],
     },
     {
       title: "XpressConvert",
-      summary: "Suite de conversiÛn para im·genes, PDF, audio y video.",
+      summary: "Suite de conversi√≥n para im√°genes, PDF, audio y video.",
       tech: ["React", "Vite", "TypeScript"],
       links: { live: "https://xpressconvert.vercel.app" },
       images: ["/proyectos/xpress convert .png", "/proyectos/xpress convert 2.png", "/proyectos/xpressconvert 3.png"],
@@ -338,7 +338,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
           <p className="mt-4 max-w-xl text-lg text-zinc-400">
             {lang === "en"
               ? "A selection of the digital products we've delivered from concept to launch."
-              : "Una selecciÛn de los productos digitales que hemos entregado desde el concepto hasta el lanzamiento."}
+              : "Una selecci√≥n de los productos digitales que hemos entregado desde el concepto hasta el lanzamiento."}
           </p>
         </div>
       </div>
@@ -377,3 +377,4 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
     </section>
   );
 }
+

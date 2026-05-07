@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+Ôªøimport type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { getSiteUrl, seoDefaults } from "@/lib/seo";
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo pestaÒa.png",
+    icon: "/logo pesta√±a.png",
   },
   keywords: [
     "Xpress Developer",
     "agencia desarrollo software",
-    "desarrollador p·gina web",
+    "desarrollador p√°gina web",
     "crear sitio web",
     "landing page",
     "desarrollo Android",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "app iOS",
     "inteligencia artificial",
     "chat IA",
-    "integraciÛn IA",
+    "integraci√≥n IA",
     "desarrollo web",
     "empresa desarrollo software",
     "desarrollador React",
@@ -89,3 +89,4 @@ export default function RootLayout({
     </html>
   );
 }
+

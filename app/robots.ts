@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
@@ -13,3 +13,4 @@ export default function robots(): MetadataRoute.Robots {
     host: siteUrl.toString(),
   };
 }
+

@@ -1,4 +1,4 @@
-"use client";
+ï»¿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -26,9 +26,9 @@ export default function ServicesIndex() {
             Servicios de desarrollo de software
           </h1>
           <p className="max-w-2xl text-xl text-zinc-400">
-            Desarrollo profesional de páginas web, landing pages, apps móviles,
+            Desarrollo profesional de pÃ¡ginas web, landing pages, apps mÃ³viles,
             ecommerce e inteligencia artificial para empresas que quieren crecer
-            con una base técnica sólida.
+            con una base tÃ©cnica sÃ³lida.
           </p>
         </motion.div>
 
@@ -88,7 +88,7 @@ export default function ServicesIndex() {
           className="mt-16 text-center"
         >
           <p className="text-zinc-500">
-            ¿Querés una propuesta? {" "}
+            Â¿QuerÃ©s una propuesta? {" "}
             <a
               href="https://wa.me/593985295277?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20software"
               target="_blank"
@@ -103,3 +103,4 @@ export default function ServicesIndex() {
     </div>
   );
 }
+

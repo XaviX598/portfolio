@@ -1,10 +1,10 @@
-import HomeClient from "../components/HomeClient";
+Ôªøimport HomeClient from "../components/HomeClient";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Agencia de Desarrollo de Software, Apps e IA | Xpress Developer",
   description:
-    "Creamos p·ginas web, landing pages, apps Android y iOS, ecommerce e integraciones con inteligencia artificial para empresas que quieren crecer con una base tÈcnica sÛlida.",
+    "Creamos p√°ginas web, landing pages, apps Android y iOS, ecommerce e integraciones con inteligencia artificial para empresas que quieren crecer con una base t√©cnica s√≥lida.",
   path: "/",
   keywords: [
     "agencia de desarrollo de software",
@@ -26,9 +26,9 @@ export default function Home() {
     "@type": "ProfessionalService",
     name: "Xpress Developer",
     description:
-      "Agencia de desarrollo de software especializada en p·ginas web, landing pages, apps mÛviles, ecommerce e inteligencia artificial.",
+      "Agencia de desarrollo de software especializada en p√°ginas web, landing pages, apps m√≥viles, ecommerce e inteligencia artificial.",
     url: siteUrl.toString(),
-    areaServed: "LatinoamÈrica",
+    areaServed: "Latinoam√©rica",
     knowsAbout: [
       "Desarrollo web",
       "Landing pages",
@@ -51,3 +51,4 @@ export default function Home() {
     </>
   );
 }
+

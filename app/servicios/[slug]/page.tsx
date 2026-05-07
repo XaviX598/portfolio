@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+Ôªøimport type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceDetail from "../ServiceDetail";
 import { services, servicesBySlug, type ServiceSlug } from "../data";
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!service) {
     return buildMetadata({
       title: "Servicio no encontrado | Xpress Developer",
-      description: "La p·gina de servicio solicitada no existe.",
+      description: "La p√°gina de servicio solicitada no existe.",
       path: "/servicios",
     });
   }
@@ -54,7 +54,7 @@ export default async function ServicePage({ params }: PageProps) {
       name: "Xpress Developer",
       url: siteUrl.toString(),
     },
-    areaServed: "LatinoamÈrica",
+    areaServed: "Latinoam√©rica",
     url: serviceUrl,
   };
 
@@ -68,3 +68,4 @@ export default async function ServicePage({ params }: PageProps) {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+ï»¿import { motion } from "framer-motion";
 import Link from "next/link";
 import type { ServiceEntry } from "./data";
 
@@ -68,7 +68,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           transition={{ delay: 0.25 }}
           className="mb-20"
         >
-          <h2 className="mb-8 text-3xl font-bold text-white">Qué incluye</h2>
+          <h2 className="mb-8 text-3xl font-bold text-white">QuÃ© incluye</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {service.features.map((feature, idx) => (
               <div
@@ -102,7 +102,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           transition={{ delay: 0.35 }}
           className="mb-20"
         >
-          <h2 className="mb-8 text-3xl font-bold text-white">Cómo trabajamos</h2>
+          <h2 className="mb-8 text-3xl font-bold text-white">CÃ³mo trabajamos</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {service.process.map((step, idx) => (
               <div
@@ -153,3 +153,4 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
     </div>
   );
 }
+

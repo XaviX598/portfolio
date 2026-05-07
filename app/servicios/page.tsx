@@ -1,15 +1,15 @@
-import ServicesIndex from "./ServicesIndex";
+Ôªøimport ServicesIndex from "./ServicesIndex";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Servicios de Desarrollo Web, Apps e IA | Xpress Developer",
   description:
-    "Desarrollo de p·ginas web, landing pages, apps Android y iOS, ecommerce e inteligencia artificial. Soluciones digitales con foco tÈcnico y comercial.",
+    "Desarrollo de p√°ginas web, landing pages, apps Android y iOS, ecommerce e inteligencia artificial. Soluciones digitales con foco t√©cnico y comercial.",
   path: "/servicios",
   keywords: [
     "servicios desarrollo web",
     "servicios desarrollo apps",
-    "desarrollo p·gina web",
+    "desarrollo p√°gina web",
     "landing page profesional",
     "app Android desarrollo",
     "app iOS desarrollo",
@@ -24,3 +24,4 @@ export const metadata = buildMetadata({
 export default function ServiciosPage() {
   return <ServicesIndex />;
 }
+
