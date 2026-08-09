@@ -2,19 +2,23 @@
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Agencia de Desarrollo de Software, Apps e IA | Xpress Developer",
+  title: "Desarrollo de Páginas Web y Software en Ecuador | Xpress Developer",
   description:
-    "Creamos páginas web, landing pages, apps Android y iOS, ecommerce e integraciones con inteligencia artificial para empresas que quieren crecer con una base técnica sólida.",
+    "Agencia de desarrollo de software en Ecuador. Creamos páginas web, landing pages, apps Android y iOS, ecommerce e integraciones con IA para empresas en Guayaquil, Quito y todo el país.",
   path: "/",
   keywords: [
-    "agencia de desarrollo de software",
-    "desarrollo web",
-    "landing pages",
-    "apps Android",
-    "apps iOS",
-    "ecommerce",
+    "agencia de desarrollo de software Ecuador",
+    "desarrollo web Ecuador",
+    "páginas web Guayaquil",
+    "páginas web Quito",
+    "desarrollo de software Ecuador",
+    "landing pages Ecuador",
+    "apps Android Ecuador",
+    "apps iOS Ecuador",
+    "ecommerce Ecuador",
     "inteligencia artificial para empresas",
     "chatbots con IA",
+    "programador páginas web Ecuador",
   ],
 });
 
@@ -26,11 +30,25 @@ export default function Home() {
     "@type": "ProfessionalService",
     name: "Xpress Developer",
     description:
-      "Agencia de desarrollo de software especializada en páginas web, landing pages, apps móviles, ecommerce e inteligencia artificial.",
+      "Agencia de desarrollo de software en Ecuador especializada en páginas web, landing pages, apps móviles, ecommerce e inteligencia artificial.",
     url: siteUrl.toString(),
-    areaServed: "Latinoamérica",
+    email: "contacto@xpressdeveloper.com",
+    telephone: "+593985295277",
+    inLanguage: "es-EC",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "EC",
+    },
+    areaServed: [
+      { "@type": "Country", name: "Ecuador" },
+      { "@type": "City", name: "Guayaquil" },
+      { "@type": "City", name: "Quito" },
+      { "@type": "City", name: "Cuenca" },
+    ],
     knowsAbout: [
       "Desarrollo web",
+      "Desarrollo de páginas web",
       "Landing pages",
       "Apps Android",
       "Apps iOS",

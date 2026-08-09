@@ -39,9 +39,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Sitios web profesionales y personalizados",
     shortDescription:
       "Creamos páginas web profesionales y sitios web personalizados con diseño único, optimización SEO y foco en conversión.",
-    seoTitle: "Desarrollo de Páginas Web Profesionales | Xpress Developer",
+    seoTitle: "Desarrollo de Páginas Web en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos páginas web profesionales y sitios web personalizados. Diseño único, optimización SEO, velocidad de carga rápida y enfoque comercial.",
+      "Creamos páginas web profesionales y sitios web personalizados. Diseño único, optimización SEO, velocidad de carga rápida y enfoque comercial. Trabajamos con empresas y emprendedores en Guayaquil, Quito y todo Ecuador.",
     keywords: [
       "desarrollo página web",
       "crear página web",
@@ -50,8 +50,10 @@ export const services: ServiceEntry[] = [
       "desarrollador web",
       "página web para empresa",
       "sitio web Ecuador",
+      "página web Guayaquil",
+      "diseño web Quito",
     ],
-    icon: "??",
+    icon: "🌐",
     features: [
       "Diseño personalizado y alineado a tu marca",
       "Optimización SEO técnica y on-page",
@@ -86,7 +88,7 @@ export const services: ServiceEntry[] = [
     ],
     cta: {
       title: "¿Listo para lanzar una página web seria?",
-      subtitle: "Cotizá tu proyecto y te respondemos con un plan claro.",
+      subtitle: "Cotiza tu proyecto y te respondemos con un plan claro.",
       button: "Cotizar página web",
     },
   },
@@ -96,9 +98,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Páginas de alto impacto que convierten",
     shortDescription:
       "Landing pages orientadas a conversión con diseño profesional, carga rápida y estructura preparada para campañas y SEO.",
-    seoTitle: "Landing Pages de Alto Impacto | Xpress Developer",
+    seoTitle: "Landing Pages que Convierten en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos landing pages enfocadas en conversión. Diseño profesional, copy claro, animaciones cuidadas y optimización SEO desde el arranque.",
+      "Creamos landing pages enfocadas en conversión. Diseño profesional, copy claro, animaciones cuidadas y optimización SEO desde el arranque. Ideal para negocios en Ecuador que necesitan captar clientes.",
     keywords: [
       "landing page",
       "página de aterrizaje",
@@ -106,8 +108,10 @@ export const services: ServiceEntry[] = [
       "diseño landing page",
       "landing page profesional",
       "página de ventas",
+      "landing page Ecuador",
+      "landing page Guayaquil",
     ],
-    icon: "??",
+    icon: "🎯",
     features: [
       "Diseño orientado a conversión",
       "Jerarquía visual clara",
@@ -152,9 +156,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Apps nativas y cross-platform para Android",
     shortDescription:
       "Desarrollo profesional de apps Android con Kotlin o React Native, listas para Play Store y pensadas para escalar.",
-    seoTitle: "Desarrollo de Apps Android | Xpress Developer",
+    seoTitle: "Desarrollo de Apps Android en Ecuador | Xpress Developer",
     seoDescription:
-      "Desarrollamos apps Android nativas y multiplataforma con Kotlin o React Native. Publicación en Google Play y arquitectura lista para crecer.",
+      "Desarrollamos apps Android nativas y multiplataforma con Kotlin o React Native. Publicación en Google Play y arquitectura lista para crecer. Desarrollo de apps para empresas en Ecuador.",
     keywords: [
       "desarrollo android",
       "app android",
@@ -163,8 +167,10 @@ export const services: ServiceEntry[] = [
       "kotlin android",
       "react native android",
       "google play store",
+      "desarrollo app Android Ecuador",
+      "crear app Guayaquil",
     ],
-    icon: "??",
+    icon: "🤖",
     features: [
       "Apps nativas con Kotlin",
       "Apps cross-platform con React Native",
@@ -198,7 +204,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Tenés una idea para Android?",
+      title: "¿Tienes una idea para Android?",
       subtitle: "La bajamos a producto con una arquitectura que no te explote después.",
       button: "Cotizar app Android",
     },
@@ -209,9 +215,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Apps profesionales para iPhone y iPad",
     shortDescription:
       "Apps iOS con Swift o React Native, publicables en App Store y alineadas a buenas prácticas de Apple.",
-    seoTitle: "Desarrollo de Apps iOS | Xpress Developer",
+    seoTitle: "Desarrollo de Apps iOS en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos apps iOS para iPhone y iPad con Swift o React Native. Diseño cuidado, rendimiento sólido y preparación para App Store.",
+      "Creamos apps iOS para iPhone y iPad con Swift o React Native. Diseño cuidado, rendimiento sólido y preparación para App Store. Apps para empresas y emprendedores en Ecuador.",
     keywords: [
       "desarrollo iOS",
       "app iOS",
@@ -220,8 +226,10 @@ export const services: ServiceEntry[] = [
       "Swift iOS",
       "React Native iOS",
       "App Store",
+      "desarrollo app iOS Ecuador",
+      "crear app iPhone Ecuador",
     ],
-    icon: "??",
+    icon: "📱",
     features: [
       "Apps nativas con Swift",
       "Apps cross-platform con React Native",
@@ -266,9 +274,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Chatbots con inteligencia artificial para tu negocio",
     shortDescription:
       "Implementamos chatbots con IA para web y WhatsApp, orientados a soporte, ventas y automatización operativa.",
-    seoTitle: "Chat IA y Chatbots para Empresas | Xpress Developer",
+    seoTitle: "Chatbots con IA para Empresas en Ecuador | Xpress Developer",
     seoDescription:
-      "Implementamos chatbots con inteligencia artificial para soporte, ventas y automatización. Integración con web, WhatsApp y procesos internos.",
+      "Implementamos chatbots con inteligencia artificial para soporte, ventas y automatización. Integración con web, WhatsApp y procesos internos. Automatización con IA para negocios en Ecuador.",
     keywords: [
       "chat IA",
       "chatbot IA",
@@ -276,8 +284,10 @@ export const services: ServiceEntry[] = [
       "chatbot WhatsApp",
       "automatización de soporte",
       "bot conversacional",
+      "chatbot WhatsApp Ecuador",
+      "chatbot para empresas Ecuador",
     ],
-    icon: "??",
+    icon: "💬",
     features: [
       "Chatbots con modelos de IA modernos",
       "Integración con WhatsApp Business",
@@ -311,7 +321,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Querés automatizar atención o ventas con IA?",
+      title: "¿Quieres automatizar atención o ventas con IA?",
       subtitle: "Hagámoslo con criterio de negocio, no por moda.",
       button: "Cotizar chat IA",
     },
@@ -322,9 +332,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Soluciones de IA para hacer crecer tu negocio",
     shortDescription:
       "Aplicamos inteligencia artificial a procesos reales: automatización, análisis, asistentes y sistemas de apoyo a decisión.",
-    seoTitle: "Inteligencia Artificial para Empresas | Xpress Developer",
+    seoTitle: "Inteligencia Artificial para Empresas en Ecuador | Xpress Developer",
     seoDescription:
-      "Aplicamos inteligencia artificial en procesos de negocio: automatización, análisis de datos, asistentes y soluciones personalizadas para empresas.",
+      "Aplicamos inteligencia artificial en procesos de negocio: automatización, análisis de datos, asistentes y soluciones personalizadas para empresas en Ecuador.",
     keywords: [
       "inteligencia artificial para empresas",
       "IA empresarial",
@@ -332,8 +342,10 @@ export const services: ServiceEntry[] = [
       "machine learning",
       "análisis de datos con IA",
       "integración de IA",
+      "inteligencia artificial Ecuador",
+      "automatización con IA Ecuador",
     ],
-    icon: "??",
+    icon: "🧠",
     features: [
       "Automatización de procesos con IA",
       "Clasificación y análisis de documentos",
@@ -367,8 +379,8 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Querés aplicar IA con sentido de negocio?",
-      subtitle: "Te ayudamos a usarla donde suma, no donde impresiona nomás.",
+      title: "¿Quieres aplicar IA con sentido de negocio?",
+      subtitle: "Te ayudamos a usarla donde suma, no donde solo impresiona.",
       button: "Consultar sobre IA",
     },
   },
@@ -378,9 +390,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Frontend, backend y arquitectura para productos digitales",
     shortDescription:
       "Desarrollo web a medida con React, Next.js, Node.js y APIs sólidas para proyectos que necesitan crecer con orden.",
-    seoTitle: "Desarrollo Web a Medida | Xpress Developer",
+    seoTitle: "Desarrollo Web a Medida en Ecuador | Xpress Developer",
     seoDescription:
-      "Desarrollo web frontend y backend con React, Next.js, Node.js y arquitectura mantenible. Creamos productos digitales pensados para escalar.",
+      "Desarrollo web frontend y backend con React, Next.js, Node.js y arquitectura mantenible. Creamos productos digitales pensados para escalar, para empresas en Guayaquil, Quito y todo Ecuador.",
     keywords: [
       "desarrollo web",
       "desarrollo frontend",
@@ -388,8 +400,10 @@ export const services: ServiceEntry[] = [
       "React Next.js",
       "Node.js API",
       "programador web",
+      "desarrollo web Ecuador",
+      "programador Guayaquil",
     ],
-    icon: "?",
+    icon: "⚙️",
     features: [
       "Frontend con React y Next.js",
       "Backend con Node.js y APIs robustas",
@@ -434,9 +448,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Ecommerce pensado para vender y operar sin caos",
     shortDescription:
       "Diseñamos y desarrollamos tiendas online con catálogo, pagos, carrito y flujos pensados para conversión y operación diaria.",
-    seoTitle: "Desarrollo de Tiendas Online y Ecommerce | Xpress Developer",
+    seoTitle: "Tiendas Online y Ecommerce en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos ecommerce y tiendas online con carrito, pagos, gestión de productos y enfoque en conversión, rendimiento y escalabilidad.",
+      "Creamos ecommerce y tiendas online con carrito, pagos, gestión de productos y enfoque en conversión y escalabilidad. Tiendas online para vender en Ecuador.",
     keywords: [
       "tienda online",
       "ecommerce",
@@ -444,8 +458,10 @@ export const services: ServiceEntry[] = [
       "crear tienda online",
       "desarrollo ecommerce",
       "pasarela de pagos",
+      "tienda online Ecuador",
+      "crear ecommerce Guayaquil",
     ],
-    icon: "??",
+    icon: "🛒",
     features: [
       "Catálogo y fichas de producto optimizadas",
       "Carrito de compras y checkout claro",
@@ -460,7 +476,7 @@ export const services: ServiceEntry[] = [
       {
         step: "1",
         title: "Modelo comercial",
-        desc: "Entendemos cómo vendés hoy y qué necesitás automatizar en la tienda.",
+        desc: "Entendemos cómo vendes hoy y qué necesitas automatizar en la tienda.",
       },
       {
         step: "2",
@@ -479,7 +495,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Querés vender online con una tienda en serio?",
+      title: "¿Quieres vender online con una tienda en serio?",
       subtitle: "Te ayudamos a lanzar un ecommerce claro, rápido y mantenible.",
       button: "Cotizar ecommerce",
     },

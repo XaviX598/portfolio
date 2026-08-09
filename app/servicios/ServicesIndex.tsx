@@ -88,7 +88,7 @@ export default function ServicesIndex() {
           className="mt-16 text-center"
         >
           <p className="text-zinc-500">
-            ¿Querés una propuesta? {" "}
+            ¿Quieres una propuesta? {" "}
             <a
               href="https://wa.me/593985295277?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20software"
               target="_blank"

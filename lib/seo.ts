@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 const fallbackUrl = "https://www.xpressdeveloper.com";
-const defaultTitle = "Xpress Developer | Agencia de Desarrollo de Software y Apps";
+const defaultTitle = "Desarrollo Web y Software en Ecuador | Xpress Developer";
 const defaultDescription =
-  "Agencia de desarrollo de software profesional. Creamos páginas web, landing pages, apps Android y iOS, e integramos inteligencia artificial en tu negocio.";
+  "Agencia de desarrollo de software en Ecuador. Creamos páginas web, landing pages, apps Android y iOS, ecommerce e integraciones con IA para empresas en Guayaquil, Quito y todo el país.";
 const defaultOgImage = "/logo-image.png";
 
 export function getSiteUrl() {
