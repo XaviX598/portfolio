@@ -1,16 +1,15 @@
 ﻿import type { Metadata } from "next";
 
-const fallbackUrl = "https://portfolio-xavier-aguilar.vercel.app";
+const fallbackUrl = "https://xpressdeveloper.com";
 const defaultTitle = "Xpress Developer | Agencia de Desarrollo de Software y Apps";
 const defaultDescription =
   "Agencia de desarrollo de software profesional. Creamos páginas web, landing pages, apps Android y iOS, e integramos inteligencia artificial en tu negocio.";
 const defaultOgImage = "/logo-image.png";
 
 export function getSiteUrl() {
-  const envUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    process.env.VERCEL_PROJECT_PRODUCTION_URL ??
-    process.env.VERCEL_URL;
+  // El canonical debe apuntar siempre al dominio de produccion. Derivarlo de
+  // VERCEL_URL hacia que cada preview se auto-canonicalizara a su propia URL.
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!envUrl) {
     return new URL(fallbackUrl);
