@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next";
 
-const fallbackUrl = "https://xpressdeveloper.com";
+const fallbackUrl = "https://www.xpressdeveloper.com";
 const defaultTitle = "Xpress Developer | Agencia de Desarrollo de Software y Apps";
 const defaultDescription =
   "Agencia de desarrollo de software profesional. Creamos páginas web, landing pages, apps Android y iOS, e integramos inteligencia artificial en tu negocio.";
