@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import Services from "./Services";
 import Projects from "./Projects";
 import Process from "./Process";
+import Certificates from "./Certificates";
 import Contact from "./Contact";
 import type { PortfolioLang } from "./HomeClient";
 import { EPIC_NAVIGATE_TO_EVENT } from "@/lib/navigation";
@@ -19,6 +20,7 @@ const sectionConfigs = [
   { id: "services", component: Services, label: "Services" },
   { id: "projects", component: Projects, label: "Projects" },
   { id: "process", component: Process, label: "Process" },
+  { id: "certificates", component: Certificates, label: "Certificates" },
   { id: "contact", component: Contact, label: "Contact" },
 ];
 
