@@ -17,7 +17,7 @@ export default function FloatingButtons({ lang = "en" }: FloatingButtonsProps) {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       <a
-        href="mailto:kevinjkevps4@gmail.com"
+        href="mailto:contacto@xpressdeveloper.com"
         target="_blank"
         rel="noreferrer"
         className="social-btn group"

@@ -33,7 +33,7 @@ const copy = {
       {
         title: "Email",
         subtitle: "Professional contact",
-        value: "kevinjkevps4@gmail.com",
+        value: "contacto@xpressdeveloper.com",
       },
       {
         title: "LinkedIn",
@@ -66,7 +66,7 @@ const copy = {
       {
         title: "Email",
         subtitle: "Contacto profesional",
-        value: "kevinjkevps4@gmail.com",
+        value: "contacto@xpressdeveloper.com",
       },
       {
         title: "LinkedIn",
@@ -90,7 +90,7 @@ export default function Contact({ lang }: ContactProps) {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("https://formsubmit.co/kevinjkevps4@gmail.com", {
+      const response = await fetch("https://formsubmit.co/contacto@xpressdeveloper.com", {
         method: "POST",
         headers: {
           Accept: "application/json",
