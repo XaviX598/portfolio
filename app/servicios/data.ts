@@ -66,7 +66,7 @@ export const services: ServiceEntry[] = [
       {
         step: "1",
         title: "Análisis y planificación",
-        desc: "Entendemos tu negocio, tus objetivos y el tipo de cliente que querés atraer.",
+        desc: "Entendemos tu negocio, tus objetivos y el tipo de cliente que quieres atraer.",
       },
       {
         step: "2",
@@ -141,7 +141,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Necesitás una landing page que venda de verdad?",
+      title: "¿Necesitas una landing page que venda de verdad?",
       subtitle: "Te ayudamos a transformar tráfico en contactos y ventas.",
       button: "Cotizar landing page",
     },
@@ -255,7 +255,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Necesitás una app para iPhone o iPad?",
+      title: "¿Necesitas una app para iPhone o iPad?",
       subtitle: "La hacemos bien desde el principio, sin atajos peligrosos.",
       button: "Cotizar app iOS",
     },
@@ -423,7 +423,7 @@ export const services: ServiceEntry[] = [
       },
     ],
     cta: {
-      title: "¿Necesitás construir un producto web serio?",
+      title: "¿Necesitas construir un producto web serio?",
       subtitle: "Lo hacemos con fundamentos, no con parches lindos.",
       button: "Cotizar desarrollo web",
     },

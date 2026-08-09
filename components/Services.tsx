@@ -279,7 +279,7 @@ export default function Services({ lang }: ServicesProps) {
           className="mt-12 text-center"
         >
           <p className="text-sm text-zinc-500">
-            {lang === "en" ? "Need something else? Let's talk →" : "¿Necesitás algo más? Hablemos →"}
+            {lang === "en" ? "Need something else? Let's talk →" : "¿Necesitas algo más? Hablemos →"}
           </p>
         </motion.div>
       </div>

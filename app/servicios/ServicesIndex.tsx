@@ -95,7 +95,7 @@ export default function ServicesIndex() {
               rel="noreferrer"
               className="text-teal-400 hover:underline"
             >
-              Escribinos por WhatsApp
+              Escríbenos por WhatsApp
             </a>
           </p>
         </motion.div>

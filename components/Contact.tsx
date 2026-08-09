@@ -12,7 +12,7 @@ const copy = {
   en: {
     title: "Let's build something valuable",
     subtitle:
-      "Looking for a Full Stack Engineer for your team or project? I am open to opportunities and collaborations.",
+      "Need a website, a mobile app or AI automation for your business? Tell us about your project and we'll get back with a proposal.",
     formTitle: "Contact Us",
     formSubtitle: "Fill the form and we'll get back to you",
     contactMethod: "How should we contact you?",
@@ -45,10 +45,10 @@ const copy = {
   es: {
     title: "Construyamos algo de valor",
     subtitle:
-      "¿Buscás un Ingeniero Full Stack para tu equipo o proyecto? Estoy abierto a oportunidades y colaboraciones.",
+      "¿Necesitas una página web, una app o automatizar procesos con IA en tu empresa? Cuéntanos tu proyecto y te respondemos con una propuesta.",
     formTitle: "Contáctanos",
-    formSubtitle: "Escribinos y te respondemos pronto",
-    contactMethod: "¿Cómo querés que te contactemos?",
+    formSubtitle: "Escríbenos y te respondemos pronto",
+    contactMethod: "¿Cómo quieres que te contactemos?",
     phone: "Teléfono",
     email: "Correo",
     phoneLabel: "Tu número de WhatsApp",
@@ -206,7 +206,7 @@ export default function Contact({ lang }: ContactProps) {
                     name="message"
                     required
                     rows={3}
-                    placeholder="Contanos sobre tu proyecto..."
+                    placeholder="Cuéntanos sobre tu proyecto..."
                     className="w-full resize-none rounded-xl border border-white/10 bg-zinc-800/50 px-4 py-3 text-white placeholder-zinc-500 transition-colors focus:border-teal-500 focus:outline-none"
                   />
                 </div>
