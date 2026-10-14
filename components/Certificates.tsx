@@ -31,7 +31,7 @@ export default function Certificates({ lang }: CertificatesProps) {
   const t = copy[lang];
 
   return (
-    <section id="certificates" className="relative flex min-h-screen w-full items-center py-16">
+    <section className="relative flex min-h-screen w-full items-center py-16">
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-zinc-900/35 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">

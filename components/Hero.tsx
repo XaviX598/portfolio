@@ -112,7 +112,7 @@ export default function Hero({ lang }: HeroProps) {
               <MotionButton
                 label={copy.ctaPrimary}
                 variant="primary"
-                onClick={() => navigateToSection("process")}
+                onClick={() => navigateToSection("contact")}
               />
               <MotionButton href="/servicios" label={copy.ctaSecondary} variant="secondary" />
             </div>

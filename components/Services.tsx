@@ -207,7 +207,7 @@ export default function Services({ lang }: ServicesProps) {
   const t = servicesData[lang];
 
   return (
-    <section id="services" className="relative flex min-h-screen w-full h-full items-center px-4 md:px-6">
+    <section className="relative flex min-h-screen w-full h-full items-center px-4 md:px-6">
       <div className="absolute inset-0 bg-zinc-950" />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

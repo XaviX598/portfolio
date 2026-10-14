@@ -110,7 +110,7 @@ export default function Contact({ lang }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="relative flex min-h-screen w-full h-full items-center justify-center">
+    <section className="relative flex min-h-screen w-full h-full items-center justify-center">
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">

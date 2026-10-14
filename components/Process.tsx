@@ -1,12 +1,11 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
 
 type ProcessProps = {
   lang: PortfolioLang;
-  initialIndex?: number;
 };
 
 const processData = {
@@ -30,50 +29,19 @@ const processData = {
   ],
 };
 
-export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
+export default function Process({ lang }: ProcessProps) {
   const t = processData[lang];
-  const [activeIndex, setActiveIndex] = useState(initialIndex);
-
-  useEffect(() => {
-    let isScrolling = false;
-    const handleWheel = (e: WheelEvent) => {
-      e.stopPropagation();
-
-      if (e.deltaY > 20 && !isScrolling) {
-        isScrolling = true;
-        if (activeIndex < t.length - 1) {
-          setActiveIndex((prev) => prev + 1);
-        } else {
-          window.dispatchEvent(new CustomEvent("epicNavigate", { detail: { direction: "next" } }));
-        }
-        setTimeout(() => {
-          isScrolling = false;
-        }, 400);
-      } else if (e.deltaY < -20 && !isScrolling) {
-        isScrolling = true;
-        if (activeIndex > 0) {
-          setActiveIndex((prev) => prev - 1);
-        } else {
-          window.dispatchEvent(new CustomEvent("epicNavigate", { detail: { direction: "prev" } }));
-        }
-        setTimeout(() => {
-          isScrolling = false;
-        }, 400);
-      }
-    };
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [t.length, activeIndex]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative flex h-full min-h-screen w-full items-center px-4 py-16">
+    <section className="relative flex min-h-screen w-full items-center px-4 py-24">
       <div className="absolute inset-0 bg-zinc-950" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-2xl">
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-8 text-center">
+        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <span className="text-xs uppercase tracking-[0.2em] text-teal-400">
             {lang === "en" ? "Process" : "Proceso"}
           </span>
@@ -87,10 +55,12 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
             <motion.div
               key={item.step}
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
               className="relative flex cursor-pointer items-start gap-4 pb-6 last:pb-0"
               onClick={() => setActiveIndex(idx)}
+              onMouseEnter={() => setActiveIndex(idx)}
             >
               <div className="relative z-10 flex flex-col items-center">
                 <motion.div
@@ -104,7 +74,7 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
                 {idx < t.length - 1 && (
                   <motion.div
                     animate={{
-                      backgroundColor: activeIndex > idx ? "#14b8a6" : "transparent",
+                      backgroundColor: activeIndex > idx ? "#14b8a6" : "rgba(0, 0, 0, 0)",
                     }}
                     className="mt-1 h-6 w-px"
                   />
@@ -114,8 +84,8 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
               <div className="flex-1 pt-[-2px]">
                 <motion.div
                   animate={{
-                    backgroundColor: activeIndex === idx ? "rgba(24, 24, 27, 0.8)" : "transparent",
-                    borderColor: activeIndex === idx ? "rgba(20, 184, 166, 0.3)" : "transparent",
+                    backgroundColor: activeIndex === idx ? "rgba(24, 24, 27, 0.8)" : "rgba(0, 0, 0, 0)",
+                    borderColor: activeIndex === idx ? "rgba(20, 184, 166, 0.3)" : "rgba(0, 0, 0, 0)",
                   }}
                   className="rounded-lg border p-2 transition-colors"
                 >
@@ -132,18 +102,7 @@ export default function Process({ lang, initialIndex = 0 }: ProcessProps) {
                   <h3 className={`text-sm font-semibold ${activeIndex === idx ? "text-white" : "text-zinc-500"}`}>
                     {item.title}
                   </h3>
-                  <AnimatePresence>
-                    {activeIndex === idx && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="mt-1 text-xs text-zinc-400">{item.details}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <p className={`mt-1 text-xs ${activeIndex === idx ? "text-zinc-300" : "text-zinc-500"}`}>{item.details}</p>
                 </motion.div>
               </div>
             </motion.div>

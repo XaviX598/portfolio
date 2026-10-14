@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
 
@@ -11,8 +11,6 @@ type Project = {
   links: { live?: string; github?: string };
   images?: string[];
 };
-
-let lastProjectIndex = 0;
 
 const projectsData = {
   en: [
@@ -217,7 +215,7 @@ function ProjectModal({
   );
 }
 
-function ProjectSlide({
+function ProjectCard({
   project,
   idx,
   onOpen,
@@ -233,99 +231,55 @@ function ProjectSlide({
   const hasImages = project.images && project.images.length > 0;
 
   return (
-    <div className="relative flex h-full w-full flex-shrink-0 items-center justify-center pt-24 md:pt-32">
-      <div className="absolute inset-0 bg-zinc-950" />
-      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-      <div className={`absolute top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-teal-500/5 blur-3xl ${idx % 2 === 0 ? "-left-32" : "-right-32"}`} />
-
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 md:px-12">
-        <div className="flex-1">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-            <span className="text-xs uppercase tracking-[0.3em] text-zinc-500">{lang === "en" ? "Project" : "Proyecto"} {String(idx + 1).padStart(2, "0")}</span>
-            <h2 className="mb-4 mt-4 text-4xl font-bold text-white md:text-6xl">{project.title}</h2>
-            <p className="mb-6 max-w-md text-lg text-zinc-400">{project.summary}</p>
-            <div className="mb-8 flex flex-wrap gap-2">
-              {project.tech.map((tech) => (
-                <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-zinc-400">{tech}</span>
-              ))}
-            </div>
-            <button onClick={onOpen} className="flex items-center gap-2 rounded-xl bg-teal-500 px-6 py-3 font-semibold text-zinc-900 hover:bg-teal-400">{t.visit}</button>
-          </motion.div>
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.4, delay: (idx % 3) * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/60"
+    >
+      <button type="button" onClick={onOpen} className="relative aspect-video w-full overflow-hidden bg-zinc-800" aria-label={`${t.visit}: ${project.title}`}>
+        {hasImages && (
+          <img
+            src={project.images![0]}
+            alt={project.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      </button>
+      <div className="flex flex-1 flex-col p-5 md:p-6">
+        <span className="text-xs uppercase tracking-[0.3em] text-zinc-500">
+          {lang === "en" ? "Project" : "Proyecto"} {String(idx + 1).padStart(2, "0")}
+        </span>
+        <h3 className="mb-2 mt-2 text-2xl font-bold text-white">{project.title}</h3>
+        <p className="mb-5 text-sm text-zinc-400">{project.summary}</p>
+        <div className="mb-6 flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-zinc-400">{tech}</span>
+          ))}
         </div>
-        <div className="hidden h-[400px] w-[500px] cursor-pointer overflow-hidden rounded-3xl lg:block" onClick={onOpen}>
-          {hasImages ? <img src={project.images![0]} alt={project.title} className="h-full w-full object-cover" /> : <div className="h-full w-full bg-zinc-800" />}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        </div>
+        <button type="button" onClick={onOpen} className="mt-auto rounded-xl bg-teal-500 px-6 py-3 font-semibold text-zinc-900 hover:bg-teal-400">
+          {t.visit}
+        </button>
       </div>
-
-      <div className="pointer-events-none absolute bottom-10 right-10 select-none text-[12vw] font-bold leading-none text-white/[0.03]">{project.title.split(" ")[0]}</div>
-    </div>
+    </motion.article>
   );
 }
 
 export default function Projects({ lang }: { lang: PortfolioLang }) {
-  const [activeIndex, setActiveIndex] = useState(lastProjectIndex);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const projects = projectsData[lang];
   const t = lang === "en" ? { visit: "View Project" } : { visit: "Ver Proyecto" };
 
-  useEffect(() => {
-    lastProjectIndex = activeIndex;
-  }, [activeIndex]);
-
-  useEffect(() => {
-    let isScrolling = false;
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleWheel = (e: WheelEvent) => {
-      e.stopPropagation();
-
-      if (e.deltaY > 80 && activeIndex === projects.length - 1) {
-        lastProjectIndex = activeIndex;
-        window.dispatchEvent(new CustomEvent("epicNavigate", { detail: { direction: "next" } }));
-        return;
-      }
-
-      if (e.deltaY < -80 && activeIndex === 0) {
-        lastProjectIndex = activeIndex;
-        window.dispatchEvent(new CustomEvent("epicNavigate", { detail: { direction: "prev" } }));
-        return;
-      }
-
-      if (Math.abs(e.deltaY) < 40) return;
-
-      e.preventDefault();
-
-      if (!isScrolling) {
-        isScrolling = true;
-        clearTimeout(scrollTimeout);
-
-        if (e.deltaY > 10 && activeIndex < projects.length - 1) {
-          setActiveIndex((prev) => prev + 1);
-        } else if (e.deltaY < -10 && activeIndex > 0) {
-          setActiveIndex((prev) => prev - 1);
-        }
-
-        scrollTimeout = setTimeout(() => {
-          isScrolling = false;
-        }, 500);
-      }
-    };
-
-    const container = containerRef.current;
-    container?.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      container?.removeEventListener("wheel", handleWheel);
-      clearTimeout(scrollTimeout);
-    };
-  }, [activeIndex, projects.length]);
-
   return (
-    <section ref={containerRef} className="relative h-full w-full overflow-hidden">
-      <div className="pointer-events-none absolute left-0 right-0 top-24 z-20 px-6 md:top-28 md:px-12">
-        <div className="mx-auto max-w-7xl">
+    <section className="relative w-full bg-zinc-950 px-6 py-24 md:px-12 md:py-32">
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="mb-12">
           <div className="mb-3 flex items-center gap-3">
             <div className="h-[2px] w-12 bg-gradient-to-r from-teal-400 to-transparent" />
             <span className="text-xs uppercase tracking-[0.3em] text-teal-400">
@@ -341,28 +295,12 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
               : "Una selección de los productos digitales que hemos entregado desde el concepto hasta el lanzamiento."}
           </p>
         </div>
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeIndex}
-          className="h-full w-full flex-shrink-0"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <ProjectSlide project={projects[activeIndex]} idx={activeIndex} onOpen={() => setSelectedProject(projects[activeIndex])} t={t} lang={lang} />
-        </motion.div>
-      </AnimatePresence>
 
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
-        <motion.div className="h-full bg-teal-400" initial={{ width: 0 }} animate={{ width: `${((activeIndex + 1) / projects.length) * 100}%` }} transition={{ duration: 0.3 }} />
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-2 text-xs text-zinc-500">
-        {activeIndex === 0 && <span>? Services</span>}
-        {activeIndex > 0 && activeIndex < projects.length - 1 && <span>? ?</span>}
-        {activeIndex === projects.length - 1 && <span>? Process</span>}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, idx) => (
+            <ProjectCard key={project.title} project={project} idx={idx} onOpen={() => setSelectedProject(project)} t={t} lang={lang} />
+          ))}
+        </div>
       </div>
 
       {selectedProject && (
@@ -377,4 +315,3 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
     </section>
   );
 }
-
