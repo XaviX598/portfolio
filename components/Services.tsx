@@ -1,8 +1,7 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
 
 type ServicesProps = {
@@ -11,10 +10,9 @@ type ServicesProps = {
 
 type ServiceItem = {
   title: string;
-  shortDesc: string;
   desc: string;
   icon: string;
-  borderColor: string;
+  price: string;
   slug?: string;
 };
 
@@ -30,213 +28,51 @@ const servicePages = [
 ];
 
 const servicesData: Record<PortfolioLang, ServiceItem[]> = {
-  en: [
-    {
-      title: "APIs & Backend",
-      shortDesc: "Robust and scalable backend",
-      desc: "Secure REST and GraphQL APIs with Node.js, Express, Spring Boot. JWT auth, rate limiting, Swagger documentation.",
-      icon: "🔌",
-      borderColor: "border-white/10",
-      slug: "desarrollo-web",
-    },
-    {
-      title: "Mobile Apps",
-      shortDesc: "Android and iOS apps",
-      desc: "Native apps for Android and iOS with React Native and Kotlin. Google Play and App Store ready.",
-      icon: "📱",
-      borderColor: "border-white/10",
-      slug: "desarrollo-android",
-    },
-    {
-      title: "Landing Pages",
-      shortDesc: "High-conversion pages",
-      desc: "High-impact landing pages with GSAP animations. Optimized for SEO and conversion rates.",
-      icon: "🎯",
-      borderColor: "border-white/10",
-      slug: "landing-page",
-    },
-    {
-      title: "Websites",
-      shortDesc: "Professional websites",
-      desc: "Custom websites and web pages. Modern design, SEO optimized, fast loading.",
-      icon: "🌐",
-      borderColor: "border-white/10",
-      slug: "pagina-web",
-    },
-    {
-      title: "Enterprise Systems",
-      shortDesc: "Internal management software",
-      desc: "Custom software: inventory, users, reports, dashboards, access control and permissions.",
-      icon: "🏢",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "AI & Chatbots",
-      shortDesc: "Artificial intelligence",
-      desc: "AI chat, chatbots with ChatGPT, WhatsApp integration, and 24/7 customer support automation.",
-      icon: "🤖",
-      borderColor: "border-white/10",
-      slug: "chat-ia",
-    },
-    {
-      title: "Full Systems",
-      shortDesc: "End-to-end solutions",
-      desc: "Everything: frontend, backend, database, authentication, payments, emails and deployment. One complete solution.",
-      icon: "🔧",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "Maintenance",
-      shortDesc: "Ongoing support",
-      desc: "Bug fixes, security updates, monitoring, backups and continuous improvements.",
-      icon: "🛠️",
-      borderColor: "border-white/10",
-    },
-  ],
   es: [
-    {
-      title: "APIs & Backend",
-      shortDesc: "Backend robusto y escalable",
-      desc: "APIs REST y GraphQL seguras con Node.js, Express y Spring Boot. Autenticación JWT, rate limiting y documentación Swagger.",
-      icon: "🔌",
-      borderColor: "border-white/10",
-      slug: "desarrollo-web",
-    },
-    {
-      title: "Apps Móviles",
-      shortDesc: "Apps para Android y iOS",
-      desc: "Apps nativas para Android y iOS con React Native y Kotlin. Listas para Google Play y App Store.",
-      icon: "📱",
-      borderColor: "border-white/10",
-      slug: "desarrollo-android",
-    },
-    {
-      title: "Landing Pages",
-      shortDesc: "Páginas de conversión",
-      desc: "Landing pages de alto impacto con animaciones GSAP. Optimizadas para SEO y tasas de conversión.",
-      icon: "🎯",
-      borderColor: "border-white/10",
-      slug: "landing-page",
-    },
-    {
-      title: "Páginas Web",
-      shortDesc: "Sitios web profesionales",
-      desc: "Páginas web y sitios web personalizados. Diseño moderno, optimización SEO y carga rápida.",
-      icon: "🌐",
-      borderColor: "border-white/10",
-      slug: "pagina-web",
-    },
-    {
-      title: "Sistemas Empresariales",
-      shortDesc: "Software de gestión interna",
-      desc: "Software a medida: inventarios, usuarios, reportes, dashboards, control de accesos y permisos.",
-      icon: "🏢",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "IA & Chatbots",
-      shortDesc: "Inteligencia artificial",
-      desc: "Chat IA, chatbots con ChatGPT, integración con WhatsApp y automatización de soporte 24/7.",
-      icon: "🤖",
-      borderColor: "border-white/10",
-      slug: "chat-ia",
-    },
-    {
-      title: "Sistemas Completos",
-      shortDesc: "Soluciones integrales",
-      desc: "Todo: frontend, backend, base de datos, autenticación, pagos, emails y deployment. Una solución completa.",
-      icon: "🔧",
-      borderColor: "border-white/10",
-    },
-    {
-      title: "Mantenimiento",
-      shortDesc: "Soporte continuo",
-      desc: "Corrección de bugs, actualizaciones de seguridad, monitoreo, backups y mejoras continuas.",
-      icon: "🛠️",
-      borderColor: "border-white/10",
-    },
+    { title: "Páginas Web", desc: "Una web profesional que transmite confianza, aparece en Google y convierte visitas en mensajes.", icon: "🌐", price: "Desde $450", slug: "pagina-web" },
+    { title: "Landing Pages", desc: "Páginas de una sola misión: que tu anuncio o campaña se convierta en clientes.", icon: "🎯", price: "Desde $250", slug: "landing-page" },
+    { title: "Tiendas Online", desc: "Vende las 24 horas con catálogo, carrito, pagos y gestión de pedidos sin complicaciones.", icon: "🛒", price: "Desde $900", slug: "ecommerce" },
+    { title: "Apps Móviles", desc: "Apps para Android e iOS que tus clientes usan a diario, listas para publicar en las tiendas.", icon: "📱", price: "Desde $2.500", slug: "desarrollo-android" },
+    { title: "Chatbots con IA", desc: "Responde precios, horarios y dudas por WhatsApp o tu web de forma automática, todo el día.", icon: "🤖", price: "Desde $400", slug: "chat-ia" },
+    { title: "Automatización con IA", desc: "Ahorra horas de trabajo manual automatizando reportes, procesos y atención.", icon: "⚡", price: "Desde $500", slug: "inteligencia-artificial" },
+    { title: "Sistemas a Medida", desc: "Software de gestión, paneles y plataformas hechas exactamente para cómo opera tu empresa.", icon: "🧩", price: "Desde $1.500", slug: "desarrollo-web" },
+    { title: "Mantenimiento", desc: "Actualizaciones, seguridad, respaldos y mejoras continuas para que nada se caiga.", icon: "🛠️", price: "Desde $40/mes" },
+  ],
+  en: [
+    { title: "Websites", desc: "A professional site that builds trust, shows up on Google and turns visits into messages.", icon: "🌐", price: "From $450", slug: "pagina-web" },
+    { title: "Landing Pages", desc: "Single-mission pages that turn your ads and campaigns into clients.", icon: "🎯", price: "From $250", slug: "landing-page" },
+    { title: "Online Stores", desc: "Sell 24/7 with catalog, cart, payments and hassle-free order management.", icon: "🛒", price: "From $900", slug: "ecommerce" },
+    { title: "Mobile Apps", desc: "Android and iOS apps your clients use every day, ready to publish on the stores.", icon: "📱", price: "From $2,500", slug: "desarrollo-android" },
+    { title: "AI Chatbots", desc: "Answer prices, hours and questions on WhatsApp or your site automatically, all day long.", icon: "🤖", price: "From $400", slug: "chat-ia" },
+    { title: "AI Automation", desc: "Save hours of manual work by automating reports, processes and customer service.", icon: "⚡", price: "From $500", slug: "inteligencia-artificial" },
+    { title: "Custom Systems", desc: "Management software, dashboards and platforms built exactly for how your company operates.", icon: "🧩", price: "From $1,500", slug: "desarrollo-web" },
+    { title: "Maintenance", desc: "Updates, security, backups and continuous improvements so nothing breaks.", icon: "🛠️", price: "From $40/mo" },
   ],
 };
 
-function CardLink({ slug, children }: { slug?: string; children: React.ReactNode }) {
-  if (!slug) return <>{children}</>;
-  return (
-    <Link href={`/servicios/${slug}`} className="block">
-      {children}
-    </Link>
+function ServiceCard({ service, lang }: { service: ServiceItem; lang: PortfolioLang }) {
+  const body = (
+    <div className="group relative flex h-full flex-col rounded-2xl border border-white/10 bg-zinc-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-400/40 hover:bg-zinc-900">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-2xl transition-transform duration-300 group-hover:scale-110">
+        <span className="grayscale transition-[filter] duration-300 group-hover:grayscale-0">{service.icon}</span>
+      </div>
+      <h3 className="mt-5 text-lg font-bold text-white">{service.title}</h3>
+      <p className="mt-1 text-sm font-semibold text-teal-400">{service.price}</p>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">{service.desc}</p>
+      {service.slug && (
+        <span className="mt-5 text-sm font-medium text-teal-400 transition-transform duration-300 group-hover:translate-x-1">
+          {lang === "en" ? "Learn more →" : "Ver más →"}
+        </span>
+      )}
+    </div>
   );
-}
 
-function ServiceCard({ service, idx }: { service: ServiceItem; idx: number }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: idx * 0.08 }}
-      className="relative"
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
-    >
-      <CardLink slug={service.slug}>
-        <motion.div
-          layout
-          className={`relative overflow-hidden rounded-2xl ${service.borderColor} bg-zinc-900/60 backdrop-blur-sm cursor-pointer transition-all duration-500`}
-          animate={{
-            height: isExpanded ? 270 : 180,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <motion.div
-            className="absolute inset-0 bg-white/[0.03]"
-            animate={{ opacity: isExpanded ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-          />
-
-          <motion.div
-            className="absolute top-0 left-0 right-0 h-px bg-white/20"
-            initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: isExpanded ? 1 : 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          />
-
-          <div className="relative z-10 flex h-full flex-col p-5 md:p-6">
-            <div className="flex items-start gap-4">
-              <motion.div
-                className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5"
-                animate={{ scale: isExpanded ? 1.05 : 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <span className="text-2xl filter grayscale">{service.icon}</span>
-              </motion.div>
-
-              <div className="flex-1">
-                <motion.h3 className="text-lg font-bold text-white">
-                  {service.title}
-                </motion.h3>
-                <motion.p
-                  className="mt-1 text-xs font-medium uppercase tracking-wider text-zinc-500"
-                  animate={{ opacity: isExpanded ? 0 : 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {service.shortDesc}
-                </motion.p>
-              </div>
-            </div>
-
-            <motion.div
-              initial={false}
-              animate={{ opacity: isExpanded ? 1 : 0, y: isExpanded ? 0 : 10 }}
-              transition={{ duration: 0.3, delay: isExpanded ? 0.1 : 0 }}
-              className="mt-4"
-            >
-              <p className="text-sm leading-relaxed text-zinc-300">{service.desc}</p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </CardLink>
-    </motion.div>
+  return service.slug ? (
+    <Link href={`/servicios/${service.slug}`} className="block h-full">
+      {body}
+    </Link>
+  ) : (
+    body
   );
 }
 
@@ -244,32 +80,12 @@ export default function Services({ lang }: ServicesProps) {
   const t = servicesData[lang];
 
   return (
-    <section className="relative flex min-h-screen w-full h-full items-center px-4 md:px-6">
-      <div className="absolute inset-0 bg-zinc-950" />
+    <section className="relative w-full overflow-hidden bg-zinc-950 px-6 py-24 md:py-32">
+      <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-teal-500/5 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/5 blur-3xl" />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-0 left-0 h-full w-full"
-          style={{
-            backgroundImage: `
-            linear-gradient(30deg, rgba(255,255,255,0.02) 1px, transparent 1px),
-            linear-gradient(-30deg, rgba(255,255,255,0.02) 1px, transparent 1px)
-          `,
-            backgroundSize: "60px 100px",
-          }}
-        />
-
-        <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-teal-500/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/5 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 md:mb-14"
-        >
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <FadeIn repeat={false} className="mb-12 md:mb-14">
           <div className="mb-3 flex items-center gap-3">
             <div className="h-[2px] w-12 bg-gradient-to-r from-teal-400 to-transparent" />
             <span className="text-xs uppercase tracking-[0.3em] text-teal-400">
@@ -277,44 +93,24 @@ export default function Services({ lang }: ServicesProps) {
             </span>
           </div>
           <h2 className="text-4xl font-bold text-white md:text-6xl">
-            {lang === "en" ? "What we build" : "Qué construimos"}
+            {lang === "en" ? "What we build for your business" : "Qué construimos para tu negocio"}
           </h2>
           <p className="mt-4 max-w-xl text-lg text-zinc-400">
             {lang === "en"
-              ? "From idea to deployment, we build digital products that scale."
-              : "Desde la idea hasta el despliegue, construimos productos digitales que escalan."}
+              ? "Digital solutions designed to attract clients, sell more and save you time. Starting prices in USD; we confirm the final price in writing."
+              : "Soluciones digitales pensadas para atraer clientes, vender más y ahorrarte tiempo. Precios de referencia en USD; el precio final te lo confirmamos por escrito."}
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
-          <div className="flex flex-col gap-4 md:gap-6">
-            <ServiceCard service={t[0]} idx={0} />
-            <ServiceCard service={t[4]} idx={4} />
-          </div>
-
-          <div className="flex flex-col gap-4 md:mt-12 md:gap-6">
-            <ServiceCard service={t[1]} idx={1} />
-            <ServiceCard service={t[5]} idx={5} />
-          </div>
-
-          <div className="flex flex-col gap-4 md:gap-6">
-            <ServiceCard service={t[2]} idx={2} />
-            <ServiceCard service={t[6]} idx={6} />
-          </div>
-
-          <div className="flex flex-col gap-4 md:mt-12 md:gap-6">
-            <ServiceCard service={t[3]} idx={3} />
-            <ServiceCard service={t[7]} idx={7} />
-          </div>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {t.map((service, idx) => (
+            <FadeIn key={service.title} delay={(idx % 4) * 0.08} repeat={false} distance={24} className="h-full">
+              <ServiceCard service={service} lang={lang} />
+            </FadeIn>
+          ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 text-center"
-        >
+        <FadeIn repeat={false} delay={0.2} className="mt-12 text-center">
           <p className="text-sm text-zinc-500">
             {lang === "en" ? "Explore each service in detail" : "Conoce cada servicio en detalle"}
           </p>
@@ -329,7 +125,7 @@ export default function Services({ lang }: ServicesProps) {
               </Link>
             ))}
           </nav>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

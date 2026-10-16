@@ -1,5 +1,6 @@
 ﻿import HomeClient from "../components/HomeClient";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
+import { faqData } from "@/lib/faq";
 
 export const metadata = buildMetadata({
   title: "Desarrollo de Páginas Web y Software en Ecuador | Xpress Developer",
@@ -59,11 +60,25 @@ export default function Home() {
     sameAs: ["https://www.linkedin.com/in/xavier-aguilar-93759b2bb/"],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqData.es.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <HomeClient />
     </>

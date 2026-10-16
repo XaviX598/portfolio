@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import FadeIn from "./FadeIn";
+import MotionButton from "./MotionButton";
+import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import type { PortfolioLang } from "./HomeClient";
 
 type ContactProps = {
@@ -10,13 +12,16 @@ type ContactProps = {
 
 const copy = {
   en: {
-    title: "Let's build something valuable",
+    title: "Ready for your business to sell more online?",
     subtitle:
-      "Need a website, a mobile app or AI automation for your business? Tell us about your project and we'll get back with a proposal.",
+      "Tell us about your project and within 24 hours we'll reply with next steps. The first conversation is free and with no commitment.",
+    ctaWhatsApp: "Message us on WhatsApp",
+    orForm: "or fill out the form",
+    assurances: ["Fixed price in writing", "Everything in your name", "Weekly progress updates"],
     formTitle: "Contact Us",
     formSubtitle: "Fill the form and we'll get back to you",
     contactMethod: "How should we contact you?",
-    phone: "Phone",
+    phone: "WhatsApp",
     email: "Email",
     phoneLabel: "Your phone number",
     emailLabel: "Your email",
@@ -26,7 +31,6 @@ const copy = {
     sending: "Sending...",
     success: "Message sent! We'll contact you soon.",
     ctaEmail: "Send Email",
-    ctaWhatsApp: "WhatsApp",
     ctaLinkedIn: "LinkedIn",
     channels: [
       { title: "WhatsApp", subtitle: "Fast response", value: "+593 985295277" },
@@ -43,13 +47,16 @@ const copy = {
     ],
   },
   es: {
-    title: "Construyamos algo de valor",
+    title: "¿Listo para que tu negocio venda más en internet?",
     subtitle:
-      "¿Necesitas una página web, una app o automatizar procesos con IA en tu empresa? Cuéntanos tu proyecto y te respondemos con una propuesta.",
+      "Cuéntanos tu proyecto y en menos de 24 horas te respondemos con los siguientes pasos. La primera conversación es gratis y sin compromiso.",
+    ctaWhatsApp: "Escríbenos por WhatsApp",
+    orForm: "o completa el formulario",
+    assurances: ["Precio cerrado por escrito", "Todo queda a tu nombre", "Avances cada semana"],
     formTitle: "Contáctanos",
     formSubtitle: "Escríbenos y te respondemos pronto",
     contactMethod: "¿Cómo quieres que te contactemos?",
-    phone: "Teléfono",
+    phone: "WhatsApp",
     email: "Correo",
     phoneLabel: "Tu número de WhatsApp",
     emailLabel: "Tu correo electrónico",
@@ -59,7 +66,6 @@ const copy = {
     sending: "Enviando...",
     success: "¡Mensaje enviado! Te contactaremos pronto.",
     ctaEmail: "Enviar email",
-    ctaWhatsApp: "WhatsApp",
     ctaLinkedIn: "LinkedIn",
     channels: [
       { title: "WhatsApp", subtitle: "Respuesta rápida", value: "+593 985295277" },
@@ -110,10 +116,27 @@ export default function Contact({ lang }: ContactProps) {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full h-full items-center justify-center">
+    <section className="relative flex w-full items-center justify-center bg-zinc-950 py-12">
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
+        <FadeIn repeat={false} className="text-center">
+          <h2 className="text-3xl font-bold text-white md:text-5xl">{t.title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">{t.subtitle}</p>
+          <div className="mt-8 flex justify-center">
+            <MotionButton label={t.ctaWhatsApp} variant="primary" size="lg" href={whatsappUrl(QUOTE_MESSAGE[lang])} target="_blank" rel="noreferrer" />
+          </div>
+          <ul className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-400">
+            {t.assurances.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-sm uppercase tracking-[0.2em] text-zinc-500">{t.orForm}</p>
+        </FadeIn>
+
         <FadeIn delay={0.1}>
           <div
             data-inview
@@ -147,7 +170,7 @@ export default function Contact({ lang }: ContactProps) {
                           : "border-white/10 bg-zinc-800/50 text-zinc-400 hover:border-white/20"
                       }`}
                     >
-                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.176l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.43.969.96a.976.976 0 0 1-.969.966.976.976 0 0 1-.969-.966c0-.53.434-.96.97-.96z" /></svg>
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z" /></svg>
                       <span>{t.phone}</span>
                     </button>
                     <button
@@ -225,7 +248,7 @@ export default function Contact({ lang }: ContactProps) {
 
         <FadeIn delay={0.26}>
           <footer className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-zinc-500">
-            © {new Date().getFullYear()} Kevin Xavier Aguilar Velasco. All rights reserved.
+            © {new Date().getFullYear()} Xpress Developer. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
           </footer>
         </FadeIn>
       </div>

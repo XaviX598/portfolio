@@ -5,7 +5,9 @@ import Hero from "./Hero";
 import Services from "./Services";
 import Projects from "./Projects";
 import Process from "./Process";
-import Certificates from "./Certificates";
+import Problem from "./Problem";
+import WhyUs from "./WhyUs";
+import FAQ from "./FAQ";
 import Contact from "./Contact";
 import type { PortfolioLang } from "./HomeClient";
 import { navigateToSection } from "@/lib/navigation";
@@ -15,12 +17,14 @@ interface EpicPageProps {
 }
 
 const sectionConfigs = [
-  { id: "hero", component: Hero, label: "Hero" },
-  { id: "services", component: Services, label: "Services" },
-  { id: "projects", component: Projects, label: "Projects" },
-  { id: "process", component: Process, label: "Process" },
-  { id: "certificates", component: Certificates, label: "Certificates" },
-  { id: "contact", component: Contact, label: "Contact" },
+  { id: "hero", component: Hero, label: "Inicio" },
+  { id: "problem", component: Problem, label: "Problemas" },
+  { id: "services", component: Services, label: "Servicios" },
+  { id: "why-us", component: WhyUs, label: "Por qué elegirnos" },
+  { id: "projects", component: Projects, label: "Proyectos" },
+  { id: "process", component: Process, label: "Proceso" },
+  { id: "faq", component: FAQ, label: "Preguntas" },
+  { id: "contact", component: Contact, label: "Contacto" },
 ];
 
 // Todas las secciones se renderizan y el scroll es nativo:

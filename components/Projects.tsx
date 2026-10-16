@@ -16,42 +16,42 @@ const projectsData = {
   en: [
     {
       title: "Universal Skills Hub",
-      summary: "Universal hub with 85,000+ AI skills for agents like OpenCode, Claude Code, Cursor, Windsurf.",
+      summary: "A hub with 85,000+ AI skills organized in a fast catalog that's easy to explore.",
       tech: ["Next.js", "TypeScript", "Prisma"],
       links: { live: "https://universal-skills-hub.vercel.app" },
       images: ["/proyectos/universal skills.png", "/proyectos/universal skills 2.png", "/proyectos/universal skills 3.png"],
     },
     {
       title: "AMZ Express",
-      summary: "Full stack platform to quote Amazon imports to Ecuador with role-based panels.",
+      summary: "Lets importers quote Amazon purchases to Ecuador in seconds, with separate panels for clients and admins.",
       tech: ["Vue 3", "Spring Boot", "PostgreSQL"],
       links: { live: "https://amz-express.vercel.app" },
       images: ["/proyectos/amz express.png", "/proyectos/amz express 2.png", "/proyectos/amz express 3.png"],
     },
     {
       title: "Xpress Ecommerce",
-      summary: "Online store with catalog, cart, checkout simulation and order history.",
+      summary: "A complete online store: catalog, cart, checkout and order history, ready to sell.",
       tech: ["Next.js", "React", "Tailwind"],
       links: { live: "https://xpress-ecommerce.vercel.app" },
       images: ["/proyectos/xpress ecommerce.png", "/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png"],
     },
     {
       title: "XpressConvert",
-      summary: "Conversion suite for images, PDF, documents, audio and video.",
+      summary: "Web tool to convert images, PDFs, documents, audio and video without installing anything.",
       tech: ["React", "Vite", "TypeScript"],
       links: { live: "https://xpressconvert.vercel.app" },
       images: ["/proyectos/xpress convert .png", "/proyectos/xpress convert 2.png", "/proyectos/xpressconvert 3.png"],
     },
     {
       title: "Restaurant Landing",
-      summary: "High-impact landing page for restaurant with interaction animations.",
+      summary: "Restaurant landing page with a visual menu and animations designed to attract diners.",
       tech: ["React", "Framer Motion"],
       links: { live: "https://project-restaurante-delta.vercel.app" },
       images: ["/proyectos/restaurant.png", "/proyectos/restaurante 2.png", "/proyectos/restaurant 3.png"],
     },
     {
       title: "Athletics System",
-      summary: "Complete ecosystem: web app, backend API and Android app.",
+      summary: "A complete system to manage athletes: web app, API and Android app working together.",
       tech: ["Java", "Spring Boot", "Android"],
       links: { live: "https://frontend-atletismo.vercel.app" },
       images: ["/proyectos/pagina de atleta .png", "/proyectos/pagina de atleta 2.png"],
@@ -60,42 +60,42 @@ const projectsData = {
   es: [
     {
       title: "Universal Skills Hub",
-      summary: "Hub universal con 85,000+ skills de IA para agentes.",
+      summary: "Hub con más de 85.000 skills de IA organizadas en un catálogo rápido y fácil de explorar.",
       tech: ["Next.js", "TypeScript", "Prisma"],
       links: { live: "https://universal-skills-hub.vercel.app" },
       images: ["/proyectos/universal skills.png", "/proyectos/universal skills 2.png", "/proyectos/universal skills 3.png"],
     },
     {
       title: "AMZ Express",
-      summary: "Plataforma full stack para cotizar importaciones desde Amazon.",
+      summary: "Permite cotizar compras de Amazon hacia Ecuador en segundos, con paneles para clientes y administradores.",
       tech: ["Vue 3", "Spring Boot", "PostgreSQL"],
       links: { live: "https://amz-express.vercel.app" },
       images: ["/proyectos/amz express.png", "/proyectos/amz express 2.png", "/proyectos/amz express 3.png"],
     },
     {
       title: "Xpress Ecommerce",
-      summary: "Tienda online con catálogo, carrito y checkout.",
+      summary: "Tienda online completa: catálogo, carrito, checkout e historial de pedidos, lista para vender.",
       tech: ["Next.js", "React", "Tailwind"],
       links: { live: "https://xpress-ecommerce.vercel.app" },
       images: ["/proyectos/xpress ecommerce.png", "/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png"],
     },
     {
       title: "XpressConvert",
-      summary: "Suite de conversión para imágenes, PDF, audio y video.",
+      summary: "Herramienta web para convertir imágenes, PDF, documentos, audio y video sin instalar nada.",
       tech: ["React", "Vite", "TypeScript"],
       links: { live: "https://xpressconvert.vercel.app" },
       images: ["/proyectos/xpress convert .png", "/proyectos/xpress convert 2.png", "/proyectos/xpressconvert 3.png"],
     },
     {
       title: "Restaurant Landing",
-      summary: "Landing page de alto impacto para restaurante.",
+      summary: "Landing page para restaurante con menú visual y animaciones pensadas para atraer comensales.",
       tech: ["React", "Framer Motion"],
       links: { live: "https://project-restaurante-delta.vercel.app" },
       images: ["/proyectos/restaurant.png", "/proyectos/restaurante 2.png", "/proyectos/restaurant 3.png"],
     },
     {
       title: "Athletics System",
-      summary: "Ecosistema completo: app web, API y Android.",
+      summary: "Sistema completo para gestionar atletas: aplicación web, API y app Android conectadas.",
       tech: ["Java", "Spring Boot", "Android"],
       links: { live: "https://frontend-atletismo.vercel.app" },
       images: ["/proyectos/pagina de atleta .png", "/proyectos/pagina de atleta 2.png"],
@@ -291,8 +291,8 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
           </h2>
           <p className="mt-4 max-w-xl text-lg text-zinc-400">
             {lang === "en"
-              ? "A selection of the digital products we've delivered from concept to launch."
-              : "Una selección de los productos digitales que hemos entregado desde el concepto hasta el lanzamiento."}
+              ? "Real projects in production that you can visit and try right now."
+              : "Proyectos reales en producción que puedes visitar y probar ahora mismo."}
           </p>
         </div>
 

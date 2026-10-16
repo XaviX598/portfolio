@@ -768,9 +768,6 @@ html.motion-runtime-ready [data-inview].is-inview {
 .epic-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  scroll-margin-top: 0;
 }
 
 /* Navegación lateral mejorada - Minimal y elegante */
@@ -864,5 +861,12 @@ html.motion-runtime-ready [data-inview].is-inview {
 @media (min-width: 768px) {
   .epic-nav {
     display: flex;
+  }
+}
+
+/* En móvil solo dejamos WhatsApp flotante para no tapar el contenido */
+@media (max-width: 767px) {
+  .social-btn:not(.social-btn--whatsapp) {
+    display: none !important;
   }
 }

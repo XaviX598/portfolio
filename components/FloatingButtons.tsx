@@ -1,5 +1,7 @@
 "use client";
 
+import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
+
 type FloatingButtonsProps = {
   lang?: "en" | "es";
 };
@@ -31,10 +33,10 @@ export default function FloatingButtons({ lang = "en" }: FloatingButtonsProps) {
       </a>
 
       <a
-        href="https://wa.me/593985295277"
+        href={whatsappUrl(QUOTE_MESSAGE[lang])}
         target="_blank"
         rel="noreferrer"
-        className="social-btn group"
+        className="social-btn social-btn--whatsapp group"
         aria-label={getLabel("whatsapp")}
       >
         <span className="social-btn-icon-text">{getLabel("whatsapp")}</span>

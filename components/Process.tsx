@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import FadeIn from "./FadeIn";
 import type { PortfolioLang } from "./HomeClient";
 
 type ProcessProps = {
@@ -9,105 +10,64 @@ type ProcessProps = {
 };
 
 const processData = {
-  en: [
-    { step: "01", title: "Contact", details: "You reach out with your project idea" },
-    { step: "02", title: "Meeting", details: "We discuss requirements and scope" },
-    { step: "03", title: "Spec", details: "I create detailed project specification" },
-    { step: "04", title: "Development", details: "Building your project with updates" },
-    { step: "05", title: "Revisions", details: "Review and adjustments" },
-    { step: "06", title: "Delivery", details: "Live system with hosting & SEO" },
-    { step: "07", title: "Support", details: "Optional ongoing maintenance", optional: true },
-  ],
-  es: [
-    { step: "01", title: "Contacto", details: "Me escribís con tu idea" },
-    { step: "02", title: "Reunión", details: "Discutimos requisitos y alcance" },
-    { step: "03", title: "Especificación", details: "Creo una especificación detallada" },
-    { step: "04", title: "Desarrollo", details: "Construyo tu proyecto con actualizaciones" },
-    { step: "05", title: "Revisiones", details: "Revisión y ajustes" },
-    { step: "06", title: "Entrega", details: "Sistema en producción con hosting y SEO" },
-    { step: "07", title: "Soporte", details: "Mantenimiento opcional continuo", optional: true },
-  ],
+  es: {
+    eyebrow: "Proceso",
+    title: "Cómo trabajamos",
+    subtitle: "Un proceso claro, de la primera conversación al lanzamiento.",
+    steps: [
+      { title: "Conversamos", details: "Nos cuentas tu idea por WhatsApp o videollamada y entendemos tu negocio y tus objetivos." },
+      { title: "Propuesta clara", details: "Te enviamos alcance, tiempos y precio cerrado por escrito. Sin sorpresas." },
+      { title: "Diseño y desarrollo", details: "Construimos por etapas y te mostramos avances para que opines en cada paso." },
+      { title: "Lanzamiento y soporte", details: "Publicamos con dominio, SEO y analítica, y te acompañamos después del lanzamiento." },
+    ],
+  },
+  en: {
+    eyebrow: "Process",
+    title: "How we work",
+    subtitle: "A clear process, from the first conversation to launch.",
+    steps: [
+      { title: "We talk", details: "You tell us your idea over WhatsApp or a video call and we get to know your business and goals." },
+      { title: "Clear proposal", details: "We send you scope, timeline and a fixed price in writing. No surprises." },
+      { title: "Design & development", details: "We build in stages and show you progress so you can give feedback at every step." },
+      { title: "Launch & support", details: "We go live with domain, SEO and analytics, and stay with you after launch." },
+    ],
+  },
 };
 
 export default function Process({ lang }: ProcessProps) {
   const t = processData[lang];
-  const [activeIndex, setActiveIndex] = useState(0);
+  const stepsRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: stepsRef, offset: ["start 80%", "end 60%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
   return (
-    <section className="relative flex min-h-screen w-full items-center px-4 py-24">
-      <div className="absolute inset-0 bg-zinc-950" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-      </div>
+    <section className="relative bg-zinc-950 px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn repeat={false} className="text-center">
+          <span className="text-xs uppercase tracking-[0.3em] text-teal-400">{t.eyebrow}</span>
+          <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">{t.title}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-zinc-400">{t.subtitle}</p>
+        </FadeIn>
 
-      <div className="relative z-10 mx-auto w-full max-w-2xl">
-        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
-          <span className="text-xs uppercase tracking-[0.2em] text-teal-400">
-            {lang === "en" ? "Process" : "Proceso"}
-          </span>
-          <h2 className="mt-1 text-2xl font-bold text-white md:text-4xl">
-            {lang === "en" ? "How we work" : "Cómo trabajamos"}
-          </h2>
-        </motion.div>
+        <ol ref={stepsRef} className="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-6">
+          {/* Línea de progreso: vertical en móvil, horizontal en desktop */}
+          <div className="absolute bottom-0 left-[1.4rem] top-0 w-px bg-white/10 md:left-0 md:right-[calc(25%-2.75rem)] md:top-[1.4rem] md:h-px md:w-auto" aria-hidden="true">
+            <motion.div style={{ scaleY: progress }} className="h-full w-full origin-top bg-teal-400 md:hidden" />
+            <motion.div style={{ scaleX: progress }} className="hidden h-full w-full origin-left bg-teal-400 md:block" />
+          </div>
 
-        <div className="relative">
-          {t.map((item, idx) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
-              className="relative flex cursor-pointer items-start gap-4 pb-6 last:pb-0"
-              onClick={() => setActiveIndex(idx)}
-              onMouseEnter={() => setActiveIndex(idx)}
-            >
-              <div className="relative z-10 flex flex-col items-center">
-                <motion.div
-                  animate={{
-                    scale: activeIndex === idx ? 1.3 : 1,
-                    backgroundColor: activeIndex >= idx ? (item.optional ? "#3f3f46" : "#14b8a6") : "#18181b",
-                    borderColor: activeIndex >= idx ? (item.optional ? "#52525b" : "#14b8a6") : "#27272a",
-                  }}
-                  className="h-3 w-3 rounded-full border-2"
-                />
-                {idx < t.length - 1 && (
-                  <motion.div
-                    animate={{
-                      backgroundColor: activeIndex > idx ? "#14b8a6" : "rgba(0, 0, 0, 0)",
-                    }}
-                    className="mt-1 h-6 w-px"
-                  />
-                )}
-              </div>
-
-              <div className="flex-1 pt-[-2px]">
-                <motion.div
-                  animate={{
-                    backgroundColor: activeIndex === idx ? "rgba(24, 24, 27, 0.8)" : "rgba(0, 0, 0, 0)",
-                    borderColor: activeIndex === idx ? "rgba(20, 184, 166, 0.3)" : "rgba(0, 0, 0, 0)",
-                  }}
-                  className="rounded-lg border p-2 transition-colors"
-                >
-                  <div className="mb-0.5 flex items-center gap-2">
-                    <span className={`text-[10px] font-mono ${activeIndex >= idx ? "text-teal-400" : "text-zinc-600"}`}>
-                      {item.step}
-                    </span>
-                    {item.optional && (
-                      <span className="rounded bg-zinc-800 px-1 text-[8px] text-zinc-500">
-                        {lang === "en" ? "OPT" : "OPC"}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className={`text-sm font-semibold ${activeIndex === idx ? "text-white" : "text-zinc-500"}`}>
-                    {item.title}
-                  </h3>
-                  <p className={`mt-1 text-xs ${activeIndex === idx ? "text-zinc-300" : "text-zinc-500"}`}>{item.details}</p>
-                </motion.div>
-              </div>
-            </motion.div>
+          {t.steps.map((step, idx) => (
+            <li key={step.title} className="relative pl-16 md:pl-0">
+              <FadeIn delay={idx * 0.12} repeat={false} distance={24}>
+                <div className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border border-teal-400/40 bg-zinc-950 font-mono text-sm text-teal-300 md:relative">
+                  {String(idx + 1).padStart(2, "0")}
+                </div>
+                <h3 className="text-xl font-semibold text-white md:mt-6">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{step.details}</p>
+              </FadeIn>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
