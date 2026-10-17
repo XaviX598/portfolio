@@ -6,6 +6,7 @@ import Services from "./Services";
 import Projects from "./Projects";
 import Process from "./Process";
 import Problem from "./Problem";
+import JourneyMotion from "./JourneyMotion";
 import WhyUs from "./WhyUs";
 import FAQ from "./FAQ";
 import Contact from "./Contact";
@@ -19,6 +20,7 @@ interface EpicPageProps {
 const sectionConfigs = [
   { id: "hero", component: Hero, label: "Inicio" },
   { id: "problem", component: Problem, label: "Problemas" },
+  { id: "journey", component: JourneyMotion, label: "Así funciona" },
   { id: "services", component: Services, label: "Servicios" },
   { id: "why-us", component: WhyUs, label: "Por qué elegirnos" },
   { id: "projects", component: Projects, label: "Proyectos" },
