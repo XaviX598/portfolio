@@ -22,7 +22,6 @@ export type ServiceEntry = {
   seoTitle: string;
   seoDescription: string;
   keywords: string[];
-  icon: string;
   features: string[];
   process: ServiceProcessStep[];
   cta: {
@@ -53,7 +52,6 @@ export const services: ServiceEntry[] = [
       "página web Guayaquil",
       "diseño web Quito",
     ],
-    icon: "🌐",
     features: [
       "Diseño personalizado y alineado a tu marca",
       "Optimización SEO técnica y on-page",
@@ -78,7 +76,7 @@ export const services: ServiceEntry[] = [
       {
         step: "3",
         title: "Desarrollo",
-        desc: "Implementamos con Next.js, React y TypeScript, priorizando rendimiento y mantenibilidad.",
+        desc: "Construimos tu página priorizando velocidad, seguridad y que sea fácil de mantener.",
       },
       {
         step: "4",
@@ -111,7 +109,6 @@ export const services: ServiceEntry[] = [
       "landing page Ecuador",
       "landing page Guayaquil",
     ],
-    icon: "🎯",
     features: [
       "Diseño orientado a conversión",
       "Jerarquía visual clara",
@@ -170,7 +167,6 @@ export const services: ServiceEntry[] = [
       "desarrollo app Android Ecuador",
       "crear app Guayaquil",
     ],
-    icon: "🤖",
     features: [
       "Apps nativas con Kotlin",
       "Apps cross-platform con React Native",
@@ -229,7 +225,6 @@ export const services: ServiceEntry[] = [
       "desarrollo app iOS Ecuador",
       "crear app iPhone Ecuador",
     ],
-    icon: "📱",
     features: [
       "Apps nativas con Swift",
       "Apps cross-platform con React Native",
@@ -287,7 +282,6 @@ export const services: ServiceEntry[] = [
       "chatbot WhatsApp Ecuador",
       "chatbot para empresas Ecuador",
     ],
-    icon: "💬",
     features: [
       "Chatbots con modelos de IA modernos",
       "Integración con WhatsApp Business",
@@ -345,7 +339,6 @@ export const services: ServiceEntry[] = [
       "inteligencia artificial Ecuador",
       "automatización con IA Ecuador",
     ],
-    icon: "🧠",
     features: [
       "Automatización de procesos con IA",
       "Clasificación y análisis de documentos",
@@ -403,7 +396,6 @@ export const services: ServiceEntry[] = [
       "desarrollo web Ecuador",
       "programador Guayaquil",
     ],
-    icon: "⚙️",
     features: [
       "Frontend con React y Next.js",
       "Backend con Node.js y APIs robustas",
@@ -461,7 +453,6 @@ export const services: ServiceEntry[] = [
       "tienda online Ecuador",
       "crear ecommerce Guayaquil",
     ],
-    icon: "🛒",
     features: [
       "Catálogo y fichas de producto optimizadas",
       "Carrito de compras y checkout claro",
@@ -506,3 +497,26 @@ export const servicesBySlug = Object.fromEntries(
   services.map((service) => [service.slug, service]),
 ) as Record<ServiceSlug, ServiceEntry>;
 
+
+// Precio de referencia, plazo e imagen de un proyecto real parecido, para las páginas de servicio.
+export const serviceGallery: Record<ServiceSlug, string[]> = {
+  "pagina-web": ["/proyectos/universal skills 2.png", "/proyectos/universal skills 3.png", "/proyectos/xpress convert .png"],
+  "landing-page": ["/proyectos/restaurante 2.png", "/proyectos/restaurant 3.png", "/proyectos/xpress ecommerce 2.png"],
+  "desarrollo-android": ["/proyectos/pagina de atleta 2.png", "/proyectos/pagina atlketa 3.png", "/proyectos/amz express 2.png"],
+  "desarrollo-ios": ["/proyectos/pagina de atleta .png", "/proyectos/pagina atlketa 3.png", "/proyectos/xpressconvert 3.png"],
+  "chat-ia": ["/proyectos/amz express.png", "/proyectos/amz express 3.png", "/proyectos/universal skills 3.png"],
+  "inteligencia-artificial": ["/proyectos/universal skills.png", "/proyectos/universal skills 3.png", "/proyectos/xpress convert 2.png"],
+  "desarrollo-web": ["/proyectos/amz express.png", "/proyectos/amz express 2.png", "/proyectos/xpress ecommerce 2.png"],
+  ecommerce: ["/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png", "/proyectos/amz express.png"],
+};
+
+export const serviceExtras: Record<ServiceSlug, { price: number; time: string; image: string; imageAlt: string }> = {
+  "pagina-web": { price: 450, time: "Lista en 3 a 6 semanas", image: "/proyectos/universal skills.png", imageAlt: "Universal Skills Hub, plataforma web desarrollada por Xpress Developer" },
+  "landing-page": { price: 250, time: "Lista en 1 a 2 semanas", image: "/proyectos/restaurant.png", imageAlt: "Landing page de restaurante desarrollada por Xpress Developer" },
+  "desarrollo-android": { price: 2500, time: "Se planifica por etapas", image: "/proyectos/pagina de atleta .png", imageAlt: "Sistema de atletismo con app Android desarrollado por Xpress Developer" },
+  "desarrollo-ios": { price: 2500, time: "Se planifica por etapas", image: "/proyectos/pagina de atleta 2.png", imageAlt: "Sistema de atletismo multiplataforma desarrollado por Xpress Developer" },
+  "chat-ia": { price: 400, time: "Plazo según tus procesos", image: "/proyectos/amz express 2.png", imageAlt: "Plataforma AMZ Express con atención automatizada desarrollada por Xpress Developer" },
+  "inteligencia-artificial": { price: 500, time: "Plazo según tus procesos", image: "/proyectos/universal skills 2.png", imageAlt: "Catálogo de herramientas de IA desarrollado por Xpress Developer" },
+  "desarrollo-web": { price: 1500, time: "Se planifica por etapas", image: "/proyectos/amz express 3.png", imageAlt: "Panel de AMZ Express desarrollado por Xpress Developer" },
+  ecommerce: { price: 900, time: "Plazo según el catálogo", image: "/proyectos/xpress ecommerce.png", imageAlt: "Tienda online Xpress Ecommerce desarrollada por Xpress Developer" },
+};
