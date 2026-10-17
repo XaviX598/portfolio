@@ -9,6 +9,7 @@ import Problem from "./Problem";
 import JourneyMotion from "./JourneyMotion";
 import WhyUs from "./WhyUs";
 import FAQ from "./FAQ";
+import ClarityAudit from "./ClarityAudit";
 import Contact from "./Contact";
 import type { PortfolioLang } from "./HomeClient";
 import { navigateToSection } from "@/lib/navigation";
@@ -25,6 +26,7 @@ const sectionConfigs = [
   { id: "why-us", component: WhyUs, label: "Por qué elegirnos" },
   { id: "projects", component: Projects, label: "Proyectos" },
   { id: "process", component: Process, label: "Proceso" },
+  { id: "free-review", component: ClarityAudit, label: "Revisión gratis" },
   { id: "faq", component: FAQ, label: "Preguntas" },
   { id: "contact", component: Contact, label: "Contacto" },
 ];
