@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import EpicPage from "./EpicPage";
-import AmbientBackground from "./AmbientBackground";
-import MotionRuntime from "./MotionRuntime";
 import FloatingButtons from "./FloatingButtons";
-import Spotlight from "./Spotlight";
+import RevealObserver from "./RevealObserver";
+import Footer from "./Footer";
 
 export type PortfolioLang = "en" | "es";
 
@@ -15,18 +14,15 @@ export default function HomeClient() {
 
   return (
     <>
-      <Spotlight />
-      <AmbientBackground />
-      <MotionRuntime />
-
+      <RevealObserver />
       <Navbar lang={lang} onLangChange={setLang} />
 
       <main className="relative">
         <EpicPage lang={lang} />
       </main>
 
+      <Footer lang={lang} />
       <FloatingButtons lang={lang} />
     </>
   );
 }
-

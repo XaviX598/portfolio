@@ -1,112 +1,122 @@
 "use client";
 
-import FadeIn from "./FadeIn";
+import type { ReactNode } from "react";
 import type { PortfolioLang } from "./HomeClient";
 
-const copy = {
-  es: {
-    eyebrow: "Por qué elegirnos",
-    title: "Un socio técnico que se enfoca en tus resultados",
-    subtitle: "Así trabajamos con cada cliente, sin letra pequeña.",
-    reasons: [
-      {
-        title: "Precio cerrado por escrito",
-        text: "Antes de empezar sabes exactamente qué incluye y cuánto cuesta. Sin cobros sorpresa.",
-      },
-      {
-        title: "Hablas directo con el equipo técnico",
-        text: "Sin intermediarios ni teléfono roto: quien diseña y programa tu proyecto es quien te responde.",
-      },
-      {
-        title: "Avances visibles cada semana",
-        text: "Trabajamos por etapas y te mostramos el progreso para que opines antes de seguir.",
-      },
-      {
-        title: "Todo queda a tu nombre",
-        text: "Código, dominio, hosting y accesos son tuyos. Nunca quedas atrapado con nosotros.",
-      },
-      {
-        title: "Pensado para vender",
-        text: "SEO, velocidad de carga, WhatsApp integrado y textos orientados a que te contacten.",
-      },
-      {
-        title: "Te acompañamos después",
-        text: "Soporte tras el lanzamiento y planes de mantenimiento para que tu web siga creciendo.",
-      },
-    ],
-  },
-  en: {
-    eyebrow: "Why choose us",
-    title: "A technical partner focused on your results",
-    subtitle: "This is how we work with every client, no fine print.",
-    reasons: [
-      {
-        title: "Fixed price in writing",
-        text: "Before we start you know exactly what's included and what it costs. No surprise charges.",
-      },
-      {
-        title: "Talk directly to the technical team",
-        text: "No middlemen: the people who design and build your project are the ones who answer you.",
-      },
-      {
-        title: "Visible progress every week",
-        text: "We work in stages and show you progress so you can give feedback before we move on.",
-      },
-      {
-        title: "Everything is in your name",
-        text: "Code, domain, hosting and access belong to you. You're never locked in with us.",
-      },
-      {
-        title: "Built to sell",
-        text: "SEO, fast loading, WhatsApp integration and copy designed to make people contact you.",
-      },
-      {
-        title: "We stay with you after launch",
-        text: "Post-launch support and maintenance plans so your site keeps growing.",
-      },
-    ],
-  },
-};
+type Reason = { title: string; a: string; b: string; proof: ReactNode };
 
-const icons = [
-  "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-  "M8 10h8M8 14h5m-9 6l2.5-3H19a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14z",
-  "M3 3v18h18M7 15l4-4 3 3 5-6",
-  "M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z",
-  "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
-  "M18.364 5.636a9 9 0 010 12.728M15.536 8.464a5 5 0 010 7.072M12 12h.01M6.343 17.657a9 9 0 010-12.728M9.172 15.536a5 5 0 010-7.072",
-];
+const Bubble = ({ children, own = false }: { children: ReactNode; own?: boolean }) => (
+  <p className={`w-fit max-w-[85%] rounded-lg px-3 py-2 text-[14px] leading-snug ${own ? "ml-auto bg-[#005c4b] text-white" : "bg-[#202c33] text-white"}`}>
+    {children}
+  </p>
+);
+
+function reasons(lang: PortfolioLang): Reason[] {
+  const es = lang === "es";
+  return [
+    {
+      title: es ? "Precio cerrado por escrito" : "Fixed price in writing",
+      a: es ? "Antes de empezar sabes qué incluye y cuánto cuesta." : "Before we start you know what's included and what it costs.",
+      b: es ? "Sin cobros sorpresa a mitad del proyecto." : "No surprise charges mid-project.",
+      proof: (
+        <div className="flex h-full flex-col justify-between bg-[#f4f3ee] p-4 text-[14px] text-[#161c1a]">
+          <div className="flex justify-between font-medium">
+            <span>{es ? "Propuesta" : "Proposal"} · {es ? "Página web" : "Website"}</span>
+            <span>#0142</span>
+          </div>
+          <div className="flex items-end justify-between">
+            <span>{es ? "Total cerrado" : "Fixed total"}</span>
+            <span className="text-2xl font-extrabold">$450</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: es ? "Hablas con quien hace tu web" : "Talk to who builds your site",
+      a: es ? "Sin intermediarios: quien diseña y programa es quien te responde." : "No middlemen: the people who design and build are the ones who answer.",
+      b: es ? "Por WhatsApp, cuando lo necesites." : "On WhatsApp, whenever you need it.",
+      proof: (
+        <div className="flex h-full flex-col justify-center gap-2 bg-[#0b141a] p-4">
+          <Bubble>{es ? "¿Podemos cambiar el color del botón?" : "Can we change the button color?"}</Bubble>
+          <Bubble own>{es ? "Listo, ya está publicado." : "Done, it's live."}</Bubble>
+        </div>
+      ),
+    },
+    {
+      title: es ? "Avances cada semana" : "Progress every week",
+      a: es ? "Trabajamos por etapas y te mostramos cada avance." : "We work in stages and show you every step.",
+      b: es ? "Opinas antes de seguir, no al final." : "You give feedback before we move on, not at the end.",
+      proof: (
+        <ul className="flex h-full flex-col justify-center gap-2 bg-surface p-4 text-[14px]">
+          {(es ? ["Semana 1 · Diseño", "Semana 2 · Desarrollo", "Semana 3 · Lanzamiento"] : ["Week 1 · Design", "Week 2 · Build", "Week 3 · Launch"]).map((w, i) => (
+            <li key={w} className="flex items-center justify-between">
+              <span className={i < 2 ? "text-ink" : "text-muted"}>{w}</span>
+              <span className={i < 2 ? "text-accent" : "text-muted"}>{i < 2 ? (es ? "Hecho" : "Done") : es ? "En curso" : "In progress"}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      title: es ? "Todo queda a tu nombre" : "Everything in your name",
+      a: es ? "Código, dominio, hosting y accesos son tuyos." : "Code, domain, hosting and access belong to you.",
+      b: es ? "Nunca quedas atrapado con nosotros." : "You're never locked in with us.",
+      proof: (
+        <dl className="grid h-full grid-cols-[auto_1fr] content-center gap-x-4 gap-y-1.5 bg-[#f4f3ee] p-4 text-[14px] text-[#161c1a]">
+          <dt className="opacity-70">{es ? "Dominio" : "Domain"}</dt>
+          <dd className="font-medium">tunegocio.com</dd>
+          <dt className="opacity-70">{es ? "Titular" : "Owner"}</dt>
+          <dd className="font-medium">{es ? "Tu empresa" : "Your company"}</dd>
+          <dt className="opacity-70">{es ? "Código" : "Code"}</dt>
+          <dd className="font-medium">{es ? "Repositorio propio" : "Your own repository"}</dd>
+        </dl>
+      ),
+    },
+    {
+      title: es ? "Pensado para vender" : "Built to sell",
+      a: es ? "SEO técnico, carga rápida y WhatsApp integrado." : "Technical SEO, fast loading and WhatsApp built in.",
+      b: es ? "Textos escritos para que te contacten." : "Copy written so people contact you.",
+      proof: (
+        <div className="flex h-full flex-col justify-center bg-white p-4 text-[14px]">
+          <span className="text-[12px] text-[#4d5156]">www.tunegocio.com</span>
+          <span className="text-[17px] text-[#1a0dab]">{es ? "Tu Negocio · Cotiza por WhatsApp" : "Your Business · Quote on WhatsApp"}</span>
+          <span className="text-[#4d5156]">{es ? "Respuesta en menos de 24 horas." : "Reply in under 24 hours."}</span>
+        </div>
+      ),
+    },
+    {
+      title: es ? "Te acompañamos después" : "We stay after launch",
+      a: es ? "Soporte tras el lanzamiento para dudas y ajustes." : "Post-launch support for questions and adjustments.",
+      b: es ? "Y planes de mantenimiento desde $40 al mes." : "And maintenance plans from $40 a month.",
+      proof: (
+        <div className="flex h-full flex-col justify-center gap-2 bg-[#0b141a] p-4">
+          <Bubble>{es ? "Necesito agregar un producto nuevo" : "I need to add a new product"}</Bubble>
+          <Bubble own>{es ? "Hecho. Ya aparece en la tienda." : "Done. It's on the store now."}</Bubble>
+        </div>
+      ),
+    },
+  ];
+}
 
 export default function WhyUs({ lang }: { lang: PortfolioLang }) {
-  const t = copy[lang];
-
   return (
-    <section className="relative overflow-hidden bg-zinc-950 px-6 py-24 md:py-32">
-      <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-teal-500/5 blur-3xl" />
-
-      <div className="relative mx-auto max-w-6xl">
-        <FadeIn repeat={false}>
-          <div className="mb-3 flex items-center gap-3">
-            <div className="h-[2px] w-12 bg-gradient-to-r from-teal-400 to-transparent" />
-            <span className="text-xs uppercase tracking-[0.3em] text-teal-400">{t.eyebrow}</span>
-          </div>
-          <h2 className="max-w-3xl text-3xl font-bold text-white md:text-5xl">{t.title}</h2>
-          <p className="mt-4 max-w-xl text-lg text-zinc-400">{t.subtitle}</p>
-        </FadeIn>
-
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {t.reasons.map((reason, idx) => (
-            <FadeIn key={reason.title} delay={(idx % 3) * 0.1} repeat={false} distance={24} className="bg-zinc-950">
-              <div className="group h-full p-7 transition-colors hover:bg-zinc-900/70">
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-teal-400/20 bg-teal-400/10 text-teal-300 transition-transform group-hover:scale-110">
-                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d={icons[idx]} />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-white">{reason.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{reason.text}</p>
+    <section className="page-x bg-ground py-28 md:py-40">
+      <div className="md:pl-[22%]">
+        <h2 data-reveal className="mb-16 text-[28px] font-medium tracking-[-0.02em]">
+          {lang === "en" ? "How we work with you" : "Cómo trabajamos contigo"}
+        </h2>
+        <div className="space-y-16 md:space-y-24">
+          {reasons(lang).map((r) => (
+            <article key={r.title} data-reveal className="grid max-w-[680px] gap-4 sm:grid-cols-[360px_1fr] sm:gap-6">
+              <div data-ui className="h-[150px] overflow-hidden transition-transform duration-300 hover:-translate-y-1" aria-hidden="true">
+                {r.proof}
               </div>
-            </FadeIn>
+              <div>
+                <h3 className="text-lg font-medium leading-snug">{r.title}</h3>
+                <p className="mt-2 text-base">{r.a}</p>
+                <p className="mt-2 text-base text-muted">{r.b}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

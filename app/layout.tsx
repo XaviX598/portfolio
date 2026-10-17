@@ -1,19 +1,6 @@
-﻿import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 import { getSiteUrl, seoDefaults } from "@/lib/seo";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
@@ -81,11 +68,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        suppressHydrationWarning
-        className={`${inter.variable} ${spaceGrotesk.variable} bg-black font-sans text-white antialiased`}
-      >
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
+        <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,800&display=swap" rel="stylesheet" />
+        {/* Marca que hay JS antes de pintar: las animaciones de entrada solo ocultan contenido si el script corre */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add(\"js\")" }} />
+      </head>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

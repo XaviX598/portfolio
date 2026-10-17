@@ -6,8 +6,7 @@ import type { PortfolioLang } from "./HomeClient";
 
 const copy = {
   es: {
-    eyebrow: "Así funciona",
-    title: "De una búsqueda en Google a un mensaje en tu WhatsApp",
+    title: "De una búsqueda en Google a tu WhatsApp",
     steps: [
       { title: "Te buscan", text: "Un cliente busca lo que vendes en Google." },
       { title: "Te encuentran", text: "Tu negocio aparece gracias al SEO técnico." },
@@ -22,12 +21,11 @@ const copy = {
     cta: "Cotizar por WhatsApp",
     chatName: "Cliente nuevo",
     online: "en línea",
-    message: "¡Hola! Vi tu página y quiero cotizar 👋",
+    message: "¡Hola! Vi tu página y quiero cotizar.",
     badge: "Nuevo cliente",
   },
   en: {
-    eyebrow: "How it works",
-    title: "From a Google search to a message on your WhatsApp",
+    title: "From a Google search to your WhatsApp",
     steps: [
       { title: "They search", text: "A client looks for what you sell on Google." },
       { title: "They find you", text: "Your business shows up thanks to technical SEO." },
@@ -42,7 +40,7 @@ const copy = {
     cta: "Quote on WhatsApp",
     chatName: "New client",
     online: "online",
-    message: "Hi! I saw your website and I'd like a quote 👋",
+    message: "Hi! I saw your website and I'd like a quote.",
     badge: "New client",
   },
 };
@@ -64,7 +62,7 @@ function Cursor({ from, to, delay = 0 }: { from: [number, number]; to: [number, 
         width="22"
         height="22"
         viewBox="0 0 24 24"
-        className="drop-shadow-lg"
+        className="drop-shadow-lg" /* taste-skill-ignore: el cursor flota sobre la escena */
         animate={{ scale: [1, 1, 0.8, 1] }}
         transition={{ duration: 0.4, delay: delay + 0.95, times: [0, 0.2, 0.6, 1] }}
       >
@@ -97,7 +95,7 @@ function SearchFrame({ t }: { t: Copy }) {
         <span className="text-[#34A853]">l</span>
         <span className="text-[#EA4335]">e</span>
       </div>
-      <div className="flex items-center gap-3 rounded-full border border-white/15 bg-zinc-900 px-5 py-3 shadow-lg">
+      <div className="flex items-center gap-3 rounded-full bg-zinc-800 px-5 py-3">
         <svg className="h-4 w-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
           <path strokeLinecap="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
         </svg>
@@ -108,7 +106,7 @@ function SearchFrame({ t }: { t: Copy }) {
             </motion.span>
           ))}
           <motion.span
-            className="ml-0.5 inline-block h-4 w-px translate-y-0.5 bg-teal-300"
+            className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 bg-teal-300"
             animate={{ opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 0.9 }}
           />
@@ -141,7 +139,7 @@ function ResultsFrame({ t }: { t: Copy }) {
             initial={{ opacity: 0, y: 16 }}
             animate={isOurs ? { opacity: 1, y: 0, scale: [1, 1, 1.04] } : { opacity: 0.45, y: 0 }}
             transition={{ delay: i * 0.12, duration: isOurs ? 1.2 : 0.5, ease }}
-            className={`rounded-xl border p-3 sm:p-4 ${i === 2 ? "hidden sm:block" : ""} ${isOurs ? "border-teal-400/60 bg-teal-400/10 shadow-[0_0_40px_rgba(45,212,191,0.15)]" : "border-white/10 bg-zinc-900/70"}`}
+            className={`rounded-xl p-3 sm:p-4 ${i === 2 ? "hidden sm:block" : ""} ${isOurs ? "bg-teal-400/15 ring-1 ring-teal-400/60" : "bg-zinc-900/70"}`}
           >
             <p className="text-xs text-zinc-500">{isOurs ? "www.tunegocio.com" : "www.ejemplo.com"}</p>
             <p className={`mt-0.5 text-sm font-semibold sm:mt-1 sm:text-base ${isOurs ? "text-teal-300" : "text-zinc-400"}`}>{isOurs ? t.business : t.competitor}</p>
@@ -168,8 +166,8 @@ function WebsiteFrame({ t }: { t: Copy }) {
 
   return (
     <div className="relative flex h-full flex-col p-4 sm:p-6">
-      <div className="flex flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-900">
-        <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2">
+      <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-zinc-900">
+        <div className="flex items-center gap-1.5 bg-zinc-950/60 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-red-400/70" />
           <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
           <span className="h-2 w-2 rounded-full bg-green-400/70" />
@@ -203,9 +201,9 @@ function WebsiteFrame({ t }: { t: Copy }) {
 function ChatFrame({ t }: { t: Copy }) {
   return (
     <div className="relative flex h-full flex-col p-4 sm:p-6">
-      <div className="flex flex-1 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0b141a]">
+      <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-[#0b141a]">
         <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-600 text-xs text-white">👤</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-600 text-xs font-medium text-white">CN</span>
           <div>
             <p className="text-sm font-semibold text-white">{t.chatName}</p>
             <p className="text-[11px] text-teal-300">{t.online}</p>
@@ -240,7 +238,7 @@ function ChatFrame({ t }: { t: Copy }) {
       </div>
 
       <motion.div
-        className="absolute right-6 top-20 flex items-center gap-2 rounded-full border border-teal-400/50 bg-zinc-950 px-4 py-2 text-sm font-semibold text-teal-300 shadow-[0_0_40px_rgba(45,212,191,0.25)] sm:right-10"
+        className="absolute right-6 top-20 flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-ground sm:right-10"
         initial={{ opacity: 0, scale: 0.5, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 2, type: "spring", stiffness: 300, damping: 15 }}
@@ -281,38 +279,29 @@ export default function JourneyMotion({ lang }: { lang: PortfolioLang }) {
 
   return (
     <MotionConfig reducedMotion="user">
-      <section ref={ref} className="relative h-[320vh] bg-zinc-950">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden px-6">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-500/5 blur-3xl" />
-
-          <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 pt-16 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:pt-0">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-teal-400">{t.eyebrow}</p>
-              <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">{t.title}</h2>
-
-              <ol className="mt-6 space-y-1 lg:mt-10 lg:space-y-3">
+      <section ref={ref} className="relative h-[250vh] bg-ground">
+        <div className="page-x sticky top-0 flex h-svh items-center overflow-hidden">
+          <div className="grid w-full items-center gap-8 pt-14 lg:grid-cols-12 lg:gap-10 lg:pt-0">
+            <div className="lg:col-span-5">
+              <h2 className="text-[28px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[40px]">{t.title}</h2>
+              <ol className="mt-6 space-y-3 lg:mt-10 lg:space-y-5">
                 {t.steps.map((item, idx) => {
                   const active = idx === step;
                   return (
-                    <li key={item.title} className={`flex gap-4 rounded-xl p-2 transition-colors duration-300 lg:p-3 ${active ? "bg-white/5" : ""}`}>
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border font-mono text-xs transition-colors duration-300 ${
-                          idx <= step ? "border-teal-400 bg-teal-400/15 text-teal-300" : "border-white/15 text-zinc-500"
-                        }`}
-                      >
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <p className={`font-semibold transition-colors duration-300 ${active ? "text-white" : "text-zinc-500"}`}>{item.title}</p>
-                        <p className={`text-sm text-zinc-400 ${active ? "block" : "hidden lg:block lg:text-zinc-600"}`}>{item.text}</p>
-                      </div>
+                    <li key={item.title}>
+                      <p className={`text-lg font-medium transition-colors duration-300 md:text-xl ${active ? "text-ink" : "text-muted"}`}>
+                        {item.title}
+                      </p>
+                      <p className={`max-w-[40ch] text-base text-muted transition-opacity duration-300 ${active ? "block" : "hidden lg:block lg:opacity-60"}`}>
+                        {item.text}
+                      </p>
                     </li>
                   );
                 })}
               </ol>
             </div>
 
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80 shadow-2xl shadow-black/60" aria-hidden="true">
+            <div data-ui className="relative aspect-[4/3] w-full overflow-hidden bg-surface lg:col-span-7" aria-hidden="true">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={step}
@@ -325,9 +314,8 @@ export default function JourneyMotion({ lang }: { lang: PortfolioLang }) {
                   <Frame t={t} />
                 </motion.div>
               </AnimatePresence>
-
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
-                <motion.div className="h-full origin-left bg-teal-400" style={{ scaleX: scrollYProgress }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-ground/60">
+                <motion.div className="h-full origin-left bg-accent" style={{ scaleX: scrollYProgress }} />
               </div>
             </div>
           </div>

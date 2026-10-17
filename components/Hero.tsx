@@ -1,137 +1,113 @@
 "use client";
 
-import { navigateToSection } from "@/lib/navigation";
+import Image from "next/image";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import type { PortfolioLang } from "./HomeClient";
-import MotionButton from "./MotionButton";
-import Spotlight from "./Spotlight";
-import DeviceMockups from "./DeviceMockups";
 
-type HeroProps = {
-  lang: PortfolioLang;
-};
-
-const heroCopy = {
-  en: {
-    badge: "Web & app development for businesses",
-    headline: "Websites and apps that",
-    headlineAccent: "bring clients to your business",
-    subtitle:
-      "We design, build and launch your website, online store or app with SEO from day one, so people find you on Google and message you on WhatsApp.",
-    ctaPrimary: "Get a free quote",
-    ctaSecondary: "See projects",
-    microcopy: "Reply in under 24 hours · No commitment",
-    trust: [
-      "Code and domain in your name",
-      "Technical SEO included",
-      "Designed for mobile first",
-      "Support after launch",
-    ],
-    mockupDesktopAlt: "AMZ Express platform built by Xpress Developer",
-    notificationTitle: "New client on WhatsApp",
-    notificationText: "Hi! I saw your website and I'd like a quote 👋",
-  },
+const copy = {
   es: {
-    badge: "Desarrollo web y apps para negocios en Ecuador",
-    headline: "Páginas web y apps que",
-    headlineAccent: "traen clientes a tu negocio",
-    subtitle:
-      "Diseñamos, desarrollamos y lanzamos tu página web, tienda online o app con SEO desde el primer día, para que te encuentren en Google y te escriban por WhatsApp.",
-    ctaPrimary: "Cotiza gratis",
-    ctaSecondary: "Ver proyectos",
-    microcopy: "Respuesta en menos de 24 horas · Sin compromiso",
-    trust: [
-      "Código y dominio a tu nombre",
-      "SEO técnico incluido",
-      "Diseño pensado para celular",
-      "Soporte después del lanzamiento",
-    ],
-    mockupDesktopAlt: "Plataforma AMZ Express desarrollada por Xpress Developer",
-    notificationTitle: "Nuevo cliente por WhatsApp",
-    notificationText: "¡Hola! Vi tu página y quiero cotizar 👋",
+    sentence: "Páginas web y apps que traen clientes a tu negocio en Ecuador.",
+    cta: "Cotiza gratis por WhatsApp",
+    microcopy: "Respuesta en menos de 24 horas",
+    caption: "AMZ Express, en producción",
+    captionText: "Cotiza importaciones de Amazon a Ecuador en segundos.",
+    alt: "Plataforma AMZ Express desarrollada por Xpress Developer",
+  },
+  en: {
+    sentence: "Websites and apps that bring clients to your business in Ecuador.",
+    cta: "Get a free quote on WhatsApp",
+    microcopy: "Reply in under 24 hours",
+    caption: "AMZ Express, live",
+    captionText: "Quotes Amazon imports to Ecuador in seconds.",
+    alt: "AMZ Express platform built by Xpress Developer",
   },
 };
 
-const enter = (delay: number) => ({
-  animation: `fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s both`,
-});
+const SHOT = "/proyectos/amz%20express.png";
 
-export default function Hero({ lang }: HeroProps) {
-  const copy = heroCopy[lang];
+// El nombre como monumento. Al hacer scroll, las letras se llenan con un proyecto real
+// que se desplaza dentro de ellas, y el nombre hace zoom hasta mostrar el proyecto completo.
+export default function Hero({ lang }: { lang: PortfolioLang }) {
+  const t = copy[lang];
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress: p } = useScroll({ target: ref, offset: ["start start", "end end"] });
+
+  // El color de las letras se vuelve transparente y deja ver la captura recortada dentro de ellas.
+  const inkColor = useTransform(p, [0.02, 0.22], ["rgba(227,226,218,1)", "rgba(227,226,218,0)"]);
+  const accentColor = useTransform(p, [0.02, 0.22], ["rgba(159,199,184,1)", "rgba(159,199,184,0)"]);
+  const fillPan = useTransform(p, [0, 0.55], ["50% 0%", "50% 100%"]);
+  const nameScale = useTransform(p, [0.3, 0.78], [1, 14]);
+  const nameOpacity = useTransform(p, [0.56, 0.66], [1, 0]);
+  const nameVisibility = useTransform(p, (v) => (v > 0.67 ? "hidden" : "visible"));
+  const cornersOpacity = useTransform(p, [0, 0.12], [1, 0]);
+  const shotOpacity = useTransform(p, [0.68, 0.8], [0, 1]);
+  const shotVisibility = useTransform(p, (v) => (v < 0.67 ? "hidden" : "visible"));
+  const shotScale = useTransform(p, [0.68, 1], [1.18, 1]);
+  const captionOpacity = useTransform(p, [0.82, 0.92], [0, 1]);
+
+  const fill = (color: typeof inkColor) =>
+    reduce ? undefined : { color, backgroundImage: `url("${SHOT}")`, backgroundPosition: fillPan };
+  const fillClass = reduce ? "" : "bg-[length:120%_auto] bg-clip-text"; // taste-skill-ignore: no es degradado, es la captura real dentro de las letras
+
+  const name = (
+    <>
+      <span className="line">
+        <motion.span data-line style={{ ["--i" as string]: 0, ...fill(inkColor) }} className={fillClass}>
+          Xpress
+        </motion.span>
+      </span>
+      <span className="line text-accent">
+        <motion.span data-line style={{ ["--i" as string]: 1, ...fill(accentColor) }} className={fillClass}>
+          developer
+        </motion.span>
+      </span>
+    </>
+  );
 
   return (
-    <section className="relative flex min-h-screen flex-col overflow-hidden">
-      <Spotlight className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-zinc-950">
-          <div className="subtle-grid opacity-30" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-zinc-900 opacity-90 blur-[100px]" />
-        </div>
-      </Spotlight>
-
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-14 px-6 pb-10 pt-28 lg:grid-cols-[1.1fr_1fr] lg:pt-24">
-        <div className="text-center lg:text-left">
-          <div
-            style={enter(0)}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.14em] text-zinc-300 sm:text-sm"
-          >
-            <span className="h-2 w-2 rounded-full bg-teal-400" />
-            {copy.badge}
-          </div>
-
-          <h1
-            style={enter(0.08)}
-            className="mt-7 text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl"
-          >
-            {copy.headline} <span className="text-teal-400">{copy.headlineAccent}</span>
+    <section ref={ref} className={`relative bg-ground ${reduce ? "" : "h-[260svh]"}`}>
+      <div className="sticky top-0 h-svh overflow-hidden">
+        <motion.div
+          style={reduce ? undefined : { scale: nameScale, opacity: nameOpacity, visibility: nameVisibility }}
+          className="absolute inset-x-0 top-[18%] origin-[12%_30%] md:top-[14%]"
+        >
+          <h1 className="lines page-x text-[21vw] font-extrabold leading-[0.82] tracking-[-0.04em] md:text-[clamp(110px,15vw,230px)]">
+            {name}
           </h1>
+        </motion.div>
 
-          <p style={enter(0.16)} className="mx-auto mt-6 max-w-xl text-lg leading-8 text-zinc-400 lg:mx-0">
-            {copy.subtitle}
+        <motion.div
+          style={reduce ? undefined : { opacity: cornersOpacity }}
+          className="page-x absolute inset-x-0 bottom-6 flex flex-col gap-5 md:bottom-10 md:items-end md:text-right"
+        >
+          <p data-fade className="max-w-[30ch] text-lg leading-snug" style={{ ["--d" as string]: "650ms" }}>
+            {t.sentence}
           </p>
-
-          <div style={enter(0.24)} className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <MotionButton
-              label={copy.ctaPrimary}
-              variant="primary"
-              size="lg"
-              href={whatsappUrl(QUOTE_MESSAGE[lang])}
-              target="_blank"
-              rel="noreferrer"
-            />
-            <MotionButton
-              label={copy.ctaSecondary}
-              variant="secondary"
-              size="lg"
-              onClick={() => navigateToSection("projects")}
-            />
+          <div data-fade className="flex flex-col gap-2 md:items-end" style={{ ["--d" as string]: "750ms" }}>
+            <a className="btn" href={whatsappUrl(QUOTE_MESSAGE[lang])} target="_blank" rel="noreferrer">
+              {t.cta}
+            </a>
+            <span className="text-[var(--step-small)] text-muted">{t.microcopy}</span>
           </div>
+        </motion.div>
 
-          <p style={enter(0.3)} className="mt-4 text-sm text-zinc-500">
-            {copy.microcopy}
-          </p>
-        </div>
-
-        <div style={enter(0.2)}>
-          <DeviceMockups
-            desktopSrc="/proyectos/amz express.png"
-            desktopAlt={copy.mockupDesktopAlt}
-            notificationTitle={copy.notificationTitle}
-            notificationText={copy.notificationText}
-          />
-        </div>
-      </div>
-
-      <div className="relative z-10 border-t border-white/10 bg-zinc-950/60 backdrop-blur-sm">
-        <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-3 px-6 py-5 text-sm text-zinc-300 md:grid-cols-4">
-          {copy.trust.map((item) => (
-            <li key={item} className="flex items-center gap-2">
-              <svg className="h-4 w-4 shrink-0 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
+        {!reduce && (
+          <motion.figure style={{ opacity: shotOpacity, visibility: shotVisibility }} className="pointer-events-none absolute inset-0">
+            <motion.div style={{ scale: shotScale }} className="absolute inset-0">
+              <Image src={SHOT} alt={t.alt} fill sizes="100vw" className="object-cover object-top" />
+            </motion.div>
+            <motion.figcaption
+              style={{ opacity: captionOpacity }}
+              className="page-x absolute inset-x-0 bottom-0 bg-ground/85 py-5 md:max-w-xl"
+            >
+              <span className="block text-xl font-medium">{t.caption}</span>
+              <span className="block text-muted">{t.captionText}</span>
+            </motion.figcaption>
+          </motion.figure>
+        )}
       </div>
     </section>
   );

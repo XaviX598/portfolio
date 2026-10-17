@@ -1,0 +1,62 @@
+import Link from "next/link";
+import type { PortfolioLang } from "./HomeClient";
+
+const services = [
+  { slug: "pagina-web", label: "Páginas web" },
+  { slug: "landing-page", label: "Landing pages" },
+  { slug: "ecommerce", label: "Tiendas online" },
+  { slug: "desarrollo-android", label: "Apps móviles" },
+  { slug: "chat-ia", label: "Chatbots con IA" },
+];
+
+// Cierre de la página: tinta y fondo invertidos, el nombre vuelve a todo el ancho.
+export default function Footer({ lang }: { lang: PortfolioLang }) {
+  const es = lang === "es";
+
+  return (
+    <footer className="page-x grid min-h-svh grid-rows-[auto_1fr_auto] bg-ink pt-10 text-ground">
+      <div className="grid grid-cols-2 gap-8 text-[15px] md:grid-cols-4">
+        <div>
+          <p className="font-medium">Xpress Developer</p>
+          <p className="opacity-75">{es ? "Desarrollo web y apps" : "Web & app development"}</p>
+          <p className="opacity-75">Ecuador</p>
+        </div>
+        <div>
+          <p className="font-medium">{es ? "Servicios" : "Services"}</p>
+          <ul className="opacity-75">
+            {services.map((s) => (
+              <li key={s.slug}>
+                <Link className="link no-underline hover:underline" href={`/servicios/${s.slug}`}>{s.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-medium">{es ? "Contacto" : "Contact"}</p>
+          <ul className="opacity-75">
+            <li><a className="link no-underline hover:underline" href="mailto:contacto@xpressdeveloper.com">contacto@xpressdeveloper.com</a></li>
+            <li><a className="link no-underline hover:underline" href="https://wa.me/593985295277">WhatsApp</a></li>
+            <li><a className="link no-underline hover:underline" href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-medium">{es ? "Atención" : "Hours"}</p>
+          <p className="opacity-75">{es ? "Respuesta en menos de 24 horas" : "Reply in under 24 hours"}</p>
+        </div>
+      </div>
+
+      <div />
+
+      <div>
+        <svg viewBox="0 0 1000 205" className="block w-full" role="img" aria-label="Xpress">
+          <text x="-6" y="178" fill="currentColor" fontFamily="Cabinet Grotesk, sans-serif" fontWeight="800" fontSize="238" letterSpacing="-9" textLength="1006" lengthAdjust="spacingAndGlyphs">
+            XPRESS
+          </text>
+        </svg>
+        <p className="pb-5 pt-2 text-[13px] opacity-75">
+          © {new Date().getFullYear()} Xpress Developer. {es ? "Todos los derechos reservados." : "All rights reserved."}
+        </p>
+      </div>
+    </footer>
+  );
+}
