@@ -117,7 +117,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                 onClick={() => setActive(i)}
                 aria-pressed={active === i}
                 className={`min-h-12 px-2 py-2 text-[15px] font-medium leading-tight transition-colors ${
-                  active === i ? "bg-[#0f1923] text-[#ece8e1]" : "bg-[#0f1923]/15 text-[#0f1923]"
+                  active === i ? "bg-[#0f1923] text-[#ece8e1]" : "bg-[#ece8e1] text-[#0f1923]"
                 }`}
               >
                 {p.kind[lang]}

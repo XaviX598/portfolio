@@ -86,7 +86,7 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
               <Image src={w.image} alt={`${t.works[i]} · ${w.name}`} fill sizes="45vw" className="object-cover object-top" />
             </ScrollMotion>
             <ScrollMotion className="md:hidden" y={[30, 0]} rotate={[i % 2 ? 8 : -8, 0]}>
-              <PhoneMockup src={w.mobile} alt={`${t.works[i]} · ${w.name}`} sizes="45vw" className="mx-auto w-[82%]" />
+              <PhoneMockup src={w.mobile} alt={`${t.works[i]} · ${w.name}`} sizes="35vw" className="mx-auto w-[82%]" />
             </ScrollMotion>
             <p data-reveal className="mt-5 text-[16px] font-medium leading-snug md:mt-6 md:text-[22px]">{t.works[i]}</p>
             <p className="mt-1 text-[14px] text-muted md:text-[15px]">{w.name}</p>

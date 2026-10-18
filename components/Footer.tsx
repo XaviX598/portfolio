@@ -40,7 +40,7 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
           <ul className="opacity-75">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link className="link no-underline hover:underline" href={`/servicios/${s.slug}`}>{s.label}</Link>
+                <Link className="link inline-block py-1.5 no-underline hover:underline" href={`/servicios/${s.slug}`}>{s.label}</Link>
               </li>
             ))}
           </ul>
@@ -50,7 +50,7 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
           <ul className="opacity-75">
             {solutions.map((s) => (
               <li key={s.href}>
-                <Link className="link no-underline hover:underline" href={s.href}>{s.label}</Link>
+                <Link className="link inline-block py-1.5 no-underline hover:underline" href={s.href}>{s.label}</Link>
               </li>
             ))}
           </ul>
@@ -60,7 +60,7 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
           <ul className="opacity-75">
             {resources.map((r) => (
               <li key={r.href}>
-                <Link className="link no-underline hover:underline" href={r.href}>{r.label}</Link>
+                <Link className="link inline-block py-1.5 no-underline hover:underline" href={r.href}>{r.label}</Link>
               </li>
             ))}
           </ul>
@@ -68,9 +68,9 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
         <div>
           <p className="font-medium">{es ? "Contacto" : "Contact"}</p>
           <ul className="opacity-75">
-            <li><a className="link no-underline hover:underline" href="mailto:contacto@xpressdeveloper.com">contacto@<wbr />xpressdeveloper.com</a></li>
-            <li><a className="link no-underline hover:underline" href="https://wa.me/593985295277">WhatsApp</a></li>
-            <li><a className="link no-underline hover:underline" href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb">LinkedIn</a></li>
+            <li><a className="link inline-block py-1.5 no-underline hover:underline" href="mailto:contacto@xpressdeveloper.com">contacto@<wbr />xpressdeveloper.com</a></li>
+            <li><a className="link inline-block py-1.5 no-underline hover:underline" href="https://wa.me/593985295277">WhatsApp</a></li>
+            <li><a className="link inline-block py-1.5 no-underline hover:underline" href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb">LinkedIn</a></li>
           </ul>
         </div>
         <div>
