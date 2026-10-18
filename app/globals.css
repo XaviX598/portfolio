@@ -1,15 +1,40 @@
 @import "tailwindcss";
 
-/* Dirección: "The name as a monument" (taste-skill, seed 587325126).
-   Paleta "Green-black and bone", tipografía Cabinet Grotesk. Todo lo demás referencia estos tokens. */
+/* Dirección: "The name as a monument" (taste-skill, seed 587325126), con la paleta que pidió el
+   cliente: azul noche, rojo y crema, colores planos sin degradados. Todo referencia estos tokens. */
 @theme {
-  --color-ground: #161c1a;
-  --color-surface: #1f2725;
-  --color-ink: #e3e2da;
-  --color-muted: #a3a8a1;
-  --color-accent: #9fc7b8;
-  --color-accent-ink: #161c1a;
+  --color-ground: #0f1923;
+  --color-surface: #16222e;
+  --color-ink: #ece8e1;
+  --color-muted: #a4adb4;
+  --color-accent: #ff4655;
+  --color-accent-ink: #0f1923;
   --font-sans: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Temas por sección: redefinen los tokens y todo lo de adentro cambia de color. */
+.theme-light {
+  --color-ground: #ece8e1;
+  --color-surface: #e3ded5;
+  --color-ink: #0f1923;
+  --color-muted: #4b5661;
+  --color-accent: #ff4655;
+  --color-accent-ink: #0f1923;
+  color: var(--color-ink);
+}
+
+.theme-red {
+  --color-ground: #ff4655;
+  --color-surface: #ff4655;
+  --color-ink: #0f1923;
+  --color-muted: #3d0f16;
+  --color-accent: #0f1923;
+  --color-accent-ink: #ece8e1;
+  color: var(--color-ink);
+}
+
+.theme-dark {
+  color: var(--color-ink);
 }
 
 :root {
@@ -73,7 +98,7 @@ h1, h2, h3 {
   text-decoration: none;
   transition: transform 140ms var(--ease-out), background-color 180ms ease;
 }
-.btn:hover { background: #b5d6c9; }
+.btn:hover { filter: brightness(1.08); }
 .btn:active { transform: scale(0.97); }
 
 .link {

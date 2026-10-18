@@ -8,6 +8,7 @@ import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import RevealObserver from "@/components/RevealObserver";
+import SectionReveal from "@/components/SectionReveal";
 
 export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   const extra = serviceExtras[service.slug];
@@ -56,6 +57,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
         </figure>
 
+        <SectionReveal id="incluye" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-36">
           <div className="grid gap-12 md:grid-cols-12">
             <p data-reveal className="text-[22px] leading-[1.35] md:col-span-6 md:text-[24px]">
@@ -96,7 +98,9 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
           <p className="page-x mt-4 text-[15px] text-muted">Proyectos reales de Xpress Developer, en producción.</p>
         </section>
+        </SectionReveal>
 
+        <SectionReveal id="proceso" className="theme-dark">
         <section className="page-x bg-ground py-24 md:py-36">
           <div className="max-w-[580px] md:ml-[30%]">
             <h2 data-reveal className="mb-12 text-[28px] font-medium tracking-[-0.02em]">Cómo lo hacemos</h2>
@@ -109,7 +113,9 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             </div>
           </div>
         </section>
+        </SectionReveal>
 
+        <SectionReveal id="otros" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-32">
           <div className="mb-10 flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
             <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em]">Otros servicios</h2>
@@ -130,8 +136,10 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             ))}
           </ul>
         </section>
+        </SectionReveal>
 
-        <section className="page-x flex min-h-[70svh] flex-col justify-between bg-ink py-16 text-ground md:py-20">
+        <SectionReveal id="cotizar" className="theme-red">
+        <section className="page-x flex min-h-[70svh] flex-col justify-between bg-ground py-16 text-ink md:py-20">
           <h2 data-reveal className="max-w-[16ch] text-[9vw] font-extrabold leading-[0.95] tracking-[-0.04em] md:text-[6vw]">
             {service.cta.title}
           </h2>
@@ -139,7 +147,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             <p data-reveal className="max-w-[34ch] text-[17px] md:text-xl">{service.cta.subtitle}</p>
             <a
               data-reveal
-              className="inline-flex min-h-14 w-full items-center justify-center bg-ground px-8 font-medium text-ink transition-transform duration-150 active:scale-[0.97] md:w-auto"
+              className="inline-flex min-h-14 w-full items-center justify-center bg-ink px-8 font-medium text-ground transition-transform duration-150 active:scale-[0.97] md:w-auto"
               href={quote}
               target="_blank"
               rel="noreferrer"
@@ -148,6 +156,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             </a>
           </div>
         </section>
+        </SectionReveal>
       </main>
 
       <Footer lang="es" />

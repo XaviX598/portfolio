@@ -36,8 +36,8 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
   const { scrollYProgress: p } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   // El color de las letras se vuelve transparente y deja ver la captura recortada dentro de ellas.
-  const inkColor = useTransform(p, [0.02, 0.22], ["rgba(227,226,218,1)", "rgba(227,226,218,0)"]);
-  const accentColor = useTransform(p, [0.02, 0.22], ["rgba(159,199,184,1)", "rgba(159,199,184,0)"]);
+  const inkColor = useTransform(p, [0.02, 0.22], ["rgba(236,232,225,1)", "rgba(236,232,225,0)"]);
+  const accentColor = useTransform(p, [0.02, 0.22], ["rgba(255,70,85,1)", "rgba(255,70,85,0)"]);
   const fillPan = useTransform(p, [0, 0.55], ["50% 0%", "50% 100%"]);
   const nameScale = useTransform(p, [0.3, 0.78], [1, 14]);
   const nameOpacity = useTransform(p, [0.56, 0.66], [1, 0]);

@@ -10,6 +10,7 @@ import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import RevealObserver from "@/components/RevealObserver";
+import SectionReveal from "@/components/SectionReveal";
 
 export default function ServicesIndex() {
   const [active, setActive] = useState(0);
@@ -35,6 +36,7 @@ export default function ServicesIndex() {
           </a>
         </section>
 
+        <SectionReveal id="lista" className="theme-light">
         <section className="page-x bg-surface py-20 md:py-32">
           <div className="grid gap-10 md:grid-cols-12">
             <ul className="md:col-span-8">
@@ -86,8 +88,10 @@ export default function ServicesIndex() {
             </div>
           </div>
         </section>
+        </SectionReveal>
 
-        <section className="page-x flex min-h-[60svh] flex-col justify-between bg-ink py-16 text-ground md:py-20">
+        <SectionReveal id="elegir" className="theme-red">
+        <section className="page-x flex min-h-[60svh] flex-col justify-between bg-ground py-16 text-ink md:py-20">
           <h2 data-reveal className="text-[12vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[8vw]">
             <span className="block">¿No sabes</span>
             <span className="block">cuál elegir?</span>
@@ -98,7 +102,7 @@ export default function ServicesIndex() {
             </p>
             <a
               data-reveal
-              className="inline-flex min-h-14 w-full items-center justify-center bg-ground px-8 font-medium text-ink transition-transform duration-150 active:scale-[0.97] md:w-auto"
+              className="inline-flex min-h-14 w-full items-center justify-center bg-ink px-8 font-medium text-ground transition-transform duration-150 active:scale-[0.97] md:w-auto"
               href={whatsappUrl(QUOTE_MESSAGE.es)}
               target="_blank"
               rel="noreferrer"
@@ -107,6 +111,7 @@ export default function ServicesIndex() {
             </a>
           </div>
         </section>
+        </SectionReveal>
       </main>
 
       <Footer lang="es" />

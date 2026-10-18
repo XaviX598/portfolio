@@ -56,8 +56,11 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
         <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt={t.alt} sizes="60vw" className="mx-auto w-[58%] max-w-[260px]" />
       </div>
 
-      <div data-reveal className="relative mt-20 hidden aspect-[4/3] w-5/12 overflow-hidden md:ml-auto md:block">
-        <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="(min-width: 768px) 42vw, 100vw" className="object-cover object-top" />
+      <div data-reveal className="mt-24 hidden items-end gap-8 md:grid md:grid-cols-12">
+        <div className="relative col-span-9 aspect-[1848/909] overflow-hidden bg-ground">
+          <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="75vw" className="object-cover object-top" />
+        </div>
+        <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt="" sizes="20vw" className="col-span-3 w-full max-w-[300px] justify-self-end" />
       </div>
     </section>
   );

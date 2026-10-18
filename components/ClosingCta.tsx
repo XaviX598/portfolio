@@ -13,7 +13,7 @@ export default function ClosingCta({ lang }: { lang: PortfolioLang }) {
   const t = copy[lang];
 
   return (
-    <section className="page-x flex min-h-[80svh] flex-col justify-between bg-ink py-16 text-ground md:min-h-[90svh] md:py-20">
+    <section className="page-x flex min-h-[80svh] flex-col justify-between bg-ground py-16 text-ink md:min-h-[90svh] md:py-20">
       <h2 data-reveal className="text-[15vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[10vw]">
         <span className="block">{t.l1}</span>
         <span className="block">{t.l2}</span>
@@ -22,7 +22,7 @@ export default function ClosingCta({ lang }: { lang: PortfolioLang }) {
         <p data-reveal className="max-w-[34ch] text-[17px] md:text-xl">{t.sentence}</p>
         <a
           data-reveal
-          className="inline-flex min-h-14 w-full items-center justify-center bg-ground px-8 font-medium text-ink transition-transform duration-150 active:scale-[0.97] md:w-auto"
+          className="inline-flex min-h-14 w-full items-center justify-center bg-ink px-8 font-medium text-ground transition-transform duration-150 active:scale-[0.97] md:w-auto"
           href={whatsappUrl(QUOTE_MESSAGE[lang])}
           target="_blank"
           rel="noreferrer"

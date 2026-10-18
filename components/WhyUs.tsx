@@ -101,13 +101,13 @@ function reasons(lang: PortfolioLang): Reason[] {
 export default function WhyUs({ lang }: { lang: PortfolioLang }) {
   return (
     <section className="page-x bg-ground py-28 md:py-40">
-      <div className="md:pl-[22%]">
-        <h2 data-reveal className="mb-16 text-[28px] font-medium tracking-[-0.02em]">
+      <div>
+        <h2 data-reveal className="mb-16 text-[11vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:mb-20 md:text-[5.4vw]">
           {lang === "en" ? "How we work with you" : "Cómo trabajamos contigo"}
         </h2>
-        <div className="space-y-16 md:space-y-24">
+        <div className="grid gap-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-20">
           {reasons(lang).map((r) => (
-            <article key={r.title} data-reveal className="grid max-w-[680px] gap-4 sm:grid-cols-[360px_1fr] sm:gap-6">
+            <article key={r.title} data-reveal className="grid gap-4 sm:grid-cols-[minmax(0,320px)_1fr] sm:gap-6">
               <div data-ui className="h-[150px] overflow-hidden transition-transform duration-300 hover:-translate-y-1" aria-hidden="true">
                 {r.proof}
               </div>
