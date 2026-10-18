@@ -33,7 +33,14 @@
   color: var(--color-ink);
 }
 
+/* Repite los valores base para poder volver a oscuro dentro de una sección clara. */
 .theme-dark {
+  --color-ground: #0f1923;
+  --color-surface: #16222e;
+  --color-ink: #ece8e1;
+  --color-muted: #a4adb4;
+  --color-accent: #ff4655;
+  --color-accent-ink: #0f1923;
   color: var(--color-ink);
 }
 
@@ -206,3 +213,21 @@ details > summary::-webkit-details-marker { display: none; }
   .marquee-track:hover { animation-play-state: paused; }
 }
 @keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Mensajes del chat de WhatsApp: entran desde abajo, como en la app. */
+.chat-in {
+  animation: chat-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-in {
+    animation: none;
+  }
+}

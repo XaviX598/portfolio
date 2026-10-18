@@ -6,8 +6,8 @@ import TypeText from "./TypeText";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 
 const copy = {
-  es: { l1: "Tu web lista,", l2: "exprés.", sentence: "Escríbenos hoy y en menos de 24 horas tienes un plan con precio cerrado.", cta: "Cotizar por WhatsApp" },
-  en: { l1: "Your site ready,", l2: "express.", sentence: "Message us today and within 24 hours you'll have a plan with a fixed price.", cta: "Get a quote on WhatsApp" },
+  es: { l1: "Automatízalo,", l2: "exprés.", sentence: "Escríbenos hoy y en menos de 24 horas tienes un plan con precio cerrado.", cta: "Cotizar por WhatsApp" },
+  en: { l1: "Automate it,", l2: "express.", sentence: "Message us today and within 24 hours you'll have a plan with a fixed price.", cta: "Get a quote on WhatsApp" },
 };
 
 // El cierre invierte la página: el tinte se vuelve fondo. Repite la idea del nombre.
