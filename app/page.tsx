@@ -3,11 +3,15 @@ import { buildMetadata, getSiteUrl } from "@/lib/seo";
 import { faqData } from "@/lib/faq";
 
 export const metadata = buildMetadata({
-  title: "Desarrollo de Páginas Web y Software en Ecuador | Xpress Developer",
+  title: "Sistemas Empresariales y Automatización de Procesos en Ecuador | Xpress Developer",
   description:
-    "Agencia de desarrollo de software en Ecuador. Creamos páginas web, landing pages, apps Android y iOS, ecommerce e integraciones con IA para empresas en Guayaquil, Quito y todo el país.",
+    "Desarrollamos sistemas empresariales a medida y automatizamos procesos para negocios en Ecuador: inventario, ventas, facturación electrónica, WhatsApp y reportes. También páginas web y apps.",
   path: "/",
   keywords: [
+    "sistemas empresariales Ecuador",
+    "automatización de procesos Ecuador",
+    "sistema de inventario",
+    "automatización para negocios",
     "agencia de desarrollo de software Ecuador",
     "desarrollo web Ecuador",
     "páginas web Guayaquil",
@@ -48,6 +52,9 @@ export default function Home() {
       { "@type": "City", name: "Cuenca" },
     ],
     knowsAbout: [
+      "Sistemas empresariales",
+      "Automatización de procesos",
+      "Facturación electrónica",
       "Desarrollo web",
       "Desarrollo de páginas web",
       "Landing pages",

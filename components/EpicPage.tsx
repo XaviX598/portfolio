@@ -10,6 +10,8 @@ import Process from "./Process";
 import ClarityAudit from "./ClarityAudit";
 import FAQ from "./FAQ";
 import ClosingCta from "./ClosingCta";
+import Products from "./Products";
+import Clients from "./Clients";
 import Contact from "./Contact";
 import SectionReveal from "./SectionReveal";
 import type { PortfolioLang } from "./HomeClient";
@@ -18,13 +20,15 @@ import type { PortfolioLang } from "./HomeClient";
 // (azul noche, crema, rojo) para que el contraste aparezca desde el principio.
 const sections = [
   { id: "intro", component: Problem, theme: "theme-light" },
-  { id: "journey", component: JourneyMotion, theme: "theme-dark" },
+  { id: "products", component: Products, theme: "theme-dark" },
   { id: "projects", component: Projects, theme: "theme-red" },
+  { id: "clients", component: Clients, theme: "theme-dark" },
   { id: "pricing", component: Pricing, theme: "theme-light" },
   { id: "why-us", component: WhyUs, theme: "theme-dark" },
   { id: "process", component: Process, theme: "theme-light" },
-  { id: "free-review", component: ClarityAudit, theme: "theme-dark" },
+  { id: "journey", component: JourneyMotion, theme: "theme-dark" },
   { id: "faq", component: FAQ, theme: "theme-light" },
+  { id: "free-review", component: ClarityAudit, theme: "theme-dark" },
   { id: "cta", component: ClosingCta, theme: "theme-red" },
   { id: "contact", component: Contact, theme: "theme-dark" },
 ];

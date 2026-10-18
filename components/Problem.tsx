@@ -9,26 +9,26 @@ import PhoneMockup from "./PhoneMockup";
 
 const copy = {
   es: {
-    title: "Tu web tiene que venderte",
-    note: "Tus clientes te buscan en Google y encuentran primero a tu competencia. Hacemos páginas rápidas, fáciles de encontrar y que terminan en un mensaje de WhatsApp.",
+    title: "Menos Excel, más negocio",
+    note: "Inventario en hojas sueltas, facturas a mano y pedidos de WhatsApp que se pierden. Lo convertimos en un sistema y en procesos que trabajan solos.",
     facts: [
-      { value: "$250", label: "desde, por una landing page" },
+      { value: "$1.500", label: "desde, por un sistema a medida" },
+      { value: "$500", label: "desde, por una automatización" },
       { value: "24 h", label: "para responderte con un plan" },
-      { value: "1–2 sem.", label: "para lanzar tu landing" },
-      { value: "100%", label: "código y dominio a tu nombre" },
+      { value: "100%", label: "código y datos a tu nombre" },
     ],
-    alt: "Tienda online Xpress Ecommerce desarrollada por Xpress Developer",
+    alt: "Panel de AMZ Express, sistema empresarial desarrollado por Xpress Developer",
   },
   en: {
-    title: "Your site has to sell for you",
-    note: "Your clients search on Google and find your competitors first. We build fast pages that are easy to find and end in a WhatsApp message.",
+    title: "Less Excel, more business",
+    note: "Inventory in scattered sheets, invoices by hand and WhatsApp orders that get lost. We turn it into one system and processes that run on their own.",
     facts: [
-      { value: "$250", label: "and up, for a landing page" },
+      { value: "$1,500", label: "and up, for a custom system" },
+      { value: "$500", label: "and up, for an automation" },
       { value: "24 h", label: "to reply with a plan" },
-      { value: "1–2 wk", label: "to launch your landing" },
-      { value: "100%", label: "code and domain in your name" },
+      { value: "100%", label: "code and data in your name" },
     ],
-    alt: "Xpress Ecommerce online store built by Xpress Developer",
+    alt: "AMZ Express dashboard, a business system built by Xpress Developer",
   },
 };
 
@@ -56,15 +56,15 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
       </dl>
 
       <ScrollMotion className="mt-16 md:hidden" y={[60, -30]} rotate={[-10, 0]} scale={[0.85, 1]}>
-        <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt={t.alt} sizes="60vw" className="mx-auto w-[58%] max-w-[260px]" />
+        <PhoneMockup src="/proyectos/movil/amz-express.jpg" alt={t.alt} sizes="60vw" className="mx-auto w-[58%] max-w-[260px]" />
       </ScrollMotion>
 
       <div className="mt-24 hidden items-end gap-8 md:grid md:grid-cols-12">
-        <ScrollMotion className="relative col-span-9 aspect-[1848/909] overflow-hidden bg-ground" y={[50, -30]} scale={[0.9, 1]}>
-          <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="75vw" className="object-cover object-top" />
+        <ScrollMotion className="relative col-span-9 aspect-[1843/910] overflow-hidden bg-ground" y={[50, -30]} scale={[0.9, 1]}>
+          <Image src="/proyectos/amz%20express%202.png" alt={t.alt} fill sizes="75vw" className="object-cover object-top" />
         </ScrollMotion>
         <ScrollMotion className="col-span-3 w-full max-w-[300px] justify-self-end" y={[160, -60]} rotate={[12, 0]}>
-          <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt="" sizes="20vw" />
+          <PhoneMockup src="/proyectos/movil/amz-express.jpg" alt="" sizes="20vw" />
         </ScrollMotion>
       </div>
     </section>

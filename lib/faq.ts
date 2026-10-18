@@ -5,8 +5,8 @@ export type FaqItem = { q: string; a: string };
 export const faqData: Record<"es" | "en", FaqItem[]> = {
   es: [
     {
-      q: "¿Cuánto cuesta una página web o una app?",
-      a: "Nuestros precios parten desde $250 para una landing page, $450 para una página web, $900 para una tienda online y $2.500 para una app móvil. El precio final depende del alcance: después de una conversación corta te enviamos una propuesta por escrito con precio cerrado, sin costos ocultos.",
+      q: "¿Cuánto cuesta un sistema o una automatización?",
+      a: "Una automatización parte desde $500 y un sistema empresarial a medida desde $1.500. También hacemos landing pages desde $250, páginas web desde $450, tiendas online desde $900 y apps móviles desde $2.500. El precio final depende del alcance: después de una conversación corta te enviamos una propuesta por escrito con precio cerrado, sin costos ocultos.",
     },
     {
       q: "¿El dominio y el hosting están incluidos?",
@@ -39,8 +39,8 @@ export const faqData: Record<"es" | "en", FaqItem[]> = {
   ],
   en: [
     {
-      q: "How much does a website or an app cost?",
-      a: "Our prices start at $250 for a landing page, $450 for a website, $900 for an online store and $2,500 for a mobile app. The final price depends on the scope: after a short conversation we send you a written proposal with a fixed price, with no hidden costs.",
+      q: "How much does a system or an automation cost?",
+      a: "An automation starts at $500 and a custom business system at $1,500. We also build landing pages from $250, websites from $450, online stores from $900 and mobile apps from $2,500. The final price depends on the scope: after a short conversation we send you a written proposal with a fixed price, with no hidden costs.",
     },
     {
       q: "Are the domain and hosting included?",

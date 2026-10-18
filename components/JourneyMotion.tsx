@@ -302,7 +302,7 @@ export default function JourneyMotion({ lang }: { lang: PortfolioLang }) {
               </ol>
             </div>
 
-            <div data-ui className="relative aspect-[4/3] w-full overflow-hidden bg-surface lg:col-span-7" aria-hidden="true">
+            <div data-ui className="relative mx-auto aspect-[4/3] w-full max-w-[60svh] overflow-hidden bg-surface lg:col-span-7 lg:max-w-none" aria-hidden="true">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={step}

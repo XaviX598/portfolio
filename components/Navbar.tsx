@@ -11,9 +11,9 @@ type NavbarProps = {
 };
 
 const links = [
+  { id: "products", es: "Productos", en: "Products" },
   { id: "projects", es: "Proyectos", en: "Work" },
   { id: "pricing", es: "Precios", en: "Pricing" },
-  { id: "process", es: "Proceso", en: "Process" },
 ];
 
 export default function Navbar({ lang, onLangChange }: NavbarProps) {

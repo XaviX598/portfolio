@@ -1,4 +1,6 @@
 ﻿export type ServiceSlug =
+  | "sistemas-empresariales"
+  | "automatizacion-de-procesos"
   | "pagina-web"
   | "landing-page"
   | "desarrollo-android"
@@ -32,6 +34,89 @@ export type ServiceEntry = {
 };
 
 export const services: ServiceEntry[] = [
+  {
+    slug: "sistemas-empresariales",
+    title: "Sistemas Empresariales",
+    subtitle: "Inventario, ventas y facturación en un solo sistema",
+    shortDescription:
+      "Desarrollamos sistemas empresariales a medida para que tu negocio deje los Excel sueltos: inventario, ventas, facturación electrónica, clientes y reportes en un solo lugar.",
+    seoTitle: "Sistemas Empresariales a Medida en Ecuador | Xpress Developer",
+    seoDescription:
+      "Sistemas empresariales a medida para negocios en Ecuador: inventario, ventas, punto de venta, facturación electrónica con un proveedor autorizado por el SRI, clientes y reportes. Desde $1.500.",
+    keywords: [
+      "sistema empresarial Ecuador",
+      "sistema de inventario",
+      "software a medida Ecuador",
+      "ERP para pymes",
+      "sistema de facturación electrónica",
+      "sistema punto de venta",
+      "CRM para empresas",
+      "sistema de gestión Quito",
+      "sistema de gestión Guayaquil",
+    ],
+    features: [
+      "Inventario y bodegas en tiempo real",
+      "Ventas, cotizaciones y punto de venta",
+      "Facturación electrónica con un proveedor autorizado por el SRI",
+      "Clientes, cuentas por cobrar y seguimiento",
+      "Reportes y paneles para decidir con datos",
+      "Usuarios y permisos por rol",
+      "Acceso desde computadora y celular",
+      "Respaldos automáticos y datos a tu nombre",
+    ],
+    process: [
+      { step: "1", title: "Diagnóstico", desc: "Revisamos cómo trabaja tu negocio hoy y qué procesos te cuestan más tiempo y errores." },
+      { step: "2", title: "Diseño del sistema", desc: "Definimos módulos, pantallas y permisos con tu equipo antes de programar." },
+      { step: "3", title: "Desarrollo por etapas", desc: "Entregamos módulo por módulo para que empieces a usarlo cuanto antes." },
+      { step: "4", title: "Capacitación y soporte", desc: "Capacitamos a tu equipo y te acompañamos después del lanzamiento." },
+    ],
+    cta: {
+      title: "¿Listo para dejar los Excel sueltos?",
+      subtitle: "Cuéntanos cómo trabajas y te proponemos un sistema por etapas.",
+      button: "Cotizar sistema",
+    },
+  },
+  {
+    slug: "automatizacion-de-procesos",
+    title: "Automatización de Procesos",
+    subtitle: "Tareas repetitivas que se hacen solas",
+    shortDescription:
+      "Conectamos WhatsApp, Excel, tu sistema y tu tienda para que pedidos, facturas, recordatorios y reportes se hagan solos, sin errores y a cualquier hora.",
+    seoTitle: "Automatización de Procesos para Negocios en Ecuador | Xpress Developer",
+    seoDescription:
+      "Automatizamos procesos de negocios en Ecuador: pedidos por WhatsApp, facturas y recordatorios de pago, reportes automáticos e integración entre Excel, sistemas y tiendas online. Desde $500.",
+    keywords: [
+      "automatización de procesos",
+      "automatización para negocios",
+      "automatizar WhatsApp",
+      "automatización de facturación",
+      "automatización n8n Ecuador",
+      "integración de sistemas",
+      "reportes automáticos",
+      "automatización pymes Ecuador",
+    ],
+    features: [
+      "Pedidos y consultas por WhatsApp que se registran solos",
+      "Facturas y recordatorios de pago automáticos",
+      "Reportes diarios en tu correo o WhatsApp",
+      "Datos sincronizados entre Excel, tu sistema y tu tienda",
+      "Seguimiento automático de clientes potenciales",
+      "Alertas de stock bajo y vencimientos",
+      "Integración con las herramientas que ya usas",
+      "Monitoreo para que nada se detenga",
+    ],
+    process: [
+      { step: "1", title: "Mapeo", desc: "Identificamos las tareas repetitivas que más horas le quitan a tu equipo." },
+      { step: "2", title: "Diseño del flujo", desc: "Definimos qué pasa, cuándo y con qué herramientas, paso a paso." },
+      { step: "3", title: "Implementación", desc: "Conectamos tus herramientas y probamos con casos reales antes de activarlo." },
+      { step: "4", title: "Monitoreo", desc: "Vigilamos que todo corra bien y lo ajustamos cuando tu negocio cambia." },
+    ],
+    cta: {
+      title: "¿Qué tarea no quieres volver a hacer a mano?",
+      subtitle: "Cuéntanosla y te mostramos cómo automatizarla.",
+      button: "Cotizar automatización",
+    },
+  },
   {
     slug: "pagina-web",
     title: "Desarrollo de Página Web",
@@ -500,6 +585,8 @@ export const servicesBySlug = Object.fromEntries(
 
 // Precio de referencia, plazo e imagen de un proyecto real parecido, para las páginas de servicio.
 export const serviceGallery: Record<ServiceSlug, string[]> = {
+  "sistemas-empresariales": ["/proyectos/amz express.png", "/proyectos/pagina de atleta 2.png", "/proyectos/universal skills 2.png"],
+  "automatizacion-de-procesos": ["/proyectos/amz express 3.png", "/proyectos/xpress ecommerce 2.png", "/proyectos/xpress convert 2.png"],
   "pagina-web": ["/proyectos/universal skills 2.png", "/proyectos/universal skills 3.png", "/proyectos/xpress convert .png"],
   "landing-page": ["/proyectos/restaurante 2.png", "/proyectos/restaurant 3.png", "/proyectos/xpress ecommerce 2.png"],
   "desarrollo-android": ["/proyectos/pagina de atleta 2.png", "/proyectos/pagina atlketa 3.png", "/proyectos/amz express 2.png"],
@@ -511,6 +598,8 @@ export const serviceGallery: Record<ServiceSlug, string[]> = {
 };
 
 export const serviceMobile: Record<ServiceSlug, string> = {
+  "sistemas-empresariales": "/proyectos/movil/amz-express.jpg",
+  "automatizacion-de-procesos": "/proyectos/movil/xpressconvert.jpg",
   "pagina-web": "/proyectos/movil/universal-skills.jpg",
   "landing-page": "/proyectos/movil/restaurant.jpg",
   "desarrollo-android": "/proyectos/movil/atletismo.jpg",
@@ -522,6 +611,8 @@ export const serviceMobile: Record<ServiceSlug, string> = {
 };
 
 export const serviceExtras: Record<ServiceSlug, { price: number; time: string; image: string; imageAlt: string }> = {
+  "sistemas-empresariales": { price: 1500, time: "Se entrega por etapas", image: "/proyectos/amz express 2.png", imageAlt: "Panel de AMZ Express, sistema empresarial desarrollado por Xpress Developer" },
+  "automatizacion-de-procesos": { price: 500, time: "Plazo según el proceso", image: "/proyectos/xpress ecommerce 2.png", imageAlt: "Pedidos automatizados en Xpress Ecommerce desarrollado por Xpress Developer" },
   "pagina-web": { price: 450, time: "Lista en 3 a 6 semanas", image: "/proyectos/universal skills.png", imageAlt: "Universal Skills Hub, plataforma web desarrollada por Xpress Developer" },
   "landing-page": { price: 250, time: "Lista en 1 a 2 semanas", image: "/proyectos/restaurant.png", imageAlt: "Landing page de restaurante desarrollada por Xpress Developer" },
   "desarrollo-android": { price: 2500, time: "Se planifica por etapas", image: "/proyectos/pagina de atleta .png", imageAlt: "Sistema de atletismo con app Android desarrollado por Xpress Developer" },

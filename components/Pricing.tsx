@@ -21,6 +21,28 @@ type Service = {
 
 const services: Service[] = [
   {
+    slug: "sistemas-empresariales",
+    price: 1500,
+    name: { es: "Sistema empresarial", en: "Business system" },
+    time: { es: "Se entrega por etapas", en: "Delivered in stages" },
+    includes: {
+      es: ["Inventario, ventas y punto de venta", "Facturación electrónica con proveedor autorizado por el SRI", "Clientes, cobros y reportes", "Usuarios y permisos por rol"],
+      en: ["Inventory, sales and point of sale", "E-invoicing through an SRI-authorized provider", "Clients, collections and reports", "Users and role permissions"],
+    },
+    image: "/proyectos/amz express 2.png",
+  },
+  {
+    slug: "automatizacion-de-procesos",
+    price: 500,
+    name: { es: "Automatización", en: "Automation" },
+    time: { es: "Plazo según el proceso", en: "Timeline depends on the process" },
+    includes: {
+      es: ["Pedidos de WhatsApp que se registran solos", "Facturas y recordatorios de pago automáticos", "Reportes diarios automáticos", "Conexión con las herramientas que ya usas"],
+      en: ["WhatsApp orders logged automatically", "Automatic invoices and payment reminders", "Automatic daily reports", "Connected to the tools you already use"],
+    },
+    image: "/proyectos/xpress ecommerce 2.png",
+  },
+  {
     slug: "landing-page",
     price: 250,
     name: { es: "Landing page", en: "Landing page" },
@@ -56,7 +78,7 @@ const services: Service[] = [
   {
     slug: "chat-ia",
     price: 400,
-    name: { es: "Chatbot con IA", en: "AI chatbot" },
+    name: { es: "Chatbot de WhatsApp", en: "WhatsApp chatbot" },
     time: { es: "Plazo según tus procesos", en: "Timeline depends on your processes" },
     includes: {
       es: ["Responde precios, horarios y dudas", "Conectado a WhatsApp o a tu web", "Entrenado con la información de tu negocio", "Ajustes durante el primer mes"],
@@ -76,28 +98,6 @@ const services: Service[] = [
     image: "/proyectos/pagina de atleta .png",
   },
   {
-    slug: "desarrollo-web",
-    price: 1500,
-    name: { es: "Sistema a medida", en: "Custom system" },
-    time: { es: "Se planifica por etapas", en: "Planned in stages" },
-    includes: {
-      es: ["Software hecho para cómo opera tu empresa", "Usuarios y permisos por rol", "Reportes y paneles", "Integración con tus herramientas"],
-      en: ["Software built for how your company operates", "Users and role permissions", "Reports and dashboards", "Integration with your tools"],
-    },
-    image: "/proyectos/amz express 3.png",
-  },
-  {
-    slug: "inteligencia-artificial",
-    price: 500,
-    name: { es: "Automatización con IA", en: "AI automation" },
-    time: { es: "Plazo según tus procesos", en: "Timeline depends on your processes" },
-    includes: {
-      es: ["Automatiza reportes y tareas repetitivas", "Conecta tus herramientas actuales", "Atención automática a clientes", "Capacitación para tu equipo"],
-      en: ["Automates reports and repetitive tasks", "Connects your current tools", "Automatic customer service", "Training for your team"],
-    },
-    image: "/proyectos/universal skills 2.png",
-  },
-  {
     price: 40,
     period: { es: "/mes", en: "/mo" },
     name: { es: "Mantenimiento", en: "Maintenance" },
@@ -111,6 +111,8 @@ const services: Service[] = [
 ];
 
 const allPages = [
+  { slug: "sistemas-empresariales", label: "Sistemas Empresariales" },
+  { slug: "automatizacion-de-procesos", label: "Automatización de Procesos" },
   { slug: "pagina-web", label: "Desarrollo de Página Web" },
   { slug: "landing-page", label: "Landing Page" },
   { slug: "desarrollo-web", label: "Desarrollo Web" },
@@ -146,7 +148,7 @@ const copy = {
 
 export default function Pricing({ lang }: { lang: PortfolioLang }) {
   const t = copy[lang];
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const s = services[index];
   const figure = s.price.toLocaleString(lang === "es" ? "es-EC" : "en-US");
 

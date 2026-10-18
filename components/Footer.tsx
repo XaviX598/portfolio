@@ -2,11 +2,12 @@ import Link from "next/link";
 import type { PortfolioLang } from "./HomeClient";
 
 const services = [
+  { slug: "sistemas-empresariales", label: "Sistemas empresariales" },
+  { slug: "automatizacion-de-procesos", label: "Automatización de procesos" },
   { slug: "pagina-web", label: "Páginas web" },
   { slug: "landing-page", label: "Landing pages" },
   { slug: "ecommerce", label: "Tiendas online" },
   { slug: "desarrollo-android", label: "Apps móviles" },
-  { slug: "chat-ia", label: "Chatbots con IA" },
 ];
 
 // Cierre de la página: tinta y fondo invertidos, el nombre vuelve a todo el ancho.

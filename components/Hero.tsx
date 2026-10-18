@@ -11,30 +11,30 @@ import Marquee from "./Marquee";
 
 const copy = {
   es: {
-    tag: "Web · apps · IA",
-    sentence: "Páginas web y apps que traen clientes a tu negocio en Ecuador.",
+    tag: "Sistemas · automatización",
+    sentence: "Sistemas empresariales y automatizaciones que ordenan tu negocio y le ahorran horas a tu equipo.",
     cta: "Cotiza gratis por WhatsApp",
     microcopy: "Respuesta en menos de 24 horas",
     from: "/ desde",
     place: "Ecuador",
-    chatTitle: "Nuevo cliente por WhatsApp",
-    chatText: "¡Hola! Vi tu página y quiero cotizar.",
-    services: ["Páginas web", "Landing pages", "Tiendas online", "Apps Android e iOS", "Chatbots con IA", "Automatización", "Sistemas a medida", "SEO técnico"],
+    chatTitle: "Factura enviada por WhatsApp",
+    chatText: "Pedido registrado en tu sistema, sin tocar nada.",
+    services: ["Sistemas empresariales", "Automatización de procesos", "Inventario", "Facturación electrónica", "WhatsApp automático", "Reportes en tiempo real", "Páginas web", "Apps móviles"],
     servicesLabel: "Servicios",
     caption: "AMZ Express, en producción",
     captionText: "Cotiza importaciones de Amazon a Ecuador en segundos.",
     alt: "Plataforma AMZ Express desarrollada por Xpress Developer",
   },
   en: {
-    tag: "Web · apps · AI",
-    sentence: "Websites and apps that bring clients to your business in Ecuador.",
+    tag: "Systems · automation",
+    sentence: "Business systems and automations that organize your business and save your team hours.",
     cta: "Get a free quote on WhatsApp",
     microcopy: "Reply in under 24 hours",
     from: "/ from",
     place: "Ecuador",
-    chatTitle: "New client on WhatsApp",
-    chatText: "Hi! I saw your website and I'd like a quote.",
-    services: ["Websites", "Landing pages", "Online stores", "Android & iOS apps", "AI chatbots", "Automation", "Custom systems", "Technical SEO"],
+    chatTitle: "Invoice sent on WhatsApp",
+    chatText: "Order logged in your system, hands-free.",
+    services: ["Business systems", "Process automation", "Inventory", "E-invoicing", "WhatsApp automation", "Real-time reports", "Websites", "Mobile apps"],
     servicesLabel: "Services",
     caption: "AMZ Express, live",
     captionText: "Quotes Amazon imports to Ecuador in seconds.",
@@ -85,8 +85,10 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
                 <motion.span data-line style={{ ["--i" as string]: 0, display: "inline-block", ...fill(inkColor) }} className={fillClass}>
                   Xpress
                 </motion.span>
-                <span data-fade className="ml-[0.25em] inline-block align-[0.6em] text-[max(13px,0.15em)] tracking-[-0.01em] text-accent" style={{ ["--d" as string]: "700ms" }}>
-                  {t.tag}
+                <span data-fade className="ml-[0.22em] inline-flex flex-col align-[0.5em] text-[max(13px,0.13em)] leading-[1.05] tracking-[-0.01em] text-accent" style={{ ["--d" as string]: "700ms" }}>
+                  {t.tag.split(" · ").map((part) => (
+                    <span key={part}>{part}</span>
+                  ))}
                 </span>
               </span>
               <span className="line text-accent">
