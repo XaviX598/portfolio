@@ -6,6 +6,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
 import { whatsappUrl } from "@/lib/contact";
+import StoreBadges from "./StoreBadges";
 
 type Service = {
   slug?: string;
@@ -176,7 +177,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
         </div>
 
         <div className="md:col-span-7 md:col-start-6" aria-live="polite">
-          <div className="relative inline-block max-w-full pt-[20vw] md:pr-[12vw] md:pt-[4vw]">
+          <div className="relative inline-block max-w-full pt-[20vw] md:pr-[6vw] md:pt-[7vw]">
             <p className="flex items-start font-extrabold leading-[0.85] tracking-[-0.04em]">
               <span className="sr-only">{t.from} </span>
               <span className="mt-[0.08em] text-[11vw] md:text-[clamp(60px,8vw,120px)]">$</span>
@@ -201,7 +202,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
-                className="absolute right-0 top-0 aspect-[2/1] w-[34vw] overflow-hidden md:w-[16vw]"
+                className="absolute right-0 top-0 aspect-[2/1] w-[34vw] overflow-hidden md:w-[15vw]"
               >
                 <Image src={encodeURI(s.image)} alt="" fill sizes="(min-width: 768px) 14vw, 33vw" className="object-cover object-top" />
               </motion.div>
@@ -214,6 +215,12 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
               <li key={line}>{line}</li>
             ))}
           </ul>
+          {s.slug === "desarrollo-android" && (
+            <div className="mt-6">
+              <p className="mb-3 text-muted">{lang === "en" ? "We leave your app published on the stores." : "Te dejamos tu app publicada en las tiendas."}</p>
+              <StoreBadges lang={lang} />
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
             <a className="btn w-full sm:w-auto" href={whatsappUrl(t.message(s))} target="_blank" rel="noreferrer">
               {t.cta}

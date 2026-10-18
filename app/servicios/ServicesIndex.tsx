@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { services, serviceExtras } from "./data";
+import { services, serviceExtras, serviceMobile } from "./data";
+import PhoneMockup from "@/components/PhoneMockup";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
@@ -41,9 +42,7 @@ export default function ServicesIndex() {
                 const extra = serviceExtras[s.slug];
                 return (
                   <li key={s.slug} className="mb-12 md:mb-0" data-reveal style={{ ["--d" as string]: `${i * 50}ms` }}>
-                    <div className="relative mb-4 aspect-[2/1] overflow-hidden md:hidden">
-                      <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill sizes="100vw" className="object-cover object-top" />
-                    </div>
+                    <PhoneMockup src={serviceMobile[s.slug]} alt={extra.imageAlt} sizes="60vw" className="mx-auto mb-6 w-[58%] max-w-[260px] md:hidden" />
                     <Link
                       href={`/servicios/${s.slug}`}
                       onMouseEnter={() => setActive(i)}

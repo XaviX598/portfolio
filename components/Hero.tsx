@@ -97,7 +97,8 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
         {!reduce && (
           <motion.figure style={{ opacity: shotOpacity, visibility: shotVisibility }} className="pointer-events-none absolute inset-0">
             <motion.div style={{ scale: shotScale }} className="absolute inset-0">
-              <Image src={SHOT} alt={t.alt} fill sizes="100vw" className="object-cover object-top" />
+              <Image src={SHOT} alt={t.alt} fill sizes="100vw" className="hidden object-cover object-top md:block" />
+              <Image src="/proyectos/movil/amz-express.jpg" alt={t.alt} fill sizes="100vw" className="object-cover object-top md:hidden" />
             </motion.div>
             <motion.figcaption
               style={{ opacity: captionOpacity }}

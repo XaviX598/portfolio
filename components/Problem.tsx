@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { PortfolioLang } from "./HomeClient";
+import PhoneMockup from "./PhoneMockup";
 
 const copy = {
   es: {
@@ -51,7 +52,11 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
         ))}
       </dl>
 
-      <div data-reveal className="relative mt-16 aspect-[2/1] w-full overflow-hidden md:ml-auto md:aspect-[4/3] md:mt-20 md:w-5/12">
+      <div data-reveal className="mt-16 md:hidden">
+        <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt={t.alt} sizes="60vw" className="mx-auto w-[58%] max-w-[260px]" />
+      </div>
+
+      <div data-reveal className="relative mt-20 hidden aspect-[4/3] w-5/12 overflow-hidden md:ml-auto md:block">
         <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="(min-width: 768px) 42vw, 100vw" className="object-cover object-top" />
       </div>
     </section>

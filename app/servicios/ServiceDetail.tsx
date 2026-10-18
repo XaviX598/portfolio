@@ -1,6 +1,8 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { services, serviceExtras, serviceGallery, type ServiceEntry } from "./data";
+import { services, serviceExtras, serviceGallery, serviceMobile, type ServiceEntry } from "./data";
+import PhoneMockup from "@/components/PhoneMockup";
+import StoreBadges from "@/components/StoreBadges";
 import { whatsappUrl } from "@/lib/contact";
 import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
@@ -12,6 +14,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   const price = extra.price.toLocaleString("es-EC");
   const quote = whatsappUrl(`Hola, quiero cotizar: ${service.title} (desde $${price}).`);
   const others = services.filter((s) => s.slug !== service.slug);
+  const isApp = service.slug === "desarrollo-android" || service.slug === "desarrollo-ios";
 
   return (
     <>
@@ -43,8 +46,14 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
         </section>
 
-        <figure data-reveal className="relative aspect-[2/1] w-full overflow-hidden bg-surface md:aspect-[21/9]">
+        <figure data-reveal className="bg-surface py-12 md:hidden">
+          <PhoneMockup src={serviceMobile[service.slug]} alt={extra.imageAlt} sizes="60vw" priority className="mx-auto w-[58%] max-w-[260px]" />
+        </figure>
+        <figure data-reveal className="relative hidden aspect-[21/9] w-full overflow-hidden bg-surface md:block">
           <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill priority sizes="100vw" className="object-cover object-top" />
+          <div className="absolute bottom-[-8%] right-[6%] w-[15%]">
+            <PhoneMockup src={serviceMobile[service.slug]} alt="" sizes="15vw" />
+          </div>
         </figure>
 
         <section className="page-x bg-surface py-24 md:py-36">
@@ -64,6 +73,18 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             </div>
           </div>
         </section>
+
+        {isApp && (
+          <section className="page-x bg-surface pt-4 pb-20 md:pb-28">
+            <div className="grid gap-8 md:grid-cols-12 md:items-center">
+              <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em] md:col-span-5 md:text-[40px]">Tu app, publicada en las tiendas</h2>
+              <div data-reveal className="md:col-span-6 md:col-start-7">
+                <p className="mb-6 max-w-[48ch]">Nos encargamos de la cuenta de desarrollador, las capturas, la ficha y la revisión de Apple y Google, hasta que tu app esté disponible para descargar.</p>
+                <StoreBadges />
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="bg-surface pb-24 md:pb-36">
           <div className="flex flex-col md:h-[56svh] md:flex-row">

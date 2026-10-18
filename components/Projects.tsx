@@ -3,11 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { PortfolioLang } from "./HomeClient";
+import PhoneMockup from "./PhoneMockup";
 
 type Project = {
   name: string;
   url: string;
   image: string;
+  mobile: string;
   discipline: Record<PortfolioLang, string>;
   summary: Record<PortfolioLang, string>;
 };
@@ -15,6 +17,7 @@ type Project = {
 const projects: Project[] = [
   {
     name: "AMZ Express",
+    mobile: "/proyectos/movil/amz-express.jpg",
     url: "https://amz-express.vercel.app",
     image: "/proyectos/amz express.png",
     discipline: { es: "Plataforma web", en: "Web platform" },
@@ -25,6 +28,7 @@ const projects: Project[] = [
   },
   {
     name: "Xpress Ecommerce",
+    mobile: "/proyectos/movil/xpress-ecommerce.jpg",
     url: "https://xpress-ecommerce.vercel.app",
     image: "/proyectos/xpress ecommerce.png",
     discipline: { es: "Tienda online", en: "Online store" },
@@ -35,6 +39,7 @@ const projects: Project[] = [
   },
   {
     name: "Restaurant Landing",
+    mobile: "/proyectos/movil/restaurant.jpg",
     url: "https://project-restaurante-delta.vercel.app",
     image: "/proyectos/restaurant.png",
     discipline: { es: "Landing page", en: "Landing page" },
@@ -45,6 +50,7 @@ const projects: Project[] = [
   },
   {
     name: "Universal Skills Hub",
+    mobile: "/proyectos/movil/universal-skills.jpg",
     url: "https://universal-skills-hub.vercel.app",
     image: "/proyectos/universal skills.png",
     discipline: { es: "Plataforma web", en: "Web platform" },
@@ -55,6 +61,7 @@ const projects: Project[] = [
   },
   {
     name: "XpressConvert",
+    mobile: "/proyectos/movil/xpressconvert.jpg",
     url: "https://xpressconvert.vercel.app",
     image: "/proyectos/xpress convert .png",
     discipline: { es: "Herramienta web", en: "Web tool" },
@@ -65,6 +72,7 @@ const projects: Project[] = [
   },
   {
     name: "Athletics System",
+    mobile: "/proyectos/movil/atletismo.jpg",
     url: "https://frontend-atletismo.vercel.app",
     image: "/proyectos/pagina de atleta .png",
     discipline: { es: "Web, API y Android", en: "Web, API and Android" },
@@ -92,9 +100,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
         <ul className="md:col-span-8">
           {projects.map((p, i) => (
             <li key={p.name} className="mb-10 md:mb-0" data-reveal style={{ ["--d" as string]: `${i * 60}ms` }}>
-              <div className="relative mb-4 aspect-[2/1] overflow-hidden md:hidden">
-                <Image src={encodeURI(p.image)} alt={p.name} fill sizes="100vw" className="object-cover object-top" />
-              </div>
+              <PhoneMockup src={p.mobile} alt={`${p.name} en celular`} sizes="60vw" className="mx-auto mb-6 w-[58%] max-w-[260px] md:hidden" />
               <a
                 href={p.url}
                 target="_blank"
@@ -120,6 +126,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
 
         <div className="hidden md:col-span-4 md:block">
           <div className="sticky top-[15vh]">
+            <div className="relative">
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
               {projects.map((p, i) => (
                 <Image
@@ -134,7 +141,15 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                 />
               ))}
             </div>
-            <p className="mt-4 text-[15px] text-muted">{projects[active].discipline[lang]}</p>
+            <div className="absolute -bottom-10 -left-8 w-[32%]">
+              {projects.map((p, i) => (
+                <div key={p.name} className={`transition-opacity duration-500 ${i === 0 ? "relative" : "absolute inset-0"} ${active === i ? "opacity-100" : "opacity-0"}`}>
+                  <PhoneMockup src={p.mobile} alt={`${p.name} en celular`} sizes="9vw" />
+                </div>
+              ))}
+            </div>
+            </div>
+            <p className="mt-14 text-[15px] text-muted">{projects[active].discipline[lang]}</p>
             <p className="mt-1">{projects[active].summary[lang]}</p>
           </div>
         </div>

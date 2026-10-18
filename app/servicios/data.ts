@@ -510,6 +510,17 @@ export const serviceGallery: Record<ServiceSlug, string[]> = {
   ecommerce: ["/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png", "/proyectos/amz express.png"],
 };
 
+export const serviceMobile: Record<ServiceSlug, string> = {
+  "pagina-web": "/proyectos/movil/universal-skills.jpg",
+  "landing-page": "/proyectos/movil/restaurant.jpg",
+  "desarrollo-android": "/proyectos/movil/atletismo.jpg",
+  "desarrollo-ios": "/proyectos/movil/xpressconvert.jpg",
+  "chat-ia": "/proyectos/movil/amz-express.jpg",
+  "inteligencia-artificial": "/proyectos/movil/universal-skills.jpg",
+  "desarrollo-web": "/proyectos/movil/amz-express.jpg",
+  ecommerce: "/proyectos/movil/xpress-ecommerce.jpg",
+};
+
 export const serviceExtras: Record<ServiceSlug, { price: number; time: string; image: string; imageAlt: string }> = {
   "pagina-web": { price: 450, time: "Lista en 3 a 6 semanas", image: "/proyectos/universal skills.png", imageAlt: "Universal Skills Hub, plataforma web desarrollada por Xpress Developer" },
   "landing-page": { price: 250, time: "Lista en 1 a 2 semanas", image: "/proyectos/restaurant.png", imageAlt: "Landing page de restaurante desarrollada por Xpress Developer" },
