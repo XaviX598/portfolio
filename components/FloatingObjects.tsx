@@ -68,7 +68,7 @@ export default function FloatingObjects({ chatTitle, chatText, className = "" }:
 
       <Layer mx={mx} my={my} depth={54} rotate={-3} delay="-3s" className="bottom-[8%] left-[6%] w-[62%] max-w-[300px]">
         <div className="flex items-start gap-3 bg-[#16222e] p-3 ring-1 ring-white/10 md:p-4">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ff4655] text-[#0f1923]">
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.05 21.8h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88z" />
             </svg>

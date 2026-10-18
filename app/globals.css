@@ -163,11 +163,12 @@ details > summary::-webkit-details-marker { display: none; }
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background: #25d366;
-  color: #fff;
+  background: #ece8e1;
+  color: #ff4655;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); /* taste-skill-ignore: botón flotante */
-  transition: transform 180ms var(--ease-out), opacity 300ms ease, translate 300ms var(--ease-out), visibility 300ms;
+  transition: transform 180ms var(--ease-out), background-color 300ms ease, color 300ms ease, opacity 300ms ease, translate 300ms var(--ease-out), visibility 300ms;
 }
+.float-wa[data-tone="light"] { background: #ff4655; color: #ece8e1; }
 .float-wa:hover { transform: scale(1.06); }
 .float-wa:active { transform: scale(0.96); }
 

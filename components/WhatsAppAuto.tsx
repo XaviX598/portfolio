@@ -96,12 +96,12 @@ export default function WhatsAppAuto({ lang }: { lang: PortfolioLang }) {
       </div>
 
       <div ref={ref} className="relative lg:col-span-7">
-        <div data-ui className="relative mr-[22%] flex h-[280px] flex-col bg-[#0b141a] text-[#e9edef] md:mr-[30%] md:h-[460px]" aria-hidden="true">
-          <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
+        <div data-ui className="relative mr-[22%] flex h-[280px] flex-col bg-[#0f1923] text-[#ece8e1] md:mr-[30%] md:h-[460px]" aria-hidden="true">
+          <div className="flex items-center gap-3 bg-[#16222e] px-4 py-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-[13px] font-bold text-accent-ink">TR</span>
             <span className="leading-tight">
               <span className="block text-[15px] font-medium">Trattoria Roma</span>
-              <span className="block text-[12px] text-[#8696a0]">{step.typing ? t.typing : t.status}</span>
+              <span className="block text-[12px] text-[#a4adb4]">{step.typing ? t.typing : t.status}</span>
             </span>
           </div>
           <div className="flex flex-1 flex-col justify-end gap-2 overflow-hidden p-3 md:p-4">
@@ -109,15 +109,15 @@ export default function WhatsAppAuto({ lang }: { lang: PortfolioLang }) {
               <p
                 key={m.text}
                 className={`chat-in max-w-[82%] px-3 py-2 text-[14px] leading-snug md:text-[15px] ${
-                  m.me ? "self-end bg-[#005c4b]" : "self-start bg-[#202c33]"
+                  m.me ? "self-end bg-[#ff4655] text-[#0f1923]" : "self-start bg-[#16222e]"
                 }`}
               >
                 {m.text}
               </p>
             ))}
-            {step.typing && <p className="chat-in self-end bg-[#005c4b] px-3 py-2 text-[14px] text-[#e9edef]/70">{t.typing}</p>}
+            {step.typing && <p className="chat-in self-end bg-[#ff4655] px-3 py-2 text-[14px] text-[#0f1923]/70">{t.typing}</p>}
           </div>
-          <p className={`flex items-center gap-2 bg-[#25d366] px-4 py-2.5 text-[14px] font-medium text-[#0b141a] transition-opacity duration-500 ${finished ? "opacity-100" : "opacity-0"}`}>
+          <p className={`flex items-center gap-2 bg-[#ece8e1] px-4 py-2.5 text-[14px] font-medium text-[#0f1923] transition-opacity duration-500 ${finished ? "opacity-100" : "opacity-0"}`}>
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>

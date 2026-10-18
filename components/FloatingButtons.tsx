@@ -1,21 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 
 // Aparece al salir de la primera pantalla: arriba ya está el botón de WhatsApp del hero.
+// Toma el color de la paleta según la sección que tiene debajo: rojo sobre crema, crema sobre azul o rojo.
 export default function FloatingButtons({ lang = "es" }: { lang?: "en" | "es" }) {
   const [visible, setVisible] = useState(false);
+  const [onLight, setOnLight] = useState(false);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const update = () => setVisible(window.scrollY > window.innerHeight * 0.6);
+    let frame = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setVisible(window.scrollY > window.innerHeight * 0.6);
+        const box = ref.current?.getBoundingClientRect();
+        if (!box) return;
+        const below = document
+          .elementsFromPoint(box.left + box.width / 2, box.top + box.height / 2)
+          .find((el) => !ref.current?.contains(el));
+        setOnLight(Boolean(below?.closest(".theme-light, .theme-dark, .theme-red")?.classList.contains("theme-light")));
+      });
+    };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   return (
     <a
+      ref={ref}
+      data-tone={onLight ? "light" : "dark"}
       href={whatsappUrl(QUOTE_MESSAGE[lang])}
       target="_blank"
       rel="noreferrer"

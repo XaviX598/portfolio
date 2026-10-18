@@ -7,7 +7,7 @@ import SplitWords from "./SplitWords";
 type Reason = { title: string; a: string; b: string; proof: ReactNode };
 
 const Bubble = ({ children, own = false }: { children: ReactNode; own?: boolean }) => (
-  <p className={`w-fit max-w-[85%] rounded-lg px-3 py-2 text-[14px] leading-snug ${own ? "ml-auto bg-[#005c4b] text-white" : "bg-[#202c33] text-white"}`}>
+  <p className={`w-fit max-w-[85%] rounded-lg px-3 py-2 text-[14px] leading-snug ${own ? "ml-auto bg-[#ff4655] text-[#0f1923]" : "bg-[#16222e] text-[#ece8e1]"}`}>
     {children}
   </p>
 );
@@ -20,7 +20,7 @@ function reasons(lang: PortfolioLang): Reason[] {
       a: es ? "Antes de empezar sabes qué incluye y cuánto cuesta." : "Before we start you know what's included and what it costs.",
       b: es ? "Sin cobros sorpresa a mitad del proyecto." : "No surprise charges mid-project.",
       proof: (
-        <div className="flex h-full flex-col justify-between bg-[#f4f3ee] p-4 text-[14px] text-[#161c1a]">
+        <div className="flex h-full flex-col justify-between bg-[#ece8e1] p-4 text-[14px] text-[#0f1923]">
           <div className="flex justify-between font-medium">
             <span>{es ? "Propuesta" : "Proposal"} · {es ? "Página web" : "Website"}</span>
             <span>#0142</span>
@@ -37,7 +37,7 @@ function reasons(lang: PortfolioLang): Reason[] {
       a: es ? "Sin intermediarios: quien diseña y programa es quien te responde." : "No middlemen: the people who design and build are the ones who answer.",
       b: es ? "Por WhatsApp, cuando lo necesites." : "On WhatsApp, whenever you need it.",
       proof: (
-        <div className="flex h-full flex-col justify-center gap-2 bg-[#0b141a] p-4">
+        <div className="flex h-full flex-col justify-center gap-2 bg-[#0f1923] p-4">
           <Bubble>{es ? "¿Podemos cambiar el color del botón?" : "Can we change the button color?"}</Bubble>
           <Bubble own>{es ? "Listo, ya está publicado." : "Done, it's live."}</Bubble>
         </div>
@@ -63,7 +63,7 @@ function reasons(lang: PortfolioLang): Reason[] {
       a: es ? "Código, dominio, hosting y accesos son tuyos." : "Code, domain, hosting and access belong to you.",
       b: es ? "Nunca quedas atrapado con nosotros." : "You're never locked in with us.",
       proof: (
-        <dl className="grid h-full grid-cols-[auto_1fr] content-center gap-x-4 gap-y-1.5 bg-[#f4f3ee] p-4 text-[14px] text-[#161c1a]">
+        <dl className="grid h-full grid-cols-[auto_1fr] content-center gap-x-4 gap-y-1.5 bg-[#ece8e1] p-4 text-[14px] text-[#0f1923]">
           <dt className="opacity-70">{es ? "Dominio" : "Domain"}</dt>
           <dd className="font-medium">tunegocio.com</dd>
           <dt className="opacity-70">{es ? "Titular" : "Owner"}</dt>
@@ -79,9 +79,9 @@ function reasons(lang: PortfolioLang): Reason[] {
       b: es ? "Textos escritos para que te contacten." : "Copy written so people contact you.",
       proof: (
         <div className="flex h-full flex-col justify-center bg-white p-4 text-[14px]">
-          <span className="text-[12px] text-[#4d5156]">www.tunegocio.com</span>
-          <span className="text-[17px] text-[#1a0dab]">{es ? "Tu Negocio · Cotiza por WhatsApp" : "Your Business · Quote on WhatsApp"}</span>
-          <span className="text-[#4d5156]">{es ? "Respuesta en menos de 24 horas." : "Reply in under 24 hours."}</span>
+          <span className="text-[12px] text-[#4b5661]">www.tunegocio.com</span>
+          <span className="text-[17px] font-medium text-[#0f1923]">{es ? "Tu Negocio · Cotiza por WhatsApp" : "Your Business · Quote on WhatsApp"}</span>
+          <span className="text-[#4b5661]">{es ? "Respuesta en menos de 24 horas." : "Reply in under 24 hours."}</span>
         </div>
       ),
     },
@@ -90,7 +90,7 @@ function reasons(lang: PortfolioLang): Reason[] {
       a: es ? "Soporte tras el lanzamiento para dudas y ajustes." : "Post-launch support for questions and adjustments.",
       b: es ? "Y planes de mantenimiento desde $40 al mes." : "And maintenance plans from $40 a month.",
       proof: (
-        <div className="flex h-full flex-col justify-center gap-2 bg-[#0b141a] p-4">
+        <div className="flex h-full flex-col justify-center gap-2 bg-[#0f1923] p-4">
           <Bubble>{es ? "Necesito agregar un producto nuevo" : "I need to add a new product"}</Bubble>
           <Bubble own>{es ? "Hecho. Ya aparece en la tienda." : "Done. It's on the store now."}</Bubble>
         </div>

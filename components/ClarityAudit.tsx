@@ -197,7 +197,7 @@ export default function ClarityAudit({ lang }: { lang: PortfolioLang }) {
               <div className="flex items-center gap-1.5 bg-ground/40 px-3 py-2">
                 <span className="h-2 w-2 rounded-full bg-red-400/70" />
                 <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
-                <span className="h-2 w-2 rounded-full bg-green-400/70" />
+                <span className="h-2 w-2 rounded-full bg-[#ff4655]" />
                 <span className="ml-2 h-3 flex-1 bg-white/5" />
               </div>
               <div className="relative aspect-[4/3.6]">

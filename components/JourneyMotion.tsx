@@ -1,48 +1,70 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { AnimatePresence, MotionConfig, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { AnimatePresence, MotionConfig, animate, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
 import SplitWords from "./SplitWords";
 
 const copy = {
   es: {
-    title: "De una búsqueda en Google a tu WhatsApp",
+    title: "Un pedido, cero trabajo manual",
     steps: [
-      { title: "Te buscan", text: "Un cliente busca lo que vendes en Google." },
-      { title: "Te encuentran", text: "Tu negocio aparece gracias al SEO técnico." },
-      { title: "Confían en ti", text: "Tu página carga rápido y deja claro por qué elegirte." },
-      { title: "Te escriben", text: "Un clic y el cliente ya está en tu WhatsApp." },
+      { title: "Llega el pedido", text: "Un cliente escribe por WhatsApp a las 11 de la noche." },
+      { title: "Se registra solo", text: "El pedido entra a tu sistema y el inventario se descuenta." },
+      { title: "Se factura", text: "La factura electrónica se emite y le llega al cliente." },
+      { title: "Tú ves el resultado", text: "En la mañana tienes el reporte del día en tu celular." },
     ],
-    query: "páginas web en Ecuador",
-    business: "Tu Negocio",
-    businessDesc: "Páginas web y apps que traen clientes. Cotiza gratis por WhatsApp.",
-    competitor: "Otro resultado",
-    siteTitle: "Bienvenido a tu negocio",
-    cta: "Cotizar por WhatsApp",
     chatName: "Cliente nuevo",
-    online: "en línea",
-    message: "¡Hola! Vi tu página y quiero cotizar.",
-    badge: "Nuevo cliente",
+    chatStatus: "respuesta automática",
+    order: "Hola, quiero 3 cajas de café molido para mañana",
+    reply: "¡Listo! Pedido #1042 registrado. Total: $54,00. Te llega mañana antes de las 10:00.",
+    stock: "Inventario",
+    product: "Café molido 500 g",
+    others: ["Azúcar 1 kg", "Té verde 25 u"],
+    orders: "Pedidos de hoy",
+    newOrder: "Pedido #1042 · $54,00",
+    newTag: "Nuevo",
+    oldOrders: ["#1041 · $32,50", "#1040 · $18,00", "#1039 · $76,20"],
+    invoice: "Factura 001-001-000001042",
+    lines: ["3 × Café molido 500 g", "Subtotal", "IVA 15%", "Total"],
+    amounts: ["$46,96", "$46,96", "$7,04", "$54,00"],
+    stamp: "Autorizada",
+    sent: "Enviada al cliente por correo y WhatsApp",
+    report: "Reporte de ayer",
+    sales: "en ventas",
+    ordersCount: "pedidos",
+    errors: "errores de digitación",
+    sep: ".",
   },
   en: {
-    title: "From a Google search to your WhatsApp",
+    title: "One order, zero manual work",
     steps: [
-      { title: "They search", text: "A client looks for what you sell on Google." },
-      { title: "They find you", text: "Your business shows up thanks to technical SEO." },
-      { title: "They trust you", text: "Your page loads fast and makes it clear why to choose you." },
-      { title: "They message you", text: "One click and the client is on your WhatsApp." },
+      { title: "The order arrives", text: "A customer messages on WhatsApp at 11 pm." },
+      { title: "It logs itself", text: "The order enters your system and stock is updated." },
+      { title: "It gets invoiced", text: "The e-invoice is issued and sent to the customer." },
+      { title: "You see the result", text: "In the morning the daily report is on your phone." },
     ],
-    query: "websites in Ecuador",
-    business: "Your Business",
-    businessDesc: "Websites and apps that bring clients. Free quote on WhatsApp.",
-    competitor: "Another result",
-    siteTitle: "Welcome to your business",
-    cta: "Quote on WhatsApp",
-    chatName: "New client",
-    online: "online",
-    message: "Hi! I saw your website and I'd like a quote.",
-    badge: "New client",
+    chatName: "New customer",
+    chatStatus: "automatic reply",
+    order: "Hi, I would like 3 boxes of ground coffee for tomorrow",
+    reply: "Done! Order #1042 logged. Total: $54.00. It arrives tomorrow before 10:00.",
+    stock: "Inventory",
+    product: "Ground coffee 500 g",
+    others: ["Sugar 1 kg", "Green tea 25 ct"],
+    orders: "Today's orders",
+    newOrder: "Order #1042 · $54.00",
+    newTag: "New",
+    oldOrders: ["#1041 · $32.50", "#1040 · $18.00", "#1039 · $76.20"],
+    invoice: "Invoice 001-001-000001042",
+    lines: ["3 × Ground coffee 500 g", "Subtotal", "VAT 15%", "Total"],
+    amounts: ["$46.96", "$46.96", "$7.04", "$54.00"],
+    stamp: "Authorized",
+    sent: "Sent to the customer by email and WhatsApp",
+    report: "Yesterday's report",
+    sales: "in sales",
+    ordersCount: "orders",
+    errors: "typing errors",
+    sep: ",",
   },
 };
 
@@ -50,222 +72,225 @@ type Copy = (typeof copy)["es"];
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-function Cursor({ from, to, delay = 0 }: { from: [number, number]; to: [number, number]; delay?: number }) {
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 14 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.45, ease },
+});
+
+const plain = (n: number) => String(Math.round(n));
+
+// Un número que cuenta desde `from` hasta `to` cuando aparece la escena.
+function Ticker({ from, to, delay = 0, prefix = "", sep = "" }: { from: number; to: number; delay?: number; prefix?: string; sep?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const format = (n: number) => prefix + plain(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const show = (n: number) => prefix + plain(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+    const controls = animate(from, to, {
+      delay,
+      duration: 1.2,
+      ease,
+      onUpdate: (v) => {
+        el.textContent = show(v);
+      },
+    });
+    return () => controls.stop();
+  }, [from, to, delay, prefix, sep]);
+
   return (
-    <motion.div
-      className="pointer-events-none absolute left-0 top-0 z-20"
-      initial={{ x: `${from[0]}%`, y: `${from[1]}%`, opacity: 0 }}
-      animate={{ x: `${to[0]}%`, y: `${to[1]}%`, opacity: 1 }}
-      transition={{ duration: 0.9, delay, ease }}
-      style={{ width: "100%", height: "100%" }}
+    <span ref={ref} className="tabular-nums">
+      {format(from)}
+    </span>
+  );
+}
+
+function Bubble({ me = false, delay, children }: { me?: boolean; delay: number; children: ReactNode }) {
+  return (
+    <motion.p
+      initial={{ opacity: 0, scale: 0.85, originX: me ? 1 : 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay, type: "spring", stiffness: 260, damping: 20 }}
+      className={`max-w-[85%] px-3 py-2 text-sm lg:text-base leading-snug ${me ? "self-end bg-accent text-accent-ink" : "self-start bg-surface text-ink"}`}
     >
-      <motion.svg
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        className="drop-shadow-lg" /* taste-skill-ignore: el cursor flota sobre la escena */
-        animate={{ scale: [1, 1, 0.8, 1] }}
-        transition={{ duration: 0.4, delay: delay + 0.95, times: [0, 0.2, 0.6, 1] }}
-      >
-        <path d="M4 2l16 9.5-7 1.5-3.5 6.5z" fill="white" stroke="#18181b" strokeWidth="1.5" strokeLinejoin="round" />
-      </motion.svg>
-    </motion.div>
+      {children}
+    </motion.p>
   );
 }
 
-function Ripple({ x, y, delay }: { x: string; y: string; delay: number }) {
+function OrderFrame({ t }: { t: Copy }) {
   return (
-    <motion.span
-      className="pointer-events-none absolute z-10 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-teal-300"
-      style={{ left: x, top: y }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: [0, 1.6], opacity: [0.9, 0] }}
-      transition={{ duration: 0.6, delay }}
-    />
-  );
-}
-
-function SearchFrame({ t }: { t: Copy }) {
-  return (
-    <div className="flex h-full flex-col justify-center px-6 sm:px-10">
-      <div className="mb-6 text-center text-3xl font-semibold tracking-tight text-white/90">
-        <span className="text-[#4285F4]">G</span>
-        <span className="text-[#EA4335]">o</span>
-        <span className="text-[#FBBC05]">o</span>
-        <span className="text-[#4285F4]">g</span>
-        <span className="text-[#34A853]">l</span>
-        <span className="text-[#EA4335]">e</span>
-      </div>
-      <div className="flex items-center gap-3 rounded-full bg-zinc-800 px-5 py-3">
-        <svg className="h-4 w-4 shrink-0 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-          <path strokeLinecap="round" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
-        </svg>
-        <span className="text-sm text-white sm:text-base">
-          {Array.from(t.query).map((char, i) => (
-            <motion.span key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 + i * 0.05, duration: 0.01 }}>
-              {char}
-            </motion.span>
-          ))}
-          <motion.span
-            className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 bg-teal-300"
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ repeat: Infinity, duration: 0.9 }}
-          />
-        </span>
-      </div>
-      <div className="mt-6 space-y-3">
-        {[0.85, 0.65, 0.75].map((w, i) => (
-          <motion.div
-            key={i}
-            className="h-2.5 rounded-full bg-white/10"
-            style={{ width: `${w * 100}%` }}
-            initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1.5 + i * 0.12, duration: 0.5, ease }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ResultsFrame({ t }: { t: Copy }) {
-  return (
-    <div className="relative flex h-full flex-col justify-center gap-2 px-4 sm:gap-3 sm:px-10">
-      {[0, 1, 2].map((i) => {
-        const isOurs = i === 1;
-        return (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            animate={isOurs ? { opacity: 1, y: 0, scale: [1, 1, 1.04] } : { opacity: 0.45, y: 0 }}
-            transition={{ delay: i * 0.12, duration: isOurs ? 1.2 : 0.5, ease }}
-            className={`rounded-xl p-3 sm:p-4 ${i === 2 ? "hidden sm:block" : ""} ${isOurs ? "bg-teal-400/15 ring-1 ring-teal-400/60" : "bg-zinc-900/70"}`}
-          >
-            <p className="text-xs text-zinc-500">{isOurs ? "www.tunegocio.com" : "www.ejemplo.com"}</p>
-            <p className={`mt-0.5 text-sm font-semibold sm:mt-1 sm:text-base ${isOurs ? "text-teal-300" : "text-zinc-400"}`}>{isOurs ? t.business : t.competitor}</p>
-            {isOurs ? (
-              <p className="mt-1 text-xs text-zinc-300">{t.businessDesc}</p>
-            ) : (
-              <div className="mt-2 h-2 w-3/4 rounded-full bg-white/10" />
-            )}
-          </motion.div>
-        );
-      })}
-      <Cursor from={[85, 95]} to={[45, 55]} delay={0.6} />
-      <Ripple x="47%" y="57%" delay={1.55} />
-    </div>
-  );
-}
-
-function WebsiteFrame({ t }: { t: Copy }) {
-  const block = (delay: number) => ({
-    initial: { opacity: 0, y: 12 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay, duration: 0.45, ease },
-  });
-
-  return (
-    <div className="relative flex h-full flex-col p-4 sm:p-6">
-      <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-zinc-900">
-        <div className="flex items-center gap-1.5 bg-zinc-950/60 px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-red-400/70" />
-          <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
-          <span className="h-2 w-2 rounded-full bg-green-400/70" />
-          <span className="ml-2 h-3 flex-1 rounded bg-white/5" />
-        </div>
-        <motion.div className="h-0.5 bg-teal-400" initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 0.6, ease }} />
-        <div className="flex flex-1 flex-col justify-center gap-3 p-5">
-          <motion.div {...block(0.5)} className="h-2 w-16 rounded-full bg-teal-400/60" />
-          <motion.p {...block(0.65)} className="text-lg font-bold text-white sm:text-xl">{t.siteTitle}</motion.p>
-          <motion.div {...block(0.8)} className="h-2 w-5/6 rounded-full bg-white/10" />
-          <motion.div {...block(0.9)} className="h-2 w-2/3 rounded-full bg-white/10" />
-          <motion.div
-            {...block(1.05)}
-            className="mt-2 inline-flex w-fit items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-semibold text-white sm:text-sm"
-          >
-            {t.cta}
-          </motion.div>
-          <div className="mt-2 grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <motion.div key={i} {...block(1.2 + i * 0.1)} className="h-10 rounded-lg border border-white/10 bg-white/5" />
-            ))}
-          </div>
-        </div>
-      </div>
-      <Cursor from={[80, 90]} to={[17, 62]} delay={1.5} />
-      <Ripple x="19%" y="64%" delay={2.45} />
-    </div>
-  );
-}
-
-function ChatFrame({ t }: { t: Copy }) {
-  return (
-    <div className="relative flex h-full flex-col p-4 sm:p-6">
-      <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-[#0b141a]">
-        <div className="flex items-center gap-3 bg-[#202c33] px-4 py-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-600 text-xs font-medium text-white">CN</span>
-          <div>
-            <p className="text-sm font-semibold text-white">{t.chatName}</p>
-            <p className="text-[11px] text-teal-300">{t.online}</p>
+    <div className="flex h-full flex-col p-4 sm:p-6">
+      <div className="flex flex-1 flex-col overflow-hidden bg-ground">
+        <div className="flex items-center gap-3 bg-surface px-4 py-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs lg:text-sm font-bold text-accent-ink">CN</span>
+          <div className="leading-tight">
+            <p className="text-sm lg:text-base font-medium text-ink">{t.chatName}</p>
+            <p className="text-[11px] text-muted lg:text-xs">{t.chatStatus} · 23:12</p>
           </div>
         </div>
         <div className="flex flex-1 flex-col justify-end gap-2 p-4">
-          <motion.div
-            className="flex w-fit gap-1 rounded-lg bg-[#202c33] px-3 py-2.5"
+          <Bubble delay={0.3}>{t.order}</Bubble>
+          <motion.p
+            className="flex gap-1 self-end bg-accent px-3 py-2.5"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.3, times: [0, 0.15, 0.85, 1] }}
+            transition={{ delay: 0.9, duration: 1, times: [0, 0.15, 0.85, 1] }}
           >
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
-                className="h-1.5 w-1.5 rounded-full bg-zinc-400"
+                className="h-1.5 w-1.5 rounded-full bg-accent-ink"
                 animate={{ y: [0, -3, 0] }}
                 transition={{ repeat: Infinity, duration: 0.6, delay: i * 0.15 }}
               />
             ))}
-          </motion.div>
-          <motion.div
-            className="w-fit max-w-[85%] rounded-lg rounded-tl-none bg-[#202c33] px-3 py-2 text-sm text-white"
-            initial={{ opacity: 0, scale: 0.8, originX: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.3, type: "spring", stiffness: 260, damping: 18 }}
-          >
-            {t.message}
-            <span className="ml-2 align-bottom text-[10px] text-zinc-400">10:24</span>
-          </motion.div>
+          </motion.p>
+          <Bubble me delay={1.9}>
+            {t.reply}
+          </Bubble>
         </div>
       </div>
-
-      <motion.div
-        className="absolute right-6 top-20 flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-ground sm:right-10"
-        initial={{ opacity: 0, scale: 0.5, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 2, type: "spring", stiffness: 300, damping: 15 }}
-      >
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
-        {t.badge}
-      </motion.div>
-      {[...Array(8)].map((_, i) => (
-        <motion.span
-          key={i}
-          className="absolute right-24 top-24 h-1.5 w-1.5 rounded-full bg-teal-300"
-          initial={{ opacity: 0, x: 0, y: 0 }}
-          animate={{ opacity: [0, 1, 0], x: Math.cos((i / 8) * Math.PI * 2) * 60, y: Math.sin((i / 8) * Math.PI * 2) * 45 }}
-          transition={{ delay: 2.1, duration: 0.8, ease: "easeOut" }}
-        />
-      ))}
     </div>
   );
 }
 
-const frames = [SearchFrame, ResultsFrame, WebsiteFrame, ChatFrame];
+function SystemFrame({ t }: { t: Copy }) {
+  return (
+    <div className="grid h-full grid-cols-1 gap-3 p-4 sm:grid-cols-2 sm:p-6">
+      <motion.div {...rise(0.1)} className="flex flex-col bg-ground p-4">
+        <p className="text-xs lg:text-sm font-medium text-muted">{t.stock}</p>
+        <div className="mt-3 space-y-2 text-sm lg:text-base">
+          <div className="flex items-center justify-between bg-accent/15 px-3 py-2 ring-1 ring-accent/60">
+            <span className="text-ink">{t.product}</span>
+            <span className="font-bold text-accent">
+              <Ticker from={48} to={45} delay={0.8} />
+            </span>
+          </div>
+          {t.others.map((name, i) => (
+            <div key={name} className="flex items-center justify-between px-3 py-2 text-muted">
+              <span>{name}</span>
+              <span className="tabular-nums">{[120, 36][i]}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-auto flex h-16 items-end gap-1.5 pt-4">
+          {[40, 65, 50, 80, 58, 92, 70].map((h, i) => (
+            <motion.span
+              key={i}
+              className={`flex-1 ${i === 5 ? "bg-accent" : "bg-surface"}`}
+              initial={{ height: 0 }}
+              animate={{ height: `${h}%` }}
+              transition={{ delay: 0.3 + i * 0.07, duration: 0.5, ease }}
+            />
+          ))}
+        </div>
+      </motion.div>
+      <motion.div {...rise(0.25)} className="hidden flex-col bg-ground p-4 sm:flex">
+        <p className="text-xs lg:text-sm font-medium text-muted">{t.orders}</p>
+        <div className="mt-3 space-y-2 text-sm lg:text-base">
+          <motion.div
+            className="flex items-center justify-between bg-surface px-3 py-2"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, type: "spring", stiffness: 240, damping: 20 }}
+          >
+            <span className="text-ink">{t.newOrder}</span>
+            <span className="bg-accent px-2 py-0.5 text-[11px] font-bold text-accent-ink">{t.newTag}</span>
+          </motion.div>
+          {t.oldOrders.map((row) => (
+            <div key={row} className="px-3 py-2 text-muted">
+              {row}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function InvoiceFrame({ t }: { t: Copy }) {
+  return (
+    <div className="relative flex h-full flex-col items-center justify-center p-4 sm:p-6">
+      <motion.div {...rise(0.1)} className="relative w-full max-w-sm lg:max-w-md bg-ink p-5 text-ground">
+        <p className="text-xs lg:text-sm font-bold">{t.invoice}</p>
+        <div className="mt-4 space-y-2 text-sm lg:text-base">
+          {t.lines.map((line, i) => (
+            <motion.div key={line} {...rise(0.3 + i * 0.12)} className={`flex justify-between ${i === 3 ? "pt-2 font-bold" : ""}`}>
+              <span>{line}</span>
+              <span className="tabular-nums">{t.amounts[i]}</span>
+            </motion.div>
+          ))}
+        </div>
+        <motion.span
+          className="absolute -right-2 -top-4 rotate-[-12deg] border-[3px] border-accent bg-ink px-3 py-1 text-sm lg:text-base font-extrabold uppercase text-accent sm:-right-6"
+          initial={{ opacity: 0, scale: 2.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1, type: "spring", stiffness: 380, damping: 16 }}
+        >
+          {t.stamp}
+        </motion.span>
+      </motion.div>
+      <motion.p
+        className="mt-5 flex items-center gap-2 bg-accent px-4 py-2 text-sm lg:text-base font-medium text-accent-ink"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.6, duration: 0.45, ease }}
+      >
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l16-8-6 16-3-7-7-1z" />
+        </svg>
+        {t.sent}
+      </motion.p>
+    </div>
+  );
+}
+
+function ReportFrame({ t }: { t: Copy }) {
+  return (
+    <div className="grid h-full grid-cols-1 gap-3 p-4 sm:grid-cols-[1.2fr_1fr] sm:p-6">
+      <motion.div {...rise(0.1)} className="flex flex-col justify-between bg-ground p-5">
+        <p className="text-xs lg:text-sm font-medium text-muted">{t.report}</p>
+        <div>
+          <p className="text-4xl font-extrabold tracking-[-0.03em] text-ink sm:text-5xl lg:text-6xl">
+            <Ticker from={0} to={1284} delay={0.3} prefix="$" sep={t.sep} />
+          </p>
+          <p className="text-sm lg:text-base text-muted">{t.sales}</p>
+        </div>
+        <svg viewBox="0 0 200 60" className="mt-3 h-16 w-full" aria-hidden="true">
+          <motion.path
+            d="M0 52 L30 44 L60 47 L90 30 L120 34 L150 18 L200 8"
+            fill="none"
+            stroke="var(--color-accent)"
+            strokeWidth="3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: 0.4, duration: 1.3, ease }}
+          />
+        </svg>
+      </motion.div>
+      <div className="hidden grid-rows-2 gap-3 sm:grid">
+        <motion.div {...rise(0.3)} className="flex flex-col justify-end bg-ground p-5">
+          <p className="text-3xl font-extrabold lg:text-5xl text-ink">
+            <Ticker from={0} to={38} delay={0.5} />
+          </p>
+          <p className="text-sm lg:text-base text-muted">{t.ordersCount}</p>
+        </motion.div>
+        <motion.div {...rise(0.45)} className="flex flex-col justify-end bg-accent p-5 text-accent-ink">
+          <p className="text-3xl font-extrabold lg:text-5xl">0</p>
+          <p className="text-sm lg:text-base">{t.errors}</p>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+const frames = [OrderFrame, SystemFrame, InvoiceFrame, ReportFrame];
 
 // Motion graphic narrativo: la sección queda fija (sticky) y el scroll avanza
-// las 4 escenas del recorrido búsqueda → resultado → web → WhatsApp.
+// las 4 escenas de un pedido automatizado: WhatsApp → sistema → factura → reporte.
 export default function JourneyMotion({ lang }: { lang: PortfolioLang }) {
   const t = copy[lang];
   const ref = useRef<HTMLElement>(null);

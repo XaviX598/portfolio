@@ -12,6 +12,7 @@ type Project = {
   url: string;
   image: string;
   mobile: string;
+  kind: Record<PortfolioLang, string>;
   discipline: Record<PortfolioLang, string>;
   summary: Record<PortfolioLang, string>;
 };
@@ -19,6 +20,7 @@ type Project = {
 const projects: Project[] = [
   {
     name: "AMZ Express",
+    kind: { es: "Cotizador de importaciones", en: "Import quoting platform" },
     mobile: "/proyectos/movil/amz-express.jpg",
     url: "https://amz-express.vercel.app",
     image: "/proyectos/amz express.png",
@@ -30,6 +32,7 @@ const projects: Project[] = [
   },
   {
     name: "Xpress Ecommerce",
+    kind: { es: "Tienda online", en: "Online store" },
     mobile: "/proyectos/movil/xpress-ecommerce.jpg",
     url: "https://xpress-ecommerce.vercel.app",
     image: "/proyectos/xpress ecommerce.png",
@@ -41,6 +44,7 @@ const projects: Project[] = [
   },
   {
     name: "Restaurant Landing",
+    kind: { es: "Web de restaurante", en: "Restaurant website" },
     mobile: "/proyectos/movil/restaurant.jpg",
     url: "https://project-restaurante-delta.vercel.app",
     image: "/proyectos/restaurant.png",
@@ -52,6 +56,7 @@ const projects: Project[] = [
   },
   {
     name: "Universal Skills Hub",
+    kind: { es: "Catálogo en línea", en: "Online catalog" },
     mobile: "/proyectos/movil/universal-skills.jpg",
     url: "https://universal-skills-hub.vercel.app",
     image: "/proyectos/universal skills.png",
@@ -63,6 +68,7 @@ const projects: Project[] = [
   },
   {
     name: "XpressConvert",
+    kind: { es: "Conversor de archivos", en: "File converter" },
     mobile: "/proyectos/movil/xpressconvert.jpg",
     url: "https://xpressconvert.vercel.app",
     image: "/proyectos/xpress convert .png",
@@ -74,6 +80,7 @@ const projects: Project[] = [
   },
   {
     name: "Athletics System",
+    kind: { es: "Inscripción de atletas", en: "Athlete registration" },
     mobile: "/proyectos/movil/atletismo.jpg",
     url: "https://frontend-atletismo.vercel.app",
     image: "/proyectos/pagina de atleta .png",
@@ -125,7 +132,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
         </div>
 
         {/* Escritorio: fila de cartas; la elegida se agranda */}
-        <div className="hidden items-end justify-center gap-3 md:flex" role="group" aria-label={t.choose}>
+        <div className="hidden items-end justify-center gap-3 lg:flex" role="group" aria-label={t.choose}>
           {projects.map((p, i) => {
             const isActive = active === i;
             return (
@@ -143,7 +150,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                 onClick={() => setActive(i)}
                 aria-pressed={isActive}
                 className={`group relative shrink-0 overflow-hidden bg-[#0f1923] text-left transition-[width,height] duration-500 [transition-timing-function:var(--ease-out)] ${
-                  isActive ? "h-[560px] w-[clamp(240px,21vw,310px)]" : "h-[460px] w-[clamp(110px,9.5vw,150px)]"
+                  isActive ? "h-[580px] w-[clamp(260px,24vw,360px)]" : "h-[480px] w-[clamp(120px,12vw,190px)]"
                 }`}
                 style={{ clipPath: CARD_SHAPE }}
               >
@@ -157,12 +164,12 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                   }`}
                 />
                 <span className={`absolute inset-x-0 top-0 h-1.5 ${isActive ? "bg-[#ece8e1]" : "bg-[#ff4655]"}`} />
-                <span className="absolute inset-x-0 bottom-0 flex flex-col items-center bg-[#0f1923] px-3 pb-[16%] pt-4 text-center">
+                <span className={`absolute inset-x-0 bottom-0 flex flex-col items-center bg-[#0f1923] px-3 ${isActive ? "pb-[16%]" : "pb-[24%]"} pt-4 text-center`}>
                   {isActive && <span className="text-[15px] font-medium text-[#ff4655]">{t.live}</span>}
-                  <span className={`font-extrabold leading-tight tracking-[-0.02em] text-[#ece8e1] ${isActive ? "mt-1 text-2xl" : "text-[15px]"}`}>
-                    {p.name}
+                  <span className={`max-w-full text-balance font-extrabold leading-tight tracking-[-0.02em] text-[#ece8e1] ${isActive ? "mt-1 text-2xl" : "text-[16px]"}`}>
+                    {p.kind[lang]}
                   </span>
-                  {isActive && <span className="text-[15px] text-[#a4adb4]">{p.discipline[lang]}</span>}
+                  {isActive && <span className="text-[15px] text-[#a4adb4]">{p.name}</span>}
                 </span>
               </button>
               </div>
@@ -171,15 +178,15 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
         </div>
 
         {/* Móvil: carta grande del proyecto elegido y selector debajo */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <ScrollMotion y={[50, -20]} rotate={[-8, 0]} scale={[0.88, 1]}>
           <div className="relative mx-auto h-[120vw] max-h-[560px] w-[72%] max-w-[300px] overflow-hidden bg-[#0f1923]" style={{ clipPath: CARD_SHAPE }}>
             <Image key={current.mobile} src={current.mobile} alt={`${current.name} en celular`} fill sizes="72vw" className="object-cover object-top" />
             <span className="absolute inset-x-0 top-0 h-1.5 bg-[#ece8e1]" />
             <span className="absolute inset-x-0 bottom-0 flex flex-col items-center bg-[#0f1923] px-3 pb-[16%] pt-4 text-center">
               <span className="text-[15px] font-medium text-[#ff4655]">{t.live}</span>
-              <span className="mt-1 text-2xl font-extrabold leading-tight tracking-[-0.02em] text-[#ece8e1]">{current.name}</span>
-              <span className="text-[15px] text-[#a4adb4]">{current.discipline[lang]}</span>
+              <span className="mt-1 text-2xl font-extrabold leading-tight tracking-[-0.02em] text-[#ece8e1]">{current.kind[lang]}</span>
+              <span className="text-[15px] text-[#a4adb4]">{current.name}</span>
             </span>
           </div>
           </ScrollMotion>
@@ -194,13 +201,13 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                   active === i ? "bg-[#0f1923] text-[#ece8e1]" : "bg-[#0f1923]/15 text-[#0f1923]"
                 }`}
               >
-                {p.name}
+                {p.kind[lang]}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="relative mt-12 flex flex-col gap-5 bg-[#0f1923] p-5 text-[#ece8e1] md:mx-auto md:max-w-3xl md:flex-row md:items-center md:justify-between md:px-8">
+        <div className="relative mt-12 flex flex-col gap-5 bg-[#0f1923] p-5 text-[#ece8e1] lg:mx-auto lg:max-w-3xl md:flex-row md:items-center md:justify-between md:px-8">
           <p className="max-w-[46ch] text-lg">{current.summary[lang]}</p>
           <a className="btn shrink-0 !bg-[#ff4655] !text-[#0f1923]" href={current.url} target="_blank" rel="noreferrer">
             {t.open} ↗
