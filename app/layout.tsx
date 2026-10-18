@@ -23,9 +23,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/logo-pestana.png",
-  },
   robots: {
     index: true,
     follow: true,

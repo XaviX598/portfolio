@@ -77,7 +77,7 @@ export function organizationSchema() {
     description:
       "Empresa de desarrollo de software en Quito, Ecuador: sistemas empresariales a medida, automatización de procesos, páginas web y apps móviles.",
     url,
-    logo: new URL(defaultOgImage, url).toString(),
+    logo: new URL("/logo-x.png", url).toString(),
     image: new URL(defaultOgImage, url).toString(),
     email: "contacto@xpressdeveloper.com",
     telephone: `+${WHATSAPP_NUMBER}`,
