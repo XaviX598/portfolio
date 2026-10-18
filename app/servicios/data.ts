@@ -78,8 +78,8 @@ export const services: ServiceEntry[] = [
       name: "AMZ Express, cotizador de importaciones",
       text: [
         "El reto: cotizar compras de Amazon hacia Ecuador tomaba tiempo, y cada cliente preguntaba lo mismo por WhatsApp: peso, categoría, aranceles y fecha de llegada.",
-        "Lo que construimos: una plataforma donde el cliente pega el enlace del producto y obtiene la cotización al instante, con un panel para seguir cada pedido y otro para que el equipo administre compras, estados y clientes.",
-        "El resultado: las cotizaciones dejaron de hacerse a mano y el cliente sabe en todo momento en qué etapa está su compra.",
+        "Lo que construimos: una plataforma donde el cliente pega el enlace del producto y obtiene la cotización en pocos minutos, con un panel para seguir cada pedido y otro para que el equipo administre compras, estados y clientes.",
+        "El resultado: cada cotización pasó de unos 30 minutos a unos 5. Con alrededor de 30 cotizaciones al día, son más de 12 horas de trabajo diario recuperadas, y el cliente sabe en todo momento en qué etapa está su compra.",
       ],
       href: "https://amz-express.vercel.app",
     },

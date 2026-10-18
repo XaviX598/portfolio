@@ -14,6 +14,8 @@ export type Project = {
   discipline: Record<PortfolioLang, string>;
   summary: Record<PortfolioLang, string>;
   seoDescription: string;
+  /** Cifras reales del cliente. Solo se agregan cuando el cliente las confirma. */
+  metrics?: { value: string; label: string }[];
   problem: string;
   solution: string[];
   outcome: string;
@@ -33,18 +35,24 @@ export const projects: Project[] = [
     kind: { es: "Cotizador de importaciones", en: "Import quoting platform" },
     discipline: { es: "Plataforma web", en: "Web platform" },
     summary: {
-      es: "Cotiza compras de Amazon hacia Ecuador en segundos, con paneles para clientes y administradores.",
-      en: "Quotes Amazon purchases to Ecuador in seconds, with panels for clients and admins.",
+      es: "Cotiza compras de Amazon hacia Ecuador en unos 5 minutos, con paneles para clientes y administradores.",
+      en: "Quotes Amazon purchases to Ecuador in about 5 minutes, with panels for clients and admins.",
     },
-    seoDescription: "AMZ Express: cotizador de importaciones de Amazon a Ecuador con paneles para clientes y administradores, desarrollado por Xpress Developer.",
+    seoDescription: "AMZ Express: cotizador de importaciones que bajó cada cotización de 30 a 5 minutos, con unas 30 cotizaciones al día. Hecho por Xpress Developer.",
     problem:
       "Cotizar una compra de Amazon hacia Ecuador implica calcular peso, categoría, impuestos y envío. Hacerlo a mano por WhatsApp para cada cliente tomaba tiempo y dejaba dudas sobre el precio final.",
     solution: [
-      "Un cotizador donde el cliente pega el enlace del producto y recibe el costo total al instante.",
+      "Un cotizador donde el cliente pega el enlace del producto y recibe el costo total en pocos minutos.",
       "Un panel para el cliente con el estado de cada compra, desde la orden hasta la entrega en Ecuador.",
       "Un panel administrativo para gestionar pedidos, clientes y estados en un solo lugar.",
     ],
-    outcome: "Las cotizaciones dejaron de hacerse a mano y cada cliente puede seguir su compra sin tener que preguntar por WhatsApp.",
+    outcome:
+      "Cada cotización pasó de unos 30 minutos a unos 5. Con alrededor de 30 cotizaciones al día, son más de 12 horas de trabajo diario que el equipo ya no gasta en calcular a mano, y cada cliente sigue su compra sin preguntar por WhatsApp.",
+    metrics: [
+      { value: "30 → 5 min", label: "por cotización" },
+      { value: "~30", label: "cotizaciones al día" },
+      { value: "+12 h", label: "de trabajo ahorradas cada día" },
+    ],
     service: "sistemas-empresariales",
     solutionPage: "software-para-importadoras",
     updated: "2026-10-18",

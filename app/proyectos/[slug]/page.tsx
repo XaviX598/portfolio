@@ -88,9 +88,19 @@ export default async function ProjectPage({ params }: PageProps) {
           <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em] lg:text-[40px]">
             <SplitWords text="Qué cambia" />
           </h2>
-          <p data-reveal className="mt-8 max-w-[36ch] text-[24px] font-medium leading-[1.3] tracking-[-0.02em] md:text-[32px]">
+          <p data-reveal className="mt-8 max-w-[44ch] text-[22px] font-medium leading-[1.35] tracking-[-0.02em] md:text-[28px]">
             {project.outcome}
           </p>
+          {project.metrics && (
+            <dl className="mt-12 grid gap-3 sm:grid-cols-3">
+              {project.metrics.map((m, i) => (
+                <div key={m.label} data-reveal style={{ ["--d" as string]: `${i * 80}ms` }} className={`p-6 md:p-8 ${i === 0 ? "bg-accent text-accent-ink" : "bg-surface"}`}>
+                  <dt className="text-[44px] font-extrabold leading-none tracking-[-0.04em] md:text-[56px]">{m.value}</dt>
+                  <dd className={`mt-3 text-[15px] ${i === 0 ? "" : "text-muted"}`}>{m.label}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           <div className="mt-14 grid gap-3 md:grid-cols-3">
             {project.gallery.map((src, i) => (
               <div key={src} data-reveal style={{ ["--d" as string]: `${i * 80}ms` }} className="relative aspect-[2/1] overflow-hidden bg-surface">

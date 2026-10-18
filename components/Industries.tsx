@@ -36,7 +36,7 @@ const copy: Record<PortfolioLang, { title: string; lead: string; example: string
         name: "Importadoras",
         page: "software-para-importadoras",
         pain: "Cotizaciones a mano y clientes preguntando dónde está su pedido.",
-        items: ["Cotizaciones calculadas en segundos", "Avisos automáticos en cada etapa del envío", "Inventario por bodega en tiempo real", "Factura electrónica al despachar"],
+        items: ["Cotizaciones listas en minutos", "Avisos automáticos en cada etapa del envío", "Inventario por bodega en tiempo real", "Factura electrónica al despachar"],
         example: "AMZ Express",
       },
       {
@@ -89,7 +89,7 @@ const copy: Record<PortfolioLang, { title: string; lead: string; example: string
         name: "Importers",
         page: "software-para-importadoras",
         pain: "Quotes by hand and customers asking where their order is.",
-        items: ["Quotes calculated in seconds", "Automatic updates at every shipping stage", "Real-time stock per warehouse", "E-invoice issued on dispatch"],
+        items: ["Quotes ready in minutes", "Automatic updates at every shipping stage", "Real-time stock per warehouse", "E-invoice issued on dispatch"],
         example: "AMZ Express",
       },
       {
