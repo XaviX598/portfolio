@@ -21,8 +21,8 @@ export default function Contact({ lang }: { lang: PortfolioLang }) {
         data-reveal
         className="my-16 block font-normal leading-[0.95] tracking-[-0.04em] transition-colors duration-200 hover:text-accent md:mb-[12vh]"
       >
-        <span className="block text-[11.5vw] md:text-[6.6vw]">{user}@</span>
-        <span className="block text-[11.5vw] md:text-[6.6vw]">{domain}</span>
+        <span className="block text-[8.6vw] md:text-[6.6vw]">{user}@</span>
+        <span className="block text-[8.6vw] md:text-[6.6vw]">{domain}</span>
       </a>
 
       <div className="flex flex-col gap-3 text-[15px] md:flex-row md:justify-between">

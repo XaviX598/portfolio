@@ -51,8 +51,8 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
         ))}
       </dl>
 
-      <div data-reveal className="relative mt-16 aspect-[4/3] w-full overflow-hidden md:ml-auto md:mt-20 md:w-5/12">
-        <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="(min-width: 768px) 42vw, 100vw" className="object-cover object-left-top" />
+      <div data-reveal className="relative mt-16 aspect-[2/1] w-full overflow-hidden md:ml-auto md:aspect-[4/3] md:mt-20 md:w-5/12">
+        <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="(min-width: 768px) 42vw, 100vw" className="object-cover object-top" />
       </div>
     </section>
   );

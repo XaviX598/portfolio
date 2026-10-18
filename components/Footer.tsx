@@ -34,14 +34,14 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
         <div>
           <p className="font-medium">{es ? "Contacto" : "Contact"}</p>
           <ul className="opacity-75">
-            <li><a className="link no-underline hover:underline" href="mailto:contacto@xpressdeveloper.com">contacto@xpressdeveloper.com</a></li>
+            <li><a className="link no-underline hover:underline" href="mailto:contacto@xpressdeveloper.com">contacto@<wbr />xpressdeveloper.com</a></li>
             <li><a className="link no-underline hover:underline" href="https://wa.me/593985295277">WhatsApp</a></li>
             <li><a className="link no-underline hover:underline" href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb">LinkedIn</a></li>
           </ul>
         </div>
         <div>
           <p className="font-medium">{es ? "Atención" : "Hours"}</p>
-          <p className="opacity-75">{es ? "Respuesta en menos de 24 horas" : "Reply in under 24 hours"}</p>
+          <p className="opacity-75">{es ? "Respondemos en menos de 24 horas" : "We reply in under 24 hours"}</p>
         </div>
       </div>
 

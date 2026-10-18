@@ -41,8 +41,8 @@ export default function ServicesIndex() {
                 const extra = serviceExtras[s.slug];
                 return (
                   <li key={s.slug} className="mb-12 md:mb-0" data-reveal style={{ ["--d" as string]: `${i * 50}ms` }}>
-                    <div className="relative mb-4 aspect-[16/10] overflow-hidden md:hidden">
-                      <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill sizes="100vw" className="object-cover object-left-top" />
+                    <div className="relative mb-4 aspect-[2/1] overflow-hidden md:hidden">
+                      <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill sizes="100vw" className="object-cover object-top" />
                     </div>
                     <Link
                       href={`/servicios/${s.slug}`}
@@ -67,7 +67,7 @@ export default function ServicesIndex() {
 
             <div className="hidden md:col-span-4 md:block">
               <div className="sticky top-[12vh]">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-ground">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ground">
                   {services.map((s, i) => (
                     <Image
                       key={s.slug}
@@ -75,7 +75,7 @@ export default function ServicesIndex() {
                       alt={serviceExtras[s.slug].imageAlt}
                       fill
                       sizes="30vw"
-                      className={`object-cover object-left-top transition-[opacity,transform] duration-500 ${
+                      className={`object-cover object-top transition-[opacity,transform] duration-500 ${
                         active === i ? "scale-100 opacity-100" : "scale-105 opacity-0"
                       }`}
                     />

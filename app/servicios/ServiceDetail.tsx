@@ -43,7 +43,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
         </section>
 
-        <figure data-reveal className="relative aspect-[16/10] w-full overflow-hidden bg-surface md:aspect-[21/9]">
+        <figure data-reveal className="relative aspect-[2/1] w-full overflow-hidden bg-surface md:aspect-[21/9]">
           <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill priority sizes="100vw" className="object-cover object-top" />
         </figure>
 
@@ -66,10 +66,10 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
         </section>
 
         <section className="bg-surface pb-24 md:pb-36">
-          <div className="flex h-[60svh] flex-col md:h-[56svh] md:flex-row">
+          <div className="flex flex-col md:h-[56svh] md:flex-row">
             {serviceGallery[service.slug].map((src, i) => (
-              <div key={src} data-reveal style={{ ["--d" as string]: `${i * 80}ms` }} className={`group relative overflow-hidden ${["md:flex-[5]", "md:flex-[3]", "md:flex-[2]"][i]} flex-1`}>
-                <Image src={encodeURI(src)} alt={`Proyecto relacionado con ${service.title}`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-left-top transition-transform duration-700 group-hover:scale-105" />
+              <div key={src} data-reveal style={{ ["--d" as string]: `${i * 80}ms` }} className={`group relative aspect-[2/1] overflow-hidden md:aspect-auto ${["md:flex-[5]", "md:flex-[3]", "md:flex-[2]"][i]}`}>
+                <Image src={encodeURI(src)} alt={`Proyecto relacionado con ${service.title}`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
               </div>
             ))}
           </div>

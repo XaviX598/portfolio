@@ -92,8 +92,8 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
         <ul className="md:col-span-8">
           {projects.map((p, i) => (
             <li key={p.name} className="mb-10 md:mb-0" data-reveal style={{ ["--d" as string]: `${i * 60}ms` }}>
-              <div className="relative mb-4 aspect-[16/10] overflow-hidden md:hidden">
-                <Image src={encodeURI(p.image)} alt={p.name} fill sizes="100vw" className="object-cover object-left-top" />
+              <div className="relative mb-4 aspect-[2/1] overflow-hidden md:hidden">
+                <Image src={encodeURI(p.image)} alt={p.name} fill sizes="100vw" className="object-cover object-top" />
               </div>
               <a
                 href={p.url}
@@ -120,7 +120,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
 
         <div className="hidden md:col-span-4 md:block">
           <div className="sticky top-[15vh]">
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
               {projects.map((p, i) => (
                 <Image
                   key={p.name}
@@ -128,7 +128,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                   alt={p.name}
                   fill
                   sizes="26vw"
-                  className={`object-cover object-left-top transition-[opacity,transform] duration-500 ${
+                  className={`object-cover object-top transition-[opacity,transform] duration-500 ${
                     active === i ? "scale-100 opacity-100" : "scale-105 opacity-0"
                   }`}
                 />

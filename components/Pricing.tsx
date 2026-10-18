@@ -201,9 +201,9 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
-                className="absolute right-0 top-0 aspect-[4/3] w-[24vw] overflow-hidden md:w-[13vw]"
+                className="absolute right-0 top-0 aspect-[2/1] w-[34vw] overflow-hidden md:w-[16vw]"
               >
-                <Image src={encodeURI(s.image)} alt="" fill sizes="(min-width: 768px) 14vw, 33vw" className="object-cover object-left-top" />
+                <Image src={encodeURI(s.image)} alt="" fill sizes="(min-width: 768px) 14vw, 33vw" className="object-cover object-top" />
               </motion.div>
             </AnimatePresence>
           </div>

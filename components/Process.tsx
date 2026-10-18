@@ -47,14 +47,14 @@ export default function Process({ lang }: { lang: PortfolioLang }) {
               {evidence[i].length > 1 ? (
                 <div className="mt-5 grid grid-cols-3 gap-2">
                   {evidence[i].map((src) => (
-                    <div key={src} className="relative h-[72px] overflow-hidden md:h-24">
-                      <Image src={encodeURI(src)} alt="" fill sizes="190px" className="object-cover object-left-top" />
+                    <div key={src} className="relative aspect-[2/1] overflow-hidden">
+                      <Image src={encodeURI(src)} alt="" fill sizes="190px" className="object-cover object-top" />
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="relative mt-5 aspect-video overflow-hidden">
-                  <Image src={encodeURI(evidence[i][0])} alt="" fill sizes="580px" className="object-cover object-left-top" />
+                <div className="relative mt-5 aspect-[2/1] overflow-hidden">
+                  <Image src={encodeURI(evidence[i][0])} alt="" fill sizes="580px" className="object-cover object-top" />
                 </div>
               )}
             </div>
