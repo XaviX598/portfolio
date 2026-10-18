@@ -4,7 +4,7 @@ import { ContentShell, CtaBand, ProjectStrip } from "@/components/content/Blocks
 import IndexList from "@/components/content/IndexList";
 
 export const metadata = buildMetadata({
-  title: "Guías para Pymes: Precios, Automatización y Sistemas | Xpress Developer",
+  title: "Guías para Pymes en Ecuador | Xpress Developer",
   description: "Guías claras para negocios en Ecuador: cuánto cuesta una página web, cómo automatizar pedidos por WhatsApp y más.",
   path: "/guias",
 });

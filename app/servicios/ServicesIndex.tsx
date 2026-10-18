@@ -13,6 +13,8 @@ import RevealObserver from "@/components/RevealObserver";
 import SectionReveal from "@/components/SectionReveal";
 import SplitWords from "@/components/SplitWords";
 import ScrollMotion from "@/components/ScrollMotion";
+import { ProjectStrip, RelatedLinks } from "@/components/content/Blocks";
+import { solutions } from "@/lib/solutions";
 
 export default function ServicesIndex() {
   const [active, setActive] = useState(0);
@@ -93,6 +95,17 @@ export default function ServicesIndex() {
           </div>
         </section>
         </SectionReveal>
+
+        <RelatedLinks
+          id="rubros"
+          theme="theme-dark"
+          title="Soluciones por rubro"
+          links={[
+            ...solutions.map((s) => ({ href: `/soluciones/${s.slug}`, label: s.title, note: `desde $${s.price.toLocaleString("es-EC")}` })),
+            { href: "/guias/cuanto-cuesta-una-pagina-web-en-ecuador", label: "¿Cuánto cuesta una página web?", note: "Guía de precios 2026" },
+          ]}
+        />
+        <ProjectStrip theme="theme-light" />
 
         <SectionReveal id="elegir" className="theme-red">
         <section className="page-x flex min-h-[60svh] flex-col justify-between bg-ground py-16 text-ink md:py-20">

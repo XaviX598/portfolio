@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = projectsBySlug[slug];
   if (!project) return buildMetadata({ title: "Proyecto no encontrado | Xpress Developer", path: "/proyectos" });
   return buildMetadata({
-    title: `${project.name}: ${project.kind.es} | Proyectos de Xpress Developer`,
+    title: `${project.name}: ${project.kind.es} | Xpress Developer`,
     description: project.seoDescription,
     path: `/proyectos/${project.slug}`,
   });

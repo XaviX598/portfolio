@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { getSiteUrl, organizationSchema, seoDefaults } from "@/lib/seo";
+import { getSiteUrl, organizationSchema, seoDefaults, websiteSchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
 // Cabinet Grotesk (Fontshare, licencia ITF Free Font) servida desde el propio dominio: se precarga
@@ -58,6 +58,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
         {children}
       </body>
     </html>

@@ -2,9 +2,9 @@
 import { WHATSAPP_NUMBER } from "./contact";
 
 const fallbackUrl = "https://www.xpressdeveloper.com";
-const defaultTitle = "Sistemas Empresariales y Automatización de Procesos en Quito y Ecuador | Xpress Developer";
+const defaultTitle = "Sistemas Empresariales y Automatización | Xpress Developer";
 const defaultDescription =
-  "Desarrollamos sistemas empresariales a medida y automatizamos procesos para negocios en Quito y todo Ecuador: inventario, ventas, facturación electrónica, WhatsApp y reportes.";
+  "Sistemas a medida y automatización de procesos para negocios en Quito y Ecuador: inventario, ventas, facturación electrónica y WhatsApp. Desde $500.";
 const defaultOgImage = "/logo-image.png";
 
 export function getSiteUrl() {
@@ -28,6 +28,10 @@ type BuildMetadataInput = {
 
 // Las imágenes para compartir salen de los opengraph-image.tsx de cada ruta (tienen prioridad sobre esto).
 export function buildMetadata({ title = defaultTitle, description = defaultDescription, path = "/" }: BuildMetadataInput = {}): Metadata {
+  // Google corta los títulos de más de ~60 caracteres y las descripciones de más de ~160.
+  if (process.env.NODE_ENV === "development" && ([...title].length > 60 || [...description].length > 160)) {
+    console.warn(`[seo] ${path}: título ${[...title].length}/60, descripción ${[...description].length}/160`);
+  }
   return {
     metadataBase: getSiteUrl(),
     title,
@@ -100,6 +104,27 @@ export function organizationSchema() {
     sameAs: ["https://www.linkedin.com/in/xavier-aguilar-93759b2bb/"],
   };
 }
+
+// El sitio como entidad, con el negocio como editor. Va junto a la organización en el layout.
+export function websiteSchema() {
+  const url = getSiteUrl().toString();
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${url}#sitio`,
+    name: "Xpress Developer",
+    url,
+    inLanguage: "es-EC",
+    publisher: { "@id": organizationId() },
+  };
+}
+
+// Autor de las guías: una persona real con su perfil, que es lo que Google pide para contenido de consejo.
+export const AUTHOR = {
+  name: "Xavier Aguilar",
+  url: "https://www.linkedin.com/in/xavier-aguilar-93759b2bb/",
+  jobTitle: "Fundador de Xpress Developer",
+};
 
 export function faqSchema(items: { q: string; a: string }[]) {
   return {

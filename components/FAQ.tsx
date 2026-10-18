@@ -19,8 +19,8 @@ export default function FAQ({ lang }: { lang: PortfolioLang }) {
             className="group -mx-[var(--margin)] px-[var(--margin)] py-4 open:bg-ground"
             open={i === 0}
           >
-            <summary className="flex cursor-pointer items-center justify-between gap-6 text-[20px] md:text-[22px]">
-              {item.q}
+            <summary className="flex cursor-pointer items-center justify-between gap-6">
+              <h3 className="text-[20px] font-normal md:text-[22px]">{item.q}</h3>
               <svg className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                 <path d="M3 6l5 5 5-5" />
               </svg>

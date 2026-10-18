@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides, guidesBySlug } from "@/lib/guides";
-import { breadcrumbSchema, buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
+import { AUTHOR, breadcrumbSchema, buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import { ContentShell, CtaBand, FaqSection, ProjectStrip, RelatedLinks } from "@/components/content/Blocks";
 import { whatsappUrl } from "@/lib/contact";
@@ -39,7 +39,7 @@ export default async function GuidePage({ params }: PageProps) {
     inLanguage: "es-EC",
     datePublished: guide.published,
     dateModified: guide.updated,
-    author: { "@id": organizationId() },
+    author: { "@type": "Person", name: AUTHOR.name, url: AUTHOR.url, jobTitle: AUTHOR.jobTitle, worksFor: { "@id": organizationId() } },
     publisher: { "@id": organizationId() },
     image: `${url}/opengraph-image`,
   };
@@ -60,7 +60,12 @@ export default async function GuidePage({ params }: PageProps) {
           {guide.lead}
         </p>
         <p data-fade className="mt-6 text-[15px] text-muted" style={{ ["--d" as string]: "550ms" }}>
-          Actualizada el {dateLabel(guide.updated)} · Xpress Developer
+          Por{" "}
+          <a className="link" href={AUTHOR.url} target="_blank" rel="noreferrer author">
+            {AUTHOR.name}
+          </a>
+          , {AUTHOR.jobTitle.toLowerCase()} · Publicada el {dateLabel(guide.published)}
+          {guide.updated !== guide.published && <> · Actualizada el {dateLabel(guide.updated)}</>}
         </p>
         <a data-fade className="btn mt-8" style={{ ["--d" as string]: "600ms" }} href={whatsappUrl(`Hola, leí la guía "${guide.title}" y quiero una cotización.`)} target="_blank" rel="noreferrer">
           Cotizar por WhatsApp

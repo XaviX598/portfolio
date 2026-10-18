@@ -23,9 +23,9 @@ export const solutions: Solution[] = [
   {
     slug: "sistema-para-restaurantes",
     title: "Sistema para restaurantes en Quito",
-    seoTitle: "Sistema para Restaurantes en Quito y Ecuador | Xpress Developer",
+    seoTitle: "Sistema para Restaurantes en Quito | Xpress Developer",
     seoDescription:
-      "Sistema y automatización para restaurantes en Quito y Ecuador: reservas y pedidos por WhatsApp, inventario de insumos, cierre de caja y facturación electrónica. Desde $500.",
+      "Reservas y pedidos por WhatsApp, inventario de insumos, cierre de caja y facturación electrónica para restaurantes en Quito y Ecuador. Desde $500.",
     lead: "Reservas y pedidos por WhatsApp que se registran solos, insumos bajo control y las ventas del día en tu celular.",
     price: 500,
     problemTitle: "Lo que se pierde en la hora pico",
@@ -62,7 +62,7 @@ export const solutions: Solution[] = [
     title: "Software para importadoras en Ecuador",
     seoTitle: "Software para Importadoras en Ecuador | Xpress Developer",
     seoDescription:
-      "Software a medida para importadoras en Ecuador: cotizaciones automáticas, seguimiento de pedidos, inventario por bodega y facturación electrónica. Caso real: AMZ Express. Desde $1.500.",
+      "Software para importadoras en Ecuador: cotizaciones automáticas, seguimiento de pedidos, inventario por bodega y facturación. Caso real: AMZ Express.",
     lead: "Cotizaciones en segundos, cada pedido con su estado a la vista y el inventario de tus bodegas en tiempo real.",
     price: 1500,
     problemTitle: "Por qué una importadora se satura",
@@ -97,9 +97,9 @@ export const solutions: Solution[] = [
   {
     slug: "sistema-para-clinicas",
     title: "Sistema para clínicas y consultorios en Quito",
-    seoTitle: "Sistema para Clínicas y Consultorios en Quito y Ecuador | Xpress Developer",
+    seoTitle: "Sistema para Clínicas y Consultorios | Xpress Developer",
     seoDescription:
-      "Sistema para clínicas y consultorios en Quito y Ecuador: citas y recordatorios por WhatsApp, historial de pacientes, cobros y facturación electrónica. Desde $500.",
+      "Citas y recordatorios por WhatsApp, historial de pacientes, cobros y facturación electrónica para clínicas y consultorios en Quito. Desde $500.",
     lead: "Citas que se agendan y se confirman solas, el historial de cada paciente en un solo lugar y cobros sin digitar.",
     price: 500,
     problemTitle: "Donde se va el tiempo de la recepción",
@@ -129,9 +129,9 @@ export const solutions: Solution[] = [
   {
     slug: "sistema-para-tiendas",
     title: "Sistema de inventario y ventas para tiendas",
-    seoTitle: "Sistema de Inventario y Ventas para Tiendas en Ecuador | Xpress Developer",
+    seoTitle: "Sistema de Inventario para Tiendas | Xpress Developer",
     seoDescription:
-      "Sistema de inventario y ventas para tiendas en Quito y Ecuador: stock en tiempo real entre local y tienda online, punto de venta, pedidos por WhatsApp y facturación electrónica. Desde $500.",
+      "Inventario sincronizado entre local y tienda online, punto de venta, pedidos por WhatsApp y facturación electrónica para tiendas en Ecuador. Desde $500.",
     lead: "El stock de tu local y de tu tienda online sincronizados, ventas en un solo lugar y clientes atendidos al instante.",
     price: 500,
     problemTitle: "Cuando el stock deja de cuadrar",

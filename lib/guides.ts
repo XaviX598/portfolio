@@ -35,8 +35,8 @@ export const guides: Guide[] = [
   {
     slug: "cuanto-cuesta-una-pagina-web-en-ecuador",
     title: "¿Cuánto cuesta una página web en Ecuador en 2026?",
-    seoTitle: "¿Cuánto Cuesta una Página Web en Ecuador en 2026? Precios Reales | Xpress Developer",
-    seoDescription: `Precios reales de páginas web en Ecuador en 2026: landing page desde ${money("landing-page")}, página web desde ${money("pagina-web")}, tienda online desde ${money("ecommerce")} y sistemas a medida desde ${money("sistemas-empresariales")}. Qué cambia el precio y qué preguntar.`,
+    seoTitle: "¿Cuánto Cuesta una Página Web en Ecuador en 2026?",
+    seoDescription: `Precios reales en Ecuador 2026: landing desde ${money("landing-page")}, web desde ${money("pagina-web")}, tienda online desde ${money("ecommerce")} y sistemas desde ${money("sistemas-empresariales")}. Qué cambia el precio.`,
     lead: "La respuesta corta: depende de lo que necesitas que haga. Aquí tienes los precios con los que trabajamos, qué los hace subir o bajar y qué preguntar antes de contratar.",
     sections: [
       {
@@ -111,9 +111,9 @@ export const guides: Guide[] = [
   {
     slug: "como-automatizar-pedidos-por-whatsapp",
     title: "Cómo automatizar pedidos por WhatsApp en tu negocio",
-    seoTitle: "Cómo Automatizar Pedidos por WhatsApp en tu Negocio (Guía 2026) | Xpress Developer",
+    seoTitle: "Cómo Automatizar Pedidos por WhatsApp (Guía 2026)",
     seoDescription:
-      "Guía paso a paso para automatizar pedidos por WhatsApp: qué necesitas, cómo se conecta con tu inventario y tu facturación, cuánto cuesta y errores que conviene evitar.",
+      "Guía paso a paso para automatizar pedidos por WhatsApp: qué necesitas, cómo conectarlo con tu inventario y tu facturación, costos y errores a evitar.",
     lead: "Si cada día copias pedidos de WhatsApp a un Excel, esta guía es para ti: qué se puede automatizar, qué necesitas y cómo empezar sin cambiar todo tu negocio.",
     sections: [
       {

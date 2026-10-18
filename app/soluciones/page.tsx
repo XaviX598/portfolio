@@ -4,7 +4,7 @@ import { ContentShell, CtaBand, ProjectStrip } from "@/components/content/Blocks
 import IndexList from "@/components/content/IndexList";
 
 export const metadata = buildMetadata({
-  title: "Sistemas por Rubro: Restaurantes, Importadoras, Clínicas y Tiendas | Xpress Developer",
+  title: "Sistemas por Rubro en Quito y Ecuador | Xpress Developer",
   description: "Sistemas y automatizaciones a medida por rubro en Quito y Ecuador: restaurantes, importadoras, clínicas y consultorios, y tiendas.",
   path: "/soluciones",
 });

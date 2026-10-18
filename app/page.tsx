@@ -4,9 +4,9 @@ import { buildMetadata, faqSchema } from "@/lib/seo";
 import { faqData } from "@/lib/faq";
 
 export const metadata = buildMetadata({
-  title: "Sistemas Empresariales y Automatización de Procesos en Quito y Ecuador | Xpress Developer",
+  title: "Sistemas Empresariales y Automatización | Xpress Developer",
   description:
-    "Desarrollamos sistemas empresariales a medida y automatizamos procesos para negocios en Quito y todo Ecuador: inventario, ventas, facturación electrónica, WhatsApp y reportes. Desde $500.",
+    "Sistemas a medida y automatización de procesos para negocios en Quito y Ecuador: inventario, ventas, facturación electrónica y WhatsApp. Desde $500.",
   path: "/",
 });
 

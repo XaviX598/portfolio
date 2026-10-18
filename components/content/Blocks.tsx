@@ -132,8 +132,8 @@ export function FaqSection({ id = "preguntas", theme = "theme-dark", items }: { 
         <div className="mt-10 space-y-2 md:mt-14 lg:ml-[33.333%]">
           {items.map((item, i) => (
             <details key={item.q} data-reveal className="group -mx-[var(--margin)] px-[var(--margin)] py-4 open:bg-surface" open={i === 0}>
-              <summary className="flex cursor-pointer items-center justify-between gap-6 text-[19px] md:text-[21px]">
-                {item.q}
+              <summary className="flex cursor-pointer items-center justify-between gap-6">
+                <h3 className="text-[19px] font-normal md:text-[21px]">{item.q}</h3>
                 <svg className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path d="M3 6l5 5 5-5" />
                 </svg>
@@ -160,7 +160,7 @@ export function RelatedLinks({ id = "relacionados", theme = "theme-light", title
               <Link href={link.href} className="group flex flex-col py-2 md:flex-row md:items-baseline md:justify-between">
                 <span className="text-[8vw] font-extrabold leading-none tracking-[-0.035em] text-muted transition-colors duration-200 group-hover:text-ink md:text-[3.6vw]">
                   {link.label}
-                </span>
+                </span>{" "}
                 {link.note && <span className="text-[15px] text-muted">{link.note}</span>}
               </Link>
             </li>

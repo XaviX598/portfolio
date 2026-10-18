@@ -44,9 +44,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Inventario, ventas y facturación en un solo sistema",
     shortDescription:
       "Desarrollamos sistemas empresariales a medida para que tu negocio deje los Excel sueltos: inventario, ventas, facturación electrónica, clientes y reportes en un solo lugar.",
-    seoTitle: "Sistemas Empresariales a Medida en Quito y Ecuador | Xpress Developer",
+    seoTitle: "Sistemas Empresariales a Medida en Quito | Xpress Developer",
     seoDescription:
-      "Sistemas empresariales a medida para negocios en Ecuador: inventario, ventas, punto de venta, facturación electrónica con un proveedor autorizado por el SRI, clientes y reportes. Desde $1.500.",
+      "Sistemas a medida para negocios en Quito y Ecuador: inventario, ventas, facturación electrónica con un proveedor autorizado por el SRI. Desde $1.500.",
     features: [
       "Inventario y bodegas en tiempo real",
       "Ventas, cotizaciones y punto de venta",
@@ -97,9 +97,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Tareas repetitivas que se hacen solas",
     shortDescription:
       "Conectamos WhatsApp, Excel, tu sistema y tu tienda para que pedidos, facturas, recordatorios y reportes se hagan solos, sin errores y a cualquier hora.",
-    seoTitle: "Automatización de Procesos para Negocios en Quito y Ecuador | Xpress Developer",
+    seoTitle: "Automatización de Procesos en Quito | Xpress Developer",
     seoDescription:
-      "Automatizamos procesos de negocios en Ecuador: pedidos por WhatsApp, facturas y recordatorios de pago, reportes automáticos e integración entre Excel, sistemas y tiendas online. Desde $500.",
+      "Automatizamos pedidos por WhatsApp, facturas, cobros y reportes para negocios en Quito y Ecuador, conectando las herramientas que ya usas. Desde $500.",
     features: [
       "Pedidos y consultas por WhatsApp que se registran solos",
       "Facturas y recordatorios de pago automáticos",
@@ -149,9 +149,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Sitios web profesionales y personalizados",
     shortDescription:
       "Creamos páginas web profesionales y sitios web personalizados con diseño único, optimización SEO y foco en conversión.",
-    seoTitle: "Desarrollo de Páginas Web en Ecuador | Xpress Developer",
+    seoTitle: "Desarrollo de Páginas Web en Quito | Xpress Developer",
     seoDescription:
-      "Creamos páginas web profesionales y sitios web personalizados. Diseño único, optimización SEO, velocidad de carga rápida y enfoque comercial. Trabajamos con empresas y emprendedores en Quito y todo Ecuador.",
+      "Páginas web a medida para negocios en Quito y Ecuador: diseño único, SEO técnico y carga rápida para convertir visitas en clientes. Desde $450.",
     features: [
       "Diseño personalizado y alineado a tu marca",
       "Optimización SEO técnica y on-page",
@@ -198,7 +198,7 @@ export const services: ServiceEntry[] = [
       "Landing pages orientadas a conversión con diseño profesional, carga rápida y estructura preparada para campañas y SEO.",
     seoTitle: "Landing Pages que Convierten en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos landing pages enfocadas en conversión. Diseño profesional, copy claro, animaciones cuidadas y optimización SEO desde el arranque. Ideal para negocios en Ecuador que necesitan captar clientes.",
+      "Landing pages para vender o captar contactos con una sola página bien hecha, para negocios en Quito y Ecuador. Lista en 1 a 2 semanas. Desde $250.",
     features: [
       "Diseño orientado a conversión",
       "Jerarquía visual clara",
@@ -245,7 +245,7 @@ export const services: ServiceEntry[] = [
       "Desarrollo profesional de apps Android con Kotlin o React Native, listas para Play Store y pensadas para escalar.",
     seoTitle: "Desarrollo de Apps Android en Ecuador | Xpress Developer",
     seoDescription:
-      "Desarrollamos apps Android nativas y multiplataforma con Kotlin o React Native. Publicación en Google Play y arquitectura lista para crecer. Desarrollo de apps para empresas en Ecuador.",
+      "Apps Android nativas para negocios en Ecuador: diseño, desarrollo, conexión con tu sistema y publicación en Google Play. Desde $2.500.",
     features: [
       "Apps nativas con Kotlin",
       "Apps cross-platform con React Native",
@@ -292,7 +292,7 @@ export const services: ServiceEntry[] = [
       "Apps iOS con Swift o React Native, publicables en App Store y alineadas a buenas prácticas de Apple.",
     seoTitle: "Desarrollo de Apps iOS en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos apps iOS para iPhone y iPad con Swift o React Native. Diseño cuidado, rendimiento sólido y preparación para App Store. Apps para empresas y emprendedores en Ecuador.",
+      "Apps iOS para negocios en Ecuador: diseño, desarrollo, conexión con tu sistema y publicación en la App Store. Desde $2.500.",
     features: [
       "Apps nativas con Swift",
       "Apps cross-platform con React Native",
@@ -339,7 +339,7 @@ export const services: ServiceEntry[] = [
       "Implementamos chatbots con IA para web y WhatsApp, orientados a soporte, ventas y automatización operativa.",
     seoTitle: "Chatbots con IA para Empresas en Ecuador | Xpress Developer",
     seoDescription:
-      "Implementamos chatbots con inteligencia artificial para soporte, ventas y automatización. Integración con web, WhatsApp y procesos internos. Automatización con IA para negocios en Ecuador.",
+      "Chatbots con IA para WhatsApp y tu web: responden preguntas, toman pedidos y agendan citas las 24 horas para tu negocio en Ecuador. Desde $400.",
     features: [
       "Chatbots con modelos de IA modernos",
       "Integración con WhatsApp Business",
@@ -384,9 +384,9 @@ export const services: ServiceEntry[] = [
     subtitle: "Soluciones de IA para hacer crecer tu negocio",
     shortDescription:
       "Aplicamos inteligencia artificial a procesos reales: automatización, análisis, asistentes y sistemas de apoyo a decisión.",
-    seoTitle: "Inteligencia Artificial para Empresas en Ecuador | Xpress Developer",
+    seoTitle: "Inteligencia Artificial para Empresas | Xpress Developer",
     seoDescription:
-      "Aplicamos inteligencia artificial en procesos de negocio: automatización, análisis de datos, asistentes y soluciones personalizadas para empresas en Ecuador.",
+      "Integramos inteligencia artificial en los procesos de tu empresa en Ecuador: atención, clasificación de datos, reportes y automatización. Desde $500.",
     features: [
       "Automatización de procesos con IA",
       "Clasificación y análisis de documentos",
@@ -433,7 +433,7 @@ export const services: ServiceEntry[] = [
       "Desarrollo web a medida con React, Next.js, Node.js y APIs sólidas para proyectos que necesitan crecer con orden.",
     seoTitle: "Desarrollo Web a Medida en Ecuador | Xpress Developer",
     seoDescription:
-      "Desarrollo web frontend y backend con React, Next.js, Node.js y arquitectura mantenible. Creamos productos digitales pensados para escalar, para empresas en Quito y todo Ecuador.",
+      "Desarrollo web a medida, frontend y backend, para productos digitales que escalan, para empresas en Quito y todo Ecuador. Desde $1.500.",
     features: [
       "Frontend con React y Next.js",
       "Backend con Node.js y APIs robustas",
@@ -480,7 +480,7 @@ export const services: ServiceEntry[] = [
       "Diseñamos y desarrollamos tiendas online con catálogo, pagos, carrito y flujos pensados para conversión y operación diaria.",
     seoTitle: "Tiendas Online y Ecommerce en Ecuador | Xpress Developer",
     seoDescription:
-      "Creamos ecommerce y tiendas online con carrito, pagos, gestión de productos y enfoque en conversión y escalabilidad. Tiendas online para vender en Ecuador.",
+      "Tiendas online para negocios en Ecuador: catálogo, carrito, pagos en línea y gestión de pedidos e inventario, listas para vender. Desde $900.",
     features: [
       "Catálogo y fichas de producto optimizadas",
       "Carrito de compras y checkout claro",

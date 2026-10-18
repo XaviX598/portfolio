@@ -171,7 +171,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
                 <Link href={`/servicios/${s.slug}`} className="group flex flex-col py-2 md:flex-row md:items-baseline md:justify-between">
                   <span className="text-[9vw] font-extrabold leading-none tracking-[-0.035em] text-muted transition-colors duration-200 group-hover:text-ink md:text-[4vw]">
                     {s.title}
-                  </span>
+                  </span>{" "}
                   <span className="text-[15px] text-muted">desde ${serviceExtras[s.slug].price.toLocaleString("es-EC")}</span>
                 </Link>
               </li>
