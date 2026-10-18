@@ -15,8 +15,8 @@ const copy = {
     sentence: "Sistemas empresariales y automatizaciones que ordenan tu negocio y le ahorran horas a tu equipo.",
     cta: "Cotiza gratis por WhatsApp",
     microcopy: "Respuesta en menos de 24 horas",
-    from: "/ sin",
-    place: "fronteras",
+    from: "/ software a medida",
+    place: "de tus necesidades",
     chatTitle: "Factura enviada por WhatsApp",
     chatText: "Pedido registrado en tu sistema, sin tocar nada.",
     services: ["Sistemas empresariales", "Automatización de procesos", "Inventario", "Facturación electrónica", "WhatsApp automático", "Reportes en tiempo real", "Páginas web", "Apps móviles"],
@@ -30,8 +30,8 @@ const copy = {
     sentence: "Business systems and automations that organize your business and save your team hours.",
     cta: "Get a free quote on WhatsApp",
     microcopy: "Reply in under 24 hours",
-    from: "/ for",
-    place: "anywhere",
+    from: "/ custom software",
+    place: "built for your needs",
     chatTitle: "Invoice sent on WhatsApp",
     chatText: "Order logged in your system, hands-free.",
     services: ["Business systems", "Process automation", "Inventory", "E-invoicing", "WhatsApp automation", "Real-time reports", "Websites", "Mobile apps"],
@@ -122,8 +122,8 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
               </div>
             </div>
             <p data-fade className="hidden items-end gap-5 text-right font-extrabold uppercase leading-[0.86] tracking-[-0.04em] md:flex" style={{ ["--d" as string]: "850ms" }}>
-              <span className="mb-[0.18em] block h-1.5 w-[10vw] bg-ink" aria-hidden="true" />
-              <span className="text-[5vw]">
+              <span className="mb-[0.3em] block h-1.5 w-[6vw] bg-ink" aria-hidden="true" />
+              <span className="text-[clamp(22px,2.6vw,44px)]">
                 <span className="block">{t.from}</span>
                 <span className="block">{t.place}</span>
               </span>
