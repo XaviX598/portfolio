@@ -112,3 +112,17 @@ export function faqSchema(items: { q: string; a: string }[]) {
     })),
   };
 }
+
+export function breadcrumbSchema(trail: { name: string; path: string }[]) {
+  const siteUrl = getSiteUrl().toString();
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((step, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: step.name,
+      item: new URL(step.path, siteUrl).toString(),
+    })),
+  };
+}

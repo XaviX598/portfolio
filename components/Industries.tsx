@@ -3,39 +3,45 @@
 import { useState } from "react";
 import type { PortfolioLang } from "./HomeClient";
 import SplitWords from "./SplitWords";
+import Link from "next/link";
 import { whatsappUrl } from "@/lib/contact";
 
-type Industry = { name: string; pain: string; items: string[]; example?: string };
+type Industry = { name: string; pain: string; items: string[]; example?: string; page?: string };
 
-const copy: Record<PortfolioLang, { title: string; lead: string; example: string; cta: string; message: (name: string) => string; tools: string; industries: Industry[] }> = {
+const copy: Record<PortfolioLang, { title: string; lead: string; example: string; more: string; cta: string; message: (name: string) => string; tools: string; industries: Industry[] }> = {
   es: {
     title: "¿Qué automatizamos en tu negocio?",
     lead: "Elige tu rubro y mira todo lo que dejaría de hacerse a mano.",
     example: "Ejemplo real",
+    more: "Ver la solución completa",
     cta: "Quiero esto en mi negocio",
     message: (name) => `Hola, tengo un negocio de ${name.toLowerCase()} y quiero automatizar procesos.`,
     tools: "Se conecta con lo que ya usas: WhatsApp Business, Gmail, Excel y Google Sheets, Google Calendar, Shopify, WooCommerce, PayPal, Stripe y tu facturación electrónica.",
     industries: [
       {
         name: "Restaurantes",
+        page: "sistema-para-restaurantes",
         pain: "Reservas y pedidos que llegan a toda hora, mientras la cocina está llena.",
         items: ["Reservas por WhatsApp las 24 horas", "Pedidos a domicilio directo a cocina", "Menú del día y promociones enviadas solas", "Alertas cuando un insumo se está acabando"],
         example: "Trattoria Roma",
       },
       {
         name: "Tiendas y e-commerce",
+        page: "sistema-para-tiendas",
         pain: "Clientes que preguntan precio, stock y envío una y otra vez.",
         items: ["Catálogo y precios respondidos al instante", "Link de pago y confirmación automática", "Stock sincronizado entre local y tienda en línea", "Aviso de envío y seguimiento al cliente"],
         example: "Xpress Ecommerce",
       },
       {
         name: "Importadoras",
+        page: "software-para-importadoras",
         pain: "Cotizaciones a mano y clientes preguntando dónde está su pedido.",
         items: ["Cotizaciones calculadas en segundos", "Avisos automáticos en cada etapa del envío", "Inventario por bodega en tiempo real", "Factura electrónica al despachar"],
         example: "AMZ Express",
       },
       {
         name: "Clínicas y consultorios",
+        page: "sistema-para-clinicas",
         pain: "La recepción se satura agendando, confirmando y reprogramando.",
         items: ["Citas y recordatorios por WhatsApp", "Confirmar o reprogramar sin llamar", "Historial del paciente en un solo lugar", "Cobros y facturas sin digitar"],
       },
@@ -60,30 +66,35 @@ const copy: Record<PortfolioLang, { title: string; lead: string; example: string
     title: "What can we automate for you?",
     lead: "Pick your industry and see everything that would stop being done by hand.",
     example: "Real example",
+    more: "See the full solution",
     cta: "I want this for my business",
     message: (name) => `Hi, I run a ${name.toLowerCase()} business and I'd like to automate processes.`,
     tools: "Works with what you already use: WhatsApp Business, Gmail, Excel and Google Sheets, Google Calendar, Shopify, WooCommerce, PayPal, Stripe and your e-invoicing.",
     industries: [
       {
         name: "Restaurants",
+        page: "sistema-para-restaurantes",
         pain: "Bookings and orders arrive at all hours, while the kitchen is full.",
         items: ["WhatsApp bookings 24/7", "Delivery orders straight to the kitchen", "Daily menu and promos sent on their own", "Alerts when an ingredient runs low"],
         example: "Trattoria Roma",
       },
       {
         name: "Retail and e-commerce",
+        page: "sistema-para-tiendas",
         pain: "Customers asking for price, stock and shipping again and again.",
         items: ["Catalog and prices answered instantly", "Payment link and automatic confirmation", "Stock synced between store and online shop", "Shipping notices and order tracking"],
         example: "Xpress Ecommerce",
       },
       {
         name: "Importers",
+        page: "software-para-importadoras",
         pain: "Quotes by hand and customers asking where their order is.",
         items: ["Quotes calculated in seconds", "Automatic updates at every shipping stage", "Real-time stock per warehouse", "E-invoice issued on dispatch"],
         example: "AMZ Express",
       },
       {
         name: "Clinics",
+        page: "sistema-para-clinicas",
         pain: "The front desk is swamped booking, confirming and rescheduling.",
         items: ["Appointments and reminders on WhatsApp", "Confirm or reschedule without calling", "Patient history in one place", "Payments and invoices without typing"],
       },
@@ -156,11 +167,18 @@ export default function Industries({ lang }: { lang: PortfolioLang }) {
             <a className="btn" href={whatsappUrl(t.message(current.name))} target="_blank" rel="noreferrer">
               {t.cta}
             </a>
-            {current.example && (
-              <p className="text-[15px] text-muted">
-                {t.example}: <span className="font-medium text-ink">{current.example}</span>
-              </p>
-            )}
+            <div className="flex flex-col gap-1 sm:items-end">
+              {current.page && (
+                <Link href={`/soluciones/${current.page}`} className="link text-[15px]">
+                  {t.more}
+                </Link>
+              )}
+              {current.example && (
+                <p className="text-[15px] text-muted">
+                  {t.example}: <span className="font-medium text-ink">{current.example}</span>
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>

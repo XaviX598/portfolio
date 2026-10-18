@@ -10,17 +10,30 @@ const services = [
   { slug: "desarrollo-android", label: "Apps móviles" },
 ];
 
+const solutions = [
+  { href: "/soluciones/sistema-para-restaurantes", label: "Restaurantes" },
+  { href: "/soluciones/software-para-importadoras", label: "Importadoras" },
+  { href: "/soluciones/sistema-para-clinicas", label: "Clínicas" },
+  { href: "/soluciones/sistema-para-tiendas", label: "Tiendas" },
+];
+
+const resources = [
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/guias", label: "Guías" },
+  { href: "/guias/cuanto-cuesta-una-pagina-web-en-ecuador", label: "Precios de páginas web" },
+];
+
 // Cierre de la página: tinta y fondo invertidos, el nombre vuelve a todo el ancho.
 export default function Footer({ lang }: { lang: PortfolioLang }) {
   const es = lang === "es";
 
   return (
     <footer className="page-x grid min-h-svh grid-rows-[auto_1fr_auto] bg-ink pt-10 text-ground">
-      <div className="grid grid-cols-2 gap-8 text-[15px] md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-8 text-[15px] md:grid-cols-3 lg:grid-cols-6">
         <div>
           <p className="font-medium">Xpress Developer</p>
-          <p className="opacity-75">{es ? "Desarrollo web y apps" : "Web & app development"}</p>
-          <p className="opacity-75">Ecuador</p>
+          <p className="opacity-75">{es ? "Sistemas y automatización" : "Systems & automation"}</p>
+          <p className="opacity-75">Quito, Ecuador</p>
         </div>
         <div>
           <p className="font-medium">{es ? "Servicios" : "Services"}</p>
@@ -28,6 +41,26 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link className="link no-underline hover:underline" href={`/servicios/${s.slug}`}>{s.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-medium">{es ? "Por rubro" : "By industry"}</p>
+          <ul className="opacity-75">
+            {solutions.map((s) => (
+              <li key={s.href}>
+                <Link className="link no-underline hover:underline" href={s.href}>{s.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-medium">{es ? "Recursos" : "Resources"}</p>
+          <ul className="opacity-75">
+            {resources.map((r) => (
+              <li key={r.href}>
+                <Link className="link no-underline hover:underline" href={r.href}>{r.label}</Link>
               </li>
             ))}
           </ul>
@@ -50,7 +83,7 @@ export default function Footer({ lang }: { lang: PortfolioLang }) {
 
       <div>
         <svg viewBox="0 0 1000 205" className="block w-full" role="img" aria-label="Xpress">
-          <text x="-6" y="178" fill="currentColor" fontFamily="Cabinet Grotesk, sans-serif" fontWeight="800" fontSize="238" letterSpacing="-9" textLength="1006" lengthAdjust="spacingAndGlyphs">
+          <text x="-6" y="178" fill="currentColor" style={{ fontFamily: "var(--font-cabinet), sans-serif" }} fontWeight="800" fontSize="238" letterSpacing="-9" textLength="1006" lengthAdjust="spacingAndGlyphs">
             XPRESS
           </text>
         </svg>

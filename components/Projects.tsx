@@ -6,91 +6,8 @@ import type { PortfolioLang } from "./HomeClient";
 import SplitWords from "./SplitWords";
 import TypeText from "./TypeText";
 import ScrollMotion from "./ScrollMotion";
-
-type Project = {
-  name: string;
-  url: string;
-  image: string;
-  mobile: string;
-  kind: Record<PortfolioLang, string>;
-  discipline: Record<PortfolioLang, string>;
-  summary: Record<PortfolioLang, string>;
-};
-
-const projects: Project[] = [
-  {
-    name: "AMZ Express",
-    kind: { es: "Cotizador de importaciones", en: "Import quoting platform" },
-    mobile: "/proyectos/movil/amz-express.jpg",
-    url: "https://amz-express.vercel.app",
-    image: "/proyectos/amz-express-cotizador.png",
-    discipline: { es: "Plataforma web", en: "Web platform" },
-    summary: {
-      es: "Cotiza compras de Amazon hacia Ecuador en segundos, con paneles para clientes y administradores.",
-      en: "Quotes Amazon purchases to Ecuador in seconds, with panels for clients and admins.",
-    },
-  },
-  {
-    name: "Xpress Ecommerce",
-    kind: { es: "Tienda online", en: "Online store" },
-    mobile: "/proyectos/movil/xpress-ecommerce.jpg",
-    url: "https://xpress-ecommerce.vercel.app",
-    image: "/proyectos/xpress-ecommerce-inicio.png",
-    discipline: { es: "Tienda online", en: "Online store" },
-    summary: {
-      es: "Catálogo, carrito, checkout e historial de pedidos, lista para vender.",
-      en: "Catalog, cart, checkout and order history, ready to sell.",
-    },
-  },
-  {
-    name: "Restaurant Landing",
-    kind: { es: "Web de restaurante", en: "Restaurant website" },
-    mobile: "/proyectos/movil/restaurant.jpg",
-    url: "https://project-restaurante-delta.vercel.app",
-    image: "/proyectos/restaurante-trattoria-inicio.png",
-    discipline: { es: "Landing page", en: "Landing page" },
-    summary: {
-      es: "Menú visual y animaciones pensadas para atraer comensales.",
-      en: "Visual menu and animations designed to attract diners.",
-    },
-  },
-  {
-    name: "Universal Skills Hub",
-    kind: { es: "Catálogo en línea", en: "Online catalog" },
-    mobile: "/proyectos/movil/universal-skills.jpg",
-    url: "https://universal-skills-hub.vercel.app",
-    image: "/proyectos/universal-skills-catalogo.png",
-    discipline: { es: "Plataforma web", en: "Web platform" },
-    summary: {
-      es: "Más de 85.000 skills de IA en un catálogo rápido y fácil de explorar.",
-      en: "85,000+ AI skills in a fast catalog that's easy to explore.",
-    },
-  },
-  {
-    name: "XpressConvert",
-    kind: { es: "Conversor de archivos", en: "File converter" },
-    mobile: "/proyectos/movil/xpressconvert.jpg",
-    url: "https://xpressconvert.vercel.app",
-    image: "/proyectos/xpressconvert-inicio.png",
-    discipline: { es: "Herramienta web", en: "Web tool" },
-    summary: {
-      es: "Convierte imágenes, PDF, documentos, audio y video sin instalar nada.",
-      en: "Converts images, PDFs, documents, audio and video without installing anything.",
-    },
-  },
-  {
-    name: "Athletics System",
-    kind: { es: "Inscripción de atletas", en: "Athlete registration" },
-    mobile: "/proyectos/movil/atletismo.jpg",
-    url: "https://frontend-atletismo.vercel.app",
-    image: "/proyectos/aname-inicio.png",
-    discipline: { es: "Web, API y Android", en: "Web, API and Android" },
-    summary: {
-      es: "Sistema para gestionar atletas: aplicación web, API y app Android conectadas.",
-      en: "A system to manage athletes: web app, API and Android app working together.",
-    },
-  },
-];
+import Link from "next/link";
+import { projects } from "@/lib/projects";
 
 const copy = {
   es: {
@@ -98,6 +15,7 @@ const copy = {
     note: "Todos están en línea: elige uno, ábrelo y pruébalo.",
     live: "En línea",
     open: "Abrir proyecto",
+    caseLink: "Ver el caso",
     choose: "Elige un proyecto",
   },
   en: {
@@ -105,6 +23,7 @@ const copy = {
     note: "All of them are live: pick one, open it and try it.",
     live: "Live",
     open: "Open project",
+    caseLink: "See the case",
     choose: "Choose a project",
   },
 };
@@ -209,9 +128,14 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
 
         <div className="relative mt-12 flex flex-col gap-5 bg-[#0f1923] p-5 text-[#ece8e1] lg:mx-auto lg:max-w-3xl md:flex-row md:items-center md:justify-between md:px-8">
           <p className="max-w-[46ch] text-lg">{current.summary[lang]}</p>
-          <a className="btn shrink-0 !bg-[#ff4655] !text-[#0f1923]" href={current.url} target="_blank" rel="noreferrer">
-            {t.open} ↗
-          </a>
+          <div className="flex shrink-0 items-center gap-5">
+            <Link href={`/proyectos/${current.slug}`} className="link text-[15px]">
+              {t.caseLink}
+            </Link>
+            <a className="btn shrink-0 !bg-[#ff4655] !text-[#0f1923]" href={current.url} target="_blank" rel="noreferrer">
+              {t.open} ↗
+            </a>
+          </div>
         </div>
       </div>
     </section>

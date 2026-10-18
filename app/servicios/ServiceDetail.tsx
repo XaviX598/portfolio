@@ -11,6 +11,7 @@ import RevealObserver from "@/components/RevealObserver";
 import SectionReveal from "@/components/SectionReveal";
 import SplitWords from "@/components/SplitWords";
 import ScrollMotion from "@/components/ScrollMotion";
+import { FaqSection } from "@/components/content/Blocks";
 
 export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   const extra = serviceExtras[service.slug];
@@ -154,28 +155,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </SectionReveal>
         )}
 
-        {service.faq && (
-          <SectionReveal id="preguntas" className="theme-dark">
-            <section className="page-x bg-ground py-24 md:py-32">
-              <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em] md:text-[40px]">
-                <SplitWords text="Preguntas frecuentes" />
-              </h2>
-              <div className="mt-10 space-y-2 md:ml-[33.333%] md:mt-14">
-                {service.faq.map((item, i) => (
-                  <details key={item.q} data-reveal className="group -mx-[var(--margin)] px-[var(--margin)] py-4 open:bg-surface" open={i === 0}>
-                    <summary className="flex cursor-pointer items-center justify-between gap-6 text-[19px] md:text-[21px]">
-                      {item.q}
-                      <svg className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                        <path d="M3 6l5 5 5-5" />
-                      </svg>
-                    </summary>
-                    <p className="mt-4 max-w-[56ch] pb-2 text-base md:text-[17px]">{item.a}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
-          </SectionReveal>
-        )}
+        {service.faq && <FaqSection items={service.faq} />}
 
         <SectionReveal id="otros" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-32">

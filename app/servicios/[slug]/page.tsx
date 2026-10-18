@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ServiceDetail from "../ServiceDetail";
 import { serviceExtras, services, servicesBySlug, type ServiceSlug } from "../data";
 import JsonLd from "@/components/JsonLd";
-import { buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
+import { breadcrumbSchema, buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -65,15 +65,11 @@ export default async function ServicePage({ params }: PageProps) {
     },
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
-      { "@type": "ListItem", position: 2, name: "Servicios", item: new URL("/servicios", siteUrl).toString() },
-      { "@type": "ListItem", position: 3, name: service.title, item: serviceUrl },
-    ],
-  };
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Inicio", path: "/" },
+    { name: "Servicios", path: "/servicios" },
+    { name: service.title, path: `/servicios/${service.slug}` },
+  ]);
 
   return (
     <>

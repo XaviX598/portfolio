@@ -9,7 +9,7 @@
   --color-muted: #a4adb4;
   --color-accent: #ff4655;
   --color-accent-ink: #0f1923;
-  --font-sans: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-cabinet), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Temas por sección: redefinen los tokens y todo lo de adentro cambia de color. */
