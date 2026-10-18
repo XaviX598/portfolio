@@ -113,6 +113,8 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${url}#sitio`,
     name: "Xpress Developer",
+    // Google usa name (y alternateName como respaldo) para el nombre que muestra sobre cada resultado.
+    alternateName: ["XpressDeveloper", "xpressdeveloper.com"],
     url,
     inLanguage: "es-EC",
     publisher: { "@id": organizationId() },
