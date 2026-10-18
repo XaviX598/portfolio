@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import type { PortfolioLang } from "./HomeClient";
+import TypeText from "./TypeText";
 
 const EMAIL = "contacto@xpressdeveloper.com";
 
@@ -10,10 +11,11 @@ export default function Contact({ lang }: { lang: PortfolioLang }) {
 
   return (
     <section className="page-x relative flex min-h-[86svh] flex-col justify-between bg-ground py-16 md:min-h-svh md:py-10">
-      <p data-reveal className="max-w-[28ch] text-lg md:text-[22px]">
-        {lang === "en"
-          ? "Write to us about your business and what you want to achieve."
-          : "Escríbenos sobre tu negocio y lo que quieres lograr."}
+      <p data-reveal="type" className="max-w-[28ch] text-lg md:text-[22px]">
+        <TypeText
+          text={lang === "en" ? "Write to us about your business and what you want to achieve." : "Escríbenos sobre tu negocio y lo que quieres lograr."}
+          speed={24}
+        />
       </p>
 
       <a

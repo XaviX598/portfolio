@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import type { PortfolioLang } from "./HomeClient";
+import TypeText from "./TypeText";
 
 const copy = {
   es: {
@@ -83,8 +84,8 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
           style={reduce ? undefined : { opacity: cornersOpacity }}
           className="page-x absolute inset-x-0 bottom-6 flex flex-col gap-5 md:bottom-10 md:items-end md:text-right"
         >
-          <p data-fade className="max-w-[30ch] text-lg leading-snug" style={{ ["--d" as string]: "650ms" }}>
-            {t.sentence}
+          <p data-reveal="type" className="max-w-[30ch] text-lg leading-snug" style={{ ["--d" as string]: "900ms" }}>
+            <TypeText text={t.sentence} speed={22} />
           </p>
           <div data-fade className="flex flex-col gap-2 md:items-end" style={{ ["--d" as string]: "750ms" }}>
             <a className="btn" href={whatsappUrl(QUOTE_MESSAGE[lang])} target="_blank" rel="noreferrer">

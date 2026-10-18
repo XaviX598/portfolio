@@ -1,6 +1,8 @@
 "use client";
 
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
+import TypeText from "./TypeText";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 
 const copy = {
@@ -14,12 +16,12 @@ export default function ClosingCta({ lang }: { lang: PortfolioLang }) {
 
   return (
     <section className="page-x flex min-h-[80svh] flex-col justify-between bg-ground py-16 text-ink md:min-h-[90svh] md:py-20">
-      <h2 data-reveal className="text-[15vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[10vw]">
-        <span className="block">{t.l1}</span>
-        <span className="block">{t.l2}</span>
+      <h2 data-reveal="words" className="text-[15vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[10vw]">
+        <span className="block"><SplitWords text={t.l1} /></span>
+        <span className="block"><SplitWords text={t.l2} delay={t.l1.split(" ").length} /></span>
       </h2>
       <div className="mt-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <p data-reveal className="max-w-[34ch] text-[17px] md:text-xl">{t.sentence}</p>
+        <p data-reveal="type" style={{ ["--d" as string]: "500ms" }} className="max-w-[34ch] text-[17px] md:text-xl"><TypeText text={t.sentence} speed={16} /></p>
         <a
           data-reveal
           className="inline-flex min-h-14 w-full items-center justify-center bg-ink px-8 font-medium text-ground transition-transform duration-150 active:scale-[0.97] md:w-auto"

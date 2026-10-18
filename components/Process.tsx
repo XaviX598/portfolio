@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
+import ScrollMotion from "./ScrollMotion";
 
 const copy = {
   es: {
@@ -37,7 +39,7 @@ export default function Process({ lang }: { lang: PortfolioLang }) {
   return (
     <section className="page-x bg-surface py-28 md:py-40">
       <div className="max-w-[580px] md:ml-[30%]">
-        <h2 data-reveal className="mb-12 text-[28px] font-medium tracking-[-0.02em]">{t.title}</h2>
+        <h2 data-reveal="words" className="mb-12 text-[28px] font-medium tracking-[-0.02em]"><SplitWords text={t.title} /></h2>
         <div className="space-y-14 md:space-y-[72px]">
           {t.stages.map((stage, i) => (
             <div key={stage.lead} data-reveal>
@@ -46,16 +48,16 @@ export default function Process({ lang }: { lang: PortfolioLang }) {
               </p>
               {evidence[i].length > 1 ? (
                 <div className="mt-5 grid grid-cols-3 gap-2">
-                  {evidence[i].map((src) => (
-                    <div key={src} className="relative aspect-[2/1] overflow-hidden">
+                  {evidence[i].map((src, k) => (
+                    <ScrollMotion key={src} className="relative aspect-[2/1] overflow-hidden" y={[30 + k * 25, -20]} rotate={[(k - 1) * 6, 0]} scale={[0.85, 1]}>
                       <Image src={encodeURI(src)} alt="" fill sizes="190px" className="object-cover object-top" />
-                    </div>
+                    </ScrollMotion>
                   ))}
                 </div>
               ) : (
-                <div className="relative mt-5 aspect-[2/1] overflow-hidden">
+                <ScrollMotion className="relative mt-5 aspect-[2/1] overflow-hidden" y={[40, -40]} scale={[0.88, 1]}>
                   <Image src={encodeURI(evidence[i][0])} alt="" fill sizes="580px" className="object-cover object-top" />
-                </div>
+                </ScrollMotion>
               )}
             </div>
           ))}

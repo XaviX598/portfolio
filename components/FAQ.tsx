@@ -1,13 +1,14 @@
 "use client";
 
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
 import { faqData } from "@/lib/faq";
 
 export default function FAQ({ lang }: { lang: PortfolioLang }) {
   return (
     <section className="page-x bg-surface py-28 md:py-40">
-      <h2 data-reveal className="text-[10vw] font-extrabold leading-[0.95] tracking-[-0.035em] md:text-[5.4vw]">
-        {lang === "en" ? "Before you write" : "Antes de escribirnos"}
+      <h2 data-reveal="words" className="text-[10vw] font-extrabold leading-[0.95] tracking-[-0.035em] md:text-[5.4vw]">
+        <SplitWords text={lang === "en" ? "Before you write" : "Antes de escribirnos"} />
       </h2>
       <div className="mt-14 space-y-2 md:mt-20 md:ml-[33.333%]">
         {faqData[lang].map((item, i) => (

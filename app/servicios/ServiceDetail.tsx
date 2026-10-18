@@ -9,6 +9,8 @@ import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import RevealObserver from "@/components/RevealObserver";
 import SectionReveal from "@/components/SectionReveal";
+import SplitWords from "@/components/SplitWords";
+import ScrollMotion from "@/components/ScrollMotion";
 
 export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   const extra = serviceExtras[service.slug];
@@ -47,14 +49,18 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
         </section>
 
-        <figure data-reveal className="bg-surface py-12 md:hidden">
-          <PhoneMockup src={serviceMobile[service.slug]} alt={extra.imageAlt} sizes="60vw" priority className="mx-auto w-[58%] max-w-[260px]" />
+        <figure className="bg-surface py-12 md:hidden">
+          <ScrollMotion y={[40, -20]} rotate={[-10, 0]} scale={[0.85, 1]}>
+            <PhoneMockup src={serviceMobile[service.slug]} alt={extra.imageAlt} sizes="60vw" priority className="mx-auto w-[58%] max-w-[260px]" />
+          </ScrollMotion>
         </figure>
-        <figure data-reveal className="relative hidden aspect-[21/9] w-full overflow-hidden bg-surface md:block">
-          <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill priority sizes="100vw" className="object-cover object-top" />
-          <div className="absolute bottom-[-8%] right-[6%] w-[15%]">
+        <figure className="relative hidden aspect-[21/9] w-full overflow-hidden bg-surface md:block">
+          <ScrollMotion className="absolute inset-0" y={[0, 80]} scale={[1.15, 1]}>
+            <Image src={encodeURI(extra.image)} alt={extra.imageAlt} fill priority sizes="100vw" className="object-cover object-top" />
+          </ScrollMotion>
+          <ScrollMotion className="absolute bottom-[-8%] right-[6%] w-[15%]" y={[140, -20]} rotate={[12, 0]}>
             <PhoneMockup src={serviceMobile[service.slug]} alt="" sizes="15vw" />
-          </div>
+          </ScrollMotion>
         </figure>
 
         <SectionReveal id="incluye" className="theme-light">
@@ -64,7 +70,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
               {service.shortDescription}
             </p>
             <div className="md:col-span-5 md:col-start-8">
-              <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em]">Qué incluye</h2>
+              <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em]"><SplitWords text="Qué incluye" /></h2>
               <ul className="mt-8 grid gap-x-8 gap-y-4 text-lg sm:grid-cols-2">
                 {service.features.map((feature, i) => (
                   <li key={feature} data-reveal style={{ ["--d" as string]: `${(i % 4) * 60}ms` }}>
@@ -79,7 +85,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
         {isApp && (
           <section className="page-x bg-surface pt-4 pb-20 md:pb-28">
             <div className="grid gap-8 md:grid-cols-12 md:items-center">
-              <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em] md:col-span-5 md:text-[40px]">Tu app, publicada en las tiendas</h2>
+              <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em] md:col-span-5 md:text-[40px]"><SplitWords text="Tu app, publicada en las tiendas" /></h2>
               <div data-reveal className="md:col-span-6 md:col-start-7">
                 <p className="mb-6 max-w-[48ch]">Nos encargamos de la cuenta de desarrollador, las capturas, la ficha y la revisión de Apple y Google, hasta que tu app esté disponible para descargar.</p>
                 <StoreBadges />
@@ -92,7 +98,9 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           <div className="flex flex-col md:h-[56svh] md:flex-row">
             {serviceGallery[service.slug].map((src, i) => (
               <div key={src} data-reveal style={{ ["--d" as string]: `${i * 80}ms` }} className={`group relative aspect-[2/1] overflow-hidden md:aspect-auto ${["md:flex-[5]", "md:flex-[3]", "md:flex-[2]"][i]}`}>
-                <Image src={encodeURI(src)} alt={`Proyecto relacionado con ${service.title}`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+                <ScrollMotion className="absolute inset-0" y={[30 * (i + 1), -30 * (i + 1)]} scale={[1.2, 1.05]}>
+                  <Image src={encodeURI(src)} alt={`Proyecto relacionado con ${service.title}`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+                </ScrollMotion>
               </div>
             ))}
           </div>
@@ -103,7 +111,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
         <SectionReveal id="proceso" className="theme-dark">
         <section className="page-x bg-ground py-24 md:py-36">
           <div className="max-w-[580px] md:ml-[30%]">
-            <h2 data-reveal className="mb-12 text-[28px] font-medium tracking-[-0.02em]">Cómo lo hacemos</h2>
+            <h2 data-reveal="words" className="mb-12 text-[28px] font-medium tracking-[-0.02em]"><SplitWords text="Cómo lo hacemos" /></h2>
             <div className="space-y-10">
               {service.process.map((step) => (
                 <p key={step.title} data-reveal className="text-[17px] leading-[1.6] text-muted md:text-lg">
@@ -118,7 +126,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
         <SectionReveal id="otros" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-32">
           <div className="mb-10 flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
-            <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em]">Otros servicios</h2>
+            <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em]"><SplitWords text="Otros servicios" /></h2>
             <Link href="/servicios" className="link text-[15px] text-muted">
               Ver todos los servicios
             </Link>
@@ -140,8 +148,8 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
 
         <SectionReveal id="cotizar" className="theme-red">
         <section className="page-x flex min-h-[70svh] flex-col justify-between bg-ground py-16 text-ink md:py-20">
-          <h2 data-reveal className="max-w-[16ch] text-[9vw] font-extrabold leading-[0.95] tracking-[-0.04em] md:text-[6vw]">
-            {service.cta.title}
+          <h2 data-reveal="words" className="max-w-[16ch] text-[9vw] font-extrabold leading-[0.95] tracking-[-0.04em] md:text-[6vw]">
+            <SplitWords text={service.cta.title} />
           </h2>
           <div className="mt-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <p data-reveal className="max-w-[34ch] text-[17px] md:text-xl">{service.cta.subtitle}</p>

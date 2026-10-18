@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
 
 const copy = {
   es: {
@@ -283,7 +284,7 @@ export default function JourneyMotion({ lang }: { lang: PortfolioLang }) {
         <div className="page-x sticky top-0 flex h-svh items-center overflow-hidden">
           <div className="grid w-full items-center gap-8 pt-14 lg:grid-cols-12 lg:gap-10 lg:pt-0">
             <div className="lg:col-span-5">
-              <h2 className="text-[28px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[40px]">{t.title}</h2>
+              <h2 data-reveal="words" className="text-[28px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[40px]"><SplitWords text={t.title} /></h2>
               <ol className="mt-6 space-y-3 lg:mt-10 lg:space-y-5">
                 {t.steps.map((item, idx) => {
                   const active = idx === step;

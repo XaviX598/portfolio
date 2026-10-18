@@ -11,6 +11,8 @@ import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 import RevealObserver from "@/components/RevealObserver";
 import SectionReveal from "@/components/SectionReveal";
+import SplitWords from "@/components/SplitWords";
+import ScrollMotion from "@/components/ScrollMotion";
 
 export default function ServicesIndex() {
   const [active, setActive] = useState(0);
@@ -44,7 +46,9 @@ export default function ServicesIndex() {
                 const extra = serviceExtras[s.slug];
                 return (
                   <li key={s.slug} className="mb-12 md:mb-0" data-reveal style={{ ["--d" as string]: `${i * 50}ms` }}>
-                    <PhoneMockup src={serviceMobile[s.slug]} alt={extra.imageAlt} sizes="60vw" className="mx-auto mb-6 w-[58%] max-w-[260px] md:hidden" />
+                    <ScrollMotion className="md:hidden" y={[40, -20]} rotate={[i % 2 ? 8 : -8, 0]} scale={[0.88, 1]}>
+                      <PhoneMockup src={serviceMobile[s.slug]} alt={extra.imageAlt} sizes="60vw" className="mx-auto mb-6 w-[58%] max-w-[260px]" />
+                    </ScrollMotion>
                     <Link
                       href={`/servicios/${s.slug}`}
                       onMouseEnter={() => setActive(i)}
@@ -92,9 +96,9 @@ export default function ServicesIndex() {
 
         <SectionReveal id="elegir" className="theme-red">
         <section className="page-x flex min-h-[60svh] flex-col justify-between bg-ground py-16 text-ink md:py-20">
-          <h2 data-reveal className="text-[12vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[8vw]">
-            <span className="block">¿No sabes</span>
-            <span className="block">cuál elegir?</span>
+          <h2 data-reveal="words" className="text-[12vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[8vw]">
+            <span className="block"><SplitWords text="¿No sabes" /></span>
+            <span className="block"><SplitWords text="cuál elegir?" delay={2} /></span>
           </h2>
           <div className="mt-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <p data-reveal className="max-w-[34ch] text-[17px] md:text-xl">

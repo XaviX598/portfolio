@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
 
 type Reason = { title: string; a: string; b: string; proof: ReactNode };
 
@@ -102,12 +103,12 @@ export default function WhyUs({ lang }: { lang: PortfolioLang }) {
   return (
     <section className="page-x bg-ground py-28 md:py-40">
       <div>
-        <h2 data-reveal className="mb-16 text-[11vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:mb-20 md:text-[5.4vw]">
-          {lang === "en" ? "How we work with you" : "Cómo trabajamos contigo"}
+        <h2 data-reveal="words" className="mb-16 text-[11vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:mb-20 md:text-[5.4vw]">
+          <SplitWords text={lang === "en" ? "How we work with you" : "Cómo trabajamos contigo"} />
         </h2>
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-20">
-          {reasons(lang).map((r) => (
-            <article key={r.title} data-reveal className="grid gap-4 sm:grid-cols-[minmax(0,320px)_1fr] sm:gap-6">
+          {reasons(lang).map((r, i) => (
+            <article key={r.title} data-reveal data-tilt style={{ ["--tilt" as string]: i % 2 ? "3deg" : "-3deg", ["--d" as string]: `${(i % 2) * 120}ms` }} className="grid gap-4 sm:grid-cols-[minmax(0,320px)_1fr] sm:gap-6">
               <div data-ui className="h-[150px] overflow-hidden transition-transform duration-300 hover:-translate-y-1" aria-hidden="true">
                 {r.proof}
               </div>

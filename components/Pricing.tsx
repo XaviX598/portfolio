@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
 import { whatsappUrl } from "@/lib/contact";
 import StoreBadges from "./StoreBadges";
 
@@ -153,7 +154,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
     <section className="page-x flex min-h-[80svh] flex-col justify-center bg-surface py-28 md:py-40">
       <div className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <h2 data-reveal className="text-[28px] font-medium tracking-[-0.02em]">{t.title}</h2>
+          <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em]"><SplitWords text={t.title} /></h2>
           <p data-reveal style={{ ["--d" as string]: "80ms" }} className="mt-4">{t.text}</p>
 
           <fieldset data-reveal style={{ ["--d" as string]: "160ms" }} className="mt-8">

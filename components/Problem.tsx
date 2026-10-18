@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
+import TypeText from "./TypeText";
+import ScrollMotion from "./ScrollMotion";
 import PhoneMockup from "./PhoneMockup";
 
 const copy = {
@@ -35,11 +38,11 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
   return (
     <section className="page-x bg-surface pb-28 pt-28 md:pb-32 md:pt-36">
       <div className="grid gap-8 md:grid-cols-12 md:items-end">
-        <h2 data-reveal className="text-[11vw] font-normal leading-[0.95] tracking-[-0.035em] md:col-span-7 md:text-[5.4vw]">
-          {t.title}
+        <h2 data-reveal="words" className="text-[11vw] font-normal leading-[0.95] tracking-[-0.035em] md:col-span-7 md:text-[5.4vw]">
+          <SplitWords text={t.title} />
         </h2>
-        <p data-reveal style={{ ["--d" as string]: "80ms" }} className="md:col-span-4 md:col-start-9">
-          {t.note}
+        <p data-reveal="type" style={{ ["--d" as string]: "300ms" }} className="md:col-span-4 md:col-start-9">
+          <TypeText text={t.note} speed={14} />
         </p>
       </div>
 
@@ -52,15 +55,17 @@ export default function Problem({ lang }: { lang: PortfolioLang }) {
         ))}
       </dl>
 
-      <div data-reveal className="mt-16 md:hidden">
+      <ScrollMotion className="mt-16 md:hidden" y={[60, -30]} rotate={[-10, 0]} scale={[0.85, 1]}>
         <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt={t.alt} sizes="60vw" className="mx-auto w-[58%] max-w-[260px]" />
-      </div>
+      </ScrollMotion>
 
-      <div data-reveal className="mt-24 hidden items-end gap-8 md:grid md:grid-cols-12">
-        <div className="relative col-span-9 aspect-[1848/909] overflow-hidden bg-ground">
+      <div className="mt-24 hidden items-end gap-8 md:grid md:grid-cols-12">
+        <ScrollMotion className="relative col-span-9 aspect-[1848/909] overflow-hidden bg-ground" y={[50, -30]} scale={[0.9, 1]}>
           <Image src="/proyectos/xpress%20ecommerce.png" alt={t.alt} fill sizes="75vw" className="object-cover object-top" />
-        </div>
-        <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt="" sizes="20vw" className="col-span-3 w-full max-w-[300px] justify-self-end" />
+        </ScrollMotion>
+        <ScrollMotion className="col-span-3 w-full max-w-[300px] justify-self-end" y={[160, -60]} rotate={[12, 0]}>
+          <PhoneMockup src="/proyectos/movil/xpress-ecommerce.jpg" alt="" sizes="20vw" />
+        </ScrollMotion>
       </div>
     </section>
   );

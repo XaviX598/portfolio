@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
+import TypeText from "./TypeText";
+import ScrollMotion from "./ScrollMotion";
 
 type Project = {
   name: string;
@@ -117,8 +120,8 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
 
       <div className="relative">
         <div className="mb-12 flex flex-col gap-3 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <h2 data-reveal className="text-[11vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[5.4vw]">{t.title}</h2>
-          <p data-reveal className="max-w-[32ch] text-lg">{t.note}</p>
+          <h2 data-reveal="words" className="text-[11vw] font-extrabold leading-[0.9] tracking-[-0.04em] md:text-[5.4vw]"><SplitWords text={t.title} /></h2>
+          <p data-reveal="type" style={{ ["--d" as string]: "400ms" }} className="max-w-[32ch] text-lg"><TypeText text={t.note} speed={16} /></p>
         </div>
 
         {/* Escritorio: fila de cartas; la elegida se agranda */}
@@ -126,8 +129,14 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
           {projects.map((p, i) => {
             const isActive = active === i;
             return (
-              <button
+              <div
                 key={p.name}
+                data-reveal
+                data-tilt
+                className="shrink-0"
+                style={{ ["--d" as string]: `${i * 90}ms`, ["--tilt" as string]: `${(i - 2.5) * 3}deg` }}
+              >
+              <button
                 type="button"
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
@@ -156,12 +165,14 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
                   {isActive && <span className="text-[15px] text-[#a4adb4]">{p.discipline[lang]}</span>}
                 </span>
               </button>
+              </div>
             );
           })}
         </div>
 
         {/* Móvil: carta grande del proyecto elegido y selector debajo */}
         <div className="md:hidden">
+          <ScrollMotion y={[50, -20]} rotate={[-8, 0]} scale={[0.88, 1]}>
           <div className="relative mx-auto h-[120vw] max-h-[560px] w-[72%] max-w-[300px] overflow-hidden bg-[#0f1923]" style={{ clipPath: CARD_SHAPE }}>
             <Image key={current.mobile} src={current.mobile} alt={`${current.name} en celular`} fill sizes="72vw" className="object-cover object-top" />
             <span className="absolute inset-x-0 top-0 h-1.5 bg-[#ece8e1]" />
@@ -171,6 +182,7 @@ export default function Projects({ lang }: { lang: PortfolioLang }) {
               <span className="text-[15px] text-[#a4adb4]">{current.discipline[lang]}</span>
             </span>
           </div>
+          </ScrollMotion>
           <div className="mt-8 grid grid-cols-3 gap-2" role="group" aria-label={t.choose}>
             {projects.map((p, i) => (
               <button

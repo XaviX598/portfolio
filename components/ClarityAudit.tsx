@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion, useInView } from "framer-motion";
 import type { PortfolioLang } from "./HomeClient";
+import SplitWords from "./SplitWords";
 import { whatsappUrl } from "@/lib/contact";
 
 const copy = {
@@ -165,7 +166,7 @@ export default function ClarityAudit({ lang }: { lang: PortfolioLang }) {
       <section className="page-x bg-ground py-28 md:py-40">
         <div className="grid items-center gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <h2 data-reveal className="text-[28px] font-medium leading-[1.05] tracking-[-0.025em] md:text-[40px]">{t.title}</h2>
+            <h2 data-reveal="words" className="text-[28px] font-medium leading-[1.05] tracking-[-0.025em] md:text-[40px]"><SplitWords text={t.title} /></h2>
             <p data-reveal style={{ ["--d" as string]: "80ms" }} className="mt-6 max-w-[48ch]">{t.text}</p>
             <ul data-reveal style={{ ["--d" as string]: "160ms" }} className="mt-8 space-y-1 text-xl font-medium">
               {t.questions.map((q) => (
