@@ -13,6 +13,8 @@ import ClosingCta from "./ClosingCta";
 import Products from "./Products";
 import Clients from "./Clients";
 import WhatsAppAuto from "./WhatsAppAuto";
+import Industries from "./Industries";
+import Savings from "./Savings";
 import SceneStage from "./SceneStage";
 import Contact from "./Contact";
 import SectionReveal from "./SectionReveal";
@@ -31,7 +33,9 @@ const sections: (Entry | Entry[])[] = [
     { id: "whatsapp", component: WhatsAppAuto, theme: "theme-light" },
     { id: "clients", component: Clients, theme: "theme-dark" },
   ],
+  { id: "industries", component: Industries, theme: "theme-light" },
   { id: "projects", component: Projects, theme: "theme-red" },
+  { id: "savings", component: Savings, theme: "theme-dark" },
   { id: "pricing", component: Pricing, theme: "theme-light" },
   { id: "why-us", component: WhyUs, theme: "theme-dark" },
   { id: "process", component: Process, theme: "theme-light" },
