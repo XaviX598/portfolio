@@ -1,14 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 
+// Aparece al salir de la primera pantalla: arriba ya está el botón de WhatsApp del hero.
 export default function FloatingButtons({ lang = "es" }: { lang?: "en" | "es" }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const update = () => setVisible(window.scrollY > window.innerHeight * 0.6);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
   return (
     <a
       href={whatsappUrl(QUOTE_MESSAGE[lang])}
       target="_blank"
       rel="noreferrer"
-      className="float-wa"
+      className={`float-wa transition-[opacity,transform] duration-300 ${visible ? "opacity-100" : "pointer-events-none invisible translate-y-4 opacity-0"}`}
+      tabIndex={visible ? 0 : -1}
       aria-label={lang === "en" ? "Message us on WhatsApp" : "Escríbenos por WhatsApp"}
     >
       <svg className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
