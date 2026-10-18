@@ -129,7 +129,7 @@ export default function Products({ lang }: { lang: PortfolioLang }) {
             {p.visual === "systems" ? (
               <div className="relative mb-10">
                 <ScrollMotion className="relative aspect-[1843/910] overflow-hidden" y={[30, -20]} scale={[0.92, 1]}>
-                  <Image src="/proyectos/amz%20express%202.png" alt={t.systems.alt} fill sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover object-top" />
+                  <Image src="/proyectos/amz-express-panel.png" alt={t.systems.alt} fill sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover object-top" />
                 </ScrollMotion>
                 <ScrollMotion className="absolute -bottom-8 right-4 w-[24%]" y={[80, -10]} rotate={[10, 0]}>
                   <PhoneMockup src="/proyectos/movil/amz-express.jpg" alt="" sizes="12vw" />

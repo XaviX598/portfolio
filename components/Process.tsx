@@ -27,10 +27,10 @@ const copy = {
 };
 
 const evidence = [
-  ["/proyectos/restaurant.png", "/proyectos/restaurante 2.png", "/proyectos/restaurant 3.png"],
-  ["/proyectos/amz express 2.png"],
-  ["/proyectos/xpress ecommerce.png", "/proyectos/xpress ecommerce 2.png", "/proyectos/xpress ecommer 3.png"],
-  ["/proyectos/universal skills 3.png"],
+  ["/proyectos/restaurante-trattoria-inicio.png", "/proyectos/restaurante-trattoria-menu.png", "/proyectos/restaurante-trattoria-detalle.png"],
+  ["/proyectos/amz-express-panel.png"],
+  ["/proyectos/xpress-ecommerce-inicio.png", "/proyectos/xpress-ecommerce-catalogo.png", "/proyectos/xpress-ecommerce-producto.png"],
+  ["/proyectos/universal-skills-detalle.png"],
 ];
 
 export default function Process({ lang }: { lang: PortfolioLang }) {

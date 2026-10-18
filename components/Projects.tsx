@@ -23,7 +23,7 @@ const projects: Project[] = [
     kind: { es: "Cotizador de importaciones", en: "Import quoting platform" },
     mobile: "/proyectos/movil/amz-express.jpg",
     url: "https://amz-express.vercel.app",
-    image: "/proyectos/amz express.png",
+    image: "/proyectos/amz-express-cotizador.png",
     discipline: { es: "Plataforma web", en: "Web platform" },
     summary: {
       es: "Cotiza compras de Amazon hacia Ecuador en segundos, con paneles para clientes y administradores.",
@@ -35,7 +35,7 @@ const projects: Project[] = [
     kind: { es: "Tienda online", en: "Online store" },
     mobile: "/proyectos/movil/xpress-ecommerce.jpg",
     url: "https://xpress-ecommerce.vercel.app",
-    image: "/proyectos/xpress ecommerce.png",
+    image: "/proyectos/xpress-ecommerce-inicio.png",
     discipline: { es: "Tienda online", en: "Online store" },
     summary: {
       es: "Catálogo, carrito, checkout e historial de pedidos, lista para vender.",
@@ -47,7 +47,7 @@ const projects: Project[] = [
     kind: { es: "Web de restaurante", en: "Restaurant website" },
     mobile: "/proyectos/movil/restaurant.jpg",
     url: "https://project-restaurante-delta.vercel.app",
-    image: "/proyectos/restaurant.png",
+    image: "/proyectos/restaurante-trattoria-inicio.png",
     discipline: { es: "Landing page", en: "Landing page" },
     summary: {
       es: "Menú visual y animaciones pensadas para atraer comensales.",
@@ -59,7 +59,7 @@ const projects: Project[] = [
     kind: { es: "Catálogo en línea", en: "Online catalog" },
     mobile: "/proyectos/movil/universal-skills.jpg",
     url: "https://universal-skills-hub.vercel.app",
-    image: "/proyectos/universal skills.png",
+    image: "/proyectos/universal-skills-catalogo.png",
     discipline: { es: "Plataforma web", en: "Web platform" },
     summary: {
       es: "Más de 85.000 skills de IA en un catálogo rápido y fácil de explorar.",
@@ -71,7 +71,7 @@ const projects: Project[] = [
     kind: { es: "Conversor de archivos", en: "File converter" },
     mobile: "/proyectos/movil/xpressconvert.jpg",
     url: "https://xpressconvert.vercel.app",
-    image: "/proyectos/xpress convert .png",
+    image: "/proyectos/xpressconvert-inicio.png",
     discipline: { es: "Herramienta web", en: "Web tool" },
     summary: {
       es: "Convierte imágenes, PDF, documentos, audio y video sin instalar nada.",
@@ -83,7 +83,7 @@ const projects: Project[] = [
     kind: { es: "Inscripción de atletas", en: "Athlete registration" },
     mobile: "/proyectos/movil/atletismo.jpg",
     url: "https://frontend-atletismo.vercel.app",
-    image: "/proyectos/pagina de atleta .png",
+    image: "/proyectos/aname-inicio.png",
     discipline: { es: "Web, API y Android", en: "Web, API and Android" },
     summary: {
       es: "Sistema para gestionar atletas: aplicación web, API y app Android conectadas.",

@@ -1,8 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceDetail from "../ServiceDetail";
-import { services, servicesBySlug, type ServiceSlug } from "../data";
-import { buildMetadata, getSiteUrl } from "@/lib/seo";
+import { serviceExtras, services, servicesBySlug, type ServiceSlug } from "../data";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -28,7 +29,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: service.seoTitle,
     description: service.seoDescription,
     path: `/servicios/${service.slug}`,
-    keywords: service.keywords,
   });
 }
 
@@ -40,32 +40,47 @@ export default async function ServicePage({ params }: PageProps) {
     notFound();
   }
 
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSiteUrl().toString();
   const serviceUrl = new URL(`/servicios/${service.slug}`, siteUrl).toString();
+  const price = serviceExtras[service.slug].price;
 
-  const jsonLd = {
+  const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
     description: service.seoDescription,
     serviceType: service.title,
-    provider: {
-      "@type": "Organization",
-      name: "Xpress Developer",
-      url: siteUrl.toString(),
-    },
-    areaServed: "Latinoamérica",
     url: serviceUrl,
+    provider: { "@id": organizationId() },
+    areaServed: [
+      { "@type": "City", name: "Quito" },
+      { "@type": "Country", name: "Ecuador" },
+    ],
+    offers: {
+      "@type": "Offer",
+      url: serviceUrl,
+      priceCurrency: "USD",
+      price,
+      priceSpecification: { "@type": "PriceSpecification", minPrice: price, priceCurrency: "USD" },
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Servicios", item: new URL("/servicios", siteUrl).toString() },
+      { "@type": "ListItem", position: 3, name: service.title, item: serviceUrl },
+    ],
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={serviceJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+      {service.faq && <JsonLd data={faqSchema(service.faq)} />}
       <ServiceDetail service={service} />
     </>
   );
 }
-

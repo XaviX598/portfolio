@@ -5,14 +5,13 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import type { PortfolioLang } from "./HomeClient";
-import TypeText from "./TypeText";
 import FloatingObjects from "./FloatingObjects";
 import Marquee from "./Marquee";
 
 const copy = {
   es: {
     tag: "Sistemas · automatización",
-    sentence: "Sistemas empresariales y automatizaciones que ordenan tu negocio y le ahorran horas a tu equipo.",
+    sentence: "Sistemas empresariales y automatización de procesos en Quito y Ecuador",
     cta: "Cotiza gratis por WhatsApp",
     microcopy: "Respuesta en menos de 24 horas",
     from: "/ software a medida",
@@ -27,7 +26,7 @@ const copy = {
   },
   en: {
     tag: "Systems · automation",
-    sentence: "Business systems and automations that organize your business and save your team hours.",
+    sentence: "Business systems and process automation in Quito and across Ecuador",
     cta: "Get a free quote on WhatsApp",
     microcopy: "Reply in under 24 hours",
     from: "/ custom software",
@@ -42,7 +41,7 @@ const copy = {
   },
 };
 
-const SHOT = "/proyectos/amz%20express.png";
+const SHOT = "/proyectos/amz-express-cotizador.webp";
 
 // El nombre como monumento, con piezas reales del trabajo flotando que siguen al mouse.
 // Al hacer scroll, las letras se llenan con un proyecto real y el nombre hace zoom hasta mostrarlo completo.
@@ -80,7 +79,8 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
             style={reduce ? undefined : { scale: nameScale, opacity: nameOpacity, visibility: nameVisibility }}
             className="absolute inset-x-0 top-[15%] z-10 origin-[10%_30%] md:top-[17%]"
           >
-            <h1 className="lines page-x text-[15.5vw] font-extrabold uppercase leading-[0.84] tracking-[-0.045em] md:text-[11.4vw]">
+            {/* El nombre es la marca, no el título de la página: el h1 es la frase de abajo. */}
+            <div className="lines page-x text-[15.5vw] font-extrabold uppercase leading-[0.84] tracking-[-0.045em] md:text-[11.4vw]">
               <span className="line">
                 <motion.span data-line style={{ ["--i" as string]: 0, display: "inline-block", ...fill(inkColor) }} className={fillClass}>
                   Xpress
@@ -96,7 +96,7 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
                   Developer
                 </motion.span>
               </span>
-            </h1>
+            </div>
           </motion.div>
 
           <motion.div
@@ -110,10 +110,10 @@ export default function Hero({ lang }: { lang: PortfolioLang }) {
             style={reduce ? undefined : { opacity: cornersOpacity, visibility: cornersVisibility }}
             className="page-x absolute inset-x-0 bottom-5 flex items-end justify-between gap-8 md:bottom-8"
           >
-            <div className="flex max-w-[34ch] flex-col gap-4">
-              <p data-reveal="type" className="text-lg leading-snug" style={{ ["--d" as string]: "900ms" }}>
-                <TypeText text={t.sentence} speed={22} />
-              </p>
+            <div className="flex max-w-[40ch] flex-col gap-4">
+              <h1 data-reveal className="text-lg font-medium leading-snug md:text-xl" style={{ ["--d" as string]: "900ms" }}>
+                {t.sentence}
+              </h1>
               <div data-fade className="flex flex-col gap-2" style={{ ["--d" as string]: "750ms" }}>
                 <a className="btn w-full sm:w-auto" href={whatsappUrl(QUOTE_MESSAGE[lang])} target="_blank" rel="noreferrer">
                   {t.cta}

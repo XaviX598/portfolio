@@ -117,7 +117,7 @@ function ClearPage({ t }: { t: Copy }) {
   return (
     <div className="flex h-full flex-col gap-3 p-4">
       <motion.div {...item(0.1)} className="relative bg-[#2c4a40] p-4">
-        <p className="text-[12px] font-medium text-accent">Spa · Guayaquil</p>
+        <p className="text-[12px] font-medium text-accent">Spa · Quito</p>
         <p className="mt-1 text-lg font-extrabold leading-tight text-ink">{t.service}</p>
         <Chip label={t.chips[0]} className="-top-3 left-3" delay={0.9} />
       </motion.div>

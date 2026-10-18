@@ -9,10 +9,10 @@ import PhoneMockup from "./PhoneMockup";
 import CountUp from "./CountUp";
 
 const works = [
-  { image: "/proyectos/amz%20express%202.png", mobile: "/proyectos/movil/amz-express.jpg", name: "AMZ Express" },
-  { image: "/proyectos/xpress%20ecommerce%202.png", mobile: "/proyectos/movil/xpress-ecommerce.jpg", name: "Xpress Ecommerce" },
-  { image: "/proyectos/restaurante%202.png", mobile: "/proyectos/movil/restaurant.jpg", name: "Trattoria Roma" },
-  { image: "/proyectos/pagina%20de%20atleta%20.png", mobile: "/proyectos/movil/atletismo.jpg", name: "ANAME" },
+  { image: "/proyectos/amz-express-panel.png", mobile: "/proyectos/movil/amz-express.jpg", name: "AMZ Express" },
+  { image: "/proyectos/xpress-ecommerce-catalogo.png", mobile: "/proyectos/movil/xpress-ecommerce.jpg", name: "Xpress Ecommerce" },
+  { image: "/proyectos/restaurante-trattoria-menu.png", mobile: "/proyectos/movil/restaurant.jpg", name: "Trattoria Roma" },
+  { image: "/proyectos/aname-inicio.png", mobile: "/proyectos/movil/atletismo.jpg", name: "ANAME" },
 ];
 
 const copy = {

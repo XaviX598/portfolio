@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { getSiteUrl, seoDefaults } from "@/lib/seo";
+import { getSiteUrl, organizationSchema, seoDefaults } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
@@ -10,30 +11,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo pestaña.png",
+    icon: "/logo-pestana.png",
   },
-  keywords: [
-    "Xpress Developer",
-    "agencia desarrollo software Ecuador",
-    "desarrollo web Ecuador",
-    "páginas web Guayaquil",
-    "páginas web Quito",
-    "crear sitio web Ecuador",
-    "empresa desarrollo software Ecuador",
-    "desarrollador página web",
-    "landing page Ecuador",
-    "desarrollo Android",
-    "desarrollo iOS",
-    "app Android Ecuador",
-    "app iOS Ecuador",
-    "inteligencia artificial para empresas",
-    "chat IA",
-    "integración IA",
-    "desarrollador React",
-    "desarrollador React Native",
-    "tienda online Ecuador",
-    "ecommerce Ecuador",
-  ],
   robots: {
     index: true,
     follow: true,
@@ -45,20 +24,11 @@ export const metadata: Metadata = {
     siteName: "Xpress Developer",
     locale: "es_EC",
     type: "website",
-    images: [
-      {
-        url: seoDefaults.defaultOgImage,
-        width: 1200,
-        height: 630,
-        alt: "Xpress Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: seoDefaults.defaultTitle,
     description: seoDefaults.defaultDescription,
-    images: [seoDefaults.defaultOgImage],
   },
 };
 
@@ -68,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es-EC" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
@@ -77,6 +47,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add(\"js\")" }} />
       </head>
       <body suppressHydrationWarning>
+        <JsonLd data={organizationSchema()} />
         {children}
       </body>
     </html>

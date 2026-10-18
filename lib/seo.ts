@@ -1,9 +1,10 @@
 ﻿import type { Metadata } from "next";
+import { WHATSAPP_NUMBER } from "./contact";
 
 const fallbackUrl = "https://www.xpressdeveloper.com";
-const defaultTitle = "Desarrollo Web y Software en Ecuador | Xpress Developer";
+const defaultTitle = "Sistemas Empresariales y Automatización de Procesos en Quito y Ecuador | Xpress Developer";
 const defaultDescription =
-  "Agencia de desarrollo de software en Ecuador. Creamos páginas web, landing pages, apps Android y iOS, ecommerce e integraciones con IA para empresas en Guayaquil, Quito y todo el país.";
+  "Desarrollamos sistemas empresariales a medida y automatizamos procesos para negocios en Quito y todo Ecuador: inventario, ventas, facturación electrónica, WhatsApp y reportes.";
 const defaultOgImage = "/logo-image.png";
 
 export function getSiteUrl() {
@@ -23,20 +24,14 @@ type BuildMetadataInput = {
   title?: string;
   description?: string;
   path?: `/${string}` | "/";
-  keywords?: string[];
 };
 
-export function buildMetadata({
-  title = defaultTitle,
-  description = defaultDescription,
-  path = "/",
-  keywords = [],
-}: BuildMetadataInput = {}): Metadata {
+// Las imágenes para compartir salen de los opengraph-image.tsx de cada ruta (tienen prioridad sobre esto).
+export function buildMetadata({ title = defaultTitle, description = defaultDescription, path = "/" }: BuildMetadataInput = {}): Metadata {
   return {
     metadataBase: getSiteUrl(),
     title,
     description,
-    keywords,
     alternates: {
       canonical: path,
     },
@@ -47,20 +42,11 @@ export function buildMetadata({
       siteName: "Xpress Developer",
       locale: "es_EC",
       type: "website",
-      images: [
-        {
-          url: defaultOgImage,
-          width: 1200,
-          height: 630,
-          alt: "Xpress Developer",
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [defaultOgImage],
     },
   };
 }
@@ -71,3 +57,58 @@ export const seoDefaults = {
   defaultOgImage,
 };
 
+// Identidad del negocio en datos estructurados. Va en el layout (todas las páginas) y
+// los servicios la referencian por su @id, así no se repite ni se contradice.
+export function organizationId() {
+  return `${getSiteUrl().toString()}#organizacion`;
+}
+
+export function organizationSchema() {
+  const url = getSiteUrl().toString();
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": organizationId(),
+    name: "Xpress Developer",
+    description:
+      "Empresa de desarrollo de software en Quito, Ecuador: sistemas empresariales a medida, automatización de procesos, páginas web y apps móviles.",
+    url,
+    logo: new URL(defaultOgImage, url).toString(),
+    image: new URL(defaultOgImage, url).toString(),
+    email: "contacto@xpressdeveloper.com",
+    telephone: `+${WHATSAPP_NUMBER}`,
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Quito",
+      addressRegion: "Pichincha",
+      addressCountry: "EC",
+    },
+    areaServed: [
+      { "@type": "City", name: "Quito" },
+      { "@type": "Country", name: "Ecuador" },
+    ],
+    knowsAbout: [
+      "Sistemas empresariales",
+      "Automatización de procesos",
+      "Facturación electrónica",
+      "Sistemas de inventario",
+      "Automatización de WhatsApp",
+      "Desarrollo de páginas web",
+      "Apps Android e iOS",
+    ],
+    sameAs: ["https://www.linkedin.com/in/xavier-aguilar-93759b2bb/"],
+  };
+}
+
+export function faqSchema(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}

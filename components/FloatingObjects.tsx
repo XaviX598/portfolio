@@ -54,7 +54,7 @@ export default function FloatingObjects({ chatTitle, chatText, className = "" }:
     <div data-ui className={`[perspective:1200px] ${className}`} aria-hidden="true">
       <Layer mx={mx} my={my} depth={16} rotate={-6} className="left-0 top-[22%] w-[72%]">
         <div className="relative aspect-[2/1] overflow-hidden ring-1 ring-white/10">
-          <Image src="/proyectos/amz%20express%202.png" alt="" fill sizes="30vw" className="object-cover object-top" />
+          <Image src="/proyectos/amz-express-panel.png" alt="" fill sizes="30vw" className="object-cover object-top" />
         </div>
       </Layer>
 

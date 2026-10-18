@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: `${siteUrl.toString()}sitemap.xml`,
-    host: siteUrl.toString(),
   };
 }
 

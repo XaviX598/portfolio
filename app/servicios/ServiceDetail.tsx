@@ -66,9 +66,16 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
         <SectionReveal id="incluye" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-36">
           <div className="grid gap-12 md:grid-cols-12">
-            <p data-reveal className="text-[22px] leading-[1.35] md:col-span-6 md:text-[24px]">
-              {service.shortDescription}
-            </p>
+            <div className="md:col-span-6">
+              <p data-reveal className="text-[22px] leading-[1.35] md:text-[24px]">
+                {service.shortDescription}
+              </p>
+              {service.problem?.map((paragraph) => (
+                <p key={paragraph} data-reveal className="mt-6 max-w-[60ch] text-[17px] leading-[1.6] md:text-lg">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
             <div className="md:col-span-5 md:col-start-8">
               <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em]"><SplitWords text="Qué incluye" /></h2>
               <ul className="mt-8 grid gap-x-8 gap-y-4 text-lg sm:grid-cols-2">
@@ -122,6 +129,53 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
           </div>
         </section>
         </SectionReveal>
+
+        {service.caseStudy && (
+          <SectionReveal id="caso" className="theme-light">
+            <section className="page-x bg-surface py-24 md:py-32">
+              <div className="grid gap-10 md:grid-cols-12">
+                <h2 data-reveal="words" className="text-[28px] font-medium leading-tight tracking-[-0.02em] md:col-span-12 lg:col-span-6 lg:text-[40px]">
+                  <SplitWords text={`${service.caseStudy.label}: ${service.caseStudy.name}`} />
+                </h2>
+                <div className="space-y-6 md:col-span-12 lg:col-span-5 lg:col-start-8">
+                  {service.caseStudy.text.map((paragraph) => (
+                    <p key={paragraph} data-reveal className="text-[17px] leading-[1.6] md:text-lg">
+                      {paragraph}
+                    </p>
+                  ))}
+                  {service.caseStudy.href && (
+                    <a data-reveal className="link inline-block text-[17px]" href={service.caseStudy.href} target="_blank" rel="noreferrer">
+                      Ver el proyecto en línea ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            </section>
+          </SectionReveal>
+        )}
+
+        {service.faq && (
+          <SectionReveal id="preguntas" className="theme-dark">
+            <section className="page-x bg-ground py-24 md:py-32">
+              <h2 data-reveal="words" className="text-[28px] font-medium tracking-[-0.02em] md:text-[40px]">
+                <SplitWords text="Preguntas frecuentes" />
+              </h2>
+              <div className="mt-10 space-y-2 md:ml-[33.333%] md:mt-14">
+                {service.faq.map((item, i) => (
+                  <details key={item.q} data-reveal className="group -mx-[var(--margin)] px-[var(--margin)] py-4 open:bg-surface" open={i === 0}>
+                    <summary className="flex cursor-pointer items-center justify-between gap-6 text-[19px] md:text-[21px]">
+                      {item.q}
+                      <svg className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                        <path d="M3 6l5 5 5-5" />
+                      </svg>
+                    </summary>
+                    <p className="mt-4 max-w-[56ch] pb-2 text-base md:text-[17px]">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          </SectionReveal>
+        )}
 
         <SectionReveal id="otros" className="theme-light">
         <section className="page-x bg-surface py-24 md:py-32">

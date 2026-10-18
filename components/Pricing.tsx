@@ -29,7 +29,7 @@ const services: Service[] = [
       es: ["Inventario, ventas y punto de venta", "Facturación electrónica con proveedor autorizado por el SRI", "Clientes, cobros y reportes", "Usuarios y permisos por rol"],
       en: ["Inventory, sales and point of sale", "E-invoicing through an SRI-authorized provider", "Clients, collections and reports", "Users and role permissions"],
     },
-    image: "/proyectos/amz express 2.png",
+    image: "/proyectos/amz-express-panel.png",
   },
   {
     slug: "automatizacion-de-procesos",
@@ -40,7 +40,7 @@ const services: Service[] = [
       es: ["Pedidos de WhatsApp que se registran solos", "Facturas y recordatorios de pago automáticos", "Reportes diarios automáticos", "Conexión con las herramientas que ya usas"],
       en: ["WhatsApp orders logged automatically", "Automatic invoices and payment reminders", "Automatic daily reports", "Connected to the tools you already use"],
     },
-    image: "/proyectos/xpress ecommerce 2.png",
+    image: "/proyectos/xpress-ecommerce-catalogo.png",
   },
   {
     slug: "landing-page",
@@ -51,7 +51,7 @@ const services: Service[] = [
       es: ["Una página enfocada en una sola acción", "Textos orientados a ventas", "Botón de WhatsApp y formulario", "SEO técnico y analítica"],
       en: ["One page focused on a single action", "Sales-oriented copy", "WhatsApp button and form", "Technical SEO and analytics"],
     },
-    image: "/proyectos/restaurant.png",
+    image: "/proyectos/restaurante-trattoria-inicio.png",
   },
   {
     slug: "pagina-web",
@@ -62,7 +62,7 @@ const services: Service[] = [
       es: ["Hasta 5 secciones a medida", "Diseño para celular y escritorio", "SEO técnico y Google Search Console", "Dominio y hosting configurados"],
       en: ["Up to 5 custom sections", "Mobile and desktop design", "Technical SEO and Google Search Console", "Domain and hosting set up"],
     },
-    image: "/proyectos/universal skills.png",
+    image: "/proyectos/universal-skills-catalogo.png",
   },
   {
     slug: "ecommerce",
@@ -73,7 +73,7 @@ const services: Service[] = [
       es: ["Catálogo, carrito y checkout", "Pagos y gestión de pedidos", "Panel para administrar productos", "SEO para cada producto"],
       en: ["Catalog, cart and checkout", "Payments and order management", "Panel to manage products", "SEO for every product"],
     },
-    image: "/proyectos/xpress ecommerce.png",
+    image: "/proyectos/xpress-ecommerce-inicio.png",
   },
   {
     slug: "chat-ia",
@@ -84,7 +84,7 @@ const services: Service[] = [
       es: ["Responde precios, horarios y dudas", "Conectado a WhatsApp o a tu web", "Entrenado con la información de tu negocio", "Ajustes durante el primer mes"],
       en: ["Answers prices, hours and questions", "Connected to WhatsApp or your site", "Trained on your business information", "Adjustments during the first month"],
     },
-    image: "/proyectos/amz express 2.png",
+    image: "/proyectos/amz-express-panel.png",
   },
   {
     slug: "desarrollo-android",
@@ -95,7 +95,7 @@ const services: Service[] = [
       es: ["Android e iOS", "Diseño de pantallas a medida", "Panel y API para administrarla", "Publicación en las tiendas"],
       en: ["Android and iOS", "Custom screen design", "Panel and API to manage it", "Publishing on the stores"],
     },
-    image: "/proyectos/pagina de atleta .png",
+    image: "/proyectos/aname-inicio.png",
   },
   {
     price: 40,
@@ -106,7 +106,7 @@ const services: Service[] = [
       es: ["Actualizaciones y seguridad", "Respaldos", "Cambios pequeños de contenido", "Respuesta en menos de 24 horas"],
       en: ["Updates and security", "Backups", "Small content changes", "Reply in under 24 hours"],
     },
-    image: "/proyectos/xpress convert .png",
+    image: "/proyectos/xpressconvert-inicio.png",
   },
 ];
 
