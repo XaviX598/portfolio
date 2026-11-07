@@ -32,7 +32,7 @@ export default function Contact({ lang }: { lang: PortfolioLang }) {
           <a className="link" href="tel:+593985295277">+593 98 529 5277</a> · Ecuador
         </p>
         <p className="flex gap-5">
-          <a className="link" href="https://www.linkedin.com/in/xavier-aguilar-93759b2bb" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a className="link" href="https://www.linkedin.com/in/xavier-aguilar-dev" target="_blank" rel="noreferrer">LinkedIn</a>
           <a className="link" href="https://wa.me/593985295277" target="_blank" rel="noreferrer">WhatsApp</a>
         </p>
       </div>

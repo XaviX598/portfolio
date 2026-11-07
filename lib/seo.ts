@@ -101,7 +101,7 @@ export function organizationSchema() {
       "Desarrollo de páginas web",
       "Apps Android e iOS",
     ],
-    sameAs: ["https://www.linkedin.com/in/xavier-aguilar-93759b2bb/"],
+    sameAs: ["https://www.linkedin.com/in/xavier-aguilar-dev/"],
   };
 }
 
@@ -124,7 +124,7 @@ export function websiteSchema() {
 // Autor de las guías: una persona real con su perfil, que es lo que Google pide para contenido de consejo.
 export const AUTHOR = {
   name: "Xavier Aguilar",
-  url: "https://www.linkedin.com/in/xavier-aguilar-93759b2bb/",
+  url: "https://www.linkedin.com/in/xavier-aguilar-dev/",
   jobTitle: "Fundador de Xpress Developer",
 };
 
