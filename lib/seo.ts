@@ -101,7 +101,12 @@ export function organizationSchema() {
       "Desarrollo de páginas web",
       "Apps Android e iOS",
     ],
-    sameAs: ["https://www.linkedin.com/in/xavier-aguilar-dev/"],
+    sameAs: ["https://www.linkedin.com/company/xpress-developer/"],
+    founder: {
+      "@type": "Person",
+      name: "Xavier Aguilar",
+      url: "https://www.linkedin.com/in/xavier-aguilar-dev/",
+    },
   };
 }
 
