@@ -62,7 +62,7 @@ export const solutions: Solution[] = [
     title: "Software para importadoras en Ecuador",
     seoTitle: "Software para Importadoras en Ecuador | Xpress Developer",
     seoDescription:
-      "Software para importadoras en Ecuador: cotizaciones automáticas, seguimiento de pedidos, inventario por bodega y facturación. Caso real: AMZ Express.",
+      "Software para importadoras en Ecuador: cotizaciones automáticas, seguimiento de pedidos, inventario por bodega y facturación. Proyecto demostrativo: AMZ Express.",
     lead: "Cotizaciones en minutos, cada pedido con su estado a la vista y el inventario de tus bodegas en tiempo real.",
     price: 1500,
     problemTitle: "Por qué una importadora se satura",
@@ -81,9 +81,9 @@ export const solutions: Solution[] = [
       "Facturación electrónica al despachar",
     ],
     example: {
-      label: "Caso real",
+      label: "Proyecto demostrativo",
       project: "amz-express",
-      text: "En AMZ Express cada cotización pasó de unos 30 minutos a unos 5. Con alrededor de 30 al día, el equipo recuperó más de 12 horas diarias: el cliente pega el enlace del producto, recibe el costo total y sigue su compra en un panel propio.",
+      text: "En AMZ Express, un proyecto demostrativo, el cliente pega el enlace del producto, recibe el costo total en minutos y sigue su compra en un panel propio, sin que nadie calcule a mano.",
     },
     faq: [
       { q: "¿Cuánto cuesta un software para importadora?", a: "Desde $1.500 por una primera etapa, por ejemplo el cotizador y el panel de pedidos. El precio final depende de los módulos e integraciones; te damos una propuesta con precio cerrado." },

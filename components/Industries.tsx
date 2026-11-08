@@ -12,7 +12,7 @@ const copy: Record<PortfolioLang, { title: string; lead: string; example: string
   es: {
     title: "¿Qué automatizamos en tu negocio?",
     lead: "Elige tu rubro y mira todo lo que dejaría de hacerse a mano.",
-    example: "Ejemplo real",
+    example: "Proyecto de ejemplo",
     more: "Ver la solución completa",
     cta: "Quiero esto en mi negocio",
     message: (name) => `Hola, tengo un negocio de ${name.toLowerCase()} y quiero automatizar procesos.`,
@@ -65,7 +65,7 @@ const copy: Record<PortfolioLang, { title: string; lead: string; example: string
   en: {
     title: "What can we automate for you?",
     lead: "Pick your industry and see everything that would stop being done by hand.",
-    example: "Real example",
+    example: "Example project",
     more: "See the full solution",
     cta: "I want this for my business",
     message: (name) => `Hi, I run a ${name.toLowerCase()} business and I'd like to automate processes.`,
