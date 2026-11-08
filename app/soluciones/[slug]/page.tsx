@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { solutions, solutionsBySlug } from "@/lib/solutions";
 import { projectsBySlug } from "@/lib/projects";
-import { serviceExtras, servicesBySlug } from "@/app/servicios/data";
+import { servicePriceLabel, servicesBySlug } from "@/app/servicios/data";
 import { breadcrumbSchema, buildMetadata, faqSchema, getSiteUrl, organizationId } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import SectionReveal from "@/components/SectionReveal";
@@ -84,7 +84,7 @@ export default async function SolutionPage({ params }: PageProps) {
       <RelatedLinks
         theme={hasExample ? "theme-light" : "theme-dark"}
         title="Servicios relacionados"
-        links={solution.services.map((s) => ({ href: `/servicios/${s}`, label: servicesBySlug[s].title, note: `desde $${serviceExtras[s].price.toLocaleString("es-EC")}` }))}
+        links={solution.services.map((s) => ({ href: `/servicios/${s}`, label: servicesBySlug[s].title, note: servicePriceLabel(s) }))}
       />
       <ProjectStrip theme={hasExample ? "theme-dark" : "theme-light"} exclude={solution.example?.project} />
       <CtaBand title="¿Hablamos de tu negocio?" text="Cuéntanos cómo trabajas hoy y te proponemos por dónde empezar, con precio cerrado." message={message} button="Escribir por WhatsApp" />

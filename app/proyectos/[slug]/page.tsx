@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects, projectsBySlug } from "@/lib/projects";
 import { solutionsBySlug } from "@/lib/solutions";
-import { serviceExtras, servicesBySlug } from "@/app/servicios/data";
+import { servicePriceLabel, servicesBySlug } from "@/app/servicios/data";
 import { breadcrumbSchema, buildMetadata, getSiteUrl, organizationId } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import PhoneMockup from "@/components/PhoneMockup";
@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: PageProps) {
   };
 
   const links = [
-    { href: `/servicios/${service.slug}`, label: service.title, note: `desde $${serviceExtras[service.slug].price.toLocaleString("es-EC")}` },
+    { href: `/servicios/${service.slug}`, label: service.title, note: servicePriceLabel(service.slug) },
     ...(solution ? [{ href: `/soluciones/${solution.slug}`, label: solution.title, note: `desde $${solution.price.toLocaleString("es-EC")}` }] : []),
     ...projects.filter((p) => p.slug !== project.slug).slice(0, 3).map((p) => ({ href: `/proyectos/${p.slug}`, label: p.kind.es, note: p.name })),
   ];

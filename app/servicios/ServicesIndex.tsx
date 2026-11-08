@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { services, serviceExtras, serviceMobile } from "./data";
+import { services, serviceExtras, serviceMobile, servicePriceLabel } from "./data";
 import PhoneMockup from "@/components/PhoneMockup";
 import { QUOTE_MESSAGE, whatsappUrl } from "@/lib/contact";
 import SiteHeader from "@/components/SiteHeader";
@@ -64,7 +64,7 @@ export default function ServicesIndex() {
                       >
                         {s.title}
                       </span>
-                      <span className="mt-1 text-[15px] text-muted md:mt-0 md:shrink-0">desde ${extra.price.toLocaleString("es-EC")}</span>
+                      <span className="mt-1 text-[15px] text-muted md:mt-0 md:shrink-0">{servicePriceLabel(s.slug)}</span>
                     </Link>
                     <p className="max-w-[46ch] md:hidden">{s.shortDescription}</p>
                   </li>

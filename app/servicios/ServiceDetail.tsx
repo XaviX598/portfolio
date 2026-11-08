@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { services, serviceExtras, serviceGallery, serviceMobile, type ServiceEntry } from "./data";
+import { services, serviceExtras, serviceGallery, serviceMobile, servicePriceLabel, type ServiceEntry } from "./data";
 import PhoneMockup from "@/components/PhoneMockup";
 import StoreBadges from "@/components/StoreBadges";
 import { whatsappUrl } from "@/lib/contact";
@@ -15,8 +15,8 @@ import { FaqSection } from "@/components/content/Blocks";
 
 export default function ServiceDetail({ service }: { service: ServiceEntry }) {
   const extra = serviceExtras[service.slug];
-  const price = extra.price.toLocaleString("es-EC");
-  const quote = whatsappUrl(`Hola, quiero cotizar: ${service.title} (desde $${price}).`);
+  const price = extra.price?.toLocaleString("es-EC");
+  const quote = whatsappUrl(price === undefined ? `Hola, quiero cotizar: ${service.title}.` : `Hola, quiero cotizar: ${service.title} (desde $${price}).`);
   const others = services.filter((s) => s.slug !== service.slug);
   const isApp = service.slug === "desarrollo-android" || service.slug === "desarrollo-ios";
 
@@ -40,7 +40,13 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
             </div>
             <div data-fade className="md:col-span-4 md:text-right" style={{ ["--d" as string]: "550ms" }}>
               <p className="text-[18vw] font-extrabold leading-[0.85] tracking-[-0.04em] md:text-[7vw]">
-                <span className="text-[22px] font-medium tracking-normal text-muted">desde </span>${price}
+                {price === undefined ? (
+                  "A cotizar"
+                ) : (
+                  <>
+                    <span className="text-[22px] font-medium tracking-normal text-muted">desde </span>${price}
+                  </>
+                )}
               </p>
               <p className="mt-2 text-muted">{extra.time}</p>
               <a className="btn mt-6 w-full md:w-auto" href={quote} target="_blank" rel="noreferrer">
@@ -172,7 +178,7 @@ export default function ServiceDetail({ service }: { service: ServiceEntry }) {
                   <span className="text-[9vw] font-extrabold leading-none tracking-[-0.035em] text-muted transition-colors duration-200 group-hover:text-ink md:text-[4vw]">
                     {s.title}
                   </span>{" "}
-                  <span className="text-[15px] text-muted">desde ${serviceExtras[s.slug].price.toLocaleString("es-EC")}</span>
+                  <span className="text-[15px] text-muted">{servicePriceLabel(s.slug)}</span>
                 </Link>
               </li>
             ))}

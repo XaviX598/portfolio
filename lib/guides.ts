@@ -1,4 +1,4 @@
-import { serviceExtras, servicesBySlug, type ServiceSlug } from "@/app/servicios/data";
+import { serviceExtras, servicesBySlug, type PricedServiceSlug as ServiceSlug } from "@/app/servicios/data";
 
 // Guías para pymes (/guias/[slug]): responden búsquedas informativas y llevan a los servicios.
 // Los precios salen de serviceExtras para que nunca contradigan a las páginas de servicio.
@@ -22,14 +22,20 @@ export type Guide = {
   updated: string;
 };
 
-const priceRow = (slug: ServiceSlug, note: string) => ({
+const priceOf = (slug: ServiceSlug): number => {
+  const price = serviceExtras[slug].price;
+  if (price === undefined) throw new Error(`El servicio ${slug} no tiene precio público`);
+  return price;
+};
+
+const priceRow =(slug: ServiceSlug, note: string) => ({
   label: servicesBySlug[slug].title,
-  price: serviceExtras[slug].price,
+  price: priceOf(slug),
   note,
   href: `/servicios/${slug}`,
 });
 
-const money = (slug: ServiceSlug) => `$${serviceExtras[slug].price.toLocaleString("es-EC")}`;
+const money = (slug: ServiceSlug) => `$${priceOf(slug).toLocaleString("es-EC")}`;
 
 export const guides: Guide[] = [
   {

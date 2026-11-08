@@ -56,13 +56,16 @@ export default async function ServicePage({ params }: PageProps) {
       { "@type": "City", name: "Quito" },
       { "@type": "Country", name: "Ecuador" },
     ],
-    offers: {
-      "@type": "Offer",
-      url: serviceUrl,
-      priceCurrency: "USD",
-      price,
-      priceSpecification: { "@type": "PriceSpecification", minPrice: price, priceCurrency: "USD" },
-    },
+    // Sin precio público no se emite "offers": nunca price: 0.
+    ...(price !== undefined && {
+      offers: {
+        "@type": "Offer",
+        url: serviceUrl,
+        priceCurrency: "USD",
+        price,
+        priceSpecification: { "@type": "PriceSpecification", minPrice: price, priceCurrency: "USD" },
+      },
+    }),
   };
 
   const breadcrumbJsonLd = breadcrumbSchema([

@@ -7,6 +7,7 @@
   | "desarrollo-ios"
   | "chat-ia"
   | "inteligencia-artificial"
+  | "charlas-ia"
   | "desarrollo-web"
   | "ecommerce";
 
@@ -426,6 +427,59 @@ export const services: ServiceEntry[] = [
     },
   },
   {
+    slug: "charlas-ia",
+    title: "Charlas y talleres de IA",
+    subtitle: "Aprende a usar la inteligencia artificial en tu trabajo y tu negocio",
+    shortDescription:
+      "Charlas y talleres prácticos sobre inteligencia artificial para empresas, equipos, universidades y público general, en línea o presencial en Quito.",
+    seoTitle: "Charlas y Talleres de IA en Quito y Ecuador | Xpress Developer",
+    seoDescription:
+      "Charlas y talleres de inteligencia artificial para empresas, equipos y universidades: ChatGPT, Claude, agentes, automatización y finanzas con IA. En línea o presencial en Quito. Cotiza.",
+    features: [
+      "IA en el trabajo: ChatGPT, Claude y Gemini sin humo",
+      "Agentes de IA: de conversar a delegar tareas",
+      "Sistemas multiagente para equipos de tecnología",
+      "Desarrollo de software con IA: Claude Code, Cursor y similares",
+      "Automatiza tu negocio con IA: WhatsApp, reportes y tareas repetitivas",
+      "IA para mejorar tu situación económica personal",
+      "IA para las finanzas de tu negocio: ventas, gastos y márgenes",
+      "En línea o presencial en Quito",
+    ],
+    process: [
+      { step: "1", title: "Conversación inicial", desc: "Nos cuentas quiénes asistirán, qué nivel tienen y qué quieres lograr con la sesión." },
+      { step: "2", title: "Propuesta y temario", desc: "Elegimos el formato (charla, taller o programa) y los temas, y te enviamos una propuesta por escrito." },
+      { step: "3", title: "Preparación a tu medida", desc: "Adaptamos ejemplos y ejercicios a tu sector y a las herramientas que ya usa tu equipo." },
+      { step: "4", title: "Sesión y material", desc: "Dictamos la sesión, en línea o presencial en Quito, y resolvemos las dudas de los asistentes." },
+    ],
+    cta: {
+      title: "¿Quieres una charla o taller de IA para tu equipo?",
+      subtitle: "Cuéntanos quiénes asistirían y te enviamos una propuesta.",
+      button: "Cotizar charla o taller",
+    },
+    problem: [
+      "Todos hablan de inteligencia artificial, pero pocas personas saben qué herramienta usar para cada tarea, cómo pedirle las cosas y dónde sí vale la pena confiar en ella. El resultado suele ser un equipo que la usa poco, o que la usa mal.",
+      "Estas sesiones están pensadas para cambiar eso con ejemplos prácticos y lenguaje claro: sin tecnicismos innecesarios y sin promesas exageradas. Puedes elegir entre siete temas, desde el uso diario de ChatGPT, Claude y Gemini hasta agentes, desarrollo de software con IA y finanzas para tu negocio.",
+      "Los temas son estos: IA en el trabajo (empresas y público general); agentes de IA (empresas y equipos); sistemas multiagente (equipos de tecnología); desarrollo de software con IA (desarrolladores y universidades); automatización de negocio con IA (pymes y emprendedores); IA para mejorar tu situación económica (público general); e IA para las finanzas de tu negocio (pymes y emprendedores).",
+      "Formatos: charla de 1 a 2 horas, taller práctico de 4 a 8 horas con ejercicios, o programa para empresas con varias sesiones adaptadas a tu equipo. Todos se pueden dictar en línea o de forma presencial en Quito.",
+    ],
+    caseStudy: {
+      label: "Ejemplo de temario",
+      name: "Taller práctico: Automatiza tu negocio con IA",
+      text: [
+        "Esto es un ejemplo de cómo se puede estructurar una sesión; no corresponde a un taller ya realizado. El temario real se ajusta a tu equipo.",
+        "Para quién: pymes y emprendedores que quieren ahorrar tiempo en tareas repetitivas, sin necesidad de saber programar.",
+        "Qué se trabaja: cómo identificar qué tareas conviene automatizar, cómo escribir buenas instrucciones para la IA, y ejercicios guiados sobre atención por WhatsApp y reportes.",
+        "Qué te llevas: una lista priorizada de tareas de tu negocio para automatizar y los primeros pasos para empezar.",
+      ],
+    },
+    faq: [
+      { q: "¿Cuánto cuesta una charla o taller?", a: "Depende del formato, la duración y el tamaño del grupo. Cuéntanos qué necesitas y te enviamos una propuesta por escrito." },
+      { q: "¿Es en línea o presencial?", a: "Ambas. Puede ser en línea o presencial en Quito." },
+      { q: "¿Se adapta a mi equipo o sector?", a: "Sí. Ajustamos los temas, los ejemplos y los ejercicios al sector y al nivel de las personas que asistirán." },
+      { q: "¿Necesitamos conocimientos previos?", a: "No. Las sesiones para público general y pymes no requieren conocimientos técnicos. Las de desarrollo de software y sistemas multiagente están pensadas para personas con experiencia en tecnología." },
+    ],
+  },
+  {
     slug: "desarrollo-web",
     title: "Desarrollo Web",
     subtitle: "Frontend, backend y arquitectura para productos digitales",
@@ -537,6 +591,7 @@ export const serviceUpdated: Record<ServiceSlug, string> = {
   "desarrollo-ios": "2026-10-17",
   "chat-ia": "2026-10-17",
   "inteligencia-artificial": "2026-10-17",
+  "charlas-ia": "2026-11-07",
   "desarrollo-web": "2026-10-17",
   ecommerce: "2026-10-17",
 };
@@ -550,6 +605,7 @@ export const serviceGallery: Record<ServiceSlug, string[]> = {
   "desarrollo-ios": ["/proyectos/aname-inicio.png", "/proyectos/aname-contacto.png", "/proyectos/xpressconvert-detalle.png"],
   "chat-ia": ["/proyectos/amz-express-cotizador.png", "/proyectos/amz-express-pedidos.png", "/proyectos/universal-skills-detalle.png"],
   "inteligencia-artificial": ["/proyectos/universal-skills-catalogo.png", "/proyectos/universal-skills-detalle.png", "/proyectos/xpressconvert-herramientas.png"],
+  "charlas-ia": ["/proyectos/universal-skills-catalogo.png", "/proyectos/universal-skills-detalle.png", "/proyectos/universal-skills-busqueda.png"],
   "desarrollo-web": ["/proyectos/amz-express-cotizador.png", "/proyectos/amz-express-panel.png", "/proyectos/xpress-ecommerce-catalogo.png"],
   ecommerce: ["/proyectos/xpress-ecommerce-catalogo.png", "/proyectos/xpress-ecommerce-producto.png", "/proyectos/amz-express-cotizador.png"],
 };
@@ -563,11 +619,24 @@ export const serviceMobile: Record<ServiceSlug, string> = {
   "desarrollo-ios": "/proyectos/movil/xpressconvert.jpg",
   "chat-ia": "/proyectos/movil/amz-express.jpg",
   "inteligencia-artificial": "/proyectos/movil/universal-skills.jpg",
+  "charlas-ia": "/proyectos/movil/universal-skills.jpg",
   "desarrollo-web": "/proyectos/movil/amz-express.jpg",
   ecommerce: "/proyectos/movil/xpress-ecommerce.jpg",
 };
 
-export const serviceExtras: Record<ServiceSlug, { price: number; time: string; image: string; imageAlt: string }> = {
+// `price` es opcional: sin precio público se muestra "A cotizar" y se omite de los datos estructurados.
+export type ServiceExtra = { price?: number; time: string; image: string; imageAlt: string };
+
+/** Slugs que sí tienen precio público (para guías y listas que necesitan un número). */
+export type PricedServiceSlug = Exclude<ServiceSlug, "charlas-ia">;
+
+/** Texto de precio para listas y tarjetas: "desde $500" o "A cotizar". */
+export function servicePriceLabel(slug: ServiceSlug): string {
+  const price = serviceExtras[slug].price;
+  return price === undefined ? "A cotizar" : `desde $${price.toLocaleString("es-EC")}`;
+}
+
+export const serviceExtras: Record<ServiceSlug, ServiceExtra> = {
   "sistemas-empresariales": { price: 1500, time: "Se entrega por etapas", image: "/proyectos/amz-express-panel.png", imageAlt: "Panel de AMZ Express, sistema empresarial desarrollado por Xpress Developer" },
   "automatizacion-de-procesos": { price: 500, time: "Plazo según el proceso", image: "/proyectos/xpress-ecommerce-catalogo.png", imageAlt: "Pedidos automatizados en Xpress Ecommerce desarrollado por Xpress Developer" },
   "pagina-web": { price: 450, time: "Lista en 3 a 6 semanas", image: "/proyectos/universal-skills-catalogo.png", imageAlt: "Universal Skills Hub, plataforma web desarrollada por Xpress Developer" },
@@ -576,6 +645,7 @@ export const serviceExtras: Record<ServiceSlug, { price: number; time: string; i
   "desarrollo-ios": { price: 2500, time: "Se planifica por etapas", image: "/proyectos/aname-registro-atletas.png", imageAlt: "Sistema de atletismo multiplataforma desarrollado por Xpress Developer" },
   "chat-ia": { price: 400, time: "Plazo según tus procesos", image: "/proyectos/amz-express-panel.png", imageAlt: "Plataforma AMZ Express con atención automatizada desarrollada por Xpress Developer" },
   "inteligencia-artificial": { price: 500, time: "Plazo según tus procesos", image: "/proyectos/universal-skills-busqueda.png", imageAlt: "Catálogo de herramientas de IA desarrollado por Xpress Developer" },
+  "charlas-ia": { time: "En línea o presencial en Quito", image: "/proyectos/universal-skills-catalogo.png", imageAlt: "Material de IA de Xpress Developer" },
   "desarrollo-web": { price: 1500, time: "Se planifica por etapas", image: "/proyectos/amz-express-pedidos.png", imageAlt: "Panel de AMZ Express desarrollado por Xpress Developer" },
   ecommerce: { price: 900, time: "Plazo según el catálogo", image: "/proyectos/xpress-ecommerce-inicio.png", imageAlt: "Tienda online Xpress Ecommerce desarrollada por Xpress Developer" },
 };
