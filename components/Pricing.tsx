@@ -11,7 +11,8 @@ import StoreBadges from "./StoreBadges";
 
 type Service = {
   slug?: string;
-  price: number;
+  /** Sin precio se muestra "A cotizar" (por ejemplo, las charlas dependen del formato y del grupo). */
+  price?: number;
   period?: Record<PortfolioLang, string>;
   name: Record<PortfolioLang, string>;
   time: Record<PortfolioLang, string>;
@@ -98,6 +99,16 @@ const services: Service[] = [
     image: "/proyectos/aname-inicio.png",
   },
   {
+    slug: "charlas-ia",
+    name: { es: "Charlas de IA", en: "AI talks" },
+    time: { es: "En línea o presencial en Quito", en: "Online or in person in Quito" },
+    includes: {
+      es: ["ChatGPT, Claude y otras herramientas de IA", "Agentes y sistemas multiagente", "Desarrollo de software con IA", "IA para tus finanzas y las de tu negocio"],
+      en: ["ChatGPT, Claude and other AI tools", "Agents and multi-agent systems", "Software development with AI", "AI for your personal and business finances"],
+    },
+    image: "/proyectos/universal-skills-catalogo.png",
+  },
+  {
     price: 40,
     period: { es: "/mes", en: "/mo" },
     name: { es: "Mantenimiento", en: "Maintenance" },
@@ -121,6 +132,7 @@ const allPages = [
   { slug: "desarrollo-ios", label: "Desarrollo iOS" },
   { slug: "chat-ia", label: "Chat IA" },
   { slug: "inteligencia-artificial", label: "Inteligencia Artificial" },
+  { slug: "charlas-ia", label: "Charlas de IA" },
 ];
 
 const copy = {
@@ -132,7 +144,11 @@ const copy = {
     detail: "Ver el servicio en detalle",
     all: "Todos los servicios",
     choose: "Elige un servicio",
-    message: (s: Service) => `Hola, quiero cotizar: ${s.name.es} (desde $${s.price.toLocaleString("es-EC")}${s.period ? s.period.es : ""}).`,
+    quote: "A cotizar",
+    message: (s: Service) =>
+      s.price === undefined
+        ? `Hola, quiero cotizar: ${s.name.es}.`
+        : `Hola, quiero cotizar: ${s.name.es} (desde $${s.price.toLocaleString("es-EC")}${s.period ? s.period.es : ""}).`,
   },
   en: {
     title: "Get a price in seconds",
@@ -142,7 +158,11 @@ const copy = {
     detail: "See the service in detail",
     all: "All services",
     choose: "Choose a service",
-    message: (s: Service) => `Hi, I'd like a quote: ${s.name.en} (from $${s.price.toLocaleString("en-US")}${s.period ? s.period.en : ""}).`,
+    quote: "Quote on request",
+    message: (s: Service) =>
+      s.price === undefined
+        ? `Hi, I'd like a quote: ${s.name.en}.`
+        : `Hi, I'd like a quote: ${s.name.en} (from $${s.price.toLocaleString("en-US")}${s.period ? s.period.en : ""}).`,
   },
 };
 
@@ -150,7 +170,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
   const t = copy[lang];
   const [index, setIndex] = useState(0);
   const s = services[index];
-  const figure = s.price.toLocaleString(lang === "es" ? "es-EC" : "en-US");
+  const figure = s.price === undefined ? null : s.price.toLocaleString(lang === "es" ? "es-EC" : "en-US");
 
   return (
     <section className="page-x flex min-h-[80svh] flex-col justify-center bg-surface py-28 md:py-40">
@@ -164,7 +184,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
             <div className="flex flex-wrap gap-2">
               {services.map((item, i) => (
                 <button
-                  key={item.price}
+                  key={item.name.es}
                   type="button"
                   onClick={() => setIndex(i)}
                   aria-pressed={index === i}
@@ -181,23 +201,38 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
 
         <div className="md:col-span-7 md:col-start-6" aria-live="polite">
           <div className="relative inline-block max-w-full pt-[20vw] md:pr-[6vw] md:pt-[7vw]">
-            <p className="flex items-start font-extrabold leading-[0.85] tracking-[-0.04em]">
-              <span className="sr-only">{t.from} </span>
-              <span className="mt-[0.08em] text-[11vw] md:text-[clamp(60px,8vw,120px)]">$</span>
+            {figure === null ? (
               <AnimatePresence mode="popLayout" initial={false}>
-                <motion.span
-                  key={figure}
+                <motion.p
+                  key="quote"
                   initial={{ y: "40%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: "-40%", opacity: 0 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-[22vw] md:text-[clamp(120px,16vw,240px)]"
+                  className="font-extrabold leading-[0.9] tracking-[-0.04em] text-[14vw] md:text-[clamp(72px,9vw,140px)]"
                 >
-                  {figure}
-                </motion.span>
+                  {t.quote}
+                </motion.p>
               </AnimatePresence>
-              {s.period && <span className="self-end pb-[0.6em] text-lg font-medium">{s.period[lang]}</span>}
-            </p>
+            ) : (
+              <p className="flex items-start font-extrabold leading-[0.85] tracking-[-0.04em]">
+                <span className="sr-only">{t.from} </span>
+                <span className="mt-[0.08em] text-[11vw] md:text-[clamp(60px,8vw,120px)]">$</span>
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.span
+                    key={figure}
+                    initial={{ y: "40%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: "-40%", opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-[22vw] md:text-[clamp(120px,16vw,240px)]"
+                  >
+                    {figure}
+                  </motion.span>
+                </AnimatePresence>
+                {s.period && <span className="self-end pb-[0.6em] text-lg font-medium">{s.period[lang]}</span>}
+              </p>
+            )}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={s.image}
@@ -212,7 +247,7 @@ export default function Pricing({ lang }: { lang: PortfolioLang }) {
             </AnimatePresence>
           </div>
 
-          <p className="mt-6 text-lg text-muted">{t.from} · {s.time[lang]}</p>
+          <p className="mt-6 text-lg text-muted">{figure === null ? s.time[lang] : `${t.from} · ${s.time[lang]}`}</p>
           <ul className="mt-6 space-y-1.5 text-lg">
             {s.includes[lang].map((line) => (
               <li key={line}>{line}</li>
